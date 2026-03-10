@@ -372,37 +372,32 @@ export default function Home() {
                 type: "Breast Cancer",
                 title: "Priya's Journey Back to Life",
                 desc: "Diagnosed at 34 with stage 3 breast cancer, Priya underwent surgery, chemotherapy and reconstruction at CI(WIA). Today she runs a support group for other survivors.",
+                thumb: "/testimonial-thumbnails/1.png",
               },
               {
                 badge: "In Remission",
                 type: "Blood Cancer",
                 title: "Karthik's Second Chance",
                 desc: "At 12, Karthik was diagnosed with leukaemia. After a bone marrow transplant and 18 months of treatment at CI(WIA), he is now completing his 10th standard exams.",
+                thumb: "/testimonial-thumbnails/2.png",
               },
               {
                 badge: "3 Years Cancer-Free",
                 type: "Cervical Cancer",
                 title: "Anitha Speaks Out",
                 desc: "A routine screening camp at CI(WIA) detected Anitha's cervical cancer at stage 1. Early detection meant a cure. Now she volunteers at our cancer awareness drives.",
+                thumb: "/testimonial-thumbnails/3.png",
               },
             ].map((story, i) => (
               <article className="story-card" key={i}>
-                <div className="story-img" aria-hidden="true">
-                  <div className="story-img-inner">
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <circle cx="12" cy="8" r="4" />
-                      <path d="M6 20v-2a6 6 0 0112 0v2" />
-                    </svg>
-                  </div>
+                <div className="story-img">
+                  <Image
+                    src={story.thumb}
+                    alt={story.title}
+                    width={400}
+                    height={260}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
                   <span className="story-badge">{story.badge}</span>
                 </div>
                 <div className="story-content">
