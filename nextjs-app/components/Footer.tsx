@@ -30,6 +30,7 @@ export default function Footer() {
               <li><Link href="/#research">Research &amp; Education</Link></li>
               <li><Link href="/#events">Events &amp; Camps</Link></li>
               <li><Link href="/#donate">Donate</Link></li>
+              <li><Link href="/blood-bank">Blood Bank</Link></li>
               <li><Link href="/#faq">FAQs</Link></li>
             </ul>
           </div>

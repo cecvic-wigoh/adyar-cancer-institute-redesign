@@ -71,7 +71,8 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
               </div>
             </li>
             <li><Link href="/#doctors" onClick={onClose}>Find a Doctor</Link></li>
-            <li><Link href="/#research" onClick={onClose}>Research &amp; Education</Link></li>
+            <li><Link href="/blood-bank" onClick={onClose}>Blood Bank</Link></li>
+            <li><a href="https://ci-wia-research-pages.vercel.app/research" onClick={onClose}>Research &amp; Education</a></li>
             <li><Link href="/#events" onClick={onClose}>Events</Link></li>
             <li><Link href="/#donate" onClick={onClose}>Donate</Link></li>
             <li><Link href="/#contact" onClick={onClose}>Contact</Link></li>

@@ -81,7 +81,8 @@ export default function Header() {
                 </div>
               </li>
               <li><Link href="/#doctors">Find a Doctor</Link></li>
-              <li><Link href="/#research">Research</Link></li>
+              <li><Link href="/blood-bank">Blood Bank</Link></li>
+              <li><a href="https://ci-wia-research-pages.vercel.app/research">Research</a></li>
               <li><Link href="/#donate">Donate</Link></li>
               <li><Link href="/#contact">Contact</Link></li>
             </ul>

@@ -23,6 +23,7 @@ const sitePages = [
   { title: 'Paediatric Oncology', url: '/departments/paediatric-oncology', category: 'Departments' },
   { title: 'Haematology', url: '/departments/haematology', category: 'Departments' },
   { title: 'Gynaecological Oncology', url: '/departments/gynaecological-oncology', category: 'Departments' },
+  { title: 'Blood Bank & Transfusion Medicine', url: '/blood-bank', category: 'Departments' },
   { title: 'Dr. S. Krishnamurthy', url: '/doctors/dr-krishnamurthy', category: 'Our Doctors' },
   { title: 'Dr. R. Swaminathan', url: '/doctors/dr-swaminathan', category: 'Our Doctors' },
   { title: 'Dr. P. Anbalagan', url: '/doctors/dr-anbalagan', category: 'Our Doctors' },
@@ -30,11 +31,12 @@ const sitePages = [
   { title: 'Dr. M. Balasubramanian', url: '/doctors/dr-balasubramanian', category: 'Our Doctors' },
   { title: 'Dr. K. Vijayalakshmi', url: '/doctors/dr-vijayalakshmi', category: 'Our Doctors' },
   { title: 'About Us', url: '/#about', category: 'Quick Links' },
-  { title: 'Research & Education', url: '/#research', category: 'Quick Links' },
+  { title: 'Research & Education', url: 'https://ci-wia-research-pages.vercel.app/research', category: 'Quick Links' },
   { title: 'Events & Camps', url: '/#events', category: 'Quick Links' },
   { title: 'FAQs', url: '/#faq', category: 'Quick Links' },
   { title: 'Contact Us', url: '/#contact', category: 'Quick Links' },
   { title: 'Donate', url: '/#donate', category: 'Quick Links' },
+  { title: 'Blood Bank', url: '/blood-bank', category: 'Quick Links' },
 ];
 
 const categoryOrder = ['Cancer Types', 'Departments', 'Our Doctors', 'Quick Links'];
@@ -42,6 +44,10 @@ const categoryOrder = ['Cancer Types', 'Departments', 'Our Doctors', 'Quick Link
 export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const handleClose = () => {
+    setQuery('');
+    onClose();
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -49,7 +55,6 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
       setTimeout(() => inputRef.current?.focus(), 100);
     } else {
       document.body.style.overflow = '';
-      setQuery('');
     }
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
@@ -57,7 +62,10 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   useEffect(() => {
     if (!isOpen) return;
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') {
+        setQuery('');
+        onClose();
+      }
     };
     document.addEventListener('keydown', handleKey);
     return () => document.removeEventListener('keydown', handleKey);
@@ -74,8 +82,8 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   });
 
   return (
-    <div className="search-overlay open" role="dialog" aria-modal="true" aria-label="Search the website" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <button className="search-close" aria-label="Close search" onClick={onClose}>&times;</button>
+    <div className="search-overlay open" role="dialog" aria-modal="true" aria-label="Search the website" onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}>
+      <button className="search-close" aria-label="Close search" onClick={handleClose}>&times;</button>
       <div className="search-sitemap-wrap">
         <div className="search-box">
           <div className="search-input-wrap">
@@ -100,7 +108,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                 <h6 className="sitemap-category-title">{cat}</h6>
                 <div className="sitemap-items">
                   {grouped[cat].map(p => (
-                    <Link key={p.url} className="sitemap-item" href={p.url} onClick={onClose}>{p.title}</Link>
+                    <Link key={p.url} className="sitemap-item" href={p.url} onClick={handleClose}>{p.title}</Link>
                   ))}
                 </div>
               </div>

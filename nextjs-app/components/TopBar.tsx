@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 export default function TopBar() {
   return (
     <div className="top-bar" role="complementary" aria-label="Site information">
