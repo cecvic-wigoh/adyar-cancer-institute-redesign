@@ -446,28 +446,39 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
 
 /* ── 10. CANCER TYPES GRID ── */
 .cancer-types { background: var(--color-off-white); }
-.cancer-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
+.cancer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
 .cancer-card {
-  background: var(--color-white); border-radius: var(--radius-md);
-  padding: var(--space-5);
-  display: flex; align-items: flex-start; gap: var(--space-4);
+  background: var(--color-white); border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: var(--space-4);
   box-shadow: var(--shadow-sm); border: 1.5px solid transparent;
   transition: all var(--transition-base); text-decoration: none;
 }
-.cancer-card:hover { border-color: var(--color-secondary); box-shadow: var(--shadow-md); transform: translateY(-2px); text-decoration: none; }
+.cancer-card:hover { border-color: var(--color-secondary); box-shadow: var(--shadow-md); transform: translateY(-4px); text-decoration: none; }
 .cancer-icon {
-  width: 52px; height: 52px; background: var(--color-tertiary);
-  border-radius: var(--radius-sm); flex-shrink: 0;
+  width: 64px; height: 64px;
+  border-radius: 50%; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  color: var(--color-secondary);
+  background: var(--color-off-white);
+  padding: 8px;
+  transition: background var(--transition-base), transform var(--transition-base);
+}
+.cancer-card:hover .cancer-icon {
+  background: var(--color-tertiary);
+  transform: scale(1.08);
+}
+.cancer-icon img {
+  width: 44px; height: 44px; object-fit: contain;
 }
 .cancer-info { flex: 1; min-width: 0; }
-.cancer-info h4 { font-size: 17px; margin-bottom: 4px; }
-.cancer-info p { font-size: 14px; color: var(--color-text-secondary); max-width: none; line-height: 1.4; }
+.cancer-info h4 { font-size: 16px; margin-bottom: 4px; }
+.cancer-info p { font-size: 13px; color: var(--color-text-secondary); max-width: none; line-height: 1.4; }
 .cancer-arrow {
-  margin-left: auto; flex-shrink: 0;
-  color: var(--color-text-secondary); align-self: center;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
   transition: color var(--transition-fast), transform var(--transition-fast);
+  margin-top: auto;
 }
 .cancer-card:hover .cancer-arrow { color: var(--color-primary); transform: translateX(4px); }
 .cancer-types-cta { text-align: center; margin-top: var(--space-7); }
@@ -949,7 +960,7 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
   .hamburger { display: none; }
   /* hero-v2 is single-column by design */
   .feature-cards-grid { grid-template-columns: repeat(3, 1fr); }
-  .cancer-grid { grid-template-columns: repeat(2, 1fr); }
+  .cancer-grid { grid-template-columns: repeat(3, 1fr); }
   .stats-grid { grid-template-columns: repeat(4, 1fr); }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonial-group.active { grid-template-columns: repeat(3, 1fr); }
