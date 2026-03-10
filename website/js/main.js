@@ -142,26 +142,97 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   });
 });
 
-/* ── 8. SEARCH OVERLAY ── */
+/* ── 8. MOBILE ACCORDION NAV ── */
+document.querySelectorAll('.mobile-accordion-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    const panel = btn.nextElementSibling;
+    if (panel) {
+      panel.style.maxHeight = expanded ? '0' : panel.scrollHeight + 'px';
+    }
+  });
+});
+
+/* ── 9. SEARCH OVERLAY + SITEMAP ── */
+const sitePages = [
+  { title: 'Breast Cancer', url: 'pages/cancer/breast-cancer.html', category: 'Cancer Types' },
+  { title: 'Cervical Cancer', url: 'pages/cancer/cervical-cancer.html', category: 'Cancer Types' },
+  { title: 'Lung Cancer', url: 'pages/cancer/lung-cancer.html', category: 'Cancer Types' },
+  { title: 'Colorectal Cancer', url: 'pages/cancer/colorectal-cancer.html', category: 'Cancer Types' },
+  { title: 'Blood Cancer', url: 'pages/cancer/blood-cancer.html', category: 'Cancer Types' },
+  { title: 'Head & Neck Cancer', url: 'pages/cancer/head-neck-cancer.html', category: 'Cancer Types' },
+  { title: 'Prostate Cancer', url: 'pages/cancer/prostate-cancer.html', category: 'Cancer Types' },
+  { title: 'Thyroid Cancer', url: 'pages/cancer/thyroid-cancer.html', category: 'Cancer Types' },
+  { title: 'Surgical Oncology', url: 'pages/departments/surgical-oncology.html', category: 'Departments' },
+  { title: 'Medical Oncology', url: 'pages/departments/medical-oncology.html', category: 'Departments' },
+  { title: 'Radiation Oncology', url: 'pages/departments/radiation-oncology.html', category: 'Departments' },
+  { title: 'Paediatric Oncology', url: 'pages/departments/paediatric-oncology.html', category: 'Departments' },
+  { title: 'Haematology', url: 'pages/departments/haematology.html', category: 'Departments' },
+  { title: 'Gynaecological Oncology', url: 'pages/departments/gynaecological-oncology.html', category: 'Departments' },
+  { title: 'Dr. S. Krishnamurthy', url: 'pages/doctors/dr-krishnamurthy.html', category: 'Our Doctors' },
+  { title: 'Dr. R. Swaminathan', url: 'pages/doctors/dr-swaminathan.html', category: 'Our Doctors' },
+  { title: 'Dr. P. Anbalagan', url: 'pages/doctors/dr-anbalagan.html', category: 'Our Doctors' },
+  { title: 'Dr. V. Shanta', url: 'pages/doctors/dr-shanta.html', category: 'Our Doctors' },
+  { title: 'Dr. M. Balasubramanian', url: 'pages/doctors/dr-balasubramanian.html', category: 'Our Doctors' },
+  { title: 'Dr. K. Vijayalakshmi', url: 'pages/doctors/dr-vijayalakshmi.html', category: 'Our Doctors' },
+  { title: 'About Us', url: '#about', category: 'Quick Links' },
+  { title: 'Research & Education', url: '#research', category: 'Quick Links' },
+  { title: 'Events & Camps', url: '#events', category: 'Quick Links' },
+  { title: 'FAQs', url: '#faq', category: 'Quick Links' },
+  { title: 'Contact Us', url: '#contact', category: 'Quick Links' },
+  { title: 'Donate', url: '#donate', category: 'Quick Links' },
+];
+
 const searchOverlay = document.querySelector('.search-overlay');
 const searchBtn     = document.querySelector('.search-btn');
 const searchClose   = document.querySelector('.search-close');
 const searchInput   = document.querySelector('.search-input');
+const sitemapGrid   = document.getElementById('sitemap-grid');
+const noResults     = document.getElementById('search-no-results');
+
+function renderSitemap(filter) {
+  if (!sitemapGrid) return;
+  const q = (filter || '').toLowerCase().trim();
+  const filtered = q ? sitePages.filter(p => p.title.toLowerCase().includes(q)) : sitePages;
+  const grouped = {};
+  filtered.forEach(p => {
+    if (!grouped[p.category]) grouped[p.category] = [];
+    grouped[p.category].push(p);
+  });
+  const categoryOrder = ['Cancer Types', 'Departments', 'Our Doctors', 'Quick Links'];
+  let html = '';
+  categoryOrder.forEach(cat => {
+    if (!grouped[cat]) return;
+    html += '<div class="sitemap-category">';
+    html += '<h6 class="sitemap-category-title">' + cat + '</h6>';
+    html += '<div class="sitemap-items">';
+    grouped[cat].forEach(p => {
+      html += '<a class="sitemap-item" href="' + p.url + '">' + p.title + '</a>';
+    });
+    html += '</div></div>';
+  });
+  sitemapGrid.innerHTML = html;
+  if (noResults) noResults.hidden = filtered.length > 0;
+}
 
 function openSearch() {
   searchOverlay?.classList.add('open');
   document.body.style.overflow = 'hidden';
+  renderSitemap('');
   setTimeout(() => searchInput?.focus(), 100);
 }
 function closeSearch() {
   searchOverlay?.classList.remove('open');
   document.body.style.overflow = '';
+  if (searchInput) searchInput.value = '';
   searchBtn?.focus();
 }
 searchBtn?.addEventListener('click', openSearch);
 searchClose?.addEventListener('click', closeSearch);
 searchOverlay?.addEventListener('click', e => { if (e.target === searchOverlay) closeSearch(); });
 searchOverlay?.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
+searchInput?.addEventListener('input', () => renderSitemap(searchInput.value));
 
 /* ── 9. CHATBOT FAB ── */
 const chatFab   = document.querySelector('.chatbot-fab');

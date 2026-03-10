@@ -59,7 +59,49 @@
     <nav class="primary-nav" aria-label="Primary navigation">
       <ul>
         <li><a href="#about">About Us</a></li>
-        <li><a href="#cancer-types">For Patients</a></li>
+        <li class="nav-dropdown-parent">
+          <a href="#cancer-types" class="nav-dropdown-trigger">
+            For Patients
+            <svg class="nav-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="mega-dropdown" aria-label="For Patients submenu">
+            <div class="mega-dropdown-inner">
+              <div class="mega-col">
+                <h6 class="mega-col-heading">Cancer Types</h6>
+                <ul>
+                  <li><a href="pages/cancer/breast-cancer.html">Breast Cancer</a></li>
+                  <li><a href="pages/cancer/cervical-cancer.html">Cervical Cancer</a></li>
+                  <li><a href="pages/cancer/lung-cancer.html">Lung Cancer</a></li>
+                  <li><a href="pages/cancer/colorectal-cancer.html">Colorectal Cancer</a></li>
+                  <li><a href="pages/cancer/blood-cancer.html">Blood Cancer</a></li>
+                  <li><a href="pages/cancer/head-neck-cancer.html">Head &amp; Neck Cancer</a></li>
+                  <li><a href="pages/cancer/prostate-cancer.html">Prostate Cancer</a></li>
+                  <li><a href="pages/cancer/thyroid-cancer.html">Thyroid Cancer</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6 class="mega-col-heading">Departments</h6>
+                <ul>
+                  <li><a href="pages/departments/surgical-oncology.html">Surgical Oncology</a></li>
+                  <li><a href="pages/departments/medical-oncology.html">Medical Oncology</a></li>
+                  <li><a href="pages/departments/radiation-oncology.html">Radiation Oncology</a></li>
+                  <li><a href="pages/departments/paediatric-oncology.html">Paediatric Oncology</a></li>
+                  <li><a href="pages/departments/haematology.html">Haematology</a></li>
+                  <li><a href="pages/departments/gynaecological-oncology.html">Gynaecological Oncology</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h6 class="mega-col-heading">Quick Links</h6>
+                <ul>
+                  <li><a href="#doctors">Find a Doctor</a></li>
+                  <li><a href="#appointment">Book Appointment</a></li>
+                  <li><a href="#education">Patient Education</a></li>
+                  <li><a href="#faq">FAQs</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
         <li><a href="#doctors">Find a Doctor</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#donate">Donate</a></li>
@@ -90,7 +132,34 @@
     <nav>
       <ul>
         <li><a href="#about">About Us</a></li>
-        <li><a href="#cancer-types">For Patients</a></li>
+        <li class="mobile-accordion">
+          <button class="mobile-accordion-toggle" aria-expanded="false">
+            For Patients
+            <svg class="mobile-accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mobile-accordion-panel">
+            <p class="mobile-sub-heading">Cancer Types</p>
+            <ul class="mobile-sub-list">
+              <li><a href="pages/cancer/breast-cancer.html">Breast Cancer</a></li>
+              <li><a href="pages/cancer/cervical-cancer.html">Cervical Cancer</a></li>
+              <li><a href="pages/cancer/lung-cancer.html">Lung Cancer</a></li>
+              <li><a href="pages/cancer/colorectal-cancer.html">Colorectal Cancer</a></li>
+              <li><a href="pages/cancer/blood-cancer.html">Blood Cancer</a></li>
+              <li><a href="pages/cancer/head-neck-cancer.html">Head &amp; Neck Cancer</a></li>
+              <li><a href="pages/cancer/prostate-cancer.html">Prostate Cancer</a></li>
+              <li><a href="pages/cancer/thyroid-cancer.html">Thyroid Cancer</a></li>
+            </ul>
+            <p class="mobile-sub-heading">Departments</p>
+            <ul class="mobile-sub-list">
+              <li><a href="pages/departments/surgical-oncology.html">Surgical Oncology</a></li>
+              <li><a href="pages/departments/medical-oncology.html">Medical Oncology</a></li>
+              <li><a href="pages/departments/radiation-oncology.html">Radiation Oncology</a></li>
+              <li><a href="pages/departments/paediatric-oncology.html">Paediatric Oncology</a></li>
+              <li><a href="pages/departments/haematology.html">Haematology</a></li>
+              <li><a href="pages/departments/gynaecological-oncology.html">Gynaecological Oncology</a></li>
+            </ul>
+          </div>
+        </li>
         <li><a href="#doctors">Find a Doctor</a></li>
         <li><a href="#research">Research &amp; Education</a></li>
         <li><a href="#events">Events</a></li>
@@ -225,7 +294,7 @@
 
       <div class="cancer-grid">
 
-        <a href="#" class="cancer-card" aria-label="Learn about Breast Cancer treatment">
+        <a href="pages/cancer/breast-cancer.html" class="cancer-card" aria-label="Learn about Breast Cancer treatment">
           <div class="cancer-icon" aria-hidden="true">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
           </div>
@@ -236,7 +305,7 @@
           <svg class="cancer-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
 
-        <a href="#" class="cancer-card" aria-label="Learn about Cervical Cancer treatment">
+        <a href="pages/cancer/cervical-cancer.html" class="cancer-card" aria-label="Learn about Cervical Cancer treatment">
           <div class="cancer-icon" aria-hidden="true">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
@@ -247,7 +316,7 @@
           <svg class="cancer-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
 
-        <a href="#" class="cancer-card" aria-label="Learn about Lung Cancer treatment">
+        <a href="pages/cancer/lung-cancer.html" class="cancer-card" aria-label="Learn about Lung Cancer treatment">
           <div class="cancer-icon" aria-hidden="true">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a9 9 0 00-9 9c0 4.17 2.84 7.67 6.69 8.69L12 22l2.31-2.31C18.16 18.67 21 15.17 21 11A9 9 0 0012 2z"/><path d="M12 8v4M12 16h.01"/></svg>
           </div>
@@ -258,7 +327,7 @@
           <svg class="cancer-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
 
-        <a href="#" class="cancer-card" aria-label="Learn about Colorectal Cancer treatment">
+        <a href="pages/cancer/colorectal-cancer.html" class="cancer-card" aria-label="Learn about Colorectal Cancer treatment">
           <div class="cancer-icon" aria-hidden="true">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
           </div>
@@ -269,7 +338,7 @@
           <svg class="cancer-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
 
-        <a href="#" class="cancer-card" aria-label="Learn about Blood Cancer treatment">
+        <a href="pages/cancer/blood-cancer.html" class="cancer-card" aria-label="Learn about Blood Cancer treatment">
           <div class="cancer-icon" aria-hidden="true">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
@@ -280,7 +349,7 @@
           <svg class="cancer-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
 
-        <a href="#" class="cancer-card" aria-label="Learn about Head and Neck Cancer treatment">
+        <a href="pages/cancer/head-neck-cancer.html" class="cancer-card" aria-label="Learn about Head and Neck Cancer treatment">
           <div class="cancer-icon" aria-hidden="true">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
           </div>
@@ -291,7 +360,7 @@
           <svg class="cancer-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
 
-        <a href="#" class="cancer-card" aria-label="Learn about Prostate Cancer treatment">
+        <a href="pages/cancer/prostate-cancer.html" class="cancer-card" aria-label="Learn about Prostate Cancer treatment">
           <div class="cancer-icon" aria-hidden="true">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
           </div>
@@ -302,7 +371,7 @@
           <svg class="cancer-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
 
-        <a href="#" class="cancer-card" aria-label="Learn about Thyroid Cancer treatment">
+        <a href="pages/cancer/thyroid-cancer.html" class="cancer-card" aria-label="Learn about Thyroid Cancer treatment">
           <div class="cancer-icon" aria-hidden="true">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6m0 0c-2 0-4 .5-4 3s2 3 4 3 4-.5 4-3-2-3-4-3zm0 6v8m-4 0h8"/></svg>
           </div>
@@ -316,7 +385,7 @@
       </div>
 
       <div class="cancer-types-cta">
-        <a href="#" class="btn btn-secondary">View All Cancer Conditions</a>
+        <a href="pages/cancer/breast-cancer.html" class="btn btn-secondary">View All Cancer Conditions</a>
       </div>
     </div>
   </section>
@@ -418,7 +487,7 @@
           <span class="doctor-specialty">Surgical Oncology</span>
           <h4>Dr. S. Krishnamurthy</h4>
           <p class="doctor-desig">Director &amp; Senior Consultant</p>
-          <a href="#" class="text-link" style="font-size:13px;justify-content:center;">View Profile <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="pages/doctors/dr-krishnamurthy.html" class="text-link" style="font-size:13px;justify-content:center;">View Profile <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
         <div class="doctor-card" role="listitem">
@@ -428,7 +497,7 @@
           <span class="doctor-specialty">Medical Oncology</span>
           <h4>Dr. R. Swaminathan</h4>
           <p class="doctor-desig">Senior Oncologist</p>
-          <a href="#" class="text-link" style="font-size:13px;justify-content:center;">View Profile <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="pages/doctors/dr-swaminathan.html" class="text-link" style="font-size:13px;justify-content:center;">View Profile <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
         <div class="doctor-card" role="listitem">
@@ -438,7 +507,7 @@
           <span class="doctor-specialty">Radiation Oncology</span>
           <h4>Dr. P. Anbalagan</h4>
           <p class="doctor-desig">Head, Radiation Oncology</p>
-          <a href="#" class="text-link" style="font-size:13px;justify-content:center;">View Profile <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="pages/doctors/dr-anbalagan.html" class="text-link" style="font-size:13px;justify-content:center;">View Profile <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
         <div class="doctor-card" role="listitem">
@@ -448,7 +517,7 @@
           <span class="doctor-specialty">Paediatric Oncology</span>
           <h4>Dr. V. Shanta</h4>
           <p class="doctor-desig">Chairperson &amp; Senior Consultant</p>
-          <a href="#" class="text-link" style="font-size:13px;justify-content:center;">View Profile <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="pages/doctors/dr-shanta.html" class="text-link" style="font-size:13px;justify-content:center;">View Profile <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
         <div class="doctor-card" role="listitem">
@@ -458,7 +527,7 @@
           <span class="doctor-specialty">Haematology</span>
           <h4>Dr. M. Balasubramanian</h4>
           <p class="doctor-desig">Consultant Haematologist</p>
-          <a href="#" class="text-link" style="font-size:13px;justify-content:center;">View Profile <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="pages/doctors/dr-balasubramanian.html" class="text-link" style="font-size:13px;justify-content:center;">View Profile <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
         <div class="doctor-card" role="listitem">
@@ -468,13 +537,13 @@
           <span class="doctor-specialty">Gynaec Oncology</span>
           <h4>Dr. K. Vijayalakshmi</h4>
           <p class="doctor-desig">Consultant Gynaec Oncologist</p>
-          <a href="#" class="text-link" style="font-size:13px;justify-content:center;">View Profile <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="pages/doctors/dr-vijayalakshmi.html" class="text-link" style="font-size:13px;justify-content:center;">View Profile <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
       </div>
 
       <div class="doctors-cta">
-        <a href="#" class="btn btn-secondary">View All Specialists</a>
+        <a href="pages/doctors/dr-krishnamurthy.html" class="btn btn-secondary">View All Specialists</a>
       </div>
     </div>
   </section>
@@ -1076,14 +1145,14 @@
       <div class="footer-col">
         <h5>Cancer Care</h5>
         <ul>
-          <li><a href="#">Breast Cancer</a></li>
-          <li><a href="#">Cervical Cancer</a></li>
-          <li><a href="#">Lung Cancer</a></li>
-          <li><a href="#">Colorectal Cancer</a></li>
-          <li><a href="#">Blood Cancer</a></li>
-          <li><a href="#">Head &amp; Neck</a></li>
-          <li><a href="#">Prostate Cancer</a></li>
-          <li><a href="#">Thyroid Cancer</a></li>
+          <li><a href="pages/cancer/breast-cancer.html">Breast Cancer</a></li>
+          <li><a href="pages/cancer/cervical-cancer.html">Cervical Cancer</a></li>
+          <li><a href="pages/cancer/lung-cancer.html">Lung Cancer</a></li>
+          <li><a href="pages/cancer/colorectal-cancer.html">Colorectal Cancer</a></li>
+          <li><a href="pages/cancer/blood-cancer.html">Blood Cancer</a></li>
+          <li><a href="pages/cancer/head-neck-cancer.html">Head &amp; Neck</a></li>
+          <li><a href="pages/cancer/prostate-cancer.html">Prostate Cancer</a></li>
+          <li><a href="pages/cancer/thyroid-cancer.html">Thyroid Cancer</a></li>
         </ul>
       </div>
 
@@ -1130,13 +1199,18 @@
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search the website">
   <button class="search-close" aria-label="Close search">&times;</button>
-  <div class="search-box">
-    <div class="search-input-wrap">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input class="search-input" type="search" placeholder="Search for cancer types, doctors, services..." aria-label="Search query">
-      <button class="btn btn-primary" style="border-radius:4px;padding:10px 20px;font-size:14px;">Search</button>
+  <div class="search-sitemap-wrap">
+    <div class="search-box">
+      <div class="search-input-wrap">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="search-input" type="search" placeholder="Search for cancer types, doctors, services..." aria-label="Search query">
+      </div>
+      <p class="search-hint">Type to filter pages or browse the sitemap below</p>
     </div>
-    <p class="search-hint">Try: "Breast Cancer", "Book Appointment", "Chemotherapy", "Dr. Shanta"</p>
+    <div class="sitemap-grid" id="sitemap-grid">
+      <!-- Populated by JS -->
+    </div>
+    <p class="search-no-results" id="search-no-results" hidden>No results found. Try a different search term.</p>
   </div>
 </div>
 
