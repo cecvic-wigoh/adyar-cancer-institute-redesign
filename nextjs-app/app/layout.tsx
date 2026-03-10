@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { PT_Sans_Narrow, PT_Serif } from 'next/font/google';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
+import SubNav from '@/components/SubNav';
 import Footer from '@/components/Footer';
 import ChatbotFab from '@/components/ChatbotFab';
 import './globals.css';
@@ -42,6 +43,7 @@ export default function RootLayout({
         <a href="#main" className="skip-link">Skip to main content</a>
         <TopBar />
         <Header />
+        <SubNav />
         {children}
         <Footer />
         <ChatbotFab />
