@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import styles from './page.module.css';
 
@@ -120,7 +121,14 @@ export default function BloodBankPage() {
               </div>
             </div>
             <div className={styles.heroVisual} aria-hidden="true">
-              <HeroArtwork />
+              <Image
+                src="/blood-bank-herp.png"
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 1100px) 100vw, 42vw"
+                className={styles.heroImage}
+              />
             </div>
           </div>
 
@@ -274,49 +282,6 @@ export default function BloodBankPage() {
         </section>
       </div>
     </main>
-  );
-}
-
-function HeroArtwork() {
-  return (
-    <svg viewBox="0 0 620 360" className={styles.heroSvg}>
-      <defs>
-        <linearGradient id="hero-bg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#3e7fca" />
-          <stop offset="58%" stopColor="#7fb0e4" />
-          <stop offset="100%" stopColor="#d8e6f8" />
-        </linearGradient>
-        <radialGradient id="light" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="rgba(255,255,255,0.95)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0.08)" />
-        </radialGradient>
-      </defs>
-      <rect width="620" height="360" rx="22" fill="url(#hero-bg)" />
-      <rect x="0" y="0" width="620" height="360" rx="22" fill="rgba(7,42,89,0.18)" />
-      <circle cx="370" cy="76" r="68" fill="url(#light)" />
-      <circle cx="540" cy="82" r="58" fill="url(#light)" />
-      <circle cx="388" cy="80" r="40" fill="none" stroke="rgba(255,255,255,0.48)" strokeWidth="12" />
-      <circle cx="552" cy="82" r="34" fill="none" stroke="rgba(255,255,255,0.48)" strokeWidth="10" />
-      <circle cx="387" cy="80" r="21" fill="rgba(255,255,255,0.72)" />
-      <circle cx="552" cy="82" r="18" fill="rgba(255,255,255,0.72)" />
-
-      <ellipse cx="396" cy="288" rx="76" ry="24" fill="rgba(23,59,111,0.28)" />
-      <ellipse cx="543" cy="300" rx="66" ry="20" fill="rgba(23,59,111,0.28)" />
-
-      <circle cx="396" cy="147" r="42" fill="#f4c7af" />
-      <path d="M356 145c9-42 65-54 88-14 6 11 5 26-2 42-13-8-24-13-44-13-15 0-29 1-42 5 0-7-2-14 0-20z" fill="#764934" />
-      <path d="M363 178c18 12 48 12 67 0l16 109h-24l-8-60h-16l-8 60h-28z" fill="#ffffff" />
-      <path d="M383 192c10 9 22 9 31 0l12 18-18 18-22-18z" fill="#8ac5ff" />
-      <path d="M420 236c18 9 29 25 33 51h-18c-1-15-10-28-25-36z" fill="#e8edf5" />
-      <circle cx="421" cy="229" r="14" fill="none" stroke="#3a4d6c" strokeWidth="6" />
-      <path d="M431 238l18 22" stroke="#3a4d6c" strokeWidth="6" strokeLinecap="round" />
-
-      <circle cx="546" cy="154" r="40" fill="#efc2a5" />
-      <path d="M508 145c12-23 57-27 74 2l4 21c-13-8-24-11-39-11-16 0-27 2-41 8l2-20z" fill="#85a7c9" />
-      <rect x="509" y="190" width="80" height="104" rx="22" fill="#2c9fda" />
-      <rect x="527" y="196" width="45" height="22" rx="11" fill="#9cc2e4" />
-      <path d="M511 214c12 6 24 9 37 9 14 0 28-4 40-10l16 80h-30l-12-49-6 49h-26l-6-49-11 49h-28z" fill="#41a9df" />
-    </svg>
   );
 }
 

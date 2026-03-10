@@ -156,6 +156,12 @@
 
 .heroVisual {
   min-height: 320px;
+  overflow: hidden;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center;
 }
 
 .heroSvg,

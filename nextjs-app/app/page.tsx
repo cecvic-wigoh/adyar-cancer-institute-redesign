@@ -3,25 +3,200 @@ import StatCounter from '@/components/StatCounter';
 import DoctorScroll from '@/components/DoctorScroll';
 import TestimonialTabs from '@/components/TestimonialTabs';
 import FaqSection from '@/components/FaqSection';
+import HomeQuickLinks from '@/components/HomeQuickLinks';
 
 const ArrowIcon = ({ size = 18 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
 );
 
 const cancerCards = [
-  { slug: 'breast-cancer', title: 'Breast Cancer', desc: 'Comprehensive diagnosis, surgery, targeted therapy & reconstruction', icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg> },
-  { slug: 'cervical-cancer', title: 'Cervical Cancer', desc: 'HPV screening, colposcopy, surgery & radiation therapy', icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> },
-  { slug: 'lung-cancer', title: 'Lung Cancer', desc: 'Expert thoracic oncology, targeted therapy & immunotherapy', icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a9 9 0 00-9 9c0 4.17 2.84 7.67 6.69 8.69L12 22l2.31-2.31C18.16 18.67 21 15.17 21 11A9 9 0 0012 2z"/><path d="M12 8v4M12 16h.01"/></svg> },
-  { slug: 'colorectal-cancer', title: 'Colorectal Cancer', desc: 'Minimally invasive surgery, chemotherapy & bowel conservation', icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg> },
-  { slug: 'blood-cancer', title: 'Blood Cancer', desc: 'Haematology, bone marrow transplant & immunotherapy', icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> },
-  { slug: 'head-neck-cancer', title: 'Head & Neck Cancer', desc: 'Organ-preservation surgery, radiation & speech rehabilitation', icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg> },
-  { slug: 'prostate-cancer', title: 'Prostate Cancer', desc: 'Precision biopsy, robotic surgery & brachytherapy options', icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg> },
-  { slug: 'thyroid-cancer', title: 'Thyroid Cancer', desc: 'Minimally invasive surgery & radioiodine ablation therapy', icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v6m0 0c-2 0-4 .5-4 3s2 3 4 3 4-.5 4-3-2-3-4-3zm0 6v8m-4 0h8"/></svg> },
+  { slug: 'breast-cancer', title: 'Breast Cancer', desc: 'Screening-led care with surgery, reconstruction, and targeted treatment', icon: <BreastCancerIcon /> },
+  { slug: 'blood-cancer', title: 'Blood Cancer', desc: 'Leukaemia, lymphoma, and myeloma care with transplant support', icon: <BloodCancerIcon /> },
+  { slug: 'brain-tumour', title: 'Brain Tumour', desc: 'Neuro-oncology pathways for tumours affecting the brain and CNS', icon: <BrainTumourIcon /> },
+  { slug: 'colorectal-cancer', title: 'Colorectal Cancer', desc: 'Minimally invasive surgery with bowel-preservation strategies', icon: <ColorectalCancerIcon /> },
+  { slug: 'head-neck-cancer', title: 'Head & Neck Cancer', desc: 'Integrated care for oral, throat, and voice-box cancers', icon: <HeadNeckCancerIcon /> },
+  { slug: 'lung-cancer', title: 'Lung Cancer', desc: 'Thoracic oncology, molecular testing, and immunotherapy plans', icon: <LungCancerIcon /> },
+  { slug: 'prostate-cancer', title: 'Prostate Cancer', desc: 'Precision diagnosis and evidence-based urologic oncology care', icon: <ProstateCancerIcon /> },
+  { slug: 'thyroid-cancer', title: 'Thyroid Cancer', desc: 'Endocrine surgery with radioiodine and long-term surveillance', icon: <ThyroidCancerIcon /> },
+  { slug: 'stomach-cancer', title: 'Stomach Cancer', desc: 'GI oncology care with staging, surgery, and perioperative therapy', icon: <StomachCancerIcon /> },
+  { slug: 'liver-cancer', title: 'Liver Cancer', desc: 'Hepatobiliary evaluation with surgery and systemic treatment planning', icon: <LiverCancerIcon /> },
+  { slug: 'ovarian-cancer', title: 'Ovarian Cancer', desc: 'Gynaec oncology care combining surgery and chemotherapy', icon: <OvarianCancerIcon /> },
+  { slug: 'kidney-cancer', title: 'Kidney Cancer', desc: 'Renal tumour care with nephron-sparing and targeted options', icon: <KidneyCancerIcon /> },
+  { slug: 'pancreatic-cancer', title: 'Pancreatic Cancer', desc: 'Complex GI cancer management with multidisciplinary decision-making', icon: <PancreaticCancerIcon /> },
+  { slug: 'gallbladder-cancer', title: 'Gallbladder Cancer', desc: 'Early workup and hepatobiliary oncology care for biliary cancers', icon: <GallbladderCancerIcon /> },
+  { slug: 'oesophageal-cancer', title: 'Oesophageal Cancer', desc: 'Swallowing-focused cancer care with surgery and chemoradiation', icon: <OesophagealCancerIcon /> },
+  { slug: 'cervical-cancer', title: 'Cervical Cancer', desc: 'HPV screening, colposcopy, surgery, and radiation therapy', icon: <CervicalCancerIcon /> },
 ];
+
+function BreastCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M8 5.5c2 .4 3.1 1.8 3.8 3.6.7-1.8 1.8-3.2 3.8-3.6 2.1-.4 3.9 1 3.9 3.4 0 4.7-4.7 7.8-7.7 10.1C9 16.8 4.3 13.7 4.3 8.9c0-2.3 1.8-3.7 3.7-3.4z" />
+      <path d="M11.8 9.1c-.8 2.5-2.5 4.1-5 5" opacity=".45" />
+    </svg>
+  );
+}
+
+function BloodCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 3c3.3 4.1 6 7 6 10.4A6 6 0 116 13.4C6 10 8.7 7.1 12 3z" />
+      <path d="M12 9.4v6.2" />
+      <path d="M8.9 12.5h6.2" />
+    </svg>
+  );
+}
+
+function BrainTumourIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9.5 4.5C7 4.5 5 6.5 5 9c-1.3 1-2 2.3-2 3.9C3 15.6 5.1 18 8 18h8c2.8 0 5-2.1 5-4.8 0-1.5-.6-2.7-1.8-3.7.1-2.7-2.1-5-4.8-5-1 0-1.9.3-2.7.8-.8-.5-1.7-.8-2.7-.8z" />
+      <path d="M12 5.8v11.2M8.8 8.4c1.2.8 1.8 1.8 1.8 3.1s-.6 2.3-1.8 3.1M15.2 8.4c-1.2.8-1.8 1.8-1.8 3.1s.6 2.3 1.8 3.1" />
+    </svg>
+  );
+}
+
+function ColorectalCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M7 5h8c2.2 0 4 1.8 4 4v2.2c0 .9-.7 1.6-1.6 1.6H14c-1.1 0-2 .9-2 2V19" />
+      <path d="M7 5C5.3 5 4 6.3 4 8v3.1c0 1 .8 1.7 1.7 1.7H10c1.1 0 2 .9 2 2V19" />
+      <path d="M8.5 8.5h1.5M14 8.5h1.5" />
+    </svg>
+  );
+}
+
+function HeadNeckCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9 4.5c2.2 0 4 1.8 4 4V10c0 1.6-.6 2.9-1.8 3.8L9.5 15v2.5" />
+      <path d="M9 4.5c-2 0-3.5 1.7-3.5 3.8v2.6c0 1.2.5 2.4 1.4 3.2l2.6 2.3V19" />
+      <path d="M10 10.3h3.6M9.4 19h2.2M8.8 15.7c.7-.6 1.6-1 2.5-1" />
+    </svg>
+  );
+}
+
+function LungCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 3v7" />
+      <path d="M11.8 10.2c-2.1-.2-4.5.8-5.7 2.8-1.3 2.1-.9 4.8 1.1 6.3 1.1.8 2.3 1.2 4.2 1.2H12" />
+      <path d="M12.2 10.2c2.1-.2 4.5.8 5.7 2.8 1.3 2.1.9 4.8-1.1 6.3-1.1.8-2.3 1.2-4.2 1.2H12" />
+      <path d="M12 8.7c-.9 1.1-1.4 2.4-1.4 3.8M12 8.7c.9 1.1 1.4 2.4 1.4 3.8" />
+    </svg>
+  );
+}
+
+function ProstateCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="3.7" />
+      <path d="M12 8.3V5.2M12 18v3.1M15.7 12H19M5 12h3.3" />
+      <path d="M14.8 9.2l2.4-2.3M6.8 17.1l2.4-2.3M14.8 14.8l2.4 2.3M6.8 6.9l2.4 2.3" />
+    </svg>
+  );
+}
+
+function ThyroidCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M8 3.5c-.2 1.5-.9 2.5-2 3.3C4.6 7.7 4 9.1 4 10.7c0 2.4 1.5 4.4 3.8 5.4" />
+      <path d="M16 3.5c.2 1.5.9 2.5 2 3.3 1.4.9 2 2.3 2 3.9 0 2.4-1.5 4.4-3.8 5.4" />
+      <path d="M9.1 12.2c0 1.6 1.2 2.9 2.9 2.9s2.9-1.3 2.9-2.9c0-1.7-1.2-3-2.9-3s-2.9 1.3-2.9 3z" />
+      <path d="M12 15.2v5.3" />
+    </svg>
+  );
+}
+
+function StomachCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9 4v3.5c0 1.1.5 2.1 1.3 2.9l1 1c.9.9 1.4 2 1.4 3.3v1.1c0 2.2 1.8 4 4 4h.8" />
+      <path d="M9 7.5c-2.8 0-5 2.2-5 5 0 3.9 3 7.1 6.8 7.1h2.1" />
+      <path d="M13.7 11.2c1.2-1 2.4-1.4 4-1.4 1.3 0 2.3.4 3.3 1" />
+    </svg>
+  );
+}
+
+function LiverCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5 13.2c0-4.8 3.9-8.7 8.7-8.7H19c0 4.7-2.1 7.8-6.2 9.1L9.8 15c-1.7.8-3 .8-4.8.2z" />
+      <path d="M12.8 13.7c1.1 2.2 2.8 3.5 5.2 3.8" />
+    </svg>
+  );
+}
+
+function OvarianCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 8.7v5.8" />
+      <path d="M8.4 8.7c-1.9 0-3.4 1.5-3.4 3.4 0 1.6 1 2.9 2.4 3.3" />
+      <path d="M15.6 8.7c1.9 0 3.4 1.5 3.4 3.4 0 1.6-1 2.9-2.4 3.3" />
+      <path d="M9.1 8.7c.8-1.7 1.8-2.7 2.9-2.7s2.1 1 2.9 2.7" />
+      <path d="M7.5 15.4c1.1 1.6 2.5 2.4 4.5 2.4s3.4-.8 4.5-2.4" />
+      <circle cx="5.5" cy="12.1" r="1.4" />
+      <circle cx="18.5" cy="12.1" r="1.4" />
+    </svg>
+  );
+}
+
+function KidneyCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M10.3 6.2c-2.8 0-5.1 2.3-5.1 5.1 0 3.1 1.9 6.3 5.1 7.4 1.1-.7 1.8-1.8 1.8-3.2V6.6c-.5-.3-1-.4-1.8-.4z" />
+      <path d="M13.7 6.2c2.8 0 5.1 2.3 5.1 5.1 0 3.1-1.9 6.3-5.1 7.4-1.1-.7-1.8-1.8-1.8-3.2V6.6c.5-.3 1-.4 1.8-.4z" />
+      <path d="M12 10.8v8.6" />
+    </svg>
+  );
+}
+
+function PancreaticCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5 12.5c1.8-3.8 5.2-5.7 9.2-5.7 2.5 0 4.6.7 6.8 2.2-1 4-3.7 6.8-7.6 8l-2.6.8c-2.5.8-4.8-.7-5.8-3.3z" />
+      <path d="M14.6 9.8c.8 1 1.1 2.1 1.1 3.3" />
+    </svg>
+  );
+}
+
+function GallbladderCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5.2 12.7c0-4.7 3.8-8.5 8.5-8.5H18c0 4.1-1.6 6.9-4.8 8.5" />
+      <path d="M13.1 12.7c0 3.4-1.8 6-4.9 7.1-1.9-.4-3.1-2-3.1-3.9 0-1.4.6-2.5 1.8-3.2" />
+      <path d="M15.3 10.5c1 0 1.7.8 1.7 1.8 0 1.2-.9 2.3-2.2 2.6" />
+    </svg>
+  );
+}
+
+function OesophagealCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9 4.5c0 1.5-.6 2.7-1.7 3.8-.8.8-1.3 1.8-1.3 2.9 0 2 1.4 3.8 3.4 4.3" />
+      <path d="M15 4.5c0 1.5.6 2.7 1.7 3.8.8.8 1.3 1.8 1.3 2.9 0 2-1.4 3.8-3.4 4.3" />
+      <path d="M9.8 11.1h4.4c1.1 0 2 .9 2 2 0 2.2-1.8 3.9-4.1 3.9-2.2 0-4-1.7-4-3.9 0-1.1.9-2 2-2z" />
+      <path d="M12 16.9V20" />
+    </svg>
+  );
+}
+
+function CervicalCancerIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 8.5v6.3" />
+      <path d="M8.2 8.5C6.4 8.5 5 10 5 11.8c0 1.5.9 2.8 2.3 3.2" />
+      <path d="M15.8 8.5c1.8 0 3.2 1.5 3.2 3.3 0 1.5-.9 2.8-2.3 3.2" />
+      <path d="M9.2 8.5C10 6.7 10.9 5.9 12 5.9c1.1 0 2 .8 2.8 2.6" />
+      <path d="M9 15.1c.9 1.6 2 2.4 3 2.4s2.1-.8 3-2.4" />
+    </svg>
+  );
+}
 
 export default function Home() {
   return (
     <main id="main">
+      <HomeQuickLinks />
       {/* HERO */}
       <section className="hero" aria-labelledby="hero-heading">
         <div className="container">
