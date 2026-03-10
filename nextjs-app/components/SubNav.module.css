@@ -69,6 +69,7 @@
   left: 0;
   right: 0;
   z-index: 998;
+  padding-top: 4px; /* bridge gap between bar and panel */
   background: #f5f5f5;
   border-bottom: 4px solid var(--color-secondary);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
@@ -184,8 +185,11 @@
 /* ── BACKDROP ── */
 .backdrop {
   position: fixed;
-  inset: 0;
-  z-index: 997;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
   background: rgba(0, 0, 0, 0.15);
 }
 

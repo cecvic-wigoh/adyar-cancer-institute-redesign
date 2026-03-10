@@ -218,7 +218,7 @@ export default function SubNav() {
   };
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setActiveIndex(null), 150);
+    timeoutRef.current = setTimeout(() => setActiveIndex(null), 400);
   };
 
   useEffect(() => {
@@ -228,14 +228,19 @@ export default function SubNav() {
   }, []);
 
   return (
-    <nav className={styles.root} aria-label="Section navigation" ref={navRef}>
+    <nav
+      className={styles.root}
+      aria-label="Section navigation"
+      ref={navRef}
+      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => { if (timeoutRef.current) clearTimeout(timeoutRef.current); }}
+    >
       <div className={styles.bar}>
         {categories.map((cat, i) => (
           <div
             key={cat.label}
             className={`${styles.item}${activeIndex === i ? ` ${styles.itemActive}` : ''}`}
             onMouseEnter={() => handleMouseEnter(i)}
-            onMouseLeave={handleMouseLeave}
           >
             <button
               type="button"
@@ -258,8 +263,7 @@ export default function SubNav() {
         <div
           key={cat.label}
           className={`${styles.megaPanel}${activeIndex === i ? ` ${styles.megaPanelOpen}` : ''}`}
-          onMouseEnter={() => handleMouseEnter(i)}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={() => { if (timeoutRef.current) clearTimeout(timeoutRef.current); }}
           role="region"
           aria-label={`${cat.label} submenu`}
         >
@@ -311,6 +315,7 @@ export default function SubNav() {
         <div
           className={styles.backdrop}
           onClick={() => setActiveIndex(null)}
+          onMouseEnter={() => setActiveIndex(null)}
           aria-hidden="true"
         />
       )}
