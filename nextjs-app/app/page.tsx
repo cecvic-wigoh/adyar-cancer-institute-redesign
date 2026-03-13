@@ -4,7 +4,6 @@ import StatCounter from "@/components/StatCounter";
 import DoctorScroll from "@/components/DoctorScroll";
 import TestimonialTabs from "@/components/TestimonialTabs";
 import FaqSection from "@/components/FaqSection";
-import HomeQuickLinks from "@/components/HomeQuickLinks";
 
 const ArrowIcon = ({ size = 18 }: { size?: number }) => (
   <svg

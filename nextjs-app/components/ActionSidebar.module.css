@@ -1,17 +1,17 @@
 .root {
     position: fixed;
-    left: 24px;
+    left: 20px;
     top: 50%;
     transform: translateY(-50%);
     z-index: 900;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
 }
 
 .actionButton {
-    width: 64px;
-    height: 64px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     background: #ffffff;
     border: none;
@@ -22,7 +22,6 @@
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     padding: 0;
-    color: #4b5563;
     position: relative;
     overflow: hidden;
 }
@@ -39,7 +38,6 @@
 .actionButton:hover {
     transform: scale(1.1) translateX(4px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
-    color: var(--color-primary);
 }
 
 .actionButton:hover::after {
@@ -47,19 +45,18 @@
 }
 
 .actionButton.active {
-    color: var(--color-secondary);
     box-shadow: 0 0 0 2px var(--color-secondary), 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
-.icon {
-    width: 32px;
-    height: 32px;
+.iconImg {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
     z-index: 1;
 }
 
 .searchButton {
-    background: var(--color-secondary);
-    color: #ffffff;
+    background: #ffffff;
 }
 
 .searchButton:hover {
