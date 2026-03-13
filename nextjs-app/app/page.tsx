@@ -44,7 +44,6 @@ const cancerCards = [
 export default function Home() {
   return (
     <main id="main">
-      <HomeQuickLinks />
       {/* HERO — Prevention-focused */}
       <section className="hero-v2" aria-labelledby="hero-heading">
         <div className="hero-v2-bg" aria-hidden="true">

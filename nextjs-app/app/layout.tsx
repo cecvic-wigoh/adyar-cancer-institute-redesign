@@ -4,6 +4,7 @@ import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
 import SubNav from '@/components/SubNav';
 import Footer from '@/components/Footer';
+import ActionSidebar from '@/components/ActionSidebar';
 import ChatbotFab from '@/components/ChatbotFab';
 import './globals.css';
 
@@ -44,6 +45,7 @@ export default function RootLayout({
         <TopBar />
         <Header />
         <SubNav />
+        <ActionSidebar />
         {children}
         <Footer />
         <ChatbotFab />

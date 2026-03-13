@@ -1,0 +1,91 @@
+.root {
+    position: fixed;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.actionButton {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    padding: 0;
+    color: #4b5563;
+    position: relative;
+    overflow: hidden;
+}
+
+.actionButton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: currentColor;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.actionButton:hover {
+    transform: scale(1.1) translateX(4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+    color: var(--color-primary);
+}
+
+.actionButton:hover::after {
+    opacity: 0.05;
+}
+
+.actionButton.active {
+    color: var(--color-secondary);
+    box-shadow: 0 0 0 2px var(--color-secondary), 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+    z-index: 1;
+}
+
+.searchButton {
+    background: var(--color-secondary);
+    color: #ffffff;
+}
+
+.searchButton:hover {
+    color: #ffffff;
+    background: #f97316; /* Slightly darker orange */
+}
+
+@media (max-width: 1024px) {
+    .root {
+        left: 16px;
+        gap: 12px;
+    }
+    
+    .actionButton {
+        width: 54px;
+        height: 54px;
+    }
+    
+    .icon {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .root {
+        display: none; /* Hide on mobile by default, or could move to bottom */
+    }
+}
