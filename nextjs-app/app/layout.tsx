@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { PT_Sans_Narrow, PT_Serif } from 'next/font/google';
+import { PT_Sans_Narrow, PT_Serif, DM_Sans, Playfair_Display } from 'next/font/google';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
 import SubNav from '@/components/SubNav';
@@ -22,6 +22,21 @@ const ptSerif = PT_Serif({
   display: 'swap',
 });
 
+const dmSans = DM_Sans({
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+});
+
+const playfairDisplay = Playfair_Display({
+  weight: ['600', '700'],
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: 'Cancer Institute (WIA) | Adyar, Chennai | Comprehensive Cancer Care',
   description: 'Cancer Institute (WIA), Adyar, Chennai — India\'s pioneer in comprehensive cancer care. Expert oncologists, advanced treatment, and compassionate support from prevention to palliative care.',
@@ -38,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${ptSansNarrow.variable} ${ptSerif.variable}`}>
+    <html lang="en" className={`${ptSansNarrow.variable} ${ptSerif.variable} ${dmSans.variable} ${playfairDisplay.variable}`}>
       <body>
         <a href="#main" className="skip-link">Skip to main content</a>
         <TopBar />
