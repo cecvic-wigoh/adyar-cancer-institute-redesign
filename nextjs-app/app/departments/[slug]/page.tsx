@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllDepartmentSlugs, getDepartmentBySlug } from '@/data/departments';
+import { getDoctorsByDepartment } from '@/data/doctors';
 import type { Metadata } from 'next';
 import DepartmentFAQ from '@/components/DepartmentFAQ';
 import styles from './department.module.css';
@@ -119,32 +120,38 @@ export default async function DepartmentPage({ params }: { params: Promise<{ slu
       </div>
 
       {/* ── DOCTORS ── */}
-      {dept.team.length > 0 && (
-        <div className={styles.sectionAlt}>
-          <div className={styles.section}>
-            <h2 className={styles.sectionTitleSerif}>Our Doctors</h2>
-            <div className={styles.sectionLine} />
-            <div className={styles.doctorsGrid}>
-              {dept.team.map((member, i) => (
-                <div key={i} className={styles.doctorCard}>
-                  <div className={styles.doctorPhoto}>
-                    <Image
-                      src={DOCTOR_PHOTOS[i % DOCTOR_PHOTOS.length]}
-                      alt={member.name}
-                      width={160}
-                      height={160}
-                      className={styles.doctorImg}
-                    />
-                  </div>
-                  <div className={styles.doctorName}>{member.name}</div>
-                  <div className={styles.doctorRole}>{member.designation}</div>
-                  {member.credentials && <div className={styles.doctorCreds}>{member.credentials}</div>}
-                </div>
-              ))}
+      {(() => {
+        const deptDoctors = getDoctorsByDepartment(slug);
+        return deptDoctors.length > 0 ? (
+          <div className={styles.sectionAlt}>
+            <div className={styles.section}>
+              <h2 className={styles.sectionTitleSerif}>Our Doctors</h2>
+              <div className={styles.sectionLine} />
+              <div className={styles.doctorsGrid}>
+                {deptDoctors.map((doctor, i) => (
+                  <Link key={doctor.slug} href={`/doctors/${doctor.slug}`} className={styles.doctorCardLink}>
+                    <div className={styles.doctorCard}>
+                      <div className={styles.doctorPhoto}>
+                        <Image
+                          src={DOCTOR_PHOTOS[i % DOCTOR_PHOTOS.length]}
+                          alt={doctor.name}
+                          width={160}
+                          height={160}
+                          className={styles.doctorImg}
+                        />
+                      </div>
+                      <div className={styles.doctorName}>{doctor.name}</div>
+                      <div className={styles.doctorRole}>{doctor.designation}</div>
+                      <div className={styles.doctorCreds}>{doctor.qualifications.slice(0, 3).join(', ')}</div>
+                      <span className={styles.doctorViewProfile}>View Profile →</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        ) : null;
+      })()}
 
       {/* ── FACILITIES ── */}
       {dept.facilities.length > 0 && (

@@ -227,12 +227,32 @@
   gap: 24px;
   margin-top: 32px;
 }
+.doctorCardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 .doctorCard {
   text-align: center;
   transition: transform 0.2s;
 }
-.doctorCard:hover {
+.doctorCardLink:hover .doctorCard {
   transform: translateY(-4px);
+}
+.doctorViewProfile {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  color: #23CDC0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.doctorCardLink:hover .doctorViewProfile {
+  opacity: 1;
 }
 .doctorPhoto {
   width: 160px;
