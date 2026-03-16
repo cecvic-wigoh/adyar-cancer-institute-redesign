@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 interface MobileNavProps {
@@ -9,7 +9,6 @@ interface MobileNavProps {
 }
 
 export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
-  const [patientsOpen, setPatientsOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,44 +36,11 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
         <button className="mobile-nav-close" aria-label="Close navigation menu" onClick={onClose}>&times;</button>
         <nav>
           <ul>
-            <li><Link href="/#about" onClick={onClose}>About Us</Link></li>
-            <li className="mobile-accordion">
-              <button
-                className="mobile-accordion-toggle"
-                aria-expanded={patientsOpen}
-                onClick={() => setPatientsOpen(!patientsOpen)}
-              >
-                For Patients
-                <svg className="mobile-accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ transform: patientsOpen ? 'rotate(180deg)' : 'none' }}><polyline points="6 9 12 15 18 9"/></svg>
-              </button>
-              <div className="mobile-accordion-panel" style={{ maxHeight: patientsOpen ? '600px' : '0' }}>
-                <p className="mobile-sub-heading">Cancer Types</p>
-                <ul className="mobile-sub-list">
-                  <li><Link href="/cancer/breast-cancer" onClick={onClose}>Breast Cancer</Link></li>
-                  <li><Link href="/cancer/cervical-cancer" onClick={onClose}>Cervical Cancer</Link></li>
-                  <li><Link href="/cancer/lung-cancer" onClick={onClose}>Lung Cancer</Link></li>
-                  <li><Link href="/cancer/colorectal-cancer" onClick={onClose}>Colorectal Cancer</Link></li>
-                  <li><Link href="/cancer/blood-cancer" onClick={onClose}>Blood Cancer</Link></li>
-                  <li><Link href="/cancer/head-neck-cancer" onClick={onClose}>Head &amp; Neck Cancer</Link></li>
-                  <li><Link href="/cancer/prostate-cancer" onClick={onClose}>Prostate Cancer</Link></li>
-                  <li><Link href="/cancer/thyroid-cancer" onClick={onClose}>Thyroid Cancer</Link></li>
-                </ul>
-                <p className="mobile-sub-heading">Departments</p>
-                <ul className="mobile-sub-list">
-                  <li><Link href="/departments/surgical-oncology" onClick={onClose}>Surgical Oncology</Link></li>
-                  <li><Link href="/departments/medical-oncology" onClick={onClose}>Medical Oncology</Link></li>
-                  <li><Link href="/departments/radiation-oncology" onClick={onClose}>Radiation Oncology</Link></li>
-                  <li><Link href="/departments/paediatric-oncology" onClick={onClose}>Paediatric Oncology</Link></li>
-                  <li><Link href="/departments/haematology" onClick={onClose}>Haematology</Link></li>
-                  <li><Link href="/departments/gynaecological-oncology" onClick={onClose}>Gynaecological Oncology</Link></li>
-                </ul>
-              </div>
-            </li>
-            <li><Link href="/#doctors" onClick={onClose}>Find a Doctor</Link></li>
+            <li><Link href="/#about" onClick={onClose}>About</Link></li>
+            <li><Link href="/#academics" onClick={onClose}>Academics</Link></li>
             <li><Link href="/blood-bank" onClick={onClose}>Blood Bank</Link></li>
-            <li><a href="https://ci-wia-research-pages.vercel.app/research" onClick={onClose}>Research &amp; Education</a></li>
-            <li><Link href="/#events" onClick={onClose}>Events</Link></li>
-            <li><Link href="/#donate" onClick={onClose}>Donate</Link></li>
+            <li><Link href="/#news" onClick={onClose}>News &amp; Updates</Link></li>
+            <li><Link href="/#careers" onClick={onClose}>Careers</Link></li>
             <li><Link href="/#contact" onClick={onClose}>Contact</Link></li>
           </ul>
         </nav>
