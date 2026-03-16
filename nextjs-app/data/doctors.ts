@@ -3,6 +3,21 @@ export interface DoctorEducation {
   institution: string;
 }
 
+export interface Publication {
+  title: string;
+  authors: string;
+  journal: string;
+  year: string;
+  category: 'Original Article' | 'Review & Meta-Analysis' | 'Case Report';
+}
+
+export interface PublicationMetrics {
+  total: number;
+  citations: number;
+  hIndex: number;
+  i10Index: number;
+}
+
 export interface Doctor {
   slug: string;
   name: string;
@@ -16,6 +31,8 @@ export interface Doctor {
   experience: string[];
   linkedin: string;
   metaDescription: string;
+  publications?: Publication[];
+  publicationMetrics?: PublicationMetrics;
 }
 
 export const doctors: Doctor[] = [
@@ -749,6 +766,34 @@ export const doctors: Doctor[] = [
     ],
     linkedin: 'https://www.linkedin.com/in/kunal-nandy-13777074/',
     metaDescription: 'Dr. Kunal Nandy — Consultant, Surgical Oncology at Cancer Institute (WIA), Chennai.',
+    publicationMetrics: { total: 50, citations: 708, hIndex: 10, i10Index: 12 },
+    publications: [
+      { title: 'The Interplay of Post-Pancreatectomy Acute Pancreatitis (PPAP), Postoperative Pancreatic Fistula (POPF), and Mortality after Pancreatoduodenectomy: Insights from a comprehensive cohort study of 1594 patients and development of predictive Nomograms', authors: 'Manish S Bhandare, Kunal Nandy, Aamir M Parray, Akash Pawar, Amita Padhy, Vishnu Menon, Amit Chopde, Vikram Chaudhari, Shailesh V Shrikhande', journal: 'Journal of American College of Surgeons (JACS)', year: '2026', category: 'Original Article' },
+      { title: 'ASO Author Reflections; Cytology-Positive Gastric Cancer: Nodal status Dominates prognosis, HIPEC awaits validation', authors: 'Vikram Chaudhari, Kunal Nandy, Amir Parray, Shailesh Shrikhande, Manish Bhandare', journal: 'Annals of Surgical Oncology', year: '2025', category: 'Original Article' },
+      { title: 'The role of HIPEC in isolated cytology-positive gastric cancer: Nodal Metastasis Dominates Prognosis, HIPEC Remains Unproven', authors: 'Kunal Nandy, Amir Parray, Akshay Dhaiya, Amit Chopde, Vishnu Menon, Vikas Ostwal, Anant Ramaswamy, Prabhat Bhargav, Manish S Bhandare, Shailesh V Shrikhande, Vikram A Chaudhari', journal: 'Annals of Surgical Oncology', year: '2025', category: 'Original Article' },
+      { title: 'Outcomes of pancreatoduodenectomy in underlying liver cirrhosis: A single institution experience and literature review', authors: 'Kunal Nandy, Prem Kamal, Amit Chopde, Vikas Ostwal, Anant Ramaswamy, Akash Pawar, Vikram Chaudhari, Shailesh V Shrikhande, Manish Bhandare', journal: "Langenbeck's Archives of Surgery", year: '2025', category: 'Original Article' },
+      { title: 'Signet ring cell adenocarcinoma of the ampulla of Vater: Does the presence of signet ring cells always suggest a poorer outcome?', authors: 'Kunal Nandy, Akshay Dhaiya, Vipin T, Gauri Deshpande, Vikas Ostwal, Anant Ramaswamy, Vikram Chaudhari, Shailesh Shrikhande, Manish Bhandare', journal: "Langenbeck's Archives of Surgery", year: '2025', category: 'Original Article' },
+      { title: 'Role of preoperative transarterial chemoembolization (TACE) in intermediate-stage hepatocellular carcinoma (Hong Kong Cancer Stage IIB)', authors: 'Kunal Nandy, Gurudutt Varty, Shraddha Patkar, Tanvi Shah, Kaival Gundavda, Kunal Gala, Nitin Shetty, Suyash Kulkarni, Mahesh Goel', journal: 'World Journal of Surgery', year: '2024', category: 'Original Article' },
+      { title: 'Long-term outcomes after resection of extra-ampullary duodenal adenocarcinomas — Single Centre Experience', authors: 'Kunal Nandy, Dhruv Patel, Abdeali Saif Arif Kaderi, Gauri Deshpande, Vikas Ostwal, Anant Ramaswamy, Vikram Chaudhari, Shailesh Shrikhande, Manish Bhandare', journal: 'Journal of Gastrointestinal Surgery', year: '2024', category: 'Original Article' },
+      { title: 'Realizing textbook outcomes following liver resection for hepatic neoplasms with development and validation of a predictive nomogram', authors: 'Kaival Gundavda, Shraddha Patkar, Sadhana Kannan, Gurudutt Varty, Kunal Nandy, Tanvi Shah, Kaushik Polusany, Sohan Lal Solanki, Suyash Kulkarni, Nitin Shetty, Kunal Gala, Vikas Ostwal, Anant Ramaswamy, Prabhat Bhargava, Mahesh Goel', journal: 'Annals of Surgical Oncology', year: '2024', category: 'Original Article' },
+      { title: 'Tumor burden score as a prognostic factor in patients with intermediate and locally advanced hepatocellular carcinoma undergoing liver resection: An attempt to extend resectability criteria', authors: 'Kunal Nandy, Shraddha Patkar, Gurudutt Varty, Tanvi Shah, Akash Pawar, Mahesh Goel', journal: 'HPB', year: '2024', category: 'Original Article' },
+      { title: 'Differential Impact of Incrementally Elevated CA 19.9 Levels on Prognosis of Resected Pancreatic Ductal Adenocarcinoma', authors: 'Manish Bhandare, Vikas Gupta, Vikram Chaudhari, Kunal Nandy, Vikas Ostwal, Anant Ramaswamy, Chaitali Nashikkar, Reena Engineer, Rahul Krishnatry, Shailesh V Shrikhande', journal: 'HPB', year: '2024', category: 'Original Article' },
+      { title: 'Minimally Invasive Simultaneous Colorectal and Liver Resection for Synchronous Colorectal Liver Metastasis — Short-Term Outcomes', authors: 'Kunal Nandy, Mufaddal Kazi, Shraddha Patkar, Gurudutt Varty, Ashwin De Souza, Avanish Saklani, Mahesh Goel', journal: 'Indian Journal of Surgical Oncology', year: '2024', category: 'Original Article' },
+      { title: 'Neuroendocrine neoplasms of the gallbladder; A single institute analysis of outcomes and prognostic factors', authors: 'Kunal Nandy, Shraddha Patkar, Subhash Yadav, Vikas Ostwal, Anant Ramaswamy, Prabhat Bhargav, Mahesh Goel', journal: 'Journal of Surgical Oncology', year: '2024', category: 'Original Article' },
+      { title: 'Outcomes of Robotic surgery in a single institution, high volume hepatobiliary oncology unit', authors: 'Kunal Nandy, Shraddha Patkar, Gurudutt Varty, Tanvi Shah, Mahesh Goel', journal: 'Indian Journal of Surgical Oncology', year: '2024', category: 'Original Article' },
+      { title: 'Simultaneous surgical management of malignancy and coronary heart disease', authors: 'Kunal Nandy, Bharath Gangadhara, Sreekanth Reddy, Murali Chakravarthy, Vivek Jawali, Sudarshan Gangonahalli Thimmaiah, Ameenuddin Khan, Sandeep Peraje Nayak', journal: 'Indian Journal of Thoracic and Cardiovascular Surgery', year: '2024', category: 'Original Article' },
+      { title: 'Surgical outcomes of T4b oral cancers; assessment of prognostic factors and a need to re-evaluate the current staging system', authors: 'Shreya Rai, Kunal Nandy, Supreet Bhatt, Dhaval Patel, Mohammed Mithi, Priyank Rathod', journal: 'International Journal of Oral and Maxillofacial Surgery', year: '2022', category: 'Original Article' },
+      { title: 'Salvage surgery for recurrent carcinoma of the oral cavity: Assessment of Prognostic factors', authors: 'Kunal Nandy, Shreya Rai, Supreet Bhatt, Ketul Puj, Priyank Rathod, Abhishek Gangopadhyay', journal: 'International Journal of Oral and Maxillofacial Surgery', year: '2021', category: 'Original Article' },
+      { title: 'Bi-lobed Pectoralis Major Myocutaneous flap reconstruction; a single institution experience of 150 patients and methods to prevent complications', authors: 'Kunal Nandy, Dipin Jayaprakash, Supreet Bhatt, Mohamed Taher Mithi, Prachur Kumar, Priyank Rathod', journal: 'Journal of Maxillofacial and Oral Surgery', year: '2020', category: 'Original Article' },
+      { title: 'Coronavirus disease (COVID-19): A systemic review and meta-analysis to evaluate the impact of various comorbidities on serious events', authors: 'Kunal Nandy, Abhijeet Salunke, Subodh Pathak, Apurva Pandey, Chinmay Doctor, Ketul Puj, Mohit Sharma, Abhishek Jain, Vikas Warikoo', journal: 'Diabetes and Metabolic Syndrome; Clinical Research and Review', year: '2020', category: 'Review & Meta-Analysis' },
+      { title: 'Impact of COVID-19 in cancer patients on the severity of disease and fatal outcomes: A systematic review and Meta-Analysis', authors: 'Abhijeet Salunke, Kunal Nandy, Subodh Pathak, Jaymin Shah, Mayur Kamani, Vishwanth Kottakota, Praveen Thivari, Apurva Pandey, Keval Patel, Priyank Rathod, Supreet Bhatt, Parissema Dave, Shashank Pandya', journal: 'Diabetes and Metabolic Syndrome; Clinical Research and Review', year: '2020', category: 'Review & Meta-Analysis' },
+      { title: 'Corticosteroid Injection for the Treatment of Trigger Finger: A Meta-Analysis of Randomised Control Trials', authors: 'Subodh Pathak, Abhijeet Salunke, Prem Menon, Praveen Thivari, Kunal Nandy, Chen Yongsheng', journal: 'The Journal of Hand Surgery (Asia Pacific Volume)', year: '2022', category: 'Review & Meta-Analysis' },
+      { title: 'Massive pedunculated Focal Nodular Hyperplasia: A diagnostic dilemma', authors: 'Kunal Nandy, Shraddha Patkar, Mahesh Goel', journal: 'Journal of Gastrointestinal Surgery', year: '2023', category: 'Case Report' },
+      { title: 'Pseudovascular adenoid squamous cell carcinoma of buccal mucosa — a rare aggressive variant', authors: 'Vivek Venugopal, Kunal Nandy, Supreet Bhatt, Rujuta Shah', journal: 'Indian Journal of Surgical Oncology', year: '2021', category: 'Case Report' },
+      { title: 'Spontaneous rupture of pheochromocytoma presenting as acute retroperitoneal hemorrhage', authors: 'Kunal Nandy, Amit Dey, Kavin Sugumar, Aparna Deshpande', journal: 'American Journal of Medical Sciences', year: '2020', category: 'Case Report' },
+      { title: 'A rare case of spontaneous massive retroperitoneal hemorrhage due to idiopathic lumbar artery bleed', authors: 'Kunal Nandy, Patel M, Deshpande A', journal: 'Journal of Emergencies, Trauma, and Shock', year: '2018', category: 'Case Report' },
+      { title: 'Squamous Cell Carcinomas of the Cornea: A Case Report', authors: 'D Jayaprakash, K Nandy, V Trivedi, S Sadangi', journal: 'Oncology Insights', year: '2022', category: 'Case Report' },
+    ],
   },
   {
     slug: 'dr-raksha-r',

@@ -167,6 +167,67 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
             </section>
           )}
 
+          {/* Publications */}
+          {doctor.publications && doctor.publications.length > 0 && (
+            <section className={styles.sectionBlock}>
+              <h2 className={styles.sectionTitle}>
+                Research &amp; Publications
+                <span className={styles.sectionLine} />
+              </h2>
+
+              {/* Metrics bar */}
+              {doctor.publicationMetrics && (
+                <div className={styles.pubMetrics}>
+                  <div className={styles.pubMetric}>
+                    <span className={styles.pubMetricValue}>{doctor.publicationMetrics.total}</span>
+                    <span className={styles.pubMetricLabel}>Publications</span>
+                  </div>
+                  <div className={styles.pubMetric}>
+                    <span className={styles.pubMetricValue}>{doctor.publicationMetrics.citations}</span>
+                    <span className={styles.pubMetricLabel}>Citations</span>
+                  </div>
+                  <div className={styles.pubMetric}>
+                    <span className={styles.pubMetricValue}>{doctor.publicationMetrics.hIndex}</span>
+                    <span className={styles.pubMetricLabel}>h-index</span>
+                  </div>
+                  <div className={styles.pubMetric}>
+                    <span className={styles.pubMetricValue}>{doctor.publicationMetrics.i10Index}</span>
+                    <span className={styles.pubMetricLabel}>i10-index</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Group by category */}
+              {(['Original Article', 'Review & Meta-Analysis', 'Case Report'] as const).map((category) => {
+                const pubs = doctor.publications!.filter((p) => p.category === category);
+                if (pubs.length === 0) return null;
+                return (
+                  <div key={category} className={styles.pubCategory}>
+                    <h3 className={styles.pubCategoryTitle}>
+                      {category === 'Original Article' ? 'Original Articles' : category === 'Review & Meta-Analysis' ? 'Reviews & Meta-Analyses' : 'Case Reports'}
+                      <span className={styles.pubCategoryCount}>{pubs.length}</span>
+                    </h3>
+                    <div className={styles.pubList}>
+                      {pubs.map((pub, i) => (
+                        <div key={i} className={styles.pubItem}>
+                          <div className={styles.pubNumber}>{i + 1}</div>
+                          <div className={styles.pubContent}>
+                            <div className={styles.pubTitle}>{pub.title}</div>
+                            <div className={styles.pubAuthors}>{pub.authors}</div>
+                            <div className={styles.pubJournal}>
+                              <span className={styles.pubJournalName}>{pub.journal}</span>
+                              <span className={styles.pubYear}>{pub.year}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </section>
+          )}
+
         </div>
 
         {/* ── SIDEBAR ── */}
