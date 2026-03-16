@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllDepartmentSlugs, getDepartmentBySlug } from '@/data/departments';
 import type { Metadata } from 'next';
 import DepartmentFAQ from '@/components/DepartmentFAQ';
@@ -23,16 +24,30 @@ function getInitials(name: string): string {
   return name.split(' ').filter(w => /^[A-Z]/.test(w)).map(w => w[0]).slice(0, 2).join('');
 }
 
-const GALLERY_GRADIENTS = [
-  'linear-gradient(135deg,#BFDBFE,#93C5FD)',
-  'linear-gradient(135deg,#A7F3D0,#6EE7B7)',
-  'linear-gradient(135deg,#DDD6FE,#C4B5FD)',
-  'linear-gradient(135deg,#FDE68A,#FCD34D)',
-  'linear-gradient(135deg,#FBCFE8,#F9A8D4)',
-  'linear-gradient(135deg,#FED7AA,#FDBA74)',
+const GALLERY_IMAGES = [
+  '/images/departments/gallery-1.jpg',
+  '/images/departments/gallery-2.jpg',
+  '/images/departments/gallery-3.jpg',
+  '/images/departments/gallery-4.jpg',
+  '/images/departments/gallery-5.jpg',
+  '/images/departments/gallery-6.jpg',
 ];
 
 const GALLERY_TAGS = ['Technology Milestone', 'Clinical Milestone', 'Conference & CME', 'Outreach Event', 'Community Outreach', 'Department Day'];
+
+const DOCTOR_PHOTOS = [
+  '/images/departments/doctor-1.jpg',
+  '/images/departments/doctor-2.jpg',
+  '/images/departments/doctor-3.jpg',
+  '/images/departments/doctor-4.jpg',
+];
+
+const FACILITY_IMAGES = [
+  '/images/departments/facility-1.jpg',
+  '/images/departments/facility-2.jpg',
+  '/images/departments/facility-3.jpg',
+  '/images/departments/facility-4.jpg',
+];
 
 export default async function DepartmentPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -44,7 +59,13 @@ export default async function DepartmentPage({ params }: { params: Promise<{ slu
 
       {/* ── HERO ── */}
       <section className={styles.hero}>
-        <div className={styles.heroOverlay} />
+        <Image
+          src="/images/departments/hero-bg.jpg"
+          alt=""
+          fill
+          className={styles.heroOverlay}
+          priority
+        />
         <div className={styles.heroInner}>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>{dept.title}</h1>
@@ -107,7 +128,13 @@ export default async function DepartmentPage({ params }: { params: Promise<{ slu
               {dept.team.map((member, i) => (
                 <div key={i} className={styles.doctorCard}>
                   <div className={styles.doctorPhoto}>
-                    {getInitials(member.name)}
+                    <Image
+                      src={DOCTOR_PHOTOS[i % DOCTOR_PHOTOS.length]}
+                      alt={member.name}
+                      width={160}
+                      height={160}
+                      className={styles.doctorImg}
+                    />
                   </div>
                   <div className={styles.doctorName}>{member.name}</div>
                   <div className={styles.doctorRole}>{member.designation}</div>
@@ -137,11 +164,17 @@ export default async function DepartmentPage({ params }: { params: Promise<{ slu
               ))}
             </div>
             <div className={styles.facilitiesImages}>
-              <div className={styles.facilityImgPlaceholder}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#23CDC0" strokeWidth="1.5" strokeLinecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              <div className={styles.facilityImgWrap}>
+                <Image src={FACILITY_IMAGES[0]} alt="Medical facility" width={280} height={200} className={styles.facilityImg} />
               </div>
-              <div className={styles.facilityImgPlaceholder}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#23CDC0" strokeWidth="1.5" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+              <div className={styles.facilityImgWrap}>
+                <Image src={FACILITY_IMAGES[1]} alt="Medical equipment" width={280} height={200} className={styles.facilityImg} />
+              </div>
+              <div className={styles.facilityImgWrap}>
+                <Image src={FACILITY_IMAGES[2]} alt="Operating theatre" width={280} height={200} className={styles.facilityImg} />
+              </div>
+              <div className={styles.facilityImgWrap}>
+                <Image src={FACILITY_IMAGES[3]} alt="Hospital corridor" width={280} height={200} className={styles.facilityImg} />
               </div>
             </div>
           </div>
@@ -239,10 +272,14 @@ export default async function DepartmentPage({ params }: { params: Promise<{ slu
             <div className={styles.galleryGrid}>
               {dept.gallery.map((item, i) => (
                 <div key={i} className={styles.galleryCard}>
-                  <div className={styles.galleryImg} style={{ background: GALLERY_GRADIENTS[i % GALLERY_GRADIENTS.length] }}>
-                    <div className={styles.galleryOverlay}>
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="1.8" strokeLinecap="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                    </div>
+                  <div className={styles.galleryImg}>
+                    <Image
+                      src={GALLERY_IMAGES[i % GALLERY_IMAGES.length]}
+                      alt={item.alt}
+                      fill
+                      className={styles.galleryPhoto}
+                    />
+                    <div className={styles.galleryOverlay} />
                     <div className={styles.galleryTag}>{GALLERY_TAGS[i % GALLERY_TAGS.length]}</div>
                   </div>
                   <div className={styles.galleryCaption}>{item.alt}</div>
