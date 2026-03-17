@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import SubNav from '@/components/SubNav';
 import Footer from '@/components/Footer';
 import ChatbotFab from '@/components/ChatbotFab';
+import SideQuickMenu from '@/components/SideQuickMenu';
 import './globals.css';
 
 const ptSansNarrow = PT_Sans_Narrow({
@@ -61,6 +62,7 @@ export default function RootLayout({
         <SubNav />
         {children}
         <Footer />
+        <SideQuickMenu />
         <ChatbotFab />
       </body>
     </html>

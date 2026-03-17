@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { doctors, getDoctorBySlug, getDoctorsByDepartment } from '@/data/doctors';
+import PaginatedPublications from '@/components/PaginatedPublications';
 import styles from './doctor.module.css';
 
 export async function generateStaticParams() {
@@ -225,6 +226,17 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
                   </div>
                 );
               })}
+            </section>
+          )}
+
+          {/* Publications List (paginated) */}
+          {doctor.publicationsList && doctor.publicationsList.length > 0 && (
+            <section className={styles.sectionBlock}>
+              <h2 className={styles.sectionTitle}>
+                Research &amp; Publications
+                <span className={styles.sectionLine} />
+              </h2>
+              <PaginatedPublications publications={doctor.publicationsList} />
             </section>
           )}
 

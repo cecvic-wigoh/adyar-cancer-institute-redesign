@@ -4,7 +4,6 @@ import StatCounter from "@/components/StatCounter";
 import DoctorScroll from "@/components/DoctorScroll";
 import TestimonialTabs from "@/components/TestimonialTabs";
 import FaqSection from "@/components/FaqSection";
-import HomeQuickLinks from "@/components/HomeQuickLinks";
 
 const ArrowIcon = ({ size = 18 }: { size?: number }) => (
   <svg
@@ -22,7 +21,7 @@ const ArrowIcon = ({ size = 18 }: { size?: number }) => (
   </svg>
 );
 
-const cancerCards = [
+export const cancerCards = [
   { slug: "breast-cancer", title: "Breast Cancer", desc: "Screening-led care with surgery, reconstruction, and targeted treatment" },
   { slug: "blood-cancer", title: "Blood Cancer", desc: "Leukaemia, lymphoma, and myeloma care with transplant support" },
   { slug: "brain-tumour", title: "Brain Tumour", desc: "Neuro-oncology pathways for tumours affecting the brain and CNS" },
@@ -44,7 +43,6 @@ const cancerCards = [
 export default function Home() {
   return (
     <main id="main">
-      <HomeQuickLinks />
       {/* HERO — Prevention-focused */}
       <section className="hero-v2" aria-labelledby="hero-heading">
         <div className="hero-v2-bg" aria-hidden="true">
@@ -124,7 +122,7 @@ export default function Home() {
             </p>
           </div>
           <div className="cancer-grid">
-            {cancerCards.map((card) => (
+            {cancerCards.slice(0, 8).map((card) => (
               <Link
                 href={`/cancer/${card.slug}`}
                 className="cancer-card"
@@ -161,7 +159,7 @@ export default function Home() {
             ))}
           </div>
           <div className="cancer-types-cta">
-            <Link href="/cancer/breast-cancer" className="btn btn-secondary">
+            <Link href="/cancer" className="btn btn-secondary">
               View All Cancer Conditions
             </Link>
           </div>
