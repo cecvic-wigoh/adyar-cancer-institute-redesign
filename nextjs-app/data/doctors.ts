@@ -36,6 +36,7 @@ export interface Doctor {
   publications?: Publication[];
   publicationMetrics?: PublicationMetrics;
   publicationsList?: string[];
+  image?: string;
 }
 
 export const doctors: Doctor[] = [
@@ -69,6 +70,7 @@ export const doctors: Doctor[] = [
     linkedin: 'https://www.linkedin.com/in/dr-venkatraman-radhakrishnan-14472a1a/',
     metaDescription: 'Dr. Venkatraman Radhakrishnan — Professor & Head of Department, Medical Oncology at Cancer Institute (WIA), Chennai.',
     publicationsList: venkatramanPublications,
+    image: '/doctor profile images/Dr Venkatraman Radhakrishnan.jpeg',
   },
   {
     slug: 'dr-karthik-rengaraj',

@@ -409,6 +409,328 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
   opacity: 0.85;
 }
 
+/* ── HERO CAROUSEL WITH FOUNDER RAIL ── */
+.hero-carousel {
+  position: relative;
+  min-height: calc(100vh - 168px);
+  display: flex;
+  flex-direction: column;
+  background: #1a1a2e;
+  overflow: hidden;
+}
+
+/* Slides */
+.hero-carousel-slide {
+  position: absolute;
+  inset: 0;
+  bottom: 60px;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.8s ease-in-out;
+  pointer-events: none;
+}
+.hero-carousel-slide.active {
+  opacity: 1;
+  z-index: 2;
+  pointer-events: auto;
+}
+.hero-carousel-bg {
+  position: absolute;
+  inset: 0;
+}
+.hero-carousel-bg img {
+  filter: brightness(0.4);
+}
+.hero-carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(13,20,42,0.85) 0%, rgba(13,20,42,0.5) 50%, rgba(13,20,42,0.15) 100%),
+    linear-gradient(180deg, rgba(13,20,42,0.05) 0%, rgba(13,20,42,0.3) 100%);
+  z-index: 1;
+}
+
+/* Content */
+.hero-carousel-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding-top: clamp(48px, 8vw, 96px);
+  padding-bottom: clamp(48px, 6vw, 72px);
+  max-width: var(--max-width);
+  padding-left: clamp(16px, 4vw, 80px);
+  padding-right: clamp(16px, 4vw, 80px);
+  margin: 0 auto;
+  width: 100%;
+  min-height: calc(100vh - 228px);
+}
+.hero-carousel-text {
+  max-width: 580px;
+  margin-right: auto;
+}
+.hero-carousel-text h2 {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(36px, 6vw, 72px);
+  color: var(--color-white);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-6);
+}
+.hero-carousel-divider {
+  width: 48px;
+  height: 3px;
+  background: var(--color-secondary);
+  margin-bottom: var(--space-5);
+}
+.hero-carousel-lead {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.75);
+  max-width: 540px;
+  margin-bottom: var(--space-7);
+}
+.hero-carousel-ctas {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+.hero-carousel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  transition: gap var(--transition-fast), color var(--transition-fast);
+}
+.hero-carousel-link:hover {
+  gap: 10px;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+/* Dots */
+.hero-carousel-dots {
+  position: absolute;
+  bottom: 80px;
+  left: clamp(16px, 4vw, 80px);
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+.hero-carousel-dot {
+  width: 32px;
+  height: 4px;
+  border-radius: 2px;
+  border: none;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition-fast);
+}
+.hero-carousel-dot.active {
+  background: var(--color-white);
+  width: 48px;
+}
+.hero-carousel-dot:hover:not(.active) {
+  background: rgba(255,255,255,0.5);
+}
+
+/* Progress bar */
+.hero-carousel-progress {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  z-index: 10;
+}
+.hero-carousel-progress-bar {
+  height: 100%;
+  background: var(--color-secondary);
+  width: 0;
+  animation: carouselProgress 7s linear forwards;
+}
+@keyframes carouselProgress {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* ── FOUNDER PANEL (right side, within hero only) ── */
+.hero-founder-panel {
+  position: absolute;
+  right: clamp(16px, 3vw, 48px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 300px;
+  padding: 28px 24px 24px;
+  background: rgba(13,20,42,0.55);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+}
+.hero-founder-panel-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+.hero-founder-panel-line {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-secondary);
+  border-radius: 1px;
+}
+.hero-founder-panel-sub {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.55);
+  margin: 0 0 4px;
+}
+.hero-founder-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.hero-founder-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  padding: 10px 14px 10px 10px;
+  border-radius: 56px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+.hero-founder-card:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: var(--color-secondary);
+  transform: translateX(-4px);
+  box-shadow: 0 4px 24px rgba(35,205,192,0.15), 0 2px 12px rgba(0,0,0,0.3);
+  text-decoration: none;
+}
+.hero-founder-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,0.2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.hero-founder-card:hover .hero-founder-avatar {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 12px rgba(35,205,192,0.3), 0 2px 8px rgba(0,0,0,0.3);
+}
+.hero-founder-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+}
+.hero-founder-name {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hero-founder-role {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hero-founder-years {
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: var(--color-secondary);
+  opacity: 0.8;
+}
+.hero-founder-arrow {
+  flex-shrink: 0;
+  color: rgba(255,255,255,0.25);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.hero-founder-card:hover .hero-founder-arrow {
+  color: var(--color-secondary);
+  transform: translateX(2px);
+}
+
+/* Mobile: founder panel below hero content */
+@media (max-width: 767px) {
+  .hero-carousel-dots { left: 50%; transform: translateX(-50%); }
+  .hero-carousel-text h2 { font-size: clamp(28px, 7vw, 42px); }
+  .hero-carousel-lead { font-size: 16px; }
+  .hero-founder-panel {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    max-width: 100%;
+    margin: 0 clamp(16px, 4vw, 80px) var(--space-6);
+    padding: 20px 16px;
+    z-index: 5;
+  }
+  .hero-founder-panel-sub { display: none; }
+  .hero-founder-cards {
+    flex-direction: row;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hero-founder-card {
+    flex-shrink: 0;
+    padding: 8px 12px 8px 8px;
+  }
+  .hero-founder-avatar {
+    width: 44px;
+    height: 44px;
+  }
+  .hero-founder-name { font-size: 12px; }
+  .hero-founder-years { display: none; }
+  .hero-founder-arrow { display: none; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-carousel-slide { transition: opacity 0s; }
+  .hero-carousel-progress-bar { animation: none; width: 100%; }
+  .hero-carousel-scroll-hint svg { animation: none; }
+}
+
 /* ── 9. FEATURE CARDS ROW ── */
 .feature-cards {
   padding: clamp(40px,6vw,72px) 0;

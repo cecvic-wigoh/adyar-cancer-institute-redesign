@@ -133,7 +133,7 @@ export default async function DepartmentPage({ params }: { params: Promise<{ slu
                     <div className={styles.doctorCard}>
                       <div className={styles.doctorPhoto}>
                         <Image
-                          src={DOCTOR_PHOTOS[i % DOCTOR_PHOTOS.length]}
+                          src={doctor.image || DOCTOR_PHOTOS[i % DOCTOR_PHOTOS.length]}
                           alt={doctor.name}
                           width={160}
                           height={160}
