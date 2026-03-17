@@ -378,13 +378,14 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
   50% { transform: translateY(6px); }
 }
 
-/* Contact strip below hero */
+/* Contact strip at bottom of hero */
 .hero-v2-strip {
   background: var(--color-primary);
   padding: 16px 0;
   position: relative;
-  z-index: 2;
+  z-index: 12;
   border-bottom: 4px solid #c41e3a;
+  margin-top: auto;
 }
 .hero-v2-strip-inner {
   text-align: center;
@@ -423,7 +424,6 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
 .hero-carousel-slide {
   position: absolute;
   inset: 0;
-  bottom: 60px;
   opacity: 0;
   z-index: 1;
   transition: opacity 0.8s ease-in-out;
@@ -520,9 +520,9 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
 /* Dots */
 .hero-carousel-dots {
   position: absolute;
-  bottom: 80px;
+  bottom: 76px;
   left: clamp(16px, 4vw, 80px);
-  z-index: 10;
+  z-index: 13;
   display: flex;
   gap: 10px;
 }
@@ -544,15 +544,15 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
   background: rgba(255,255,255,0.5);
 }
 
-/* Progress bar */
+/* Progress bar — sits just above the contact strip */
 .hero-carousel-progress {
   position: absolute;
-  bottom: 60px;
+  bottom: 56px;
   left: 0;
   right: 0;
   height: 3px;
   background: rgba(255,255,255,0.08);
-  z-index: 10;
+  z-index: 13;
 }
 .hero-carousel-progress-bar {
   height: 100%;

@@ -67,7 +67,6 @@ export default function FounderHeroCarousel({ founders }: { founders: CarouselFo
   }, [activeIndex]);
 
   return (
-    <>
     <section
       className="hero-carousel"
       aria-label="Homepage hero"
@@ -177,9 +176,7 @@ export default function FounderHeroCarousel({ founders }: { founders: CarouselFo
         </div>
       )}
 
-    </section>
-
-      {/* Contact strip — below hero */}
+      {/* Contact strip — pinned to bottom of hero */}
       <div className="hero-v2-strip">
         <div className="container hero-v2-strip-inner">
           <p>
@@ -189,6 +186,6 @@ export default function FounderHeroCarousel({ founders }: { founders: CarouselFo
           </p>
         </div>
       </div>
-    </>
+    </section>
   );
 }
