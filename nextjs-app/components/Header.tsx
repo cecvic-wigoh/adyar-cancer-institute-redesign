@@ -31,7 +31,7 @@ export default function Header() {
       <header className={`site-header${scrolled ? ' scrolled' : ''}`} role="banner">
         <div className="header-inner">
           <Link href="/" className="site-logo" aria-label="Cancer Institute (WIA) — Home">
-            <Image src="/logo/Blue Horizontal_Logo-001.png" alt="Cancer Institute (WIA)™ — With Humanity and In Wisdom" width={800} height={65} priority />
+            <Image src="/logo/Blue Horizontal_Logo-001.png" alt="Cancer Institute (WIA)™ — With Humanity and In Wisdom" width={400} height={65} priority />
           </Link>
 
           <nav className="primary-nav" aria-label="Primary navigation">
