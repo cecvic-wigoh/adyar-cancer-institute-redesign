@@ -43,7 +43,7 @@ const categories: SubNavCategory[] = [
         links: [
           { label: "Cancer Types", href: "/#cancer-types" },
           { label: "A New Diagnosis", href: "/#education" },
-          { label: "Departments & Clinics", href: "/departments/surgical-oncology", },
+          { label: "Patient Support", href: "/departments/surgical-oncology", },
         ],
       },
       {
@@ -225,16 +225,6 @@ const categories: SubNavCategory[] = [
             external: true,
           },
           {
-            label: "Cancer Epidemiology",
-            href: "https://ci-wia-research-pages.vercel.app/research",
-            external: true,
-          },
-          {
-            label: "Tumour Biology",
-            href: "https://ci-wia-research-pages.vercel.app/research",
-            external: true,
-          },
-          {
             label: "Molecular Oncology",
             href: "https://ci-wia-research-pages.vercel.app/research",
             external: true,
@@ -246,11 +236,6 @@ const categories: SubNavCategory[] = [
         links: [
           {
             label: "Fellowship Programmes",
-            href: "https://ci-wia-research-pages.vercel.app/research",
-            external: true,
-          },
-          {
-            label: "Residency Training",
             href: "https://ci-wia-research-pages.vercel.app/research",
             external: true,
           },
