@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './StickyDoctorBar.module.css';
 
 interface Section {
@@ -9,28 +9,18 @@ interface Section {
 }
 
 interface StickyDoctorBarProps {
-  doctorName: string;
   sections: Section[];
 }
 
-export default function StickyDoctorBar({ doctorName, sections }: StickyDoctorBarProps) {
-  const [visible, setVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
-  const barRef = useRef<HTMLDivElement>(null);
+export default function StickyDoctorBar({ sections }: StickyDoctorBarProps) {
+  const [activeSection, setActiveSection] = useState(sections[0]?.id ?? '');
+  const [scrolled, setScrolled] = useState(false);
 
-  // Show/hide based on hero visibility
+  // Track scroll for shadow
   useEffect(() => {
-    const hero = document.getElementById('doctor-hero');
-    if (!hero) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setVisible(!entry.isIntersecting);
-      },
-      { threshold: 0 }
-    );
-    observer.observe(hero);
-    return () => observer.disconnect();
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Track active section via scroll spy
@@ -64,32 +54,23 @@ export default function StickyDoctorBar({ doctorName, sections }: StickyDoctorBa
   };
 
   return (
-    <div
-      ref={barRef}
-      className={`${styles.bar} ${visible ? styles.barVisible : ''}`}
+    <nav
+      className={`${styles.bar} ${scrolled ? styles.barScrolled : ''}`}
       role="navigation"
-      aria-label="Doctor profile navigation"
+      aria-label="Doctor profile sections"
     >
       <div className={styles.barInner}>
-        <span className={styles.barName}>{doctorName}</span>
-
-        <nav className={styles.barNav}>
-          {sections.map((s) => (
-            <button
-              key={s.id}
-              type="button"
-              className={`${styles.barNavItem} ${activeSection === s.id ? styles.barNavActive : ''}`}
-              onClick={() => handleClick(s.id)}
-            >
-              {s.label}
-            </button>
-          ))}
-        </nav>
-
-        <a href="/#appointment" className={styles.barCta}>
-          Book Appointment
-        </a>
+        {sections.map((s) => (
+          <button
+            key={s.id}
+            type="button"
+            className={`${styles.navItem} ${activeSection === s.id ? styles.navActive : ''}`}
+            onClick={() => handleClick(s.id)}
+          >
+            {s.label}
+          </button>
+        ))}
       </div>
-    </div>
+    </nav>
   );
 }
