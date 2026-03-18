@@ -1,10 +1,5 @@
 import { venkatramanPublications } from './publications/venkatraman';
 
-export interface DoctorEducation {
-  degree: string;
-  institution: string;
-}
-
 export interface Publication {
   title: string;
   authors: string;
@@ -20,49 +15,59 @@ export interface PublicationMetrics {
   i10Index: number;
 }
 
+export interface DoctorDegree {
+  degree: string;
+  institution: string;
+  year?: string;
+}
+
 export interface Doctor {
   slug: string;
   name: string;
-  specialty: string;
-  designation: string;
   department: { slug: string; title: string };
-  qualifications: string[];
-  areasOfExpertise: string[];
+  designation: string;
+  specialties: string[];
+  primaryDegree: DoctorDegree;
+  postgraduateQualification?: DoctorDegree;
+  superSpeciality?: DoctorDegree;
+  fellowships?: string[];
   about: string[];
-  education: DoctorEducation[];
+  areasOfExpertise: string[];
   experience: string[];
-  linkedin: string;
-  metaDescription: string;
+  publicationsUrl?: string;
   publications?: Publication[];
   publicationMetrics?: PublicationMetrics;
   publicationsList?: string[];
+  linkedin?: string;
   image?: string;
+  metaDescription: string;
+}
+
+export function getDoctorQualifications(doctor: Doctor): string[] {
+  const quals: string[] = [doctor.primaryDegree.degree];
+  if (doctor.postgraduateQualification) quals.push(doctor.postgraduateQualification.degree);
+  if (doctor.superSpeciality) quals.push(doctor.superSpeciality.degree);
+  if (doctor.fellowships) quals.push(...doctor.fellowships);
+  return quals;
 }
 
 export const doctors: Doctor[] = [
   {
     slug: 'dr-venkatraman-radhakrishnan',
     name: 'Dr. Venkatraman Radhakrishnan',
-    specialty: 'Medical Oncology and Pediatric Oncology',
+    specialties: ['Medical Oncology', 'Pediatric Oncology'],
     designation: 'Professor & Head of Department',
     department: { slug: 'medical-oncology', title: 'Medical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MD Pediatrics',
-      'DM Medical Oncology',
-      'MSc Global Child Health, St Judes Childrens Research Hospital, Mmephis, USA',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'MGR Medical University', year: '1998' },
+    postgraduateQualification: { degree: 'MD Pediatrics', institution: 'PGIMER Chandigarh', year: '2003' },
+    superSpeciality: { degree: 'DM Medical Oncology', institution: 'AIIMS New Delhi', year: '2011' },
+    fellowships: ['MSc Global Child Health, St Judes Childrens Research Hospital, Mmephis, USA'],
     areasOfExpertise: [
       'Medical and Pediatric Oncology',
     ],
     about: [
-      'Dr. Venkatraman Radhakrishnan is a Professor and Head of the Department of Medical and Pediatric Oncology at the Cancer Institute (W.I.A), located in Adyar, Chennai. He completed his pediatric training at the Postgraduate Institute of Medical Research (PGIMER), Chandigarh, India, and the National Health Service (NHS), United Kingdom. He later completed his Medical Oncology fellowship at the All India Institute of Medical Sciences (AIIMS), New Delhi, India. Dr. Radhakrishnan holds a master’s degree in Global Child Health from the St. Jude Children\'s Research Hospital in Memphis, USA.',
+      'Dr. Venkatraman Radhakrishnan is a Professor and Head of the Department of Medical and Pediatric Oncology at the Cancer Institute (W.I.A), located in Adyar, Chennai. He completed his pediatric training at the Postgraduate Institute of Medical Research (PGIMER), Chandigarh, India, and the National Health Service (NHS), United Kingdom. He later completed his Medical Oncology fellowship at the All India Institute of Medical Sciences (AIIMS), New Delhi, India. Dr. Radhakrishnan holds a master\'s degree in Global Child Health from the St. Jude Children\'s Research Hospital in Memphis, USA.',
       'Dr. Radhakrishnan\'s areas of interest include conducting clinical trials relevant to low and middle-income countries, pediatric cancer registration, supportive care, and global oncology. He is the lead investigator for the Indian Council of Medical Research (ICMR)- sponsored multicenter ISCALL (Improving Survival in Childhood Acute Lymphoblastic Leukemia in India) implementation study and the ICICLE-ALL-24 trial. He has authored 253 peer-reviewed research publications and serves as the principal investigator for 23 clinical trials.',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'MGR Medical University 1998' },
-      { degree: 'MD Pediatrics,', institution: 'PGIMER Chandigarh 2003' },
-      { degree: 'DM Medical Oncology', institution: 'AIIMS New Delhi 2011' },
     ],
     experience: [
       'Professor and Head Department of Medical Oncology',
@@ -75,15 +80,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-karthik-rengaraj',
     name: 'Dr. Karthik Rengaraj',
-    specialty: 'Haemato-Oncology and Bone Marrow Transplantation',
+    specialties: ['Haemato-Oncology', 'Bone Marrow Transplantation'],
     designation: 'Assistant Professor',
     department: { slug: 'medical-oncology', title: 'Medical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MD (General Medicine)',
-      'DM (Clinical Haematology)',
-      'Fellowship in Haemato-Oncology from Tata Memorial Hospital 2019',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'TN Dr. MGR Medical University', year: '2008-2013' },
+    postgraduateQualification: { degree: 'MD (General Medicine)', institution: 'MUHS', year: '2016-2019' },
+    superSpeciality: { degree: 'DM (Clinical Haematology)', institution: 'TN Dr. MGR Medical University', year: '2020-2023' },
+    fellowships: ['Fellowship in Haemato-Oncology from Tata Memorial Hospital 2019'],
     areasOfExpertise: [
       'Acute leukemias (AML/ALL) – induction & targeted therapy',
       'Lymphomas and plasma cell disorders',
@@ -96,11 +99,6 @@ export const doctors: Doctor[] = [
       'His clinical expertise includes management of acute leukemias, lymphomas, myeloma, myelodysplastic syndromes, and bone marrow failure, with special interest in hematopoietic stem cell transplantation and cellular therapies. He has been actively involved in high-complexity leukemia care, transplant supportive services, and apheresis programs.',
       'Dr. Karthik is a recipient of the M.J. Shah Award in Tropical Medicine and the Best Oral Presentation Award for the national GRAIN study on granulocyte transfusions. He has authored multiple peer-reviewed publications and book chapters and is committed to developing affordable, protocol-driven hematology and transplant services with a strong focus on patient safety, academics, and research.',
     ],
-    education: [
-      { degree: 'MBBS', institution: 'TN Dr. MGR Medical University, 2008-2013' },
-      { degree: 'MD (General Medicine)', institution: 'MUHS, 2016-2019' },
-      { degree: 'DM (Clinical Haematology)', institution: 'TN Dr. MGR Medical University, 2020-2023' },
-    ],
     experience: [
       'Assistant Professor/ Consultant Haematologist at CSI Kalyani Hospital, Chennai 2 years',
     ],
@@ -110,14 +108,12 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-parathan-karunakaran',
     name: 'Dr. Parathan Karunakaran',
-    specialty: 'Hematology, Hemato-Oncology, Bone Marrow Transplant',
+    specialties: ['Hematology', 'Hemato-Oncology', 'Bone Marrow Transplant'],
     designation: 'Consultant',
     department: { slug: 'medical-oncology', title: 'Medical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MD (Internal Medicine)',
-      'DM (Clinical Hematology)',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'TN Dr.MGR Medical University', year: '2007' },
+    postgraduateQualification: { degree: 'MD (Internal Medicine)', institution: 'PGIMER, Chandigarh', year: '2009-2012' },
+    superSpeciality: { degree: 'DM (Clinical Hematology)', institution: 'PGIMER, Chandigarh', year: '2004-2017' },
     areasOfExpertise: [
       'Hemato-Oncology',
       'Bone Marrow Transplant',
@@ -126,11 +122,6 @@ export const doctors: Doctor[] = [
     ],
     about: [
       'Senior Physician specialising in Adult Hematology. Has authored over 66 national and international publications. Has authored 2 chapters in Hematology textbook. Observership in Bone Marrow Transplant at Tata Memorial Hospital',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'TN Dr.MGR Medical University, 2007' },
-      { degree: 'MD (Internal Medicine)', institution: 'PGIMER, Chandigarh, 2009-2012' },
-      { degree: 'DM (Clinical Hematology)', institution: 'PGIMER, Chandigarh, 2004-2017' },
     ],
     experience: [
       'Faculty Hemataology, Apollo Hospital, Greams Lane',
@@ -144,29 +135,18 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-priya-jovita-mary-martin-daniel',
     name: 'Dr. Priya Jovita Mary Martin Daniel',
-    specialty: 'Solid tumors',
+    specialties: ['Solid tumors'],
     designation: 'Professor',
     department: { slug: 'medical-oncology', title: 'Medical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MD',
-      'DNB',
-      'DM',
-      'MSc',
-      'MD Radiation Oncology 2007',
-      'DM Medical Oncology 2015',
-      'MRCP SCE 2024',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'PSG IMSR', year: '2003' },
+    postgraduateQualification: { degree: 'MD Radiation Oncology', institution: 'DNB Radiation Oncology', year: '2007' },
+    superSpeciality: { degree: 'DM Medical Oncology', institution: 'MSc Oncology', year: '2015' },
+    fellowships: ['MSc', 'MRCP SCE 2024'],
     areasOfExpertise: [
       'Solid tumors, Geriatric Oncology, Precision Medicine',
     ],
     about: [
       'Dr. Priya Jovita Mary Martin Daniel is a Professor at the Cancer Institute (WIA), Chennai. Specializing in Solid tumors.',
-    ],
-    education: [
-      { degree: 'MBBS, MD, DNB, DM, MSc', institution: 'MBBS PSG IMSR 2003' },
-      { degree: 'MD Radiation Oncology 2007', institution: 'DNB Radiation Oncology 2008' },
-      { degree: 'DM Medical Oncology 2015', institution: 'MSc Oncology 2016' },
     ],
     experience: [
       'Professor Medical Oncology',
@@ -177,15 +157,15 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-pragadeesh-t',
     name: 'Dr. Pragadeesh T',
-    specialty: 'Lung and Thoracic Malignancies, Head and neck cancers, CNS malignancies, Sarcomas and Rare tumors, Genitourinary malignancies, Germ cell tumors',
+    specialties: ['Lung and Thoracic Malignancies', 'Head and neck cancers', 'CNS malignancies', 'Sarcomas and Rare tumors', 'Genitourinary malignancies', 'Germ cell tumors'],
     designation: 'Assistant Professor',
     department: { slug: 'medical-oncology', title: 'Medical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MD (General Medicine) (Also',
+    primaryDegree: { degree: 'MBBS', institution: 'PSG-IMSR', year: '2012-2018' },
+    postgraduateQualification: { degree: 'MD (General Medicine)', institution: 'KMC, Manipal', year: '2018-2021' },
+    superSpeciality: { degree: 'DM (Medical Oncology)', institution: 'Cancer Institute (WIA)', year: '2022-2025' },
+    fellowships: [
       'DNB (General Medicine) 2022',
-      'and MRCP (UK) 2024]',
-      'DM (Medical Oncology)',
+      'MRCP (UK) 2024',
       'Mentorship in Thoracic Oncology, AOU San Luigi Gonzaga, Turin, Italy, 2025',
       'Masters in Molecular Oncology, Centro de Estudios Biosanitarios, Spain',
     ],
@@ -200,17 +180,12 @@ export const doctors: Doctor[] = [
       'Supportive care',
     ],
     about: [
-      'Dr. Pragadeesh T (Thamaraiselvan) is an Assistant Professor of Medical Oncology at the Cancer Institute (WIA), Chennai. He completed his DM in Medical Oncology at the Cancer Institute (WIA), following an MD in Internal Medicine from Kasturba Medical College, Manipal, and MBBS from PSG Institute of Medical Sciences and Research, Coimbatore. He also holds an MRCP (UK) and a DNB in General Medicine and have completed a Master’s degree in Molecular Oncology from the Centro de Estudios Biosanitarios, Spain.',
+      'Dr. Pragadeesh T (Thamaraiselvan) is an Assistant Professor of Medical Oncology at the Cancer Institute (WIA), Chennai. He completed his DM in Medical Oncology at the Cancer Institute (WIA), following an MD in Internal Medicine from Kasturba Medical College, Manipal, and MBBS from PSG Institute of Medical Sciences and Research, Coimbatore. He also holds an MRCP (UK) and a DNB in General Medicine and have completed a Master\'s degree in Molecular Oncology from the Centro de Estudios Biosanitarios, Spain.',
       'His clinical and academic interests are focused on thoracic oncology, particularly non-small cell lung cancer, with an emphasis on genomics and targeted therapy. He has been involved in several lung cancer research initiatives and has presented his work at multiple international oncology meetings.',
       'Dr. Pragadeesh has demonstrated consistent academic excellence during his training and was recognised as the Best Outgoing Student in both his postgraduate and super-specialty programs, in addition to receiving multiple gold medals during undergraduate medical education. In 2025, he was awarded the IASLC International Mentorship Program, through which he received focused mentorship in lung cancer and academic exposure at the University of Turin, Italy.',
     ],
-    education: [
-      { degree: 'MBBS', institution: 'PSG-IMSR, 2012-2018' },
-      { degree: 'MD (General Medicine) (Also, DNB (General Medicine) 2022, and MRCP (UK) 2024]', institution: 'KMC, Manipal, 2018-2021' },
-      { degree: 'DM (Medical Oncology)', institution: 'Cancer Institute (WIA), 2022-2025' },
-    ],
     experience: [
-      'Assistant Professor – Medical Oncology, Cancer Institute (WIA), Chennai (May’25 till date)',
+      'Assistant Professor – Medical Oncology, Cancer Institute (WIA), Chennai (May\'25 till date)',
       'Senior Resident – Medical Oncology, Cancer Institute (WIA), Chennai (2022 – 2025)',
       'Junior Consultant – General Medicine, Sri Dhanvantari Hospital, Udumalpet (2021 – 2022)',
       'Junior Resident – General Medicine, Kasturba Hospital, Manipal (2018 – 2021)',
@@ -222,41 +197,27 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-gangothri-selvarajan',
     name: 'Dr. Gangothri Selvarajan',
-    specialty: 'Subspecialty Expertise/Focus : Breast, Gynaecologic, and Gastrointestinal Oncology, Cancer of Unknown Primary/origin and Rare Tumours',
+    specialties: ['Breast', 'Gynaecologic Oncology', 'Gastrointestinal Oncology', 'Cancer of Unknown Primary', 'Rare Tumours'],
     designation: 'Associate Professor',
     department: { slug: 'medical-oncology', title: 'Medical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MD (Radiation Oncology)',
-      'DM (Medical Oncology)',
-      'Fellowships & Traineeships',
-      'High Precision Radiotherapy Fellowship (SRS / SRT / SBRT)',
-      'Fortis Memorial Research Institute (FMRI), Gurgaon, India | 2015',
-      'ESMO Preceptorship  – Immuno-Oncology',
-      'European Society for Medical Oncology, Singapore | 2019',
-      'Lung Cancer Preceptorship',
-      'Princess Margaret Cancer Centre (in collaboration with Pfizer) | 2023',
-      'Trialect Traineeship Program – Personalized Healthcare & Bioinformatics',
-      'Erasmus MC, Rotterdam, Netherlands | 2024',
-      'Research Traineeship – Molecular Biotechnology',
-      'Molecular Biotechnology Center 2 (MBC2), University of Turin, Italy | 2024',
-      'Training in cell line culture, RT-PCR, and RNA extraction',
-      'Clinical Fellowship – Advanced Gastrointestinal Medical Oncology',
-      'Clinical Fellow , National University Hospital (NUH), Singapore | 2024–2025',
-      'AI in Healthcare & Bioinformatics Traineeship',
-      'Max Planck Institute for Heart and Lung Research, Germany | 2025',
+    primaryDegree: { degree: 'MBBS', institution: 'Chengalpattu Medical College, The Tamil Nādu Dr M.G. R Medical University, Chennai', year: '2008' },
+    postgraduateQualification: { degree: 'MD (Radiation Oncology)', institution: 'JIPMER, Puducherry', year: '2014' },
+    superSpeciality: { degree: 'DM (Medical Oncology)', institution: 'Madras Medical College, The Tamil Nādu Dr M.G. R Medical University, Chennai', year: '2018' },
+    fellowships: [
+      'High Precision Radiotherapy Fellowship (SRS / SRT / SBRT), Fortis Memorial Research Institute (FMRI), Gurgaon, India, 2015',
+      'ESMO Preceptorship – Immuno-Oncology, European Society for Medical Oncology, Singapore, 2019',
+      'Lung Cancer Preceptorship, Princess Margaret Cancer Centre (in collaboration with Pfizer), 2023',
+      'Trialect Traineeship Program – Personalized Healthcare & Bioinformatics, Erasmus MC, Rotterdam, Netherlands, 2024',
+      'Research Traineeship – Molecular Biotechnology, Molecular Biotechnology Center 2 (MBC2), University of Turin, Italy, 2024',
+      'Clinical Fellowship – Advanced Gastrointestinal Medical Oncology, National University Hospital (NUH), Singapore, 2024–2025',
+      'AI in Healthcare & Bioinformatics Traineeship, Max Planck Institute for Heart and Lung Research, Germany, 2025',
     ],
     areasOfExpertise: [
       'Medical Oncology – Subspecialty Expertise: Breast',
       'Gynaecologic & Gastrointestinal Oncology; Cancer of Unknown Primary (CUP);  HIPEC; Targeted Therapy; Immunotherapy.',
     ],
     about: [
-      'Dr. Gangothri Selvarajan, MD, DM Associate Professor, Medical Oncology Cancer Institute (WIA), Chennai, India Dr. Gangothri Selvarajan is a highly qualified Medical Oncologist with advanced dual-specialty training in Radiation Oncology and Medical Oncology, currently serving as Associate Professor of Medical Oncology at Cancer Institute (WIA), Chennai, one of India’s premier tertiary cancer care and academic institutions . ________________________________________ Academic Qualifications and Specialist Training Dr. Selvarajan completed her MBBS from Chengalpattu Medical College, followed by an MD in Radiation Oncology from Jawaharlal Institute of Postgraduate Medical Education and Research (JIPMER), Puducherry, and subsequently obtained her DM in Medical Oncology from Madras Medical College, Chennai—one of the highest superspecialty qualifications in oncology in India. She also holds the Specialty Certificate in Medical Oncology (MRCP-SCE) from the Federation of the Royal Colleges of Physicians, United Kingdom, and has successfully cleared the European Society for Medical Oncology (ESMO) Examination, reflecting adherence to international standards of oncology practice. ________________________________________ Clinical Roles and Patient Care At Cancer Institute (WIA), Dr. Gangothri Selvarajan is actively involved in: Her primary clinical interests include breast cancer, gastrointestinal malignancies, gynecologic cancers, thoracic oncology, and precision oncology, with emphasis on individualized treatment strategies and real-world outcome optimization . ________________________________________ Research Experience and Clinical Trial Leadership Dr. Selvarajan has extensive experience in clinical research and investigator-initiated trials, serving as Principal Investigator or Co-Primary Investigator in several national and multicentric randomized controlled trials. Key leadership roles include: A DHR-funded randomized study comparing neoadjuvant versus adjuvant chemotherapy in resectable gastric adenocarcinoma. Evaluating organ preservation strategies in rectal cancer. Conducted in patients with HER2-positive metastatic breast cancer. She has also contributed as Co-Investigator in multiple Phase II and Phase III trials in breast cancer, lymphoma, triple-negative breast cancer, metastatic disease, and supportive oncology. Abstracts from these studies have been presented at ASCO, ESMO, ESTRO, ASH, and KINGCA scientific meetings . ________________________________________ Publications and Academic Contributions Dr. Gangothri Selvarajan has authored and co-authored numerous peer-reviewed publications indexed in PubMed, encompassing: Her scholarly work contributes significantly to institutional academic output and supports research metrics required for accreditation and ranking . ________________________________________ Awards, Gold Medals, and Recognitions Her academic excellence has been recognized through multiple honors, including: These recognitions reflect sustained excellence in academic oncology, clinical research, and mentorship . ________________________________________ International Fellowships and Advanced Training Dr. Gangothri Selvarajan has completed advanced international training and fellowships at: She has formal training in next-generation sequencing (NGS), bioinformatics, proteomics, and translational oncology, strengthening institutional precision medicine capabilities. ________________________________________ Professional Memberships and Academic Service Dr. Selvarajan is an active member of: She also serves as a peer reviewer for national and international oncology journals and regularly contributes to continuing medical education (CME) programs. ________________________________________ Professional Outlook Dr. Gangothri Selvarajan is committed to delivering ethical, evidence-based, and patient-centered cancer care, while advancing clinical research, academic oncology, and structured oncology training. Her work integrates multidisciplinary care, clinical trials, and precision oncology to enhance patient outcomes and institutional excellence. ________________________________________',
-    ],
-    education: [
-      { degree: 'MBBS,', institution: 'Chengalpattu Medical College, The Tamil Nādu Dr M.G. R Medical University, Chennai, 2008' },
-      { degree: 'MD (Radiation Oncology)', institution: 'JIPMER , Puducherry, 2014' },
-      { degree: 'DM (Medical Oncology)', institution: 'Madras Medical College, The Tamil Nādu Dr M.G. R Medical University, Chennai. 2018' },
+      'Dr. Gangothri Selvarajan, MD, DM Associate Professor, Medical Oncology Cancer Institute (WIA), Chennai, India Dr. Gangothri Selvarajan is a highly qualified Medical Oncologist with advanced dual-specialty training in Radiation Oncology and Medical Oncology, currently serving as Associate Professor of Medical Oncology at Cancer Institute (WIA), Chennai, one of India\'s premier tertiary cancer care and academic institutions . ________________________________________ Academic Qualifications and Specialist Training Dr. Selvarajan completed her MBBS from Chengalpattu Medical College, followed by an MD in Radiation Oncology from Jawaharlal Institute of Postgraduate Medical Education and Research (JIPMER), Puducherry, and subsequently obtained her DM in Medical Oncology from Madras Medical College, Chennai—one of the highest superspecialty qualifications in oncology in India. She also holds the Specialty Certificate in Medical Oncology (MRCP-SCE) from the Federation of the Royal Colleges of Physicians, United Kingdom, and has successfully cleared the European Society for Medical Oncology (ESMO) Examination, reflecting adherence to international standards of oncology practice. ________________________________________ Clinical Roles and Patient Care At Cancer Institute (WIA), Dr. Gangothri Selvarajan is actively involved in: Her primary clinical interests include breast cancer, gastrointestinal malignancies, gynecologic cancers, thoracic oncology, and precision oncology, with emphasis on individualized treatment strategies and real-world outcome optimization . ________________________________________ Research Experience and Clinical Trial Leadership Dr. Selvarajan has extensive experience in clinical research and investigator-initiated trials, serving as Principal Investigator or Co-Primary Investigator in several national and multicentric randomized controlled trials. Key leadership roles include: A DHR-funded randomized study comparing neoadjuvant versus adjuvant chemotherapy in resectable gastric adenocarcinoma. Evaluating organ preservation strategies in rectal cancer. Conducted in patients with HER2-positive metastatic breast cancer. She has also contributed as Co-Investigator in multiple Phase II and Phase III trials in breast cancer, lymphoma, triple-negative breast cancer, metastatic disease, and supportive oncology. Abstracts from these studies have been presented at ASCO, ESMO, ESTRO, ASH, and KINGCA scientific meetings . ________________________________________ Publications and Academic Contributions Dr. Gangothri Selvarajan has authored and co-authored numerous peer-reviewed publications indexed in PubMed, encompassing: Her scholarly work contributes significantly to institutional academic output and supports research metrics required for accreditation and ranking . ________________________________________ Awards, Gold Medals, and Recognitions Her academic excellence has been recognized through multiple honors, including: These recognitions reflect sustained excellence in academic oncology, clinical research, and mentorship . ________________________________________ International Fellowships and Advanced Training Dr. Gangothri Selvarajan has completed advanced international training and fellowships at: She has formal training in next-generation sequencing (NGS), bioinformatics, proteomics, and translational oncology, strengthening institutional precision medicine capabilities. ________________________________________ Professional Memberships and Academic Service Dr. Selvarajan is an active member of: She also serves as a peer reviewer for national and international oncology journals and regularly contributes to continuing medical education (CME) programs. ________________________________________ Professional Outlook Dr. Gangothri Selvarajan is committed to delivering ethical, evidence-based, and patient-centered cancer care, while advancing clinical research, academic oncology, and structured oncology training. Her work integrates multidisciplinary care, clinical trials, and precision oncology to enhance patient outcomes and institutional excellence. ________________________________________',
     ],
     experience: [
       'Assistant Professor , Medical Oncology, Cancer Institute(WIA) ,Adyar, Chennai (2018 –2021)',
@@ -268,14 +229,12 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-gargi-das',
     name: 'Dr. Gargi Das',
-    specialty: 'Pediatric Oncology, BMT, Survivorship',
+    specialties: ['Pediatric Oncology', 'BMT', 'Survivorship'],
     designation: 'Assistant Professor',
     department: { slug: 'medical-oncology', title: 'Medical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MD (Pediatrics)',
-      'DM (Pediatric Oncology)',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'Panjab University' },
+    postgraduateQualification: { degree: 'MD (Pediatrics)', institution: 'PGIMER, Chandigarh' },
+    superSpeciality: { degree: 'DM (Pediatric Oncology)', institution: 'AIIMS-New Delhi' },
     areasOfExpertise: [
       'Pediatric leukemias and lymphomas',
       'Pediatric solid tumors',
@@ -291,11 +250,6 @@ export const doctors: Doctor[] = [
     about: [
       '1.	Darshi Gupta Memorial Prize for the highest marks in the subject of Pediatrics at the Final MBBS Examination, November, 2012 2.	Certificate of Merit for securing 1st position in Pediatrics in Final Professional MBBS Examination, 2012 3.	Certificate of Merit for securing 2nd position in Community Medicine in 2nd Professional MBBS Examination, 2011 4.	Certificate of Merit for securing 2nd position in 2nd Professional MBBS Examination, 2011 5.	Certificate of Merit for securing 2nd position in An',
     ],
-    education: [
-      { degree: 'MBBS', institution: 'Panjab University' },
-      { degree: 'MD (Pediatrics)', institution: 'PGIMER, Chandigarh' },
-      { degree: 'DM (Pediatric Oncology)', institution: 'AIIMS-New Delhi' },
-    ],
     experience: [
       'Joined as Assistant Professor in Cnacer Institute directly after DM',
     ],
@@ -305,15 +259,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-rpackia-nancy',
     name: 'Dr. R.Packia Nancy',
-    specialty: 'Microbiology',
+    specialties: ['Microbiology'],
     designation: 'Assistant Professor',
     department: { slug: 'microbiology', title: 'Microbiology' },
-    qualifications: [
-      'M.B.B.S',
-      'D.L.O(otorhinolaryngology)',
-      'M.D(Micro)',
-      'PhD(Dermato-Mycology)',
-    ],
+    primaryDegree: { degree: 'M.B.B.S', institution: 'The TN Dr.MGR Medical', year: '2001-2007' },
+    postgraduateQualification: { degree: 'D.L.O(otorhinolaryngology)', institution: 'Madras Medical College-Chennai', year: '2009-2011' },
+    superSpeciality: { degree: 'M.D(Micro)', institution: 'Sri Ramachandra Medical College-Chennai', year: '2016-2019' },
+    fellowships: ['PhD(Dermato-Mycology), Sri Ramachandra University-Chennai, 2016-2020'],
     areasOfExpertise: [
       'Bacteriology- Media preparation',
       'Staining',
@@ -327,14 +279,9 @@ export const doctors: Doctor[] = [
       'Immuno-Fluorescence test',
     ],
     about: [
-      'BEST POSTER PRESENTATION at SIHAMS (Indian Society of Human and Animal Mycology) 2018 – “A rare isolate of Stephanoascus ciferrii in a post mastoidectomy patient-A case report”',
+      'BEST POSTER PRESENTATION at SIHAMS (Indian Society of Human and Animal Mycology) 2018 – "A rare isolate of Stephanoascus ciferrii in a post mastoidectomy patient-A case report"',
       'BEST OUTGOING STUDENT-GOLD MEDALIST in M.D Microbiology in Sri Ramachandra University',
-      'BEST ORAL PRESENTATION (Indian Association of Medical Microbiologist IAMM) -E-MICROCON 2020-virtual- “Phylogenetic analysis, Molecular Identification, and anti-fungal susceptibility (virtual)',
-    ],
-    education: [
-      { degree: 'M.B.B.S', institution: 'The TN Dr.MGR Medical ,2001-2007' },
-      { degree: 'D.L.O(otorhinolaryngology),M.D(Micro)', institution: 'Madras Medical College-Chennai,2009-2011,Sri Ramachandra  Medical College-Chennai 2016-2019' },
-      { degree: 'PhD(Dermato-Mycology)', institution: 'Sri Ramachandra University-Chennai,2016-2020' },
+      'BEST ORAL PRESENTATION (Indian Association of Medical Microbiologist IAMM) -E-MICROCON 2020-virtual- "Phylogenetic analysis, Molecular Identification, and anti-fungal susceptibility (virtual)',
     ],
     experience: [
       'Lab Director and Hospital Infectious control officer',
@@ -350,24 +297,17 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-dinesh-r',
     name: 'Dr. Dinesh R',
-    specialty: 'Hemato-Oncology, Bone marrow transplantation',
+    specialties: ['Hemato-Oncology', 'Bone marrow transplantation'],
     designation: 'Assistant Professor',
     department: { slug: 'medical-oncology', title: 'Medical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MD (General Medicine)',
-      'DM (Medical Oncology)',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'Saveetha University', year: '2008-2013' },
+    postgraduateQualification: { degree: 'MD (General Medicine)', institution: 'JIPMER', year: '2016-2018' },
+    superSpeciality: { degree: 'DM (Medical Oncology)', institution: 'Madras Medical College, MGR University', year: '2020-2023' },
     areasOfExpertise: [
       'Hemato Oncology, Bone marrow transplantation',
     ],
     about: [
       'Dr. Dinesh R is a Assistant Professor at the Cancer Institute (WIA), Chennai. Specializing in Hemato-Oncology, Bone marrow transplantation. Best Endowment award in MD, JIPMER Dr Subramaniam gold medal in DM Medical Oncology, MMC',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'Saveetha University, 2008-2013' },
-      { degree: 'MD (General Medicine)', institution: 'JIPMER, 2016-2018' },
-      { degree: 'DM (Medical Oncology)', institution: 'Madras Medical College, MGR University, 2020-2023' },
     ],
     experience: [
       'Consultant, Medical Oncology, VS Hospital, Chetpet, Chennai',
@@ -379,14 +319,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-thuthi-mohan',
     name: 'Dr. Thuthi Mohan',
-    specialty: 'Endocrine, Tumor Markers & Myeloma',
+    specialties: ['Endocrine', 'Tumor Markers', 'Myeloma'],
     designation: 'Head of Department',
     department: { slug: 'microbiology', title: 'Microbiology' },
-    qualifications: [
-      'MBBS',
-      'MD Biochemistry',
-      'NABL Lead Assessor',
-      'Quality Council of India',
+    primaryDegree: { degree: 'MBBS', institution: 'Madras University', year: '1986' },
+    postgraduateQualification: { degree: 'MD Biochemistry', institution: 'Madras University', year: '1989' },
+    fellowships: [
+      'NABL Lead Assessor, Quality Council of India, St John\'s University 2001',
       'WHO Fellowship in Quality Management',
     ],
     areasOfExpertise: [
@@ -402,11 +341,6 @@ export const doctors: Doctor[] = [
     about: [
       'Dr. Thuthi Mohan is a Head of Department at the Cancer Institute (WIA), Chennai. Specializing in Endocrine, Tumor Markers & Myeloma. Best Doctor Award MGR Medical University for exemplary work in the field of Laboratory Medicine',
     ],
-    education: [
-      { degree: 'MBBS', institution: 'Madras University 1986' },
-      { degree: 'MD Biochemistry', institution: 'Madras University 1989' },
-      { degree: 'NABL Lead Assessor, Quality Council of India', institution: 'St John\'s University 2001' },
-    ],
     experience: [
       'Head of Hospital Central Laboratory and Department of Clinical Biochemistry  ESIC PGIMSR Medical College KK Nagar 25 years',
       'Senior Consultant and HOD Department of Clinical Biochemistry MGM Healthcare 2 years',
@@ -417,22 +351,16 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-nivedhyaa-srinivasaraghavan',
     name: 'Dr. Nivedhyaa Srinivasaraghavan',
-    specialty: 'Anesthesia',
+    specialties: ['Anesthesia'],
     designation: 'Consultant',
     department: { slug: 'anaesthesia-pain', title: 'Anaesthesia & Pain Management' },
-    qualifications: [
-      'MBBS',
-      'MD Anesthesia',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'Calicut University', year: '2007' },
+    postgraduateQualification: { degree: 'MD Anesthesia', institution: 'Madras Medical College', year: '2013' },
     areasOfExpertise: [
       'Anesthesia for HIPEC surgeries, Statistics and Research',
     ],
     about: [
       'Dr.Nivedhyaa is an associate professor at Cancer Institute, Chennai with expertise in anesthesia and cancer care. She has been working in Cancer institute for the last ten years. She holds an MD in Anesthesia and has further pursued specialised courses in palliative care and oncology nutrition. With extensive experience in diverse anesthesia scenarios including cytoreductive surgeries and HIPEC, she actively contributes to research evidenced by numerous publications in international journals with a meta-analysis to her credit. Beyond anesthesia, Dr Nivedhyaa enjoys sports, travel and classical music. She also dedicates herself to medical education conducting ACLS and BLS programs while facilitating and conducting debriefing sessions in  simulation training in anesthesia through Vital Anesthesia Simulation Training (VAST).She is also part of the newsletter team at Cancer Institute.',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'Calicut University,2007' },
-      { degree: 'MD Anesthesia', institution: 'Madras Medical College,2013' },
     ],
     experience: [
       'Consultant Anesthetist at Neurosurgery,VHS , Chennai',
@@ -443,13 +371,11 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-subramanian-h-a',
     name: 'Dr. Subramanian H A',
-    specialty: 'Anesthesia for pediatric,geriatric,head and neck, urology, musculoskeletal,breast, gynaecology,, gastro intestinal surgery, neurosurgery, plastic, robotic, medical gastroenterology,radiology suite,radiation therapy',
+    specialties: ['Anesthesia'],
     designation: 'Associate Professor',
     department: { slug: 'anaesthesia-pain', title: 'Anaesthesia & Pain Management' },
-    qualifications: [
-      'MBBS',
-      'MD (Anesthesiology and Intensive care)',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'Tirunelveli medical College, Dr MGR medical University', year: '1993-1999' },
+    postgraduateQualification: { degree: 'MD (Anesthesiology and Intensive care)', institution: 'AIIMS, NEWDELHI', year: '2002-2004' },
     areasOfExpertise: [
       'Pediatric',
       'Geriatric',
@@ -465,10 +391,6 @@ export const doctors: Doctor[] = [
     about: [
       'Medalist in anatomy, pharmacology, pediatrics. Topper in biochemistry, Pathology, Community medicine,  Topper in MD Anesthesiology',
     ],
-    education: [
-      { degree: 'MBBS', institution: 'Tirunelveli medical College, Dr MGR medical University. 1993-1999' },
-      { degree: 'MD (Anesthesiology and Intensive care)', institution: 'AIIMS, NEWDELHI, 2002-2004' },
-    ],
     experience: [
       'Associate Professor, Adyar Cancer institute 2021 - present',
       'Senior consultant, Global Hospitals, Chennai 2012 - 2020',
@@ -483,13 +405,11 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-deepa-devi-g',
     name: 'Dr. Deepa Devi. G',
-    specialty: 'Blood Centre',
+    specialties: ['Blood Centre'],
     designation: 'Head of Department',
     department: { slug: 'quality-control', title: 'Quality Control & Support Services' },
-    qualifications: [
-      'M.B.B.S.',
-      'M.D( ImmunoHaematology & Blood Transfusion)',
-    ],
+    primaryDegree: { degree: 'M.B.B.S.', institution: 'The Tamil Nadu Dr. M.G.R Medical University-Chennai', year: '2000' },
+    postgraduateQualification: { degree: 'M.D( ImmunoHaematology & Blood Transfusion)', institution: 'The Tamil Nadu Dr.M.G.R Medical University', year: '2013' },
     areasOfExpertise: [
       'Peripheral Blood Stem cell collection',
       'Apheresis procedures - Donor and Therapeutic',
@@ -498,10 +418,6 @@ export const doctors: Doctor[] = [
     ],
     about: [
       'Awarded The Tamil Nadu Dr.M.G.R. University Gold Medal for securing the highest mark in Post Graduate degree course in MD (ImmunoHaematology and Blood Transfusion) in the University examination held during April 2013.',
-    ],
-    education: [
-      { degree: 'M.B.B.S.', institution: 'The Tamil Nadu Dr. M.G.R Medical University-Chennai 2000' },
-      { degree: 'M.D( ImmunoHaematology & Blood Transfusion)', institution: 'The Tamil Nadu Dr.M.G.R Medical University 2013' },
     ],
     experience: [
       'Head of the Blood Centre, Cancer Institute(W.I.A), Chennai from 13.10.2021 till date',
@@ -517,13 +433,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-aravind-narayanan',
     name: 'Dr. Aravind Narayanan',
-    specialty: 'Onco-Anaesthesia',
+    specialties: ['Onco-Anaesthesia'],
     designation: 'Associate Professor',
     department: { slug: 'anaesthesia-pain', title: 'Anaesthesia & Pain Management' },
-    qualifications: [
-      'MBBS',
-      'MD (Anaesthesiology & Critical Care)',
-      'DNB (Anaesthesiology)',
+    primaryDegree: { degree: 'MBBS', institution: 'BMC & RI, Bangalore', year: '1993-1999' },
+    postgraduateQualification: { degree: 'MD (Anaesthesiology & Critical Care)', institution: 'JIPMER- Pondicherry', year: '2000-2003' },
+    superSpeciality: { degree: 'DNB (Anaesthesiology)', institution: 'National Board', year: '2003' },
+    fellowships: [
       'European Diplomate in Anaesthesia and Intensive Care(EDAIC), 2014',
       'Fellowship of College of Anaesthetists (FCAI), 2015',
     ],
@@ -535,11 +451,6 @@ export const doctors: Doctor[] = [
     ],
     about: [
       'Dr. Aravind Narayanan is a Associate Professor at the Cancer Institute (WIA), Chennai. Specializing in Onco-Anaesthesia. National Talent Scholar - 1991',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'BMC & RI, Bangalore, 1993-1999' },
-      { degree: 'MD (Anaesthesiology & Critical Care)', institution: 'JIPMER- Pondicherry, 2000-2003' },
-      { degree: 'DNB (Anaesthesiology)', institution: 'National Board, 2003' },
     ],
     experience: [
       'Senior Registrar, JIPMER, Pondicherry',
@@ -555,22 +466,16 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-a-hariesh',
     name: 'Dr. A. Hariesh',
-    specialty: 'Anaesthesia',
+    specialties: ['Anaesthesia'],
     designation: 'Assistant Professor',
     department: { slug: 'anaesthesia-pain', title: 'Anaesthesia & Pain Management' },
-    qualifications: [
-      'MBBS',
-      'MD (Anaesthesia)',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'Meenakshi University', year: '2009' },
+    postgraduateQualification: { degree: 'MD (Anaesthesia)', institution: 'SRM University', year: '2017' },
     areasOfExpertise: [
       'Difficult airway , Onco Anaesthesia',
     ],
     about: [
       '8 years experience as an anesthesiologist providing anaesthesia for radical oncology surgeries and  handling difficult airways',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'Meenakshi University, 2009' },
-      { degree: 'MD (Anaesthesia)', institution: 'SRM University (2017)' },
     ],
     experience: [
       'Senior Resident, Department of Anaesthesia , ESIC medical college, Chennai',
@@ -583,13 +488,11 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-nairita-das',
     name: 'Dr. Nairita Das',
-    specialty: 'Anaesthesia',
+    specialties: ['Anaesthesia'],
     designation: 'Assistant Professor',
     department: { slug: 'anaesthesia-pain', title: 'Anaesthesia & Pain Management' },
-    qualifications: [
-      'MBBS',
-      'MD (Anaesthesia)',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'Manipal Academy of Higher Education', year: '2011' },
+    postgraduateQualification: { degree: 'MD (Anaesthesia)', institution: 'Manipal Academy of Higher Education', year: '2014' },
     areasOfExpertise: [
       'Airway Management',
       'Onco-anaesthesia',
@@ -597,11 +500,7 @@ export const doctors: Doctor[] = [
       'Quality Improvement',
     ],
     about: [
-      'Dr Nairita Das is a practising anaesthesiologist with an overall experience of 15 years. She has a wide experience in independently managing ASA 1 to 6 patients for a variety of complex surgical procedures. Her special interests include onco-anaesthesia, difficult airway management, TIVA, regional anaesthesia and quality improvement. She is a member of several national societies like ISA, SOAPC and AIDAA. Some of her research activities include Quality Improvement Project titled ‘Striving to Improve Compliance to International Fasting Guidelines, Intra-operative hypotension with three different epidural infusions in patients undergoing laparotomy(RCT) and Comparison of a Novel Technique for Fibreoptic-guided Intubation through an I-gel® with the Aintree Technique. She has written book chapters in oncoanaesthesia textbooks and published \'How I do it\' series with the Indian College of Anaesthetists. Her awards include Phanendranath Thota award for the Best Outgoing Resident of Anaesthesiology,Best Poster Award at National Airway Conference (AIDAA) 2025 at Udaipur among others.',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'Manipal Academy of Higher - 2011' },
-      { degree: 'MD (Anaesthesia)', institution: 'Manipal Academy of Higher Education 2014' },
+      'Dr Nairita Das is a practising anaesthesiologist with an overall experience of 15 years. She has a wide experience in independently managing ASA 1 to 6 patients for a variety of complex surgical procedures. Her special interests include onco-anaesthesia, difficult airway management, TIVA, regional anaesthesia and quality improvement. She is a member of several national societies like ISA, SOAPC and AIDAA. Some of her research activities include Quality Improvement Project titled \'Striving to Improve Compliance to International Fasting Guidelines, Intra-operative hypotension with three different epidural infusions in patients undergoing laparotomy(RCT) and Comparison of a Novel Technique for Fibreoptic-guided Intubation through an I-gel\u00ae with the Aintree Technique. She has written book chapters in oncoanaesthesia textbooks and published \'How I do it\' series with the Indian College of Anaesthetists. Her awards include Phanendranath Thota award for the Best Outgoing Resident of Anaesthesiology,Best Poster Award at National Airway Conference (AIDAA) 2025 at Udaipur among others.',
     ],
     experience: [
       'Assistant Professor, Dept of Anaesthesia and Pain Management, Chennai.( Current)',
@@ -615,23 +514,17 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-pritha-raj',
     name: 'Dr. Pritha Raj',
-    specialty: 'Anesthesiology',
+    specialties: ['Anesthesiology'],
     designation: 'Professor',
     department: { slug: 'anaesthesia-pain', title: 'Anaesthesia & Pain Management' },
-    qualifications: [
-      'MBBS MD',
-      'MD ANESTHESIOLOGY',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'TAMILNADU DR.MGR MEDICAL UNIVERSITY', year: '2007-2013' },
+    postgraduateQualification: { degree: 'MD ANESTHESIOLOGY', institution: 'MUHS-NASHIK', year: '2013-2016' },
     areasOfExpertise: [
       'Airway management',
       'Regional Anesthesia',
     ],
     about: [
       'Dr. Pritha Raj is a Professor at the Cancer Institute (WIA), Chennai. Specializing in Anesthesiology. Ranked No.5 in the MD university exams in MUHS-Nashik 2016',
-    ],
-    education: [
-      { degree: 'MBBS MD', institution: 'TAMILNADU DR.MGR MEDICAL UNIVERSITY- 2007-2013' },
-      { degree: 'MD ANESTHESIOLOGY', institution: 'MUHS-NASHIK 2013-2016' },
     ],
     experience: [
       'Senior Resident-2016-2019 PSGIMSR,COIMBATORE',
@@ -645,25 +538,18 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-nvivekanandan',
     name: 'Dr. N.vivekanandan',
-    specialty: 'Medical Physics',
+    specialties: ['Medical Physics'],
     designation: 'Professor & Head of Department',
     department: { slug: 'radiation-oncology', title: 'Radiation Oncology' },
-    qualifications: [
-      'BSc',
-      'M.Sc Medical Physics',
-      'Ph.D in Medical Physics (BioMedical Sciences))',
-      'Guide in Medical Physics Anna university and Tamilnadu Dr MGR Medical University',
-    ],
+    primaryDegree: { degree: 'BSc', institution: 'Madras University', year: '1988' },
+    postgraduateQualification: { degree: 'M.Sc Medical Physics', institution: 'Anna University', year: '1990' },
+    superSpeciality: { degree: 'Ph.D in Medical Physics (BioMedical Sciences)', institution: 'Tamilnadu Dr MGR Medical University', year: '2003' },
+    fellowships: ['Guide in Medical Physics Anna university and Tamilnadu Dr MGR Medical University'],
     areasOfExpertise: [
       'Treatment Planning, Radiation Safety, Research and Teaching',
     ],
     about: [
       'Dr. N.vivekanandan is a Professor & Head of Department at the Cancer Institute (WIA), Chennai. Specializing in Medical Physics. Guided 12  students and registered 5 students for phD',
-    ],
-    education: [
-      { degree: 'BSc', institution: 'Madras University, 1988' },
-      { degree: 'M.Sc Medical Physics', institution: 'Anna University ,1990' },
-      { degree: 'Ph.D in Medical Physics (BioMedical Sciences))', institution: 'Tamilnadu Dr MGR Medical University ,2003' },
     ],
     experience: [
       'Medical Physicist and RSO from 1993 to 2007.',
@@ -675,12 +561,12 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-meenakshi-v-v',
     name: 'Dr. Meenakshi V V',
-    specialty: 'Palliative Medicine',
+    specialties: ['Palliative Medicine'],
     designation: 'Head of Department',
     department: { slug: 'palliative-medicine', title: 'Palliative Medicine' },
-    qualifications: [
-      'MBBS',
-      'DA',
+    primaryDegree: { degree: 'MBBS', institution: 'The Tamilnadu Dr.MGR Medical University', year: '1999' },
+    postgraduateQualification: { degree: 'DA', institution: 'The Tamilnadu Dr.MGR Medical University', year: '2004' },
+    fellowships: [
       'MD (Anesthesia)',
       'DNB (Anesthesia)',
       'National Fellowship in Palliative Medicine',
@@ -691,10 +577,6 @@ export const doctors: Doctor[] = [
     about: [
       'Dr. Meenakshi V.V. is currently Head of department of Palliative Medicine at the Cancer Institute (WIA), Chennai, India. She completed her MBBS from Kilpauk Medical College, Chennai, followed by a Diploma and MD in Anaesthesia from Christian Medical College, Vellore, and a DNB in Anaesthesia. She holds a National Fellowship in Palliative Medicine from the Institute of Palliative Medicine, Kozhikode. Dr. Meenakshi has spent a significant part of her career as an anesthetist in Cancer Institute (WIA), Chennai. She began formal training in Palliative Care in 2016. From working part-time in Palliative Care, she changed track to Palliative Care in Oncology from 2021. Her research work includes publications on topics like perioperative management and cancer pain management. She has presented papers at national and international conferences and is actively involved in educational courses and workshops related to palliative care. Dr. Meenakshi is a life member of the Indian Association of Palliative Care, Indian Society of Anaesthesiology, and the Society of Onco-anaesthesia and Perioperative Care. Her special interests include palliative care in oncology, methadone use, and malignant bowel obstruction. She has contributed significantly to improving early referral of advanced cancer patients to palliative care in her institution and has participated in various professional development workshops and quality improvement programs, highlighting her dedication to advancing palliative care services both within the institution and contributing towards building capacity in India.',
     ],
-    education: [
-      { degree: 'MBBS', institution: 'The Tamilnadu Dr.MGR Medical University-1999' },
-      { degree: 'DA, MD (Anesthesia), DNB (Anesthesia)', institution: 'The Tamilnadu Dr.MGR Medical University-2004' },
-    ],
     experience: [
       'Head, Department of Palliative Medicine, Adyar, Chennai-36',
     ],
@@ -704,13 +586,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-balaji-s',
     name: 'Dr. Balaji S',
-    specialty: 'Neurosurgery,ENT',
+    specialties: ['Neurosurgery', 'ENT'],
     designation: 'Assistant Professor',
     department: { slug: 'surgical-oncology', title: 'Surgical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MS(ENT)',
-      'DrNB Neurosurgery',
+    primaryDegree: { degree: 'MBBS', institution: 'PSG-Tamilnadu Dr MGR Medical University', year: '2009-2015' },
+    postgraduateQualification: { degree: 'MS(ENT)', institution: 'Govt Medical College Bhavnagar', year: '2015-2018' },
+    superSpeciality: { degree: 'DrNB Neurosurgery', institution: 'Meenakshi Mission Hospital National Board', year: '2018-2022' },
+    fellowships: [
       'Fellowship in Gamma Knife and Skullbase PD Hinduja Dec 2023',
       'Fellowship in Endoscopic Skullbase Bombay Hospitals May 2024',
     ],
@@ -721,11 +603,6 @@ export const doctors: Doctor[] = [
     ],
     about: [
       'Dr. Balaji S is a Assistant Professor at the Cancer Institute (WIA), Chennai. Specializing in Neurosurgery,ENT. Gold Medal in Physiology  Several prizes in various paper,poster presentations and quizzes',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'PSG-Tamilnadu Dr MGR Medical University 2009-2015' },
-      { degree: 'MS(ENT)', institution: 'Govt Medical College Bhavnagar 2015-2018' },
-      { degree: 'DrNB Neurosurgery', institution: 'Meenakshi Mission Hospital National Board 2018-2022' },
     ],
     experience: [
       'Assistant Professor Neurosurgery Melmaruvathur Adhi Parasakthi Institute of Medical Sciences',
@@ -738,13 +615,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-kunal-nandy',
     name: 'Dr. Kunal Nandy',
-    specialty: 'Gastrointestinal and Hepato-Pancreatico-Biliary (GI-HPB) Surgical Oncology',
+    specialties: ['Gastrointestinal and Hepato-Pancreatico-Biliary (GI-HPB) Surgical Oncology'],
     designation: 'Consultant',
     department: { slug: 'surgical-oncology', title: 'Surgical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MS (General Surgery)',
-      'MCh (Surgical Oncology)',
+    primaryDegree: { degree: 'MBBS', institution: 'KEM Hospital, Mumbai', year: '2009-2015' },
+    postgraduateQualification: { degree: 'MS (General Surgery)', institution: 'KEM Hospital, Mumbai', year: '2015-2018' },
+    superSpeciality: { degree: 'MCh (Surgical Oncology)', institution: 'GCRI, Ahmedabad', year: '2018-2021' },
+    fellowships: [
       'Fellowship in Minimally Invasive Surgical Oncology, Fortis Hospital, Bengaluru (Rajiv Gandhi University of Health Sciences, RGUHS, Karnataka)—2021-2022',
       'Fellowship in Gastrointestinal and Hepato-Pancreatico-Biliary (GI-HPB) Surgical Oncology, Tata Memorial Hospital, Mumbai (Homi Bhabha National Institute, HBNI) 2022-2024',
     ],
@@ -761,11 +638,6 @@ export const doctors: Doctor[] = [
       'Dr. Kunal Nandy is a Hepatobiliary, Pancreatic, and Gastrointestinal Surgical Oncologist and a formally trained robotic surgeon, with advanced expertise in open, laparoscopic, and robotic cancer surgery. His clinical practice combines technical precision with a strong academic focus, particularly in complex hepatopancreatobiliary (HPB) and Gastrointestinal oncology.',
       'An academically distinguished surgeon from the outset, Dr. Nandy was a rank holder in the All India Pre-Medical Test (AIPMT) and completed his MBBS from Seth GS Medical College and KEM Hospital, Mumbai. He pursued a Master of Surgery (General Surgery) at the same institute, where he developed strong operative fundamentals and contributed to multiple peer-reviewed publications.',
       'With a focused interest in pancreatic cancer and surgical oncology, Dr. Nandy secured an All India Rank 20 in the super-specialty entrance examination and completed his MCh in Surgical Oncology at the Gujarat Cancer and Research Institute, Ahmedabad. During this period, he independently performed over 500 oncological surgeries, encompassing gastrointestinal, hepatobiliary, pancreatic, breast, soft-tissue, and retroperitoneal malignancies.',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'KEM Hospital,Mumbai, 2009-2015' },
-      { degree: 'MS (General Surgery)', institution: 'KEM Hospital,Mumbai, 2015-2018' },
-      { degree: 'MCh (Surgical Oncology)', institution: 'GCRI, Ahmedabad, 2018-2021' },
     ],
     experience: [
       'Consultant GI-HPB Surgical Oncologist at Bagchi Sri Shankara Cancer Centre and Research Institute, Bhubaneswar, Odisha-2024-2025',
@@ -804,22 +676,15 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-raksha-r',
     name: 'Dr. Raksha R',
-    specialty: 'Breast',
+    specialties: ['Breast'],
     designation: 'Consultant',
     department: { slug: 'surgical-oncology', title: 'Surgical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MS DNB General Surgery',
-      'Mch Surgical oncology',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'RGUHS', year: '2015' },
+    postgraduateQualification: { degree: 'MS DNB General Surgery', institution: 'NITTE / NBE', year: '2021' },
+    superSpeciality: { degree: 'Mch Surgical oncology', institution: 'TN MGR', year: '2022' },
     areasOfExpertise: [],
     about: [
       'Dr. Raksha R is a Consultant at the Cancer Institute (WIA), Chennai. Specializing in Breast.',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'RGUHS 2015' },
-      { degree: 'MS DNB General Surgery', institution: 'NITTE / NBE 2021' },
-      { degree: 'Mch Surgical oncology', institution: 'TN MGR 2022' },
     ],
     experience: [],
     linkedin: '',
@@ -828,13 +693,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-chandra-kumar-krishnan',
     name: 'Dr. Chandra Kumar Krishnan',
-    specialty: 'Orthopaedic Oncology',
+    specialties: ['Orthopaedic Oncology'],
     designation: 'Associate Professor',
     department: { slug: 'surgical-oncology', title: 'Surgical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MS (Orthopaedics)',
-      'Diploma in Tissue Banking',
+    primaryDegree: { degree: 'MBBS', institution: 'The Tamilnadu Dr.MGR Medical University', year: '2003-2009' },
+    postgraduateQualification: { degree: 'MS (Orthopaedics)', institution: 'Delhi University', year: '2011-2014' },
+    fellowships: [
+      'Diploma in Tissue Banking, National University Singapore, 2014-2015',
       'Fellowship in Orthopaedic Oncology, Seoul National University Hospital, 2016',
     ],
     areasOfExpertise: [
@@ -847,11 +712,6 @@ export const doctors: Doctor[] = [
       'Orthopaedic Oncologist with 10+ years of experience in extremity sarcomas, metastatic bone disease, and cutaneous malignancies. Expertise in limb salvage surgery, biological and endoprosthetic reconstruction, and advanced techniques including 3D-printed prostheses, rotationplasty, and isolated limb perfusion (ILP).',
       'Established and independently manage a functional Bone Bank at a regional cancer centre',
       'Extensive experience with modular, expandable, custom-made, and biological reconstructions',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'The Tamilnadu Dr.MGR Medical University, 2003-2009' },
-      { degree: 'MS (Orthopaedics)', institution: 'Delhi University, 2011-2014' },
-      { degree: 'Diploma in Tissue Banking', institution: 'National University Singapore, 2014-2015' },
     ],
     experience: [
       'Associate Professor, Orthopaedic Oncology',
@@ -867,12 +727,12 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-ashik-a-bary',
     name: 'Dr. Ashik A Bary',
-    specialty: 'Musculoskeletal Oncosurgery',
+    specialties: ['Musculoskeletal Oncosurgery'],
     designation: 'Assistant Professor',
     department: { slug: 'surgical-oncology', title: 'Surgical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MS Orthopedics',
+    primaryDegree: { degree: 'MBBS', institution: 'Cochin University of Science and Technology', year: '2009' },
+    postgraduateQualification: { degree: 'MS Orthopedics', institution: 'Manipur University', year: '2015' },
+    fellowships: [
       'Fellowship in joint replacement surgery, SK Hospital, 2017',
       'Fellowship in Orthopedic Oncosurgery, Tata Memorial Hospital, 2019',
       'Fellowship in Orthopedic Oncosurgery, Hinduja Hospital, 2021',
@@ -892,10 +752,6 @@ export const doctors: Doctor[] = [
       'Dr Ashik Bary is a dedicated Orthopedic Oncosurgeon who specializes in bone, soft tissue tumors and skin malignancies. He has extensive experience in complex oncologic reconstructions and is actively involved in isolated limb perfusion for extremity sarcomas and bone banking.',
       'With multiple peer-reviewed publications and experience as a journal reviewer, and recognized for his meticulous surgical technique and dedication to limb salvage principles, Dr. Ashik Bary continues to contribute significantly to improving functional and oncological outcomes in bone tumor surgery.',
     ],
-    education: [
-      { degree: 'MBBS', institution: 'Cochin University of Science and Technology, 2009' },
-      { degree: 'MS Orthopedics', institution: 'Manipur University, 2015' },
-    ],
     experience: [
       'Assistant Professor(Musculoskeletal Oncology) in Department of Surgical Oncology, Cancer Institute Adyar(WIA), Chennai',
       'Attending Consultant in Orthopedic Oncology, Nanavati Max Super Speciality hospital, Mumbai.',
@@ -908,12 +764,12 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-ujwala-prakash-wakpaijan',
     name: 'Dr. Ujwala Prakash wakpaijan',
-    specialty: 'Gynaecological Oncology',
+    specialties: ['Gynaecological Oncology'],
     designation: 'Associate Professor',
     department: { slug: 'gynaecological-oncology', title: 'Gynaecological Oncology' },
-    qualifications: [
-      'MBBS',
-      'MD )Obstetrics and gynaecology',
+    primaryDegree: { degree: 'MBBS', institution: 'DABM university, Aurangabad, Maharashtra', year: '1994' },
+    postgraduateQualification: { degree: 'MD (Obstetrics and gynaecology)', institution: 'DABM university, Aurangabad, Maharashtra', year: '1998' },
+    fellowships: [
       'Fellowship in Surgical Oncology, Tata Memorial Hospital, 2012',
     ],
     areasOfExpertise: [
@@ -929,12 +785,8 @@ export const doctors: Doctor[] = [
       'Comprehensive management of preinvasive cervical lesions & colposcopy',
     ],
     about: [
-      'A Gynecologic Oncologist with over 15 years of experience in comprehensive women’s cancer care. Her clinical expertise includes advanced cytoreductive surgeries for epithelial ovarian cancer, precision-based surgical staging, and minimally invasive as well as robotic-assisted oncologic procedures. She is actively involved in multidisciplinary management of advanced ovarian malignancies, integrating surgery with systemic and targeted therapies in line with contemporary ESGO and NCCN principles.',
+      'A Gynecologic Oncologist with over 15 years of experience in comprehensive women\u2019s cancer care. Her clinical expertise includes advanced cytoreductive surgeries for epithelial ovarian cancer, precision-based surgical staging, and minimally invasive as well as robotic-assisted oncologic procedures. She is actively involved in multidisciplinary management of advanced ovarian malignancies, integrating surgery with systemic and targeted therapies in line with contemporary ESGO and NCCN principles.',
       'Her academic interests focus on optimizing surgical outcomes, enhancing perioperative care, and expanding access to technology-driven cancer treatment. Dr. Prakash regularly contributes to national conferences and training programs in gynecologic oncology.',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'DABM university,  Aurangabad ,Maharashtra 1994' },
-      { degree: 'MD )Obstetrics and gynaecology', institution: 'DABM university,  Aurangabad ,Maharashtra 1998' },
     ],
     experience: [
       'Associate Professor 	Gynaecological Oncology 	Cancer Institute, Chennai 	May 2018 	Present',
@@ -950,15 +802,12 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-k-shalini-shree',
     name: 'Dr. K Shalini Shree',
-    specialty: 'Uro- oncology and musculoskeletal oncology',
+    specialties: ['Uro-oncology', 'Musculoskeletal oncology'],
     designation: 'Assistant Professor',
     department: { slug: 'surgical-oncology', title: 'Surgical Oncology' },
-    qualifications: [
-      'MBBS',
-      'DNB General Surgery',
-      'M. Ch Surgical Oncology',
-      'Not applicable',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'Saratov state medical university', year: '2004-2010' },
+    postgraduateQualification: { degree: 'DNB General Surgery', institution: 'National Board of Examinations, New Delhi', year: '2015-2018' },
+    superSpeciality: { degree: 'M. Ch Surgical Oncology', institution: 'Tamilnadu Dr MGR Medical University', year: '2019-2023' },
     areasOfExpertise: [
       'Nephrectomy',
       'Cystectomy',
@@ -971,11 +820,6 @@ export const doctors: Doctor[] = [
     about: [
       'I am a Surgical Oncologist with a special interest in Urologic and Musculoskeletal Oncology. As a dedicated cancer surgeon, I am committed to delivering evidence-based, patient-centered care with a strong emphasis on precision surgery and optimal oncologic outcomes. I am engaged in clinical research and academic activities',
     ],
-    education: [
-      { degree: 'MBBS', institution: 'Saratov state medical university, 2004-2010' },
-      { degree: 'DNB General Surgery', institution: 'National Board of Examinations, New Delhi, 2015-2018' },
-      { degree: 'M. Ch Surgical Oncology', institution: 'Tamilnadu Dr MGR Medical University 2019-2023' },
-    ],
     experience: [
       'Assistant Professor since 2023 at Cancer Institute WIA, Adyar',
     ],
@@ -985,13 +829,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-jayashree-n',
     name: 'Dr. (Maj) Jayashree N',
-    specialty: 'Gynaecological Cancers',
+    specialties: ['Gynaecological Cancers'],
     designation: 'Assistant Professor',
     department: { slug: 'gynaecological-oncology', title: 'Gynaecological Oncology' },
-    qualifications: [
-      'MBBS',
-      'MS (obstetrics and Gynaecology)',
-      'MCh ( Gynaecologic Oncology)',
+    primaryDegree: { degree: 'MBBS', institution: 'Tamil Nadu Dr MGR Medical University', year: '1997-2003' },
+    postgraduateQualification: { degree: 'MS (obstetrics and Gynaecology)', institution: 'Rajiv Gandhi University of Health Sciences', year: '2010-2013' },
+    superSpeciality: { degree: 'MCh ( Gynaecologic Oncology)', institution: 'AIIMS -New Delhi', year: '2017-2020' },
+    fellowships: [
       'Post doctoral Fellowship in Gynaecological Oncology, Kidwai Memorial Institute Of Oncology, Bangalore, 2014-15',
     ],
     areasOfExpertise: [
@@ -1008,11 +852,6 @@ export const doctors: Doctor[] = [
     about: [
       'FIGO Chien-Tien-Tsu Fellowship in Gyn Oncology, FMUSP, Brazil; ASGO 2015 Best Free Paper Award; ASGO 2018 YDS travel grant',
     ],
-    education: [
-      { degree: 'MBBS', institution: 'Tamil Nadu Dr MGR Medical University, 1997- 2003' },
-      { degree: 'MS (obstetrics and Gynaecology)', institution: 'Rajiv Gandhi University of Health Sciences, 2010-2013' },
-      { degree: 'MCh ( Gynaecologic Oncology)', institution: 'AIIMS -New Delhi, 2017-2020' },
-    ],
     experience: [
       'Assistant Professor, Department of Gynaecological Oncology, Amrita Institute of Medical Sciences, Kochi (2016)',
     ],
@@ -1022,14 +861,12 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-vnandhini',
     name: 'Dr. V.Nandhini',
-    specialty: 'Thoracic',
+    specialties: ['Thoracic'],
     designation: 'Consultant',
     department: { slug: 'surgical-oncology', title: 'Surgical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MS (General surgery)',
-      'Mch (Surgical oncology)',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'The Tamilnadu Dr Mgr medical University', year: '2011-2016' },
+    postgraduateQualification: { degree: 'MS (General surgery)', institution: 'The Tamilnadu Dr Mgr medical University', year: '2018-2021' },
+    superSpeciality: { degree: 'Mch (Surgical oncology)', institution: 'Rajiv Gandhi University of health sciences', year: '2021-2025' },
     areasOfExpertise: [
       'Worked in surgical oncology unit during my residency',
       'assisting & performing surgeries addressing thoracic',
@@ -1039,11 +876,6 @@ export const doctors: Doctor[] = [
     ],
     about: [
       '1. Best Video Presentation Award in 3rd Indian Cancer Congress 2023 2. Best Video Presentation Award in MIDCON IASO 2024 3. Best Oral paper presentation Award in NATCON 2024',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'The Tamilnadu Dr Mgr medical University, 2011- 2016' },
-      { degree: 'MS (General surgery)', institution: 'The Tamilnadu Dr Mgr medical University, 2018 - 2021' },
-      { degree: 'Mch (Surgical oncology)', institution: 'Rajiv Gandhi University of health sciences, 2021-2025' },
     ],
     experience: [
       'Internship February 2016- March 2017',
@@ -1056,16 +888,14 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-amy-jose',
     name: 'Dr. Amy Jose',
-    specialty: 'Gynaecological malignancies - Uterus, cervix, ovary, vulva, gestational trophoblastic neoplasia',
+    specialties: ['Gynaecological malignancies'],
     designation: 'Assistant Professor',
     department: { slug: 'gynaecological-oncology', title: 'Gynaecological Oncology' },
-    qualifications: [
-      'MBBS',
-      'MS (Obstetrics and Gynaecology)',
-      'DNB (Obstetrics and Gynaecology)',
-      'Post Doctoral Fellowship in Gynaecological Oncology',
-      'Post Doctoral Fellowship in Gynaecological Oncology -Christian Medical College ,',
-      'Vellore (July 2017- June 2019)',
+    primaryDegree: { degree: 'MBBS', institution: 'Madurai Medical College, The TamilNadu Dr. MGR Medical University, Chennai', year: '2004-2009' },
+    postgraduateQualification: { degree: 'MS (Obstetrics and Gynaecology)', institution: 'Govt medical College Trivandrum, Kerala University of Health Sciences', year: '2011-2014' },
+    superSpeciality: { degree: 'Post Doctoral Fellowship in Gynaecological Oncology', institution: 'Christian Medical College, Vellore, Tamilnadu Dr. MGR Medical University', year: '2017-2019' },
+    fellowships: [
+      'DNB (Obstetrics and Gynaecology), Directorate of National Board of Examinations, 2014',
       'Certificate Course in Essentials of Palliative Care- Sep 2021 (IAPC)',
       'Basic Course in Biomedical Research- Nov 2021(NPTEL, IITM)',
       'Fellowship and Diploma in Minimal Access Surgery - Feb 2024 (Medicity)',
@@ -1086,13 +916,8 @@ export const doctors: Doctor[] = [
     ],
     about: [
       'Dr Amy Jose is an Assistant Professor in the Department of Gynaecological Oncology at the Cancer Institute (WIA), Adyar, Chennai, with over six years of specialised experience in the surgical management of gynaecological malignancies. Her clinical practice is strongly focused on advanced oncologic surgery and multidisciplinary cancer care.',
-      'A Gold Medalist during her postgraduate training, she completed super specialty fellowship training in Gynaecological Oncology at Christian Medical College, Vellore (2017–2019), where she gained high-volume exposure to complex pelvic oncologic procedures. She further holds a Fellowship and Diploma in Minimal Access Surgery (2024), along with formal training in palliative care and biomedical research.',
+      'A Gold Medalist during her postgraduate training, she completed super specialty fellowship training in Gynaecological Oncology at Christian Medical College, Vellore (2017\u20132019), where she gained high-volume exposure to complex pelvic oncologic procedures. She further holds a Fellowship and Diploma in Minimal Access Surgery (2024), along with formal training in palliative care and biomedical research.',
       'Her surgical expertise includes radical cytoreductive surgery for ovarian cancer, comprehensive staging and radical procedures, pelvic exenteration, and retroperitoneal lymphadenectomy. She is trained in Hyperthermic Intraperitoneal Chemotherapy (HIPEC) and sentinel lymph node mapping for endometrial and vulvar cancers. She performs laparoscopic and robotic oncologic surgeries, integrating minimally invasive approaches where oncologically appropriate.',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'Madurai Medical College, The TamilNadu Dr. MGR Medical University, Chennai, 2004-2009' },
-      { degree: 'MS (Obstetrics and Gynaecology), DNB (Obstetrics and Gynaecology)', institution: 'Govt medical College Trivandrum, Kerala University of Health Sciences, 2011-2014. Directorate of National Board of Examinations  2014' },
-      { degree: 'Post Doctoral Fellowship in Gynaecological Oncology', institution: 'Christian Medical College, Vellore,Tamilnadu Dr. MGR Medical University, 2017-2019' },
     ],
     experience: [
       'Assistant Professor: Department of Gynaecological Oncology, Cancer Institute',
@@ -1108,14 +933,12 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-kavin-nilavu-l',
     name: 'Dr. Kavin  Nilavu L',
-    specialty: 'Gynecological oncology',
+    specialties: ['Gynecological oncology'],
     designation: 'Consultant',
     department: { slug: 'gynaecological-oncology', title: 'Gynaecological Oncology' },
-    qualifications: [
-      'MBBS',
-      'MD (obstetric and Gynecology)',
-      'M.Ch (Gynecological oncology)',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'The Tamil Nadu Dr MGR university', year: '2013' },
+    postgraduateQualification: { degree: 'MD (obstetric and Gynecology)', institution: 'Postgraduate Institute of Medical Education and research, Chandigarh', year: '2018' },
+    superSpeciality: { degree: 'M.Ch (Gynecological oncology)', institution: 'Utkal university, Odisha', year: '2022' },
     areasOfExpertise: [
       'Comprehensive management of gynecologic malignancies including ovarian',
       'endometrial',
@@ -1129,12 +952,7 @@ export const doctors: Doctor[] = [
       'Integration of palliative care in advanced cancer management',
     ],
     about: [
-      'Dr. Kavin Nilavu L is a dedicated Gynecological Oncologist and academician committed to advancing women’s cancer care through evidence-based treatment, early detection strategies, and research-driven practice. With extensive training from leading medical institutions across India, Dr Kavin combines surgical expertise with compassionate patient-centered care. Her clinical work focuses on improving outcomes for women with gynecologic malignancies while promoting preventive oncology and screening initiatives.',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'The Tamil Nadu Dr MGR university & 2013' },
-      { degree: 'MD (obstetric and Gynecology)', institution: 'Postgraduate Institute of Medical Education and research, Chandigarh & 2018' },
-      { degree: 'M.Ch (Gynecological oncology)', institution: 'Utkal university, Odisha & 2022' },
+      'Dr. Kavin Nilavu L is a dedicated Gynecological Oncologist and academician committed to advancing women\u2019s cancer care through evidence-based treatment, early detection strategies, and research-driven practice. With extensive training from leading medical institutions across India, Dr Kavin combines surgical expertise with compassionate patient-centered care. Her clinical work focuses on improving outcomes for women with gynecologic malignancies while promoting preventive oncology and screening initiatives.',
     ],
     experience: [
       'senior resident - Acharya Harihar Postgraduate Institute of Cancer',
@@ -1146,12 +964,12 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-poorna-m-s',
     name: 'DR POORNA M S',
-    specialty: 'Anesthesia and Pain management',
+    specialties: ['Anesthesia', 'Pain management'],
     designation: 'Assistant Professor',
     department: { slug: 'anaesthesia-pain', title: 'Anaesthesia & Pain Management' },
-    qualifications: [
-      'MBBS',
-      'MD(Anesthesia)',
+    primaryDegree: { degree: 'MBBS', institution: 'Rajiv Gandhi University of Health Sciences', year: '2010' },
+    postgraduateQualification: { degree: 'MD(Anesthesia)', institution: 'JSS University', year: '2015' },
+    fellowships: [
       'FIAPM (Pain Medicine), Indian Academy of Pain Medicine- Indian Society for Study of Pain, 2021',
     ],
     areasOfExpertise: [
@@ -1165,10 +983,6 @@ export const doctors: Doctor[] = [
     about: [
       'Invited faculty at multiple State and National level conferences Invited faculty at various State and National level Pain management workshops Presented Paper and posters at various State and National level conferences',
     ],
-    education: [
-      { degree: 'MBBS', institution: 'Rajiv Gandhi University of Health Sciences, 2010' },
-      { degree: 'MD(Anesthesia)', institution: 'JSS University, 2015' },
-    ],
     experience: [
       'Consultant Anaesthesiologist and Intensivist at Bhanavi Hospital,Mysore, Karnataka, India. June 2015 - August 2016',
       'Registrar- Department of Anaesthesiology, Apollo Cradle, Karapakkam,                                                                                                       	Chennai. January 2017 - March 2018',
@@ -1181,15 +995,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-pavithras',
     name: 'Dr. Pavithra.S',
-    specialty: 'Head and neck oncology',
+    specialties: ['Head and neck oncology'],
     designation: 'Assistant Professor',
     department: { slug: 'surgical-oncology', title: 'Surgical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MS ( General Surgery )',
-      'Mch ( head and neck oncology )',
-      'Endoscopic thyroidectomy ,vietnam',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'Dr.NTR university of health sciences', year: '2011' },
+    postgraduateQualification: { degree: 'MS ( General Surgery )', institution: 'Dr NTR university of health sciences', year: '2017' },
+    superSpeciality: { degree: 'Mch ( head and neck oncology )', institution: '(Tata memorial hospital)Homi Bhabha National institute', year: '2021' },
+    fellowships: ['Endoscopic thyroidectomy, vietnam'],
     areasOfExpertise: [
       'Oral cavity cancers',
       'Thyroid and parathyroid surgery',
@@ -1198,11 +1010,6 @@ export const doctors: Doctor[] = [
     about: [
       'I\'m  dedicated and compassionate Head and Neck Oncology Surgeon  , Completed my Super speciality - MCh (Head and neck oncology) at the prestigious and world renowned Tata Memorial Centre,Mumbai,  Largest tertiary cancer care center in India , with a strong expertise in various complex procedures. My surgical experience encompasses:',
       'Throughout my career, I\'ve remained committed to delivering exceptional patient care with empathy and compassion. My goal is to provide personalized, state-of-the-art treatment options, ensuring the best possible outcomes for my patients."',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'Dr.NTR university of health sciences 2011' },
-      { degree: 'MS ( General Surgery )', institution: 'Dr NTR university of health sciences 2017' },
-      { degree: 'Mch ( head and neck oncology )', institution: '(Tata memorial hospital)Homi Bhabha National institute 2021' },
     ],
     experience: [
       'Assistant professor, Tata memorial hospital, Mumbai .',
@@ -1214,14 +1021,12 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-prasanth-s',
     name: 'Dr. Prasanth S',
-    specialty: 'Pediatric Oncology',
+    specialties: ['Pediatric Oncology'],
     designation: 'Associate Professor',
     department: { slug: 'medical-oncology', title: 'Medical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MD (Pediatrics)',
-      'DM (Pediatric Oncology)',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'The T.N. MGR Medical University', year: '2008-2014' },
+    postgraduateQualification: { degree: 'MD (Pediatrics)', institution: 'PGI Chandigarh', year: '2015-2018' },
+    superSpeciality: { degree: 'DM (Pediatric Oncology)', institution: 'AIIMS-NEW DELHI', year: '2019-2022' },
     areasOfExpertise: [
       'Pediatric Hematolymphoid malignancies',
       'Pediatric Bone marrow Transplantation',
@@ -1229,11 +1034,6 @@ export const doctors: Doctor[] = [
     ],
     about: [
       'Was awarded the SIOP PARC – Nai Kong Irene Cheung Career Development Award – 2023 for the Research project titled: Safety and Efficacy of Reduced dose chemotherapy in children and adolescents with high grade mature B Non-Hodgkin Lymphoma – A Prospective Multicenter Phase II Single Arm Study (RED X – B NHL Study)',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'The T.N. MGR Medical University, 2008-2014' },
-      { degree: 'MD (Pediatrics)', institution: 'PGI Chandigarh, 2015-2018' },
-      { degree: 'DM (Pediatric Oncology)', institution: 'AIIMS-NEW DELHI, 2019-2022' },
     ],
     experience: [
       'Associate Professor, Department of Medical Oncology',
@@ -1244,15 +1044,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-diana-niranjani-raj',
     name: 'Dr. Diana Niranjani Raj',
-    specialty: 'Onco reconstruction',
+    specialties: ['Onco reconstruction'],
     designation: 'Consultant',
     department: { slug: 'surgical-oncology', title: 'Surgical Oncology' },
-    qualifications: [
-      'M.B.B.S',
-      'DNB GENERAL SURGERY',
-      'Mch( Plastic Surgery)',
-      'Fellowship in Micro Onco Reconstructive surgery TATA MEDICAL CENTRE KOLKATA',
-    ],
+    primaryDegree: { degree: 'M.B.B.S', institution: 'Pondicherry university', year: '2003-2009' },
+    postgraduateQualification: { degree: 'DNB GENERAL SURGERY', institution: 'M.G.R UNIVERSITY -CHENNAI', year: '2012-2015' },
+    superSpeciality: { degree: 'Mch( Plastic Surgery)', institution: 'M.G.R. university', year: '2016-2019' },
+    fellowships: ['Fellowship in Micro Onco Reconstructive surgery TATA MEDICAL CENTRE KOLKATA'],
     areasOfExpertise: [
       'ONCORECONSTRUCTIVE SURGERY',
       'FREE AND LOCAL FLAPS',
@@ -1265,11 +1063,6 @@ export const doctors: Doctor[] = [
     about: [
       'Dr. Diana Niranjani Raj is a Consultant at the Cancer Institute (WIA), Chennai. Specializing in Onco reconstruction. Best paper presentation inM.B.B.S,AWARDED Mrs.kamatchi Memorial award. University 3rd in M.B.B .s',
     ],
-    education: [
-      { degree: 'M.B.B.S', institution: 'Pondicherry university,2003  - 2009' },
-      { degree: 'DNB GENERAL SURGERY', institution: 'M.G.R UNIVERSITY -CHENNAI,2012 -2015' },
-      { degree: 'Mch( Plastic Surgery)', institution: 'M.G.R. university,2016 -2019' },
-    ],
     experience: [
       'Junior Consultant,Sims hospital 2021',
       'Consultant ,Rela Hospital 2023',
@@ -1280,14 +1073,14 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-karthigaiselvi-murugesan',
     name: 'Dr. Karthigaiselvi Murugesan',
-    specialty: 'Oncoradiology',
+    specialties: ['Oncoradiology'],
     designation: 'Consultant',
     department: { slug: 'radiology', title: 'Radiology' },
-    qualifications: [
-      'MBBS',
-      'DMRD',
+    primaryDegree: { degree: 'MBBS', institution: 'MGR UNIVERSITY', year: '2001' },
+    postgraduateQualification: { degree: 'DMRD', institution: 'MGR UNIVERSITY', year: '2007' },
+    fellowships: [
       'DNB',
-      'FRCR',
+      'FRCR, Royal college London',
       'Fetal medicine 2017',
     ],
     areasOfExpertise: [
@@ -1295,11 +1088,6 @@ export const doctors: Doctor[] = [
     ],
     about: [
       'Dr. Karthigaiselvi Murugesan is a Consultant at the Cancer Institute (WIA), Chennai. Specializing in Oncoradiology. DNB Faculty, FRCR teaching faculty & MICR Examiner',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'MGR UNIVERSITY &2001' },
-      { degree: 'DMRD,DNB,', institution: 'MGR UNIVERSITY,2007' },
-      { degree: 'FRCR', institution: 'Royal college London' },
     ],
     experience: [
       '18 yrears',
@@ -1310,14 +1098,12 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-arvind-krishnamurthy',
     name: 'Dr. Arvind Krishnamurthy',
-    specialty: 'Head and Neck, Thoracic and Breast Oncology',
+    specialties: ['Head and Neck', 'Thoracic and Breast Oncology'],
     designation: 'Consultant',
     department: { slug: 'surgical-oncology', title: 'Surgical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MS ( Gen Surgery)',
-      'MCh (Surgical Oncology)',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'AP University', year: '1996-97' },
+    postgraduateQualification: { degree: 'MS ( Gen Surgery)', institution: 'TN MGR Medical University', year: '2001' },
+    superSpeciality: { degree: 'MCh (Surgical Oncology)', institution: 'Mumbai University', year: '2005' },
     areasOfExpertise: [
       'Head and Neck',
       'Thoracic and Breast Oncology',
@@ -1325,12 +1111,7 @@ export const doctors: Doctor[] = [
       'Translational Research',
     ],
     about: [
-      'Biography: Dr. Arvind Krishnamurthy – A Pioneer in Surgical Oncology Dr. Arvind Krishnamurthy, MBBS, MS (General Surgery), MCh (Surgical Oncology), DNB (Surgical Oncology), stands as a towering figure in the field of surgical oncology in India. As Professor and Head of the Department of Surgical Oncology at the Cancer Institute (WIA) in Adyar, Chennai, affiliated with Tamil Nadu Dr. M.G.R. Medical University, he has dedicated over 24 years to advancing cancer care, research, and education. With special expertise in head and neck, thoracic, and breast oncology, Dr. Krishnamurthy has transformed patient outcomes through innovative surgical techniques, leadership in multidisciplinary teams, and a relentless commitment to underserved communities. Born and educated in India, Dr. Krishnamurthy\'s medical journey began at S.V. Medical College in Tirupati, where he earned his MBBS in 1997. He pursued his MS in General Surgery at Madras Medical College in Chennai (1998–2001), followed by specialized training in surgical oncology at the prestigious Tata Memorial Centre in Mumbai, culminating in an MCh in 2005 and DNB (Surgical Oncology) in 2006. This rigorous foundation equipped him with the skills to tackle complex cancers, setting the stage for a career marked by clinical excellence and academic rigor. Dr. Krishnamurthy\'s professional trajectory at the Cancer Institute (WIA) spans from Assistant Professor in 2005 to his current role as Professor and Head since 2018. His tenure includes stints as Specialist Registrar at Tata Memorial Centre (2005) and progressive promotions at WIA, where he has accumulated nearly 25 years of teaching experience. Early in his career, he played a pivotal role in stabilizing the Surgical Oncology Department during a 2006 crisis triggered by staff resignations, rebuilding trust and ensuring continuity of care. Under his leadership, the department has grown exponentially, performing over 2,700 major surgeries and 5,000 minor/endoscopic procedures annually as of 2024–25. He has pioneered sub-specialties, expanded infrastructure with the Diamond Jubilee Block, and procured advanced equipment through government grants and donations. His clinical innovations are particularly noteworthy. In head and neck oncology, he oversees more than 650 major procedures yearly, attracting observers from across India. He has standardized minimally invasive thoracic surgeries, including video-assisted and robotic-assisted techniques, reducing patient recovery time even after neoadjuvant therapies. In breast oncology, he has boosted conservation surgeries and sentinel lymph node biopsies to over 83%, incorporating oncoplastic procedures for better functional outcomes. Dr. Krishnamurthy\'s administrative acumen shines in faculty recruitment, establishing services like speech pathology, interventional pulmonology, and medical gastroenterology, and increasing MCh Surgical Oncology trainee intake to nine annually. He mentors postgraduates through comprehensive programs, with alumni serving nationwide. A prolific researcher, Dr. Krishnamurthy has over 250 peer-reviewed publications in international and national journals, with an ORCID ID of 0000-0002-5604-0955 and a Google Scholar profile highlighting his impact. His work spans thyroid, lung, breast, and head/neck cancers, including landmark studies on HPV in oral cancers, BRAF mutations in thyroid cancers, and molecular profiling for risk stratification. He has led or co-investigated projects funded by ICMR, DBT, and others, totaling over ₹10 crore, focusing on biomarkers, HPV screening, and curcumin/metformin for second primaries. Ongoing trials include ADD-ASPIRIN (MRC UK) and a Phase IIb/III study on curcumin/metformin (National Cancer Grid). Dr. Krishnamurthy\'s contributions extend to national policy and quality improvement. He helped formulate ICMR/NCG guidelines for head/neck and thoracic cancers, developed quality indicators for oral and breast cancers, and secured a ₹1.3 crore grant for the institute\'s Clinical Trial Support Unit. As Chairman of the Infection Prevention and Control Committee and a member of the Patient Safety Committee, he upholds NABH standards. His community outreach includes oral cancer screening camps and tobacco cessation programs, collaborating with psycho-oncology teams. Honors abound in his career: the Dr. K.S. Sanjivi Award (2011) for service to the poor, Iyan Valluvar Award (2010), Best Doctors Award from Tamil Nadu Dr. M.G.R. Medical University (2012), Sushrutha Award for Excellence in Medicine (2019), and Geeta R. Gandhi Oration (2021). He serves in leadership roles, including Honorary Secretary of the Indian Society of Oncology (ISO), Treasurer and Past Scientific Chairman of the Tamil Nadu Association of Surgical Oncology (TASO), Past Associate Editor of the Indian Journal of Surgical Oncology, and editorial board member for journals like Indian Journal of Cancer and South Asian Journal of Cancer. A sought-after speaker and organizer, Dr. Krishnamurthy has delivered over 200 invited talks at national/international conferences, covering topics from HPV vaccination to neoadjuvant therapies. He organized major events like NATCON-IASO 2014, FHNO 2019 (with 760+ delegates), ISMPO-ISOCON 2022 (1,270+ attendees), and the 3rd Indian Cancer Congress 2023. He founded the Surgical Oncology Clinical Orientation Program (SCOPE) for postgraduates and has examined for MCh/DrNB programs at institutions like Tata Memorial Centre and AIIMS. As a reviewer for 20+ journals and life member of associations like ASI, IASO, FHNO, and ITS, he shapes the field\'s discourse. Dr. Krishnamurthy\'s legacy is one of resilience and innovation. Amid challenges like the COVID-19 pandemic, he advocated for prioritizing cancer surgeries and contributed to consensus guidelines. His holistic approach—integrating surgery, research, education, and public health—has saved countless lives and inspired generations. As he continues to bridge guidelines and practice, Dr. Krishnamurthy remains a beacon for equitable, cutting-edge cancer care in India and beyond',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'AP University, 1996-97' },
-      { degree: 'MS ( Gen Surgery)', institution: 'TN MGR Medical University , 2001' },
-      { degree: 'MCh (Surgical Oncology)', institution: 'Mumbai University, 2005' },
+      'Biography: Dr. Arvind Krishnamurthy – A Pioneer in Surgical Oncology Dr. Arvind Krishnamurthy, MBBS, MS (General Surgery), MCh (Surgical Oncology), DNB (Surgical Oncology), stands as a towering figure in the field of surgical oncology in India. As Professor and Head of the Department of Surgical Oncology at the Cancer Institute (WIA) in Adyar, Chennai, affiliated with Tamil Nadu Dr. M.G.R. Medical University, he has dedicated over 24 years to advancing cancer care, research, and education. With special expertise in head and neck, thoracic, and breast oncology, Dr. Krishnamurthy has transformed patient outcomes through innovative surgical techniques, leadership in multidisciplinary teams, and a relentless commitment to underserved communities. Born and educated in India, Dr. Krishnamurthy\'s medical journey began at S.V. Medical College in Tirupati, where he earned his MBBS in 1997. He pursued his MS in General Surgery at Madras Medical College in Chennai (1998–2001), followed by specialized training in surgical oncology at the prestigious Tata Memorial Centre in Mumbai, culminating in an MCh in 2005 and DNB (Surgical Oncology) in 2006. This rigorous foundation equipped him with the skills to tackle complex cancers, setting the stage for a career marked by clinical excellence and academic rigor. Dr. Krishnamurthy\'s professional trajectory at the Cancer Institute (WIA) spans from Assistant Professor in 2005 to his current role as Professor and Head since 2018. His tenure includes stints as Specialist Registrar at Tata Memorial Centre (2005) and progressive promotions at WIA, where he has accumulated nearly 25 years of teaching experience. Early in his career, he played a pivotal role in stabilizing the Surgical Oncology Department during a 2006 crisis triggered by staff resignations, rebuilding trust and ensuring continuity of care. Under his leadership, the department has grown exponentially, performing over 2,700 major surgeries and 5,000 minor/endoscopic procedures annually as of 2024–25. He has pioneered sub-specialties, expanded infrastructure with the Diamond Jubilee Block, and procured advanced equipment through government grants and donations. His clinical innovations are particularly noteworthy. In head and neck oncology, he oversees more than 650 major procedures yearly, attracting observers from across India. He has standardized minimally invasive thoracic surgeries, including video-assisted and robotic-assisted techniques, reducing patient recovery time even after neoadjuvant therapies. In breast oncology, he has boosted conservation surgeries and sentinel lymph node biopsies to over 83%, incorporating oncoplastic procedures for better functional outcomes. Dr. Krishnamurthy\'s administrative acumen shines in faculty recruitment, establishing services like speech pathology, interventional pulmonology, and medical gastroenterology, and increasing MCh Surgical Oncology trainee intake to nine annually. He mentors postgraduates through comprehensive programs, with alumni serving nationwide. A prolific researcher, Dr. Krishnamurthy has over 250 peer-reviewed publications in international and national journals, with an ORCID ID of 0000-0002-5604-0955 and a Google Scholar profile highlighting his impact. His work spans thyroid, lung, breast, and head/neck cancers, including landmark studies on HPV in oral cancers, BRAF mutations in thyroid cancers, and molecular profiling for risk stratification. He has led or co-investigated projects funded by ICMR, DBT, and others, totaling over \u20b910 crore, focusing on biomarkers, HPV screening, and curcumin/metformin for second primaries. Ongoing trials include ADD-ASPIRIN (MRC UK) and a Phase IIb/III study on curcumin/metformin (National Cancer Grid). Dr. Krishnamurthy\'s contributions extend to national policy and quality improvement. He helped formulate ICMR/NCG guidelines for head/neck and thoracic cancers, developed quality indicators for oral and breast cancers, and secured a \u20b91.3 crore grant for the institute\'s Clinical Trial Support Unit. As Chairman of the Infection Prevention and Control Committee and a member of the Patient Safety Committee, he upholds NABH standards. His community outreach includes oral cancer screening camps and tobacco cessation programs, collaborating with psycho-oncology teams. Honors abound in his career: the Dr. K.S. Sanjivi Award (2011) for service to the poor, Iyan Valluvar Award (2010), Best Doctors Award from Tamil Nadu Dr. M.G.R. Medical University (2012), Sushrutha Award for Excellence in Medicine (2019), and Geeta R. Gandhi Oration (2021). He serves in leadership roles, including Honorary Secretary of the Indian Society of Oncology (ISO), Treasurer and Past Scientific Chairman of the Tamil Nadu Association of Surgical Oncology (TASO), Past Associate Editor of the Indian Journal of Surgical Oncology, and editorial board member for journals like Indian Journal of Cancer and South Asian Journal of Cancer. A sought-after speaker and organizer, Dr. Krishnamurthy has delivered over 200 invited talks at national/international conferences, covering topics from HPV vaccination to neoadjuvant therapies. He organized major events like NATCON-IASO 2014, FHNO 2019 (with 760+ delegates), ISMPO-ISOCON 2022 (1,270+ attendees), and the 3rd Indian Cancer Congress 2023. He founded the Surgical Oncology Clinical Orientation Program (SCOPE) for postgraduates and has examined for MCh/DrNB programs at institutions like Tata Memorial Centre and AIIMS. As a reviewer for 20+ journals and life member of associations like ASI, IASO, FHNO, and ITS, he shapes the field\'s discourse. Dr. Krishnamurthy\'s legacy is one of resilience and innovation. Amid challenges like the COVID-19 pandemic, he advocated for prioritizing cancer surgeries and contributed to consensus guidelines. His holistic approach\u2014integrating surgery, research, education, and public health\u2014has saved countless lives and inspired generations. As he continues to bridge guidelines and practice, Dr. Krishnamurthy remains a beacon for equitable, cutting-edge cancer care in India and beyond',
     ],
     experience: [
       'Specialist Registrar at Tata Memorial Centre (2005) and progressive promotions at Cancer Institute (WIA) ever since',
@@ -1341,13 +1122,11 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-kausalya-v',
     name: 'Dr. Kausalya V',
-    specialty: 'Anaesthesiology',
+    specialties: ['Anaesthesiology'],
     designation: 'Assistant Professor',
     department: { slug: 'anaesthesia-pain', title: 'Anaesthesia & Pain Management' },
-    qualifications: [
-      'MBBS',
-      'MD (Anaesthesiology)',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'JIPMER- PUDUCHERRY', year: '2011' },
+    postgraduateQualification: { degree: 'MD (Anaesthesiology)', institution: 'JIPMER, Puducherry', year: '2015' },
     areasOfExpertise: [
       'General Anaesthesia',
       'Airway management',
@@ -1355,10 +1134,6 @@ export const doctors: Doctor[] = [
     ],
     about: [
       'Dr. Kausalya V is a Assistant Professor at the Cancer Institute (WIA), Chennai. Specializing in Anaesthesiology.',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'JIPMER- PUDUCHERRY, 2011' },
-      { degree: 'MD (Anaesthesiology)', institution: 'JIPMER, Puducherry, 2015' },
     ],
     experience: [
       'Senior Resident - Anaesthesiology, PSGIMS&R, Coimbatore',
@@ -1371,14 +1146,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-ashok-kumar',
     name: 'Dr. Ashok Kumar',
-    specialty: 'Nuclear Medicine, Molecular Imaging & theranostics.',
+    specialties: ['Nuclear Medicine', 'Molecular Imaging', 'Theranostics'],
     designation: 'Consultant',
     department: { slug: 'nuclear-medicine', title: 'Nuclear Medicine' },
-    qualifications: [
-      'MBBS',
-      'MD',
+    primaryDegree: { degree: 'MBBS', institution: 'PIMS', year: '2016' },
+    postgraduateQualification: { degree: 'MD', institution: 'AIIMS', year: '2020' },
+    fellowships: [
       'DNB',
-      '--',
       'Fellow of European board of Nuclear Medicine',
       'Radiation safety officer - High dose therapy.',
     ],
@@ -1392,11 +1166,6 @@ export const doctors: Doctor[] = [
     about: [
       'A distinguished Nuclear Medicine Physician with extensive clinical and research expertise spanning gamma imaging, precision theranostics, PET/CT, and the cutting-edge modality of PET/MRI. Known for a strong academic footprint with multiple national and international publications.',
     ],
-    education: [
-      { degree: 'MBBS', institution: 'PIMS, 2016' },
-      { degree: 'MD, DNB,', institution: 'AIIMS, 2020' },
-      { degree: '--', institution: '---' },
-    ],
     experience: [
       'Senior Resident - Nuclear Medicine',
       'JIPMER- Puducherry',
@@ -1407,25 +1176,18 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-r-krishnakumar',
     name: 'Dr. R. Krishnakumar',
-    specialty: 'Nuclear Medicine',
+    specialties: ['Nuclear Medicine'],
     designation: 'Professor & Head of Department',
     department: { slug: 'nuclear-medicine', title: 'Nuclear Medicine' },
-    qualifications: [
-      'MBBBS',
-      'DMRT',
-      'MD (RT).',
-      'Ph.D',
-    ],
+    primaryDegree: { degree: 'MBBBS', institution: '', year: '1997' },
+    postgraduateQualification: { degree: 'DMRT', institution: '', year: '1997' },
+    superSpeciality: { degree: 'MD (RT)', institution: '', year: '1997' },
+    fellowships: ['Ph.D, 2011'],
     areasOfExpertise: [
       'Molecular imaging, precision theranostics.',
     ],
     about: [
       'Dr. R. Krishnakumar is a Professor & Head of Department at the Cancer Institute (WIA), Chennai. Specializing in Nuclear Medicine. Nuclear Medicine physician with extensive vast experience in gamma imaging and theranostics .',
-    ],
-    education: [
-      { degree: 'MBBBS', institution: '1997.0' },
-      { degree: 'DMRT, MD (RT).', institution: '1997.0' },
-      { degree: 'Ph.D', institution: '2011.0' },
     ],
     experience: [
       'Professor & Head, Dept. of Nuclear Medicine',
@@ -1436,24 +1198,16 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-akshen-sundaresan',
     name: 'Dr. Akshen Sundaresan',
-    specialty: 'N/A',
+    specialties: ['Microbiology'],
     designation: 'Consultant',
     department: { slug: 'microbiology', title: 'Microbiology' },
-    qualifications: [
-      'MBBS',
-      'MD (Microbiology)',
-      'N/A',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'SRM Medical College, Hospital and Research Institute', year: '2011-2016' },
+    postgraduateQualification: { degree: 'MD (Microbiology)', institution: 'Sri Ramachandra Institute of Higher Education and Research', year: '2022-2025' },
     areasOfExpertise: [
       'N/A',
     ],
     about: [
       'Dr. Akshen Sundaresan is a Consultant at the Cancer Institute (WIA), Chennai. Specializing in N/A.',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'SRM Medical College, Hospital and Research Institute, 2011-2016' },
-      { degree: 'MD (Microbiology)', institution: 'Sri Ramachandra Institute of Higher Education and Research, 2022-2025' },
-      { degree: 'N/A', institution: 'N/A' },
     ],
     experience: [],
     linkedin: '',
@@ -1462,27 +1216,21 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-rama-r',
     name: 'Dr. Rama R',
-    specialty: 'Biostatistics',
+    specialties: ['Biostatistics'],
     designation: 'Professor & Head of Department',
     department: { slug: 'quality-control', title: 'Quality Control & Support Services' },
-    qualifications: [
-      'B.Sc.',
-      'M.Sc.',
-      'Ph.D.',
-      'Madras University',
-      '1990',
-      '“Early Career and Visiting Scientist (ECVS) within the IARC Research Training and Fellowship Programme” from 10 October to 16 November 2023 at Cancer Surveillance Branch (CSU), IARC, Lyon, France, collaborating with Dr Isabelle Soerjomataram for the SurvCan project and Socio-Economics Inequalities & Cancer related activities.',
-      'ICRETT Fellowship from 3rd – 27th May, 2005, under the guidance of Dr. R. Sankaranarayanan in the Screening Group, Pathogenesis and Prevention Cluster, International Agency for Research on Cancer, Lyon, France on “Training in the design and analysis of clinical trials in cancer prevention and control”.',
+    primaryDegree: { degree: 'B.Sc.', institution: 'Madras University', year: '1988' },
+    postgraduateQualification: { degree: 'M.Sc.', institution: 'Madras University', year: '1990' },
+    superSpeciality: { degree: 'Ph.D.', institution: 'Madras University', year: '2011' },
+    fellowships: [
+      '"Early Career and Visiting Scientist (ECVS) within the IARC Research Training and Fellowship Programme" from 10 October to 16 November 2023 at Cancer Surveillance Branch (CSU), IARC, Lyon, France, collaborating with Dr Isabelle Soerjomataram for the SurvCan project and Socio-Economics Inequalities & Cancer related activities.',
+      'ICRETT Fellowship from 3rd – 27th May, 2005, under the guidance of Dr. R. Sankaranarayanan in the Screening Group, Pathogenesis and Prevention Cluster, International Agency for Research on Cancer, Lyon, France on "Training in the design and analysis of clinical trials in cancer prevention and control".',
     ],
     areasOfExpertise: [
       'Bio-Statistics',
     ],
     about: [
-      '1.	Best paper award for oral of the paper titled “Role of Hospital Cancer Registries (HCR) in Evidence Based Clinical Care” in the session “Screening and Early Detection” of the “2nd National Conference on Real World Evidence Oncology” held at Tirunelveli on April 1, 2023  2.	Prof. P.V. Sukhatme award by the Indian Society for Medical Statistics 2010 for the paper “Cure models for estimating hospital-based breast cancer survival” which appeared  in  Asian Pac J Cancer Prev. 2010, as the author o',
-    ],
-    education: [
-      { degree: 'B.Sc., M.Sc., Ph.D.', institution: 'Madras University, 1988' },
-      { degree: 'Madras University, 1990', institution: 'Madras University, 2011' },
+      '1.	Best paper award for oral of the paper titled "Role of Hospital Cancer Registries (HCR) in Evidence Based Clinical Care" in the session "Screening and Early Detection" of the "2nd National Conference on Real World Evidence Oncology" held at Tirunelveli on April 1, 2023  2.	Prof. P.V. Sukhatme award by the Indian Society for Medical Statistics 2010 for the paper "Cure models for estimating hospital-based breast cancer survival" which appeared  in  Asian Pac J Cancer Prev. 2010, as the author o',
     ],
     experience: [
       'Associate Professor & Head, Department of Epidemiology.',
@@ -1494,13 +1242,11 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-priya-iyer',
     name: 'Dr. Priya Iyer',
-    specialty: 'Breast',
+    specialties: ['Breast'],
     designation: 'Head of Department',
     department: { slug: 'radiation-oncology', title: 'Radiation Oncology' },
-    qualifications: [
-      'MBBS',
-      'MD Radiation Oncology',
-    ],
+    primaryDegree: { degree: 'MBBS', institution: 'Gujarat University', year: '2004' },
+    postgraduateQualification: { degree: 'MD Radiation Oncology', institution: 'Gujarat University', year: '2010' },
     areasOfExpertise: [
       'Breast cancer',
       'Deep inspiration breath hold techniques for left sided breast cancer',
@@ -1509,10 +1255,6 @@ export const doctors: Doctor[] = [
     ],
     about: [
       'Dr. Priya Iyer is a Professor in the Department of Radiation Oncology at the Cancer Institute (WIA), Adyar, Chennai, India. She completed her MBBS at B.J. Medical College, Ahmedabad, and pursued her MD in Radiation Oncology at the Gujarat Cancer & Research Institute. With over a decade of experience in oncology, Dr. Iyer specializes in breast and paediatric cancers, focusing on developing cost-effective treatment modalities suitable for resource-limited settings. Her clinical expertise includes the use of neoadjuvant concurrent chemoradiation therapy (NACCRT) for locally advanced breast cancers. She has contributed to the development of protocols that integrate NACCRT with targeted therapies, aiming to improve operability and survival outcomes. Dr. Iyer is currently pursuing a PhD in tumor immunogenomics, with a focus on triple-negative breast cancer. Her research explores the translational potential of immunogenomic insights to enhance the efficacy of radiation and immunotherapy treatments. In addition to her clinical and research endeavours, Dr. Iyer is actively involved in medical education across India. She has mentored numerous students and participates in various national teaching programs, contributing to the advancement of oncology education and practice. Research Awards and Achievements',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'Gujarat University, 2004' },
-      { degree: 'MD Radiation Oncology', institution: 'Gujarat University, 2010' },
     ],
     experience: [
       'Head of department of Radiation Oncology',
@@ -1523,13 +1265,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-r-swaminathan',
     name: 'Dr. R. Swaminathan',
-    specialty: 'Epidemiology, Biostatistics, Cancer registration',
+    specialties: ['Epidemiology', 'Biostatistics', 'Cancer registration'],
     designation: 'Professor & Head of Department',
     department: { slug: 'quality-control', title: 'Quality Control & Support Services' },
-    qualifications: [
-      'MSc',
-      'PhD (Statistics)',
-      'PhD with honors (Epidemiology)',
+    primaryDegree: { degree: 'MSc', institution: 'University of Madras', year: '1984' },
+    postgraduateQualification: { degree: 'PhD (Statistics)', institution: 'University of Madras', year: '2002' },
+    superSpeciality: { degree: 'PhD with honors (Epidemiology)', institution: 'University of Tampere, Finland', year: '2012' },
+    fellowships: [
       'Post-Doctoral Fellowship, International Agency for Research on Cancer, 2008-2009',
     ],
     areasOfExpertise: [
@@ -1537,11 +1279,6 @@ export const doctors: Doctor[] = [
     ],
     about: [
       '* International Atomic Energy Agency (IAEA) imPACT Review Mission Expert on Cancer Control to Sri Lanka in 2019 * World Health Organization (WHO) Consultant on Cancer registries and control for Republic of Maldives in 2015 and for Sri Lanka in 2018 * Two Plenary lectures in International Association of Cancer Registries (IACR) Annual Conference in Vancouver, Canada, 2019 * Member in Executive Board of IACR as Representative for Asia, 2010-2014 * Chairman of Institutional Animal Ethics Committee',
-    ],
-    education: [
-      { degree: 'MSc', institution: 'University of Madras, 1984' },
-      { degree: 'PhD (Statistics)', institution: 'University of Madras, 2002' },
-      { degree: 'PhD with honors (Epidemiology)', institution: 'University of Tampere, Finland, 2012' },
     ],
     experience: [
       'Associate Director, Cancer Institute (W.I.A), Chennai, since 2020',
@@ -1557,13 +1294,13 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-anjali-a-b',
     name: 'Dr. Anjali A B',
-    specialty: 'Breast',
+    specialties: ['Breast'],
     designation: 'Assistant Professor',
     department: { slug: 'surgical-oncology', title: 'Surgical Oncology' },
-    qualifications: [
-      'MBBS',
-      'MS (General Surgery)',
-      'FRGUHS (Breast Oncosurgery)',
+    primaryDegree: { degree: 'MBBS', institution: 'RGUHS', year: '2010-2016' },
+    postgraduateQualification: { degree: 'MS (General Surgery)', institution: 'RGUHS', year: '2019-2022' },
+    superSpeciality: { degree: 'FRGUHS (Breast Oncosurgery)', institution: 'RGUHS', year: '2023-2025' },
+    fellowships: [
       'Fellowship in Breast Surgical Oncology, Royal College of Surgeons, England, 2025',
       'Fellowship in Advanced Breast Oncoplastic Surgery, Osaka Metropolitan University Graduate School of Medicine, Japan, 2026',
       'Observership in Breast Oncology, Tata Memorial Hospital, Mumbai, 2024',
@@ -1575,11 +1312,6 @@ export const doctors: Doctor[] = [
     ],
     about: [
       'Dr. Anjali A.B. is a dedicated and accomplished Breast Oncosurgeon with specialized training in advanced breast surgical oncology and oncoplastic breast surgery. Trained across premier National and International oncology centers, she combines evidence-based oncologic precision with aesthetic excellence in breast conservation and reconstruction. She actively contributes to multidisciplinary tumor boards and academic research, with a strong focus on patient-centered comprehensive cancer care.',
-    ],
-    education: [
-      { degree: 'MBBS', institution: 'RGUHS, 2010-2016' },
-      { degree: 'MS (General Surgery)', institution: 'RGUHS, 2019-2022' },
-      { degree: 'FRGUHS (Breast Oncosurgery)', institution: 'RGUHS, 2023-2025' },
     ],
     experience: [
       'Assistant Professor, Surgical Oncology (Breast Oncology)',
@@ -1595,12 +1327,12 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-daniel-raj-joseph-thangasamy',
     name: 'Dr. Daniel Raj Joseph Thangasamy',
-    specialty: 'Palliative Care',
+    specialties: ['Palliative Care'],
     designation: 'Consultant',
     department: { slug: 'palliative-medicine', title: 'Palliative Medicine' },
-    qualifications: [
-      'BDS.',
-      'National Fellowship in Palliative Medicine, Institute of Palliative Medicine - Calicut, 2017 - 2018',
+    primaryDegree: { degree: 'BDS', institution: 'The TN Dr MGR Medical University - Tamilnadu', year: '2006-2011' },
+    fellowships: [
+      'National Fellowship in Palliative Medicine, Institute of Palliative Medicine - Calicut, 2017-2018',
     ],
     areasOfExpertise: [
       'Symptom Management',
@@ -1614,15 +1346,12 @@ export const doctors: Doctor[] = [
       'He completed his Bachelor of Dental Surgery (BDS) from Ragas Dental College, Chennai, where he was awarded the Life Eternal Trust Prize for Best Outgoing Student in General Surgery (2009) for academic excellence. He later pursued the National Fellowship in Palliative Medicine (NFPM) from the Institute of Palliative Medicine, Calicut, and is currently undertaking an MSc in Palliative Medicine at Cardiff University, UK, supported by the prestigious Commonwealth Scholarship.',
       'Dr. Daniel has actively contributed to research and academic discussions in palliative care, presenting his work at national and international conferences. He presented research at the 13th World Research Congress of the European Association of Palliative Care (EAPC) in Barcelona, Spain, and has been a regular participant at the International Conference of the Indian Association of Palliative Care (IAPCON). His poster on the "Management of malignant bowel obstruction in the community" won First Prize at IAPCON 2023.',
     ],
-    education: [
-      { degree: 'BDS.,', institution: 'The TN Dr MGR Medical University - Tamilnadu, 2006 - 2011' },
-    ],
     experience: [
-      '•	Palliative Care Physician, Mahaveer Ashray, A unit of Cancer Institute (WIA), Sriperumbudur from August 2025.',
-      '•	Palliative Care Physician, Department of Palliative Medicine, Cancer Institute (WIA), Adyar, Chennai from November 2021.',
-      '•	Palliative Care Physician, Jeevodhaya, Chennai from August 2020 to March, 2021.',
-      '•	On-Call Palliative Care Physician, Home Care team, Chennai Pain and Palliative Care, Chennai from May, 2017 to July, 2019',
-      '•	Palliative Care Physician, Abhyam, Chennai from May, 2017 to July, 2019',
+      '\u2022	Palliative Care Physician, Mahaveer Ashray, A unit of Cancer Institute (WIA), Sriperumbudur from August 2025.',
+      '\u2022	Palliative Care Physician, Department of Palliative Medicine, Cancer Institute (WIA), Adyar, Chennai from November 2021.',
+      '\u2022	Palliative Care Physician, Jeevodhaya, Chennai from August 2020 to March, 2021.',
+      '\u2022	On-Call Palliative Care Physician, Home Care team, Chennai Pain and Palliative Care, Chennai from May, 2017 to July, 2019',
+      '\u2022	Palliative Care Physician, Abhyam, Chennai from May, 2017 to July, 2019',
     ],
     linkedin: 'https://www.linkedin.com/in/daniel-raj-joseph-thangasamy-560542147',
     metaDescription: 'Dr. Daniel Raj Joseph Thangasamy — Consultant, Palliative Medicine at Cancer Institute (WIA), Chennai.',
@@ -1630,24 +1359,16 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-r-sabitha',
     name: 'Dr. R SABITHA',
-    specialty: 'BIOINFORMATICIAN',
+    specialties: ['Bioinformatics'],
     designation: 'Head of Department',
     department: { slug: 'quality-control', title: 'Quality Control & Support Services' },
-    qualifications: [
-      'MSc',
-      'PhD',
-      'M.Sc Biochemistry',
-      'PhD',
-      'Cancer Research',
-    ],
+    primaryDegree: { degree: 'MSc', institution: 'Annamalai University', year: '1997' },
+    postgraduateQualification: { degree: 'M.Sc Biochemistry', institution: 'Annamalai University', year: '1997' },
+    superSpeciality: { degree: 'PhD', institution: 'Annamalai University', year: '1997' },
+    fellowships: ['Cancer Research'],
     areasOfExpertise: [],
     about: [
       'Dr. R SABITHA is a Head of Department at the Cancer Institute (WIA), Chennai. Specializing in BIOINFORMATICIAN.',
-    ],
-    education: [
-      { degree: 'MSc ,PhD', institution: 'Annamalai University,1997' },
-      { degree: 'M.Sc Biochemistry', institution: 'Annamalai University,1997' },
-      { degree: 'PhD , Cancer Research', institution: 'Annamalai University,1997' },
     ],
     experience: [
       'Nov 2022 – Till Date                       	 Head(I/C) . Department of Molecular Oncology',
@@ -1655,7 +1376,7 @@ export const doctors: Doctor[] = [
       'March 2020 –Nov 2022                	Professor ,Department of Molecular Oncology',
       'Cancer Institute (WIA) , Adyar,   Chennai- 600 036',
       'June 2014 – 2020 	                      Associate Prof,  Department of Molecular Oncology',
-      'June ’07 – June 2014                     Asst. Prof, Department of Molecular Oncology',
+      'June \'07 – June 2014                     Asst. Prof, Department of Molecular Oncology',
     ],
     linkedin: 'https://in.linkedin.com/in/sabitha-ramanathan-7ba2392',
     metaDescription: 'Dr. R SABITHA — Head of Department, Quality Control & Support Services at Cancer Institute (WIA), Chennai.',
