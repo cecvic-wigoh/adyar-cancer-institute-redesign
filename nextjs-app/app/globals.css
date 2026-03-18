@@ -184,6 +184,23 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
   transition: all var(--transition-fast); min-height: 32px;
 }
 .lang-btn:hover, .lang-btn.active { background: var(--color-secondary); color: white; }
+.top-bar-social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-right: var(--space-2);
+}
+.social-icon {
+  color: var(--color-teal-accessible);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.social-icon:hover {
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
 
 /* ── 6. HEADER ── */
 .site-header {
@@ -197,7 +214,7 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
   padding: 14px clamp(16px, 4vw, 80px); gap: var(--space-4);
   max-width: var(--max-width); margin: 0 auto;
 }
-.site-logo img { height: 48px; width: auto; }
+.site-logo img { height: 60px; width: auto; }
 .primary-nav { display: none; }
 .primary-nav ul { display: flex; align-items: center; gap: 2px; }
 .primary-nav a {
@@ -210,6 +227,17 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
 }
 .primary-nav a:hover { color: var(--color-primary); background: var(--color-tertiary); text-decoration: none; }
 .header-actions { display: flex; align-items: center; gap: var(--space-3); }
+.header-accreditations {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 8px;
+}
+.header-accreditations img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
 .search-btn {
   display: flex; align-items: center; justify-content: center;
   width: 44px; height: 44px; border-radius: 50%;
@@ -1279,7 +1307,7 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
 }
 .search-sitemap-wrap .search-box { margin-bottom: var(--space-6); }
 .sitemap-grid { display: flex; flex-direction: column; gap: var(--space-6); }
-.sitemap-category {}
+
 .sitemap-category-title {
   font-family: var(--font-heading); font-weight: 700; font-size: 13px;
   text-transform: uppercase; letter-spacing: 0.1em;
