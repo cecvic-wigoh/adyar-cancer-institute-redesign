@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
-import { PT_Sans_Narrow, PT_Serif } from 'next/font/google';
+import { PT_Sans_Narrow, PT_Serif, DM_Sans, Playfair_Display } from 'next/font/google';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
 import SubNav from '@/components/SubNav';
 import Footer from '@/components/Footer';
 import ChatbotFab from '@/components/ChatbotFab';
+import SideQuickMenu from '@/components/SideQuickMenu';
 import './globals.css';
 
 const ptSansNarrow = PT_Sans_Narrow({
@@ -19,6 +20,21 @@ const ptSerif = PT_Serif({
   style: ['normal', 'italic'],
   subsets: ['latin'],
   variable: '--font-body',
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+});
+
+const playfairDisplay = Playfair_Display({
+  weight: ['600', '700'],
+  subsets: ['latin'],
+  variable: '--font-playfair',
   display: 'swap',
 });
 
@@ -38,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${ptSansNarrow.variable} ${ptSerif.variable}`}>
+    <html lang="en" className={`${ptSansNarrow.variable} ${ptSerif.variable} ${dmSans.variable} ${playfairDisplay.variable}`}>
       <body>
         <a href="#main" className="skip-link">Skip to main content</a>
         <TopBar />
@@ -46,6 +62,7 @@ export default function RootLayout({
         <SubNav />
         {children}
         <Footer />
+        <SideQuickMenu />
         <ChatbotFab />
       </body>
     </html>

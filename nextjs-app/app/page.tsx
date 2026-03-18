@@ -4,7 +4,8 @@ import StatCounter from "@/components/StatCounter";
 import DoctorScroll from "@/components/DoctorScroll";
 import TestimonialTabs from "@/components/TestimonialTabs";
 import FaqSection from "@/components/FaqSection";
-import HomeQuickLinks from "@/components/HomeQuickLinks";
+import FounderHeroCarousel from "@/components/FounderHeroCarousel";
+import { founders } from "@/data/founders";
 
 const ArrowIcon = ({ size = 18 }: { size?: number }) => (
   <svg
@@ -22,7 +23,7 @@ const ArrowIcon = ({ size = 18 }: { size?: number }) => (
   </svg>
 );
 
-const cancerCards = [
+export const cancerCards = [
   { slug: "breast-cancer", title: "Breast Cancer", desc: "Screening-led care with surgery, reconstruction, and targeted treatment" },
   { slug: "blood-cancer", title: "Blood Cancer", desc: "Leukaemia, lymphoma, and myeloma care with transplant support" },
   { slug: "brain-tumour", title: "Brain Tumour", desc: "Neuro-oncology pathways for tumours affecting the brain and CNS" },
@@ -44,69 +45,15 @@ const cancerCards = [
 export default function Home() {
   return (
     <main id="main">
-      <HomeQuickLinks />
-      {/* HERO — Prevention-focused */}
-      <section className="hero-v2" aria-labelledby="hero-heading">
-        <div className="hero-v2-bg" aria-hidden="true">
-          {/* Dark gradient overlay for text readability */}
-        </div>
-        <div className="container hero-v2-content">
-          <div className="hero-v2-text">
-            <h1 id="hero-heading">
-              Because early cancer
-              <br />
-              is curable
-            </h1>
-            <div className="hero-v2-divider" aria-hidden="true" />
-            <p className="hero-v2-attribution">
-              <strong>Dr. Muthulakshmi Reddy</strong>
-              <br />
-              Founder, Cancer Institute (WIA), 1954
-            </p>
-            <p className="hero-v2-lead">
-              Prevention saves lives. From free screening camps to advanced
-              diagnostics, we are committed to detecting cancer early — when
-              treatment is most effective.
-            </p>
-            <div className="hero-v2-ctas">
-              <Link href="#appointment" className="btn btn-white">
-                Book a Screening
-              </Link>
-              <Link href="#cancer-types" className="hero-v2-link">
-                Find Your Cancer Type
-                <ArrowIcon size={16} />
-              </Link>
-            </div>
-          </div>
-          <div className="hero-v2-scroll">
-            <span>Scroll Ahead</span>
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </div>
-        </div>
-
-        {/* Contact strip below hero */}
-        <div className="hero-v2-strip">
-          <div className="container hero-v2-strip-inner">
-            <p>
-              <strong>We&apos;re here for you.</strong> Call us at{" "}
-              <a href="tel:+914424910754">044-2491 0754</a> or{" "}
-              <Link href="#appointment">request an appointment online.</Link>
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* HERO — carousel with sticky founder rail */}
+      <FounderHeroCarousel founders={founders.map(f => ({
+        slug: f.slug,
+        name: f.name,
+        years: f.years,
+        role: f.role,
+        portrait: f.portrait,
+        heroQuote: f.heroQuote,
+      }))} />
 
       {/* CANCER TYPES */}
       <section
@@ -124,7 +71,7 @@ export default function Home() {
             </p>
           </div>
           <div className="cancer-grid">
-            {cancerCards.map((card) => (
+            {cancerCards.slice(0, 8).map((card) => (
               <Link
                 href={`/cancer/${card.slug}`}
                 className="cancer-card"
@@ -161,7 +108,7 @@ export default function Home() {
             ))}
           </div>
           <div className="cancer-types-cta">
-            <Link href="/cancer/breast-cancer" className="btn btn-secondary">
+            <Link href="/cancer" className="btn btn-secondary">
               View All Cancer Conditions
             </Link>
           </div>

@@ -1,0 +1,144 @@
+/* ── Paginated Publications ── */
+
+.wrap {
+  margin-top: 16px;
+}
+
+.summary {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: #134795;
+  margin-bottom: 16px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 16px;
+  background: #F9FAFB;
+  border-radius: 8px;
+  border-left: 3px solid #23CDC0;
+  transition: transform 0.2s;
+}
+.item:hover {
+  transform: translateX(4px);
+}
+
+.number {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  color: #134795;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  border: 1.5px solid #E5E7EB;
+  margin-top: 1px;
+}
+
+.citation {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #4B5563;
+  line-height: 1.6;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Pagination ── */
+
+.paginationWrap {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.showing {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  color: #9CA3AF;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pageBtn {
+  min-width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1.5px solid #E5E7EB;
+  background: white;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  color: #4B5563;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pageBtn:hover:not(:disabled):not(.active) {
+  border-color: #134795;
+  background: #F0F4FB;
+}
+
+.pageBtn.active {
+  background: #134795;
+  color: white;
+  border-color: #134795;
+}
+
+.pageBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.navBtn {
+  padding: 0 16px;
+  width: auto;
+}
+
+.ellipsis {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  color: #9CA3AF;
+  padding: 0 4px;
+  user-select: none;
+}
+
+@media (max-width: 600px) {
+  .navBtn {
+    padding: 0 10px;
+    font-size: 12px;
+  }
+  .number {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+  .item {
+    gap: 10px;
+    padding: 12px;
+  }
+}

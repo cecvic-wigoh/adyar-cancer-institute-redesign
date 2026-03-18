@@ -36,12 +36,11 @@ export default function Header() {
 
           <nav className="primary-nav" aria-label="Primary navigation">
             <ul>
-              <li><Link href="/#about">About Us</Link></li>
-              <li><Link href="/#cancer-types">For Patients</Link></li>
-              <li><Link href="/#doctors">Find a Doctor</Link></li>
+              <li><Link href="/#about">About</Link></li>
+              <li><Link href="/#academics">Academics</Link></li>
               <li><Link href="/blood-bank">Blood Bank</Link></li>
-              <li><a href="https://ci-wia-research-pages.vercel.app/research">Research</a></li>
-              <li><Link href="/#donate">Donate</Link></li>
+              <li><Link href="/#news">News &amp; Updates</Link></li>
+              <li><Link href="/#careers">Careers</Link></li>
               <li><Link href="/#contact">Contact</Link></li>
             </ul>
           </nav>

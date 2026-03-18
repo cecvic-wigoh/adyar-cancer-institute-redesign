@@ -3,13 +3,16 @@
 import { useRef } from 'react';
 import Link from 'next/link';
 
+// Featured doctors for homepage carousel — one per major department
 const doctors = [
-  { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Director & Senior Consultant' },
-  { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialty: 'Medical Oncology', designation: 'Senior Oncologist' },
-  { slug: 'dr-anbalagan', name: 'Dr. P. Anbalagan', specialty: 'Radiation Oncology', designation: 'Head, Radiation Oncology' },
-  { slug: 'dr-shanta', name: 'Dr. V. Shanta', specialty: 'Paediatric Oncology', designation: 'Chairperson & Senior Consultant' },
-  { slug: 'dr-balasubramanian', name: 'Dr. M. Balasubramanian', specialty: 'Haematology', designation: 'Consultant Haematologist' },
-  { slug: 'dr-vijayalakshmi', name: 'Dr. K. Vijayalakshmi', specialty: 'Gynaec Oncology', designation: 'Consultant Gynaec Oncologist' },
+  { slug: 'dr-venkatraman-radhakrishnan', name: 'Dr. Venkatraman Radhakrishnan', specialty: 'Medical Oncology', designation: 'Professor & Head of Department' },
+  { slug: 'dr-arvind-krishnamurthy', name: 'Dr. Arvind Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Professor & Head of Department' },
+  { slug: 'dr-priya-iyer', name: 'Dr. Priya Iyer', specialty: 'Radiation Oncology', designation: 'Consultant' },
+  { slug: 'dr-maj-jayashree-n', name: 'Dr. (Maj) Jayashree N', specialty: 'Gynaecological Oncology', designation: 'Associate Professor' },
+  { slug: 'dr-aravind-narayanan', name: 'Dr. Aravind Narayanan', specialty: 'Anaesthesiology', designation: 'Associate Professor' },
+  { slug: 'dr-ashok-kumar', name: 'Dr. Ashok Kumar', specialty: 'Nuclear Medicine', designation: 'Consultant' },
+  { slug: 'dr-meenakshi-v-v', name: 'Dr. Meenakshi V V', specialty: 'Palliative Medicine', designation: 'Head of Department' },
+  { slug: 'dr-kunal-nandy', name: 'Dr. Kunal Nandy', specialty: 'GI-HPB Surgical Oncology', designation: 'Consultant' },
 ];
 
 export default function DoctorScroll() {

@@ -1,0 +1,131 @@
+/* ── Sticky Doctor Bar ── */
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(229, 231, 235, 0.6);
+  transform: translateY(-100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.barVisible {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.barInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 80px);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Doctor name */
+.barName {
+  font-family: var(--font-playfair);
+  font-size: 16px;
+  font-weight: 700;
+  color: #134795;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+  flex-shrink: 0;
+}
+
+/* Section navigation */
+.barNav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.barNav::-webkit-scrollbar {
+  display: none;
+}
+
+.barNavItem {
+  all: unset;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 6px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.barNavItem:hover {
+  color: #134795;
+  background: #EBF9F9;
+}
+
+.barNavActive {
+  color: #134795;
+  background: #EBF9F9;
+  box-shadow: inset 0 -2px 0 #23CDC0;
+}
+
+/* CTA button */
+.barCta {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  background: #134795;
+  color: white;
+  border-radius: 6px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.barCta:hover {
+  background: #0d3470;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .barName {
+    max-width: 160px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .barInner {
+    gap: 12px;
+  }
+
+  .barName {
+    display: none;
+  }
+
+  .barCta {
+    padding: 6px 14px;
+    font-size: 11px;
+  }
+}

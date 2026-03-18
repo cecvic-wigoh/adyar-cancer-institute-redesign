@@ -1,7 +1,7 @@
 /* ── SUB-NAVIGATION BAR ── */
 .root {
   position: sticky;
-  top: 0;
+  top: 76px;
   z-index: 999;
   background: var(--color-primary);
 }

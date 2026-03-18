@@ -1,0 +1,362 @@
+/* ── Side Quick Menu ── */
+/* Left-side floating quick action menu with hover-expand pills */
+
+.menu {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 56px;
+}
+
+/* ── Icon circle ── */
+.iconCircle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  z-index: 3;
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.15),
+    0 0 0 3px rgba(19, 71, 149, 0.12);
+  margin-left: 10px;
+}
+
+.iconCircle:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    0 0 0 3px rgba(19, 71, 149, 0.2);
+}
+
+.iconSvg {
+  width: 34px;
+  height: 34px;
+}
+
+/* ── Color variants for each item ── */
+.itemBlue .iconCircle {
+  background: linear-gradient(135deg, #E8F4FD, #D0EBFF);
+  box-shadow:
+    0 3px 12px rgba(52, 152, 219, 0.25),
+    0 0 0 2.5px rgba(52, 152, 219, 0.15);
+}
+.itemBlue .iconCircle:hover {
+  box-shadow:
+    0 4px 20px rgba(52, 152, 219, 0.35),
+    0 0 0 3px rgba(52, 152, 219, 0.25);
+}
+
+.itemTeal .iconCircle {
+  background: linear-gradient(135deg, #E0F7F5, #B2EBEB);
+  box-shadow:
+    0 3px 12px rgba(10, 140, 130, 0.25),
+    0 0 0 2.5px rgba(10, 140, 130, 0.15);
+}
+.itemTeal .iconCircle:hover {
+  box-shadow:
+    0 4px 20px rgba(10, 140, 130, 0.35),
+    0 0 0 3px rgba(10, 140, 130, 0.25);
+}
+
+.itemGreen .iconCircle {
+  background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+  box-shadow:
+    0 3px 12px rgba(46, 125, 50, 0.25),
+    0 0 0 2.5px rgba(46, 125, 50, 0.15);
+}
+.itemGreen .iconCircle:hover {
+  box-shadow:
+    0 4px 20px rgba(46, 125, 50, 0.35),
+    0 0 0 3px rgba(46, 125, 50, 0.25);
+}
+
+.itemPurple .iconCircle {
+  background: linear-gradient(135deg, #F3E5F5, #E1BEE7);
+  box-shadow:
+    0 3px 12px rgba(142, 68, 173, 0.25),
+    0 0 0 2.5px rgba(142, 68, 173, 0.15);
+}
+.itemPurple .iconCircle:hover {
+  box-shadow:
+    0 4px 20px rgba(142, 68, 173, 0.35),
+    0 0 0 3px rgba(142, 68, 173, 0.25);
+}
+
+/* ── Red variant (Blood Bank) ── */
+.itemRed .iconCircle {
+  background: linear-gradient(135deg, #FDEDEE, #FADBD8);
+  box-shadow:
+    0 3px 12px rgba(231, 76, 60, 0.25),
+    0 0 0 2.5px rgba(231, 76, 60, 0.15);
+}
+.itemRed .iconCircle:hover {
+  box-shadow:
+    0 4px 20px rgba(231, 76, 60, 0.35),
+    0 0 0 3px rgba(231, 76, 60, 0.25);
+}
+
+/* ── Orange variant (Search) ── */
+.itemOrange .iconCircle {
+  background: linear-gradient(135deg, #F58220, #E67312);
+  box-shadow:
+    0 3px 12px rgba(245, 130, 32, 0.35),
+    0 0 0 2.5px rgba(245, 130, 32, 0.2);
+}
+.itemOrange .iconCircle:hover {
+  box-shadow:
+    0 4px 20px rgba(245, 130, 32, 0.45),
+    0 0 0 3px rgba(245, 130, 32, 0.3);
+}
+
+/* ── Expanded pill ── */
+.expandedPill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #FFF8E7;
+  border-radius: 0 30px 30px 0;
+  padding: 0 8px 0 16px;
+  height: 50px;
+  margin-left: -10px;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s ease,
+    padding 0.35s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 3px 16px rgba(0, 0, 0, 0.12);
+}
+
+.item:hover .expandedPill {
+  max-width: 300px;
+  opacity: 1;
+  padding: 0 8px 0 20px;
+  pointer-events: auto;
+}
+
+/* ── Label text ── */
+.pillLabel {
+  font-family: var(--font-heading, 'PT Sans Narrow', Arial, sans-serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a2d4a;
+  letter-spacing: 0.3px;
+}
+
+/* ── Teal arrow button ── */
+.pillArrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #0A8C82;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: white;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(10, 140, 130, 0.3);
+}
+
+.pillArrow:hover {
+  background: #087a71;
+  transform: scale(1.08);
+}
+
+.pillArrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Button reset for iconCircle and pillArrow when used as button ── */
+button.iconCircle,
+button.pillArrow {
+  border: none;
+  font: inherit;
+}
+
+/* ── Search Overlay ── */
+.searchOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.searchModal {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 640px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.searchHeader {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  gap: 12px;
+}
+
+.searchHeader .searchIcon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.searchHeader .searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  font-family: var(--font-body, Georgia, serif);
+  color: var(--color-text-primary, #2D3748);
+  background: transparent;
+}
+
+.searchHeader .searchInput::placeholder {
+  color: #9CA3AF;
+}
+
+.searchClose {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.searchClose:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.searchClose svg {
+  width: 18px;
+  height: 18px;
+}
+
+.searchSuggestions {
+  padding: 8px 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.searchCategory {
+  padding: 10px 20px 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #9CA3AF;
+  font-family: var(--font-heading, Arial, sans-serif);
+}
+
+.searchSuggestion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  color: var(--color-text-primary, #2D3748);
+  text-decoration: none;
+  transition: background 0.12s;
+}
+
+.searchSuggestion:hover {
+  background: #f0f5ff;
+  color: var(--color-primary, #134795);
+}
+
+.suggestIcon {
+  font-size: 1.2rem;
+  width: 28px;
+  text-align: center;
+}
+
+.searchFooter {
+  padding: 12px 20px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.8rem;
+  color: #9CA3AF;
+  text-align: center;
+}
+
+.kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.75rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .menu {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expandedPill {
+    transition: none;
+  }
+  .iconCircle {
+    transition: none;
+  }
+  .pillArrow {
+    transition: none;
+  }
+}
