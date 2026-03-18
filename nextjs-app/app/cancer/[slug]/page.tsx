@@ -112,7 +112,7 @@ export default async function CancerPage({ params }: { params: Promise<{ slug: s
                   <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#134795" strokeWidth="1.5"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
                 </div>
                 <div className="specialist-info">
-                  <span className="specialist-specialty">{doc.specialty}</span>
+                  <span className="specialist-specialty">{doc.specialties.join(', ')}</span>
                   <h4>{doc.name}</h4>
                   <p className="specialist-desig">{doc.designation}</p>
                 </div>

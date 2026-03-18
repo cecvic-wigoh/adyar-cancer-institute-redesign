@@ -24,7 +24,7 @@ export default function DoctorsDirectory({ doctors, departments }: Props) {
       const q = search.toLowerCase();
       const matchesSearch = !q
         || doc.name.toLowerCase().includes(q)
-        || doc.specialty.toLowerCase().includes(q)
+        || doc.specialties.some(s => s.toLowerCase().includes(q))
         || doc.designation.toLowerCase().includes(q)
         || doc.department.title.toLowerCase().includes(q)
         || doc.areasOfExpertise.some(e => e.toLowerCase().includes(q));

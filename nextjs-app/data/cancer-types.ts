@@ -9,7 +9,7 @@ export interface CancerType {
   riskFactors: string[];
   treatments: { title: string; description: string }[];
   relatedDepartments: { slug: string; title: string; description: string }[];
-  specialists: { slug: string; name: string; specialty: string; designation: string }[];
+  specialists: { slug: string; name: string; specialties: string[]; designation: string }[];
   ctaTitle: string;
 }
 
@@ -40,9 +40,9 @@ export const cancerTypes: CancerType[] = [
       { slug: 'radiation-oncology', title: 'Radiation Oncology', description: 'Advanced radiotherapy techniques.' },
     ],
     specialists: [
-      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Senior Consultant' },
-      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialty: 'Medical Oncology', designation: 'Senior Consultant' },
-      { slug: 'dr-anbalagan', name: 'Dr. P. Anbalagan', specialty: 'Radiation Oncology', designation: 'Senior Consultant' },
+      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Senior Consultant' },
+      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialties: ['Medical Oncology'], designation: 'Senior Consultant' },
+      { slug: 'dr-anbalagan', name: 'Dr. P. Anbalagan', specialties: ['Radiation Oncology'], designation: 'Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Breast Cancer Care',
   },
@@ -66,8 +66,8 @@ export const cancerTypes: CancerType[] = [
       { slug: 'medical-oncology', title: 'Medical Oncology', description: 'Chemotherapy and immunotherapy.' },
     ],
     specialists: [
-      { slug: 'dr-vijayalakshmi', name: 'Dr. K. Vijayalakshmi', specialty: 'Gynaec Oncology', designation: 'Consultant' },
-      { slug: 'dr-anbalagan', name: 'Dr. P. Anbalagan', specialty: 'Radiation Oncology', designation: 'Senior Consultant' },
+      { slug: 'dr-vijayalakshmi', name: 'Dr. K. Vijayalakshmi', specialties: ['Gynaec Oncology'], designation: 'Consultant' },
+      { slug: 'dr-anbalagan', name: 'Dr. P. Anbalagan', specialties: ['Radiation Oncology'], designation: 'Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Cervical Cancer Care',
   },
@@ -91,8 +91,8 @@ export const cancerTypes: CancerType[] = [
       { slug: 'radiation-oncology', title: 'Radiation Oncology', description: 'Advanced radiation techniques.' },
     ],
     specialists: [
-      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Director & Senior Consultant' },
-      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialty: 'Medical Oncology', designation: 'Senior Oncologist' },
+      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Director & Senior Consultant' },
+      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialties: ['Medical Oncology'], designation: 'Senior Oncologist' },
     ],
     ctaTitle: 'Get Expert Lung Cancer Care',
   },
@@ -116,7 +116,7 @@ export const cancerTypes: CancerType[] = [
       { slug: 'radiation-oncology', title: 'Radiation Oncology', description: 'Neoadjuvant chemoradiation.' },
     ],
     specialists: [
-      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Director & Senior Consultant' },
+      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Director & Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Colorectal Cancer Care',
   },
@@ -140,8 +140,8 @@ export const cancerTypes: CancerType[] = [
       { slug: 'paediatric-oncology', title: 'Paediatric Oncology', description: 'Childhood leukaemia treatment.' },
     ],
     specialists: [
-      { slug: 'dr-balasubramanian', name: 'Dr. M. Balasubramanian', specialty: 'Haematology', designation: 'Consultant Haematologist' },
-      { slug: 'dr-shanta', name: 'Dr. V. Shanta', specialty: 'Paediatric Oncology', designation: 'Chairperson' },
+      { slug: 'dr-balasubramanian', name: 'Dr. M. Balasubramanian', specialties: ['Haematology'], designation: 'Consultant Haematologist' },
+      { slug: 'dr-shanta', name: 'Dr. V. Shanta', specialties: ['Paediatric Oncology'], designation: 'Chairperson' },
     ],
     ctaTitle: 'Get Expert Blood Cancer Care',
   },
@@ -165,8 +165,8 @@ export const cancerTypes: CancerType[] = [
       { slug: 'medical-oncology', title: 'Medical Oncology', description: 'Chemotherapy and targeted therapy.' },
     ],
     specialists: [
-      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Director & Senior Consultant' },
-      { slug: 'dr-anbalagan', name: 'Dr. P. Anbalagan', specialty: 'Radiation Oncology', designation: 'Head, Radiation Oncology' },
+      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Director & Senior Consultant' },
+      { slug: 'dr-anbalagan', name: 'Dr. P. Anbalagan', specialties: ['Radiation Oncology'], designation: 'Head, Radiation Oncology' },
     ],
     ctaTitle: 'Get Expert Head & Neck Cancer Care',
   },
@@ -190,7 +190,7 @@ export const cancerTypes: CancerType[] = [
       { slug: 'medical-oncology', title: 'Medical Oncology', description: 'Hormonal therapy and chemotherapy.' },
     ],
     specialists: [
-      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Director & Senior Consultant' },
+      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Director & Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Prostate Cancer Care',
   },
@@ -214,7 +214,7 @@ export const cancerTypes: CancerType[] = [
       { slug: 'medical-oncology', title: 'Medical Oncology', description: 'Targeted therapy.' },
     ],
     specialists: [
-      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Director & Senior Consultant' },
+      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Director & Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Thyroid Cancer Care',
   },
@@ -238,8 +238,8 @@ export const cancerTypes: CancerType[] = [
       { slug: 'medical-oncology', title: 'Medical Oncology', description: 'Systemic therapy and supportive care.' },
     ],
     specialists: [
-      { slug: 'dr-anbalagan', name: 'Dr. P. Anbalagan', specialty: 'Radiation Oncology', designation: 'Senior Consultant' },
-      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialty: 'Medical Oncology', designation: 'Senior Consultant' },
+      { slug: 'dr-anbalagan', name: 'Dr. P. Anbalagan', specialties: ['Radiation Oncology'], designation: 'Senior Consultant' },
+      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialties: ['Medical Oncology'], designation: 'Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Brain Tumour Care',
   },
@@ -263,8 +263,8 @@ export const cancerTypes: CancerType[] = [
       { slug: 'radiation-oncology', title: 'Radiation Oncology', description: 'Selected combined-modality treatment.' },
     ],
     specialists: [
-      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Director & Senior Consultant' },
-      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialty: 'Medical Oncology', designation: 'Senior Consultant' },
+      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Director & Senior Consultant' },
+      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialties: ['Medical Oncology'], designation: 'Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Stomach Cancer Care',
   },
@@ -288,8 +288,8 @@ export const cancerTypes: CancerType[] = [
       { slug: 'radiation-oncology', title: 'Radiation Oncology', description: 'Selected radiation planning where appropriate.' },
     ],
     specialists: [
-      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Director & Senior Consultant' },
-      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialty: 'Medical Oncology', designation: 'Senior Consultant' },
+      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Director & Senior Consultant' },
+      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialties: ['Medical Oncology'], designation: 'Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Liver Cancer Care',
   },
@@ -313,8 +313,8 @@ export const cancerTypes: CancerType[] = [
       { slug: 'radiation-oncology', title: 'Radiation Oncology', description: 'Selected local control strategies where needed.' },
     ],
     specialists: [
-      { slug: 'dr-vijayalakshmi', name: 'Dr. K. Vijayalakshmi', specialty: 'Gynaec Oncology', designation: 'Consultant' },
-      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialty: 'Medical Oncology', designation: 'Senior Consultant' },
+      { slug: 'dr-vijayalakshmi', name: 'Dr. K. Vijayalakshmi', specialties: ['Gynaec Oncology'], designation: 'Consultant' },
+      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialties: ['Medical Oncology'], designation: 'Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Ovarian Cancer Care',
   },
@@ -338,8 +338,8 @@ export const cancerTypes: CancerType[] = [
       { slug: 'radiation-oncology', title: 'Radiation Oncology', description: 'Selected palliative radiation where needed.' },
     ],
     specialists: [
-      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Director & Senior Consultant' },
-      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialty: 'Medical Oncology', designation: 'Senior Consultant' },
+      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Director & Senior Consultant' },
+      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialties: ['Medical Oncology'], designation: 'Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Kidney Cancer Care',
   },
@@ -363,8 +363,8 @@ export const cancerTypes: CancerType[] = [
       { slug: 'radiation-oncology', title: 'Radiation Oncology', description: 'Selected combined-modality treatment.' },
     ],
     specialists: [
-      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Director & Senior Consultant' },
-      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialty: 'Medical Oncology', designation: 'Senior Consultant' },
+      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Director & Senior Consultant' },
+      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialties: ['Medical Oncology'], designation: 'Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Pancreatic Cancer Care',
   },
@@ -388,8 +388,8 @@ export const cancerTypes: CancerType[] = [
       { slug: 'radiation-oncology', title: 'Radiation Oncology', description: 'Selected local-control strategies where indicated.' },
     ],
     specialists: [
-      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Director & Senior Consultant' },
-      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialty: 'Medical Oncology', designation: 'Senior Consultant' },
+      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Director & Senior Consultant' },
+      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialties: ['Medical Oncology'], designation: 'Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Gallbladder Cancer Care',
   },
@@ -413,8 +413,8 @@ export const cancerTypes: CancerType[] = [
       { slug: 'medical-oncology', title: 'Medical Oncology', description: 'Systemic therapy and coordinated supportive care.' },
     ],
     specialists: [
-      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Director & Senior Consultant' },
-      { slug: 'dr-anbalagan', name: 'Dr. P. Anbalagan', specialty: 'Radiation Oncology', designation: 'Senior Consultant' },
+      { slug: 'dr-krishnamurthy', name: 'Dr. S. Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Director & Senior Consultant' },
+      { slug: 'dr-anbalagan', name: 'Dr. P. Anbalagan', specialties: ['Radiation Oncology'], designation: 'Senior Consultant' },
     ],
     ctaTitle: 'Get Expert Oesophageal Cancer Care',
   },
