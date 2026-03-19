@@ -24,7 +24,7 @@ interface SubNavCategory {
 
 const categories: SubNavCategory[] = [
   {
-    label: "Patients & Family",
+    label: "Patients & Families",
     columns: [
       {
         heading: "When you first visit",
@@ -148,7 +148,7 @@ const categories: SubNavCategory[] = [
           },
           {
             label: "Palliative Medicine",
-            href: "",
+            href: "/departments/palliative-medicine",
           },
           {
             label: "Preventive Oncology",
@@ -165,7 +165,7 @@ const categories: SubNavCategory[] = [
           },
           {
             label: "Microbiology",
-            href: "",
+            href: "/departments/microbiology",
           },
           {
             label: "Cytogenetics",
@@ -185,18 +185,19 @@ const categories: SubNavCategory[] = [
           },
           {
             label: "Radio Diagnosis and Imaging",
-            href: "",
+            href: "/departments/radiology",
           },
           {
             label: "Nuclear Medicine",
-            href: "",
+            href: "/departments/nuclear-medicine",
           },
         ],
       },
       {
         heading: "Support Services",
         links: [
-          { label: "Anaesthesia & Pain Management", href: "" },
+          { label: "Anaesthesia & Pain Management", href: "/departments/anaesthesia-pain" },
+          { label: "Quality Control", href: "/departments/quality-control" },
           { label: "Blood Centre", href: "/#education" },
           { label: "Dietetics", href: "/#education" },
           { label: "Physiotherapy", href: "/#education" },
