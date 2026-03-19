@@ -27,11 +27,11 @@ export default function Footer() {
               <li><Link href="/#about">About CI(WIA)</Link></li>
               <li><Link href="/#cancer-types">For Patients</Link></li>
               <li><Link href="/#doctors">Find a Doctor</Link></li>
-              <li><Link href="/#research">Research &amp; Education</Link></li>
-              <li><Link href="/#events">Events &amp; Camps</Link></li>
+              <li><Link href="/coming-soon">Research &amp; Education</Link></li>
+              <li><Link href="/coming-soon">Events &amp; Camps</Link></li>
               <li><Link href="/#donate">Donate</Link></li>
               <li><Link href="/blood-bank">Blood Bank</Link></li>
-              <li><Link href="/#faq">FAQs</Link></li>
+              <li><Link href="/coming-soon">FAQs</Link></li>
             </ul>
           </div>
           <div className="footer-col">

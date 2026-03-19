@@ -31,10 +31,10 @@ const categories: SubNavCategory[] = [
         links: [
           { label: "Why Cancer Institute (WIA)", href: "/#about" },
           { label: "Planning Your Visit", href: "/#appointment" },
-          { label: "New Patient Services", href: "" },
-          { label: "Follow-up Patient Care", href: "" },
-          { label: "Insurance & Billing", href: "" },
-          { label: "International Patients", href: "/#" },
+          { label: "New Patient Services", href: "/coming-soon" },
+          { label: "Follow-up Patient Care", href: "/coming-soon" },
+          { label: "Insurance & Billing", href: "/coming-soon" },
+          { label: "International Patients", href: "/coming-soon" },
           { label: "Second Opinion", href: "/#appointment" },
         ],
       },
@@ -42,26 +42,26 @@ const categories: SubNavCategory[] = [
         heading: "Diagnosis & Treatment",
         links: [
           { label: "Cancer Types", href: "/#cancer-types" },
-          { label: "A New Diagnosis", href: "/#education" },
+          { label: "A New Diagnosis", href: "/coming-soon" },
           { label: "Patient Support", href: "/departments/surgical-oncology", },
         ],
       },
       {
         heading: "Family & Caregiver Support",
         links: [
-          { label: "Caregiver Resources", href: "/#education" },
-          { label: "Children & Teens", href: "/#education" },
-          { label: "Taking Care of Yourself", href: "/#education" },
-          { label: "Palliative Care", href: "/#education" },
-          { label: "Patient Support", href: "/#faq" },
+          { label: "Caregiver Resources", href: "/coming-soon" },
+          { label: "Children & Teens", href: "/coming-soon" },
+          { label: "Taking Care of Yourself", href: "/coming-soon" },
+          { label: "Palliative Care", href: "/coming-soon" },
+          { label: "Patient Support", href: "/coming-soon" },
         ],
       },
       {
         heading: "Life After Cancer",
         links: [
-          { label: "Follow-up Care", href: "/#education" },
-          { label: "Managing Long-Term Effects", href: "/#education" },
-          { label: "Survivorship Programme", href: "/#education" },
+          { label: "Follow-up Care", href: "/coming-soon" },
+          { label: "Managing Long-Term Effects", href: "/coming-soon" },
+          { label: "Survivorship Programme", href: "/coming-soon" },
         ],
       },
     ],
@@ -69,7 +69,7 @@ const categories: SubNavCategory[] = [
       { label: "Request an Appointment", href: "/#appointment" },
       {
         label: "Current Patients",
-        href: "/#faq",
+        href: "/coming-soon",
         desc: "Information and resources for current and returning patients.",
       },
     ],
@@ -80,12 +80,12 @@ const categories: SubNavCategory[] = [
       {
         heading: "Cancer Prevention",
         links: [
-          { label: "Cancer Risk Factors", href: "/#education" },
-          { label: "Healthy Lifestyle Choices", href: "/#education" },
-          { label: "HPV & Hepatitis B Vaccines", href: "/#education" },
-          { label: "Tobacco Cessation Clinic", href: "/#education" },
-          { label: "Nutrition & Cancer", href: "/#education" },
-          { label: "Community Out reach programme", href: "/#education" },
+          { label: "Cancer Risk Factors", href: "/coming-soon" },
+          { label: "Healthy Lifestyle Choices", href: "/coming-soon" },
+          { label: "HPV & Hepatitis B Vaccines", href: "/coming-soon" },
+          { label: "Tobacco Cessation Clinic", href: "/coming-soon" },
+          { label: "Nutrition & Cancer", href: "/coming-soon" },
+          { label: "Community Out reach programme", href: "/coming-soon" },
         ],
       },
       {
@@ -108,9 +108,9 @@ const categories: SubNavCategory[] = [
         heading: "Community Outreach",
         links: [
           { label: "Community Outreach", href: "/#appointment" },
-          { label: "Awareness Programmes", href: "/#events", },
-          { label: "Rural Cancer screening", href: "/#events", },
-          { label: "School & College camps", href: "/#events", },
+          { label: "Awareness Programmes", href: "/coming-soon", },
+          { label: "Rural Cancer screening", href: "/coming-soon", },
+          { label: "School & College camps", href: "/coming-soon", },
         ],
       },
     ],
@@ -118,7 +118,7 @@ const categories: SubNavCategory[] = [
       { label: "Book a Screening", href: "/#appointment" },
       {
         label: "Upcoming Camps",
-        href: "/#events",
+        href: "/coming-soon",
         desc: "Free screening and awareness events in your community.",
       },
     ],
@@ -144,7 +144,7 @@ const categories: SubNavCategory[] = [
           },
           {
             label: "Medical Gastroenterology",
-            href: "",
+            href: "/coming-soon",
           },
           {
             label: "Palliative Medicine",
@@ -152,7 +152,7 @@ const categories: SubNavCategory[] = [
           },
           {
             label: "Preventive Oncology",
-            href: "",
+            href: "/coming-soon",
           },
         ],
       },
@@ -161,7 +161,7 @@ const categories: SubNavCategory[] = [
         links: [
           {
             label: "Clinical Biochemistry",
-            href: "",
+            href: "/coming-soon",
           },
           {
             label: "Microbiology",
@@ -169,19 +169,19 @@ const categories: SubNavCategory[] = [
           },
           {
             label: "Cytogenetics",
-            href: "",
+            href: "/coming-soon",
           },
           {
             label: "Cancer Biology & Molecular Diagnostics",
-            href: "",
+            href: "/coming-soon",
           },
           {
             label: "Molecular Oncology",
-            href: "",
+            href: "/coming-soon",
           },
           {
             label: "Onco-Pathology",
-            href: "",
+            href: "/coming-soon",
           },
           {
             label: "Radio Diagnosis and Imaging",
@@ -198,12 +198,12 @@ const categories: SubNavCategory[] = [
         links: [
           { label: "Anaesthesia & Pain Management", href: "/departments/anaesthesia-pain" },
           { label: "Quality Control", href: "/departments/quality-control" },
-          { label: "Blood Centre", href: "/#education" },
-          { label: "Dietetics", href: "/#education" },
-          { label: "Physiotherapy", href: "/#education" },
-          { label: "Psycho-Oncology", href: "/#education" },
-          { label: "Bio medical engineering", href: "/#education" },
-          { label: "Pharmacy", href: "/#education" },
+          { label: "Blood Centre", href: "/coming-soon" },
+          { label: "Dietetics", href: "/coming-soon" },
+          { label: "Physiotherapy", href: "/coming-soon" },
+          { label: "Psycho-Oncology", href: "/coming-soon" },
+          { label: "Bio medical engineering", href: "/coming-soon" },
+          { label: "Pharmacy", href: "/coming-soon" },
         ],
       },
     ],
@@ -240,7 +240,7 @@ const categories: SubNavCategory[] = [
             href: "https://ci-wia-research-pages.vercel.app/research",
             external: true,
           },
-          { label: "Conferences & CME", href: "/#events" },
+          { label: "Conferences & CME", href: "/coming-soon" },
           {
             label: "Publications",
             href: "https://ci-wia-research-pages.vercel.app/research",
@@ -296,18 +296,18 @@ const categories: SubNavCategory[] = [
         links: [
           { label: "Blood Donation", href: "/#donate" },
           { label: "Bone Marrow Donation (subject to confirmation)", href: "/blood-bank" },
-          { label: "Patient Support Funds", href: "/#events" },
-          { label: "Treatment Sponsorship", href: "/#events" },
-          { label: "Equipment & Infrastructure Support", href: "/#events" },
+          { label: "Patient Support Funds", href: "/coming-soon" },
+          { label: "Treatment Sponsorship", href: "/coming-soon" },
+          { label: "Equipment & Infrastructure Support", href: "/coming-soon" },
         ],
       },
       {
         heading: "Cancer Awareness & Prevention",
         links: [
           { label: "Free Screening Camps", href: "/#donate" },
-          { label: "Awareness Campaigns", href: "/#events" },
-          { label: "Rural Outreach Programmes", href: "/#events" },
-          { label: "School & College Initiatives", href: "/#events" },
+          { label: "Awareness Campaigns", href: "/coming-soon" },
+          { label: "Rural Outreach Programmes", href: "/coming-soon" },
+          { label: "School & College Initiatives", href: "/coming-soon" },
         ],
       },
     ],

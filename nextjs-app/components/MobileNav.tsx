@@ -37,10 +37,10 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
         <nav>
           <ul>
             <li><Link href="/#about" onClick={onClose}>About</Link></li>
-            <li><Link href="/#academics" onClick={onClose}>Academics</Link></li>
+            <li><Link href="/coming-soon" onClick={onClose}>Academics</Link></li>
             <li><Link href="/blood-bank" onClick={onClose}>Blood Bank</Link></li>
-            <li><Link href="/#news" onClick={onClose}>News &amp; Updates</Link></li>
-            <li><Link href="/#careers" onClick={onClose}>Careers</Link></li>
+            <li><Link href="/coming-soon" onClick={onClose}>News &amp; Updates</Link></li>
+            <li><Link href="/coming-soon" onClick={onClose}>Careers</Link></li>
             <li><Link href="/#contact" onClick={onClose}>Contact</Link></li>
           </ul>
         </nav>
