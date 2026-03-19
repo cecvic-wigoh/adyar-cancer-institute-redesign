@@ -1,0 +1,371 @@
+/* ============================================================
+   department-diagnostic.module.css
+   Styles unique to the Diagnostic department template.
+   Shared styles live in DepartmentShared.module.css.
+   ============================================================ */
+
+/* ── Page wrapper ── */
+.page {
+  min-height: 100vh;
+}
+
+/* ── Hero ── */
+.hero {
+  background: linear-gradient(135deg, #0f4a3a 0%, #1a6b5a 60%, #22876f 100%);
+  padding: 64px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+.heroInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroLabel {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-secondary);
+  margin-bottom: 16px;
+}
+
+.heroTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.heroTagline {
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+/* ── Overview body ── */
+.overviewBody {
+  font-size: 16.5px;
+  line-height: 1.75;
+}
+
+.overviewBody p + p {
+  margin-top: 16px;
+}
+
+/* ── Patient Guide (What to Expect) ── */
+.guideSection {
+  background: #f0fdf4;
+  border-top: 3px solid #1a6b5a;
+}
+
+.guideInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.guideTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  color: #134e3f;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.guideSub {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  color: #166534;
+  margin-bottom: 24px;
+}
+
+.guideSteps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.guideStep {
+  background: white;
+  border-radius: 10px;
+  padding: 24px;
+  border: 1px solid #bbf7d0;
+}
+
+.guideStep h4 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.guideStep p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.guideStepNum {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1a6b5a;
+  color: white;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+/* ── Diagnostic Services ── */
+.servicesSection {
+  background: var(--color-off-white);
+}
+
+.servicesInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 24px;
+}
+
+.servicesCategory {
+  margin-bottom: 32px;
+}
+
+.servicesCategory:last-child {
+  margin-bottom: 0;
+}
+
+.servicesCatTitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #134e3f;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-secondary);
+  display: inline-block;
+}
+
+.servicesList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 32px;
+  margin: 0;
+  padding: 0;
+}
+
+.servicesList li {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  padding: 8px 0;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.servicesList li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+/* ── Therapeutic Services ── */
+.therapyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.therapyCard {
+  padding: 20px;
+  background: #ecfdf5;
+  border-radius: 8px;
+  border-left: 3px solid #1a6b5a;
+}
+
+.therapyCard h4 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #134e3f;
+  margin-bottom: 6px;
+}
+
+.therapyCard p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Equipment Showcase ── */
+.equipmentGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.equipmentCard {
+  border: 1px solid var(--color-border, #E5E7EB);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.equipmentCard:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.equipmentImg {
+  height: 140px;
+  background: linear-gradient(135deg, #ecfdf5, #d1e8e0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.equipmentIcon {
+  width: 48px;
+  height: 48px;
+  background: #1a6b5a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.equipmentBody {
+  padding: 16px;
+}
+
+.equipmentBody h4 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.equipmentBody p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.equipmentBadge {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: #ecfdf5;
+  color: #1a6b5a;
+}
+
+/* ── Referral CTA ── */
+.referralSection {
+  background: var(--color-off-white);
+  padding: 48px 0;
+}
+
+.referralInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.referralInner h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  color: #1a6b5a;
+  margin-bottom: 12px;
+}
+
+.referralInner p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+.referralEmail {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a6b5a;
+}
+
+.referralNote {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-top: 20px;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #E5E7EB);
+  display: inline-block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 32px;
+  }
+
+  .guideSteps {
+    grid-template-columns: 1fr;
+  }
+
+  .servicesList {
+    grid-template-columns: 1fr;
+  }
+
+  .therapyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .equipmentGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
