@@ -36,13 +36,13 @@ export default function Header() {
 
           <nav className="primary-nav" aria-label="Primary navigation">
             <ul>
-              <li><Link href="/#about">About</Link></li>
+              <li><Link href="/coming-soon">About</Link></li>
               <li><Link href="/blood-bank">Blood Center</Link></li>
-              <li><Link href="/doctors">DIRECTORY OF SERVICES</Link></li>
+              <li><Link href="/coming-soon">DIRECTORY OF SERVICES</Link></li>
               <li><Link href="/coming-soon">News &amp; Updates</Link></li>
               <li><Link href="/coming-soon">Careers</Link></li>
               <li><Link href="/coming-soon">VOLUNTEERS</Link></li>
-              <li><Link href="/#contact">Contact</Link></li>
+              <li><Link href="/coming-soon">Contact</Link></li>
             </ul>
           </nav>
 
