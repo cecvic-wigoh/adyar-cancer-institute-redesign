@@ -31,25 +31,30 @@ export default function Header() {
       <header className={`site-header${scrolled ? ' scrolled' : ''}`} role="banner">
         <div className="header-inner">
           <Link href="/" className="site-logo" aria-label="Cancer Institute (WIA) — Home">
-            <Image src="/logo/Blue Horizontal_Logo-001.png" alt="Cancer Institute (WIA)™ — With Humanity and In Wisdom" width={300} height={49} priority />
+            <Image src="/logo/Blue Horizontal_Logo-001.png" alt="Cancer Institute (WIA)™ — With Humanity and In Wisdom" width={400} height={65} priority />
           </Link>
 
           <nav className="primary-nav" aria-label="Primary navigation">
             <ul>
               <li><Link href="/#about">About</Link></li>
-              <li><Link href="/#academics">Academics</Link></li>
-              <li><Link href="/blood-bank">Blood Bank</Link></li>
+              <li><Link href="">Blood Center</Link></li>
+              <li><Link href="/blood-bank">DIRECTORY OF SERVICES</Link></li>
               <li><Link href="/#news">News &amp; Updates</Link></li>
               <li><Link href="/#careers">Careers</Link></li>
+              <li><Link href="/#careers">VOLUNTEERS</Link></li>
               <li><Link href="/#contact">Contact</Link></li>
             </ul>
           </nav>
 
           <div className="header-actions">
             <button className="search-btn" aria-label="Open search" onClick={() => setSearchOpen(true)}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
             </button>
             <Link href="/#appointment" className="btn btn-primary" style={{ whiteSpace: 'nowrap' }}>Book Appointment</Link>
+            <div className="header-accreditations">
+              <Image src="/logo/nabh-seeklogo.png" alt="NABH Accredited" width={40} height={40} />
+              <Image src="/logo/NABL_Official_LOGO_Registered.png" alt="NABL Accredited" width={40} height={40} />
+            </div>
             <button
               className="hamburger"
               aria-label="Open navigation menu"

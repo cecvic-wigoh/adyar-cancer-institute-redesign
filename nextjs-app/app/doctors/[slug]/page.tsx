@@ -1,10 +1,9 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { doctors, getDoctorBySlug, getDoctorsByDepartment } from '@/data/doctors';
+import { doctors, getDoctorBySlug, getDoctorQualifications } from '@/data/doctors';
 import DoctorAvatar from '@/components/DoctorAvatar';
 import StickyDoctorBar from '@/components/StickyDoctorBar';
-import StatCounter from '@/components/StatCounter';
 import PaginatedPublications from '@/components/PaginatedPublications';
 import styles from './doctor.module.css';
 
@@ -27,76 +26,31 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
   const doctor = getDoctorBySlug(slug);
   if (!doctor) notFound();
 
-  const relatedDoctors = getDoctorsByDepartment(doctor.department.slug).filter(
-    (d) => d.slug !== doctor.slug
-  );
+  const qualifications = getDoctorQualifications(doctor);
+  const lastName = doctor.name.split(' ').pop() ?? doctor.name;
 
-  // Build section nav items based on available data
+  // Build section nav based on available data
   const sectionItems: { id: string; label: string }[] = [];
   if (doctor.about.length > 0) sectionItems.push({ id: 'sec-about', label: 'About' });
   if (doctor.areasOfExpertise.length > 0) sectionItems.push({ id: 'sec-expertise', label: 'Expertise' });
-  if (doctor.qualifications.length > 0) sectionItems.push({ id: 'sec-qualifications', label: 'Qualifications' });
-  if (doctor.education.length > 0) sectionItems.push({ id: 'sec-education', label: 'Education' });
+  sectionItems.push({ id: 'sec-education', label: 'Education & Training' });
   if (doctor.experience.length > 0) sectionItems.push({ id: 'sec-experience', label: 'Experience' });
-  if (doctor.publications && doctor.publications.length > 0) sectionItems.push({ id: 'sec-publications', label: 'Publications' });
-  if (doctor.publicationsList && doctor.publicationsList.length > 0) sectionItems.push({ id: 'sec-publications-list', label: 'Publications' });
+  if (doctor.publicationsUrl || doctor.publications?.length || doctor.publicationsList?.length) {
+    sectionItems.push({ id: 'sec-publications', label: 'Publications' });
+  }
+
+  const hasFellowships = doctor.fellowships && doctor.fellowships.length > 0;
+  const hasPublications = doctor.publicationsUrl || (doctor.publications && doctor.publications.length > 0) || (doctor.publicationsList && doctor.publicationsList.length > 0);
 
   return (
     <main id="main" className={styles.page}>
-
-      {/* ── STICKY NAV BAR ── */}
-      <StickyDoctorBar
-        doctorName={doctor.name}
-        sections={sectionItems}
-      />
-
-      {/* ── HERO ── */}
-      <section id="doctor-hero" className={styles.hero}>
-        <div className={styles.heroNoise} />
-        <div className={styles.heroInner}>
-          <DoctorAvatar
-            name={doctor.name}
-            department={doctor.department.title}
-            size="lg"
-            imageSrc={doctor.image}
-          />
-          <div className={styles.heroInfo}>
-            <h1 className={styles.heroTitle}>{doctor.name}</h1>
-            <p className={styles.heroDesignation}>{doctor.designation}</p>
-            <div className={styles.heroTags}>
-              <span className={styles.heroTagSpecialty}>{doctor.specialty}</span>
-              {doctor.qualifications.length > 0 && (
-                <span className={styles.heroTagQual}>{doctor.qualifications[0]}</span>
-              )}
-            </div>
-            <div className={styles.heroCtas}>
-              <a href="/#appointment" className={styles.heroCtaPrimary}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                Request Appointment
-              </a>
-              <Link href={`/departments/${doctor.department.slug}`} className={styles.heroCtaGhost}>
-                View Department
-              </Link>
-            </div>
-            {doctor.linkedin && (
-              <a
-                href={doctor.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.heroLinkedin}
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                LinkedIn Profile
-              </a>
-            )}
-          </div>
-        </div>
-      </section>
 
       {/* ── BREADCRUMB ── */}
       <div className={styles.breadcrumbBar}>
         <nav className={styles.breadcrumb} aria-label="Breadcrumb">
           <Link href="/">Home</Link>
+          <span className={styles.breadcrumbSep}>&rsaquo;</span>
+          <Link href="/doctors">Doctors</Link>
           <span className={styles.breadcrumbSep}>&rsaquo;</span>
           <Link href={`/departments/${doctor.department.slug}`}>{doctor.department.title}</Link>
           <span className={styles.breadcrumbSep}>&rsaquo;</span>
@@ -104,304 +58,205 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
         </nav>
       </div>
 
-      {/* ── HIGHLIGHTS STRIP ── */}
-      <div className={styles.highlights}>
-        <div className={styles.highlightsInner}>
-          <div className={styles.highlightCard}>
-            <div className={styles.highlightIcon}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="#134795" strokeWidth="2" strokeLinecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <div className={styles.highlightValue}>{doctor.department.title}</div>
-            <div className={styles.highlightLabel}>Department</div>
-          </div>
-          <div className={styles.highlightCard}>
-            <div className={styles.highlightIcon}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="#134795" strokeWidth="2" strokeLinecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 10 3 12 0v-5"/></svg>
-            </div>
-            <div className={styles.highlightValue}>
-              <StatCounter target={doctor.qualifications.length} />
-            </div>
-            <div className={styles.highlightLabel}>Qualifications</div>
-          </div>
-          {(() => {
-            const pubCount = doctor.publicationMetrics?.total
-              ?? doctor.publicationsList?.length
-              ?? doctor.publications?.length
-              ?? 0;
-            return pubCount > 0 ? (
-              <div className={styles.highlightCard}>
-                <div className={styles.highlightIcon}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#134795" strokeWidth="2" strokeLinecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                </div>
-                <div className={styles.highlightValue}>
-                  <StatCounter target={pubCount} />
-                </div>
-                <div className={styles.highlightLabel}>Publications</div>
-              </div>
-            ) : null;
-          })()}
-        </div>
-      </div>
+      {/* ── STICKY NAV ── */}
+      <StickyDoctorBar sections={sectionItems} />
 
-      {/* ── CONTENT + SIDEBAR ── */}
-      <div className={styles.contentWrap}>
+      {/* ── HERO ── */}
+      <section className={styles.hero} id="doctor-hero">
+        <div className={styles.heroInfo}>
+          <div className={styles.heroDept}>{doctor.department.title}</div>
+          <h1 className={styles.heroName}>{doctor.name}</h1>
+          <p className={styles.heroDesignation}>{doctor.designation}</p>
 
-        {/* ── MAIN CONTENT ── */}
-        <div className={styles.main}>
+          <div className={styles.heroQualifications}>
+            <strong>Qualifications</strong>
+            <span>{qualifications.join(' \u2022 ')}</span>
 
-          {/* About */}
-          {doctor.about.length > 0 && (
-            <section id="sec-about" className={styles.sectionBlock}>
-              <h2 className={styles.sectionTitle}>
-                About
-                <span className={styles.sectionLine} />
-              </h2>
-              <div className={styles.aboutBody}>
-                {doctor.about.map((p, i) => (
-                  <p key={i} className={i === 0 ? styles.aboutLead : undefined}>{p}</p>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Areas of Expertise */}
-          {doctor.areasOfExpertise.length > 0 && (
-            <section id="sec-expertise" className={styles.sectionBlock}>
-              <h2 className={styles.sectionTitle}>
-                Areas of Expertise
-                <span className={styles.sectionLine} />
-              </h2>
-              <div className={styles.expertiseChips}>
-                {doctor.areasOfExpertise.map((area, i) => (
-                  <span key={i} className={styles.expertiseChip}>{area}</span>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Qualifications */}
-          {doctor.qualifications.length > 0 && (
-            <section id="sec-qualifications" className={styles.sectionBlock}>
-              <h2 className={styles.sectionTitle}>
-                Qualifications
-                <span className={styles.sectionLine} />
-              </h2>
-              <ul className={styles.qualList}>
-                {doctor.qualifications.map((qual, i) => (
-                  <li key={i} className={styles.qualItem}>
-                    <span className={styles.qualCheck}>
-                      <svg viewBox="0 0 24 24" fill="none" stroke="#23CDC0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    </span>
-                    {qual}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          {/* Education Timeline */}
-          {doctor.education.length > 0 && (
-            <section id="sec-education" className={styles.sectionBlock}>
-              <h2 className={styles.sectionTitle}>
-                Education
-                <span className={styles.sectionLine} />
-              </h2>
-              <div className={styles.timeline}>
-                {doctor.education.map((edu, i) => (
-                  <div key={i} className={styles.tlItem}>
-                    <div className={styles.tlDot} />
-                    <div className={styles.tlDegree}>{edu.degree}</div>
-                    <div className={styles.tlInstitution}>{edu.institution}</div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Career Experience */}
-          {doctor.experience.length > 0 && (
-            <section id="sec-experience" className={styles.sectionBlock}>
-              <h2 className={styles.sectionTitle}>
-                Career Experience
-                <span className={styles.sectionLine} />
-              </h2>
-              <ul className={styles.expList}>
-                {doctor.experience.map((exp, i) => (
-                  <li key={i} className={styles.expItem}>
-                    <span className={styles.expBullet}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#23CDC0" strokeWidth="2.5" strokeLinecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-                    </span>
-                    <span className={styles.expText}>{exp}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          {/* Publications (structured) */}
-          {doctor.publications && doctor.publications.length > 0 && (
-            <section id="sec-publications" className={styles.sectionBlock}>
-              <h2 className={styles.sectionTitle}>
-                Research &amp; Publications
-                <span className={styles.sectionLine} />
-              </h2>
-
-              {/* Metrics cards */}
-              {doctor.publicationMetrics && (
-                <div className={styles.pubMetrics}>
-                  <div className={styles.pubMetric}>
-                    <span className={styles.pubMetricValue}>
-                      <StatCounter target={doctor.publicationMetrics.total} />
-                    </span>
-                    <span className={styles.pubMetricLabel}>Publications</span>
-                  </div>
-                  <div className={styles.pubMetric}>
-                    <span className={styles.pubMetricValue}>
-                      <StatCounter target={doctor.publicationMetrics.citations} />
-                    </span>
-                    <span className={styles.pubMetricLabel}>Citations</span>
-                  </div>
-                  <div className={styles.pubMetric}>
-                    <span className={styles.pubMetricValue}>
-                      <StatCounter target={doctor.publicationMetrics.hIndex} />
-                    </span>
-                    <span className={styles.pubMetricLabel}>h-index</span>
-                  </div>
-                  <div className={styles.pubMetric}>
-                    <span className={styles.pubMetricValue}>
-                      <StatCounter target={doctor.publicationMetrics.i10Index} />
-                    </span>
-                    <span className={styles.pubMetricLabel}>i10-index</span>
-                  </div>
-                </div>
-              )}
-
-              {/* Group by category */}
-              {(['Original Article', 'Review & Meta-Analysis', 'Case Report'] as const).map((category) => {
-                const pubs = doctor.publications!.filter((p) => p.category === category);
-                if (pubs.length === 0) return null;
-                return (
-                  <div key={category} className={styles.pubCategory}>
-                    <h3 className={styles.pubCategoryTitle}>
-                      {category === 'Original Article' ? 'Original Articles' : category === 'Review & Meta-Analysis' ? 'Reviews & Meta-Analyses' : 'Case Reports'}
-                      <span className={styles.pubCategoryCount}>{pubs.length}</span>
-                    </h3>
-                    <div className={styles.pubList}>
-                      {pubs.map((pub, i) => (
-                        <div key={i} className={styles.pubItem}>
-                          <div className={styles.pubNumber}>{i + 1}</div>
-                          <div className={styles.pubContent}>
-                            <div className={styles.pubTitle}>{pub.title}</div>
-                            <div className={styles.pubAuthors}>{pub.authors}</div>
-                            <div className={styles.pubJournal}>
-                              <span className={styles.pubJournalName}>{pub.journal}</span>
-                              <span className={styles.pubYear}>{pub.year}</span>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            </section>
-          )}
-
-          {/* Publications List (paginated) */}
-          {doctor.publicationsList && doctor.publicationsList.length > 0 && (
-            <section id="sec-publications-list" className={styles.sectionBlock}>
-              <h2 className={styles.sectionTitle}>
-                Research &amp; Publications
-                <span className={styles.sectionLine} />
-              </h2>
-              <PaginatedPublications publications={doctor.publicationsList} />
-            </section>
-          )}
-
-        </div>
-
-        {/* ── SIDEBAR ── */}
-        <aside className={styles.sidebar}>
-          {/* Book Appointment Card */}
-          <div className={styles.appointCard}>
-            <div className={styles.appointTitle}>Book an Appointment</div>
-            <p className={styles.appointDesc}>
-              Schedule a consultation with {doctor.name} at Cancer Institute (WIA).
-            </p>
-            <a href="/#appointment" className={styles.appointBtn}>
-              Request Appointment
-            </a>
+            <strong>Specialties</strong>
+            <span>{doctor.specialties.join(' \u2022 ')}</span>
           </div>
 
-          {/* Department Link Card */}
-          <div className={styles.sideCard}>
-            <Link href={`/departments/${doctor.department.slug}`} className={styles.deptLink}>
-              <div className={styles.deptIcon}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="#134795" strokeWidth="2" strokeLinecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              </div>
-              <div>
-                <div className={styles.deptLinkTitle}>{doctor.department.title}</div>
-                <div className={styles.deptLinkSub}>View department page &rarr;</div>
-              </div>
-            </Link>
-          </div>
-
-          {/* LinkedIn */}
           {doctor.linkedin && (
-            <div className={styles.sideCard}>
-              <a
-                href={doctor.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.linkedinLink}
-              >
-                <span className={styles.linkedinIcon}>
-                  <svg viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </span>
-                <span className={styles.linkedinText}>View LinkedIn Profile</span>
+            <div className={styles.heroLinkedin}>
+              <a href={doctor.linkedin} target="_blank" rel="noopener noreferrer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+                View LinkedIn Profile
               </a>
             </div>
           )}
-        </aside>
+        </div>
+
+        <div className={styles.heroPhoto}>
+          {doctor.image ? (
+            <img
+              src={doctor.image}
+              alt={`Photo of ${doctor.name}`}
+              className={styles.heroPhotoImg}
+            />
+          ) : (
+            <DoctorAvatar name={doctor.name} size="lg" />
+          )}
+        </div>
+      </section>
+
+      {/* ── CTA STRIP ── */}
+      <div className={styles.ctaStrip}>
+        <div className={styles.ctaStripInner}>
+          <div>
+            <h3 className={styles.ctaStripTitle}>Request an Appointment</h3>
+            <p className={styles.ctaStripSub}>Call us or book online to schedule your consultation</p>
+          </div>
+          <a href="/#appointment" className={styles.ctaBtn}>Book Appointment</a>
+        </div>
       </div>
 
-      {/* ── RELATED DOCTORS ── */}
-      {relatedDoctors.length > 0 && (
-        <section className={styles.relatedSection}>
-          <div className={styles.relatedInner}>
-            <h2 className={styles.relatedHeading}>
-              Colleagues in {doctor.department.title}
-            </h2>
-            <div className={styles.relatedScroll}>
-              {relatedDoctors.map((rd) => (
-                <Link
-                  key={rd.slug}
-                  href={`/doctors/${rd.slug}`}
-                  className={styles.relatedCard}
-                >
-                  <DoctorAvatar name={rd.name} size="sm" imageSrc={rd.image} />
-                  <div className={styles.relatedInfo}>
-                    <div className={styles.relatedName}>{rd.name}</div>
-                    <div className={styles.relatedDesig}>{rd.designation}</div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+      {/* ── ABOUT ── */}
+      {doctor.about.length > 0 && (
+        <section id="sec-about" className={styles.section}>
+          <div className={styles.sectionLabel}>Get to Know</div>
+          <h2 className={styles.sectionTitle}>About Dr. {lastName}</h2>
+          <div className={styles.sectionBody}>
+            {doctor.about.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
           </div>
         </section>
       )}
 
-      {/* ── CTA BAR ── */}
-      <div className={styles.ctaBar}>
-        <div className={styles.ctaInner}>
-          <div>
-            <div className={styles.ctaText}>Ready to Schedule a Visit?</div>
-            <div className={styles.ctaSub}>Book an appointment with our specialists at Cancer Institute (WIA), Chennai.</div>
+      {/* ── AREAS OF EXPERTISE ── */}
+      {doctor.areasOfExpertise.length > 0 && (
+        <section id="sec-expertise" className={styles.section}>
+          <div className={styles.sectionLabel}>Clinical Focus</div>
+          <h2 className={styles.sectionTitle}>Areas of Expertise</h2>
+          <ul className={styles.expertiseList}>
+            {doctor.areasOfExpertise.map((area, i) => (
+              <li key={i}>{area}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* ── EDUCATION & TRAINING ── */}
+      <section id="sec-education" className={styles.section}>
+        <div className={styles.sectionLabel}>Credentials</div>
+        <h2 className={styles.sectionTitle}>Education &amp; Training</h2>
+        <div className={`${styles.eduGrid} ${!hasFellowships ? styles.eduGridFull : ''}`}>
+          <div className={styles.eduGroup}>
+            <h4 className={styles.eduGroupTitle}>Degrees</h4>
+            <div className={styles.eduItem}>
+              <div className={styles.eduDegree}>{doctor.primaryDegree.degree}</div>
+              <div className={styles.eduInstitution}>
+                {doctor.primaryDegree.institution}{doctor.primaryDegree.year ? `, ${doctor.primaryDegree.year}` : ''}
+              </div>
+            </div>
+            {doctor.postgraduateQualification && (
+              <div className={styles.eduItem}>
+                <div className={styles.eduDegree}>{doctor.postgraduateQualification.degree}</div>
+                <div className={styles.eduInstitution}>
+                  {doctor.postgraduateQualification.institution}{doctor.postgraduateQualification.year ? `, ${doctor.postgraduateQualification.year}` : ''}
+                </div>
+              </div>
+            )}
+            {doctor.superSpeciality && (
+              <div className={styles.eduItem}>
+                <div className={styles.eduDegree}>{doctor.superSpeciality.degree}</div>
+                <div className={styles.eduInstitution}>
+                  {doctor.superSpeciality.institution}{doctor.superSpeciality.year ? `, ${doctor.superSpeciality.year}` : ''}
+                </div>
+              </div>
+            )}
           </div>
-          <a href="/#appointment" className={styles.ctaBtn}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Book Appointment
-          </a>
+          {hasFellowships && (
+            <div className={styles.eduGroup}>
+              <h4 className={styles.eduGroupTitle}>Fellowships</h4>
+              {doctor.fellowships!.map((f, i) => (
+                <div key={i} className={styles.eduItem}>
+                  <div className={styles.eduDegree}>{f}</div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ── EXPERIENCE ── */}
+      {doctor.experience.length > 0 && (
+        <section id="sec-experience" className={styles.section}>
+          <div className={styles.sectionLabel}>Career</div>
+          <h2 className={styles.sectionTitle}>Experience</h2>
+          <ul className={styles.expList}>
+            {doctor.experience.map((exp, i) => (
+              <li key={i}>{exp}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* ── CTA STRIP (second) ── */}
+      <div className={styles.ctaStrip}>
+        <div className={styles.ctaStripInner}>
+          <div>
+            <h3 className={styles.ctaStripTitle}>Need a Consultation?</h3>
+            <p className={styles.ctaStripSub}>Our team is here to help you schedule an appointment</p>
+          </div>
+          <a href="/#appointment" className={styles.ctaBtn}>Book Appointment</a>
+        </div>
+      </div>
+
+      {/* ── PUBLICATIONS ── */}
+      {hasPublications && (
+        <section id="sec-publications" className={styles.section}>
+          <div className={styles.sectionLabel}>Research</div>
+          <h2 className={styles.sectionTitle}>Publications</h2>
+
+          {/* Structured publications with metrics */}
+          {doctor.publications && doctor.publications.length > 0 && doctor.publicationMetrics && (
+            <div className={styles.pubMetrics}>
+              {[
+                { label: 'Publications', value: doctor.publicationMetrics.total },
+                { label: 'Citations', value: doctor.publicationMetrics.citations },
+                { label: 'h-index', value: doctor.publicationMetrics.hIndex },
+                { label: 'i10-index', value: doctor.publicationMetrics.i10Index },
+              ].map((m) => (
+                <div key={m.label} className={styles.pubMetric}>
+                  <span className={styles.pubMetricValue}>{m.value}</span>
+                  <span className={styles.pubMetricLabel}>{m.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Paginated publication list */}
+          {doctor.publicationsList && doctor.publicationsList.length > 0 && (
+            <PaginatedPublications publications={doctor.publicationsList} />
+          )}
+
+          {/* Publications URL link */}
+          {doctor.publicationsUrl && (
+            <div className={styles.pubUrlWrap}>
+              <p className={styles.pubNote}>
+                View the complete list of research publications and citations.
+              </p>
+              <a
+                href={doctor.publicationsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.pubLink}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                View All Publications
+              </a>
+            </div>
+          )}
+        </section>
+      )}
+
+      {/* ── BOTTOM CTA ── */}
+      <div className={styles.bottomCta}>
+        <div className={styles.bottomCtaInner}>
+          <h3 className={styles.bottomCtaTitle}>Ready to Schedule Your Visit?</h3>
+          <p className={styles.bottomCtaSub}>Contact the Cancer Institute (WIA) to book an appointment with {doctor.name}</p>
+          <a href="/#appointment" className={styles.bottomCtaBtn}>Request Appointment</a>
         </div>
       </div>
 

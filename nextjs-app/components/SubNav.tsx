@@ -27,12 +27,14 @@ const categories: SubNavCategory[] = [
     label: "Patients & Family",
     columns: [
       {
-        heading: "Your First Visit",
+        heading: "When you first visit",
         links: [
           { label: "Why Cancer Institute (WIA)", href: "/#about" },
           { label: "Planning Your Visit", href: "/#appointment" },
-          { label: "Insurance & Billing", href: "/#faq" },
-          { label: "International Patients", href: "/#appointment" },
+          { label: "New Patient Services", href: "" },
+          { label: "Follow-up Patient Care", href: "" },
+          { label: "Insurance & Billing", href: "" },
+          { label: "International Patients", href: "/#" },
           { label: "Second Opinion", href: "/#appointment" },
         ],
       },
@@ -41,28 +43,24 @@ const categories: SubNavCategory[] = [
         links: [
           { label: "Cancer Types", href: "/#cancer-types" },
           { label: "A New Diagnosis", href: "/#education" },
-          { label: "Treatment Options", href: "/#education" },
-          {
-            label: "Departments & Clinics",
-            href: "/departments/surgical-oncology",
-          },
-          { label: "Patient Support", href: "/#faq" },
+          { label: "Patient Support", href: "/departments/surgical-oncology", },
         ],
       },
       {
-        heading: "Supporting a Loved One",
+        heading: "Family & Caregiver Support",
         links: [
           { label: "Caregiver Resources", href: "/#education" },
           { label: "Children & Teens", href: "/#education" },
           { label: "Taking Care of Yourself", href: "/#education" },
           { label: "Palliative Care", href: "/#education" },
+          { label: "Patient Support", href: "/#faq" },
         ],
       },
       {
         heading: "Life After Cancer",
         links: [
           { label: "Follow-up Care", href: "/#education" },
-          { label: "Long-Term Effects", href: "/#education" },
+          { label: "Managing Long-Term Effects", href: "/#education" },
           { label: "Survivorship Programme", href: "/#education" },
         ],
       },
@@ -87,6 +85,7 @@ const categories: SubNavCategory[] = [
           { label: "HPV & Hepatitis B Vaccines", href: "/#education" },
           { label: "Tobacco Cessation Clinic", href: "/#education" },
           { label: "Nutrition & Cancer", href: "/#education" },
+          { label: "Community Out reach programme", href: "/#education" },
         ],
       },
       {
@@ -102,16 +101,16 @@ const categories: SubNavCategory[] = [
             label: "Colorectal Cancer Screening",
             href: "/cancer/colorectal-cancer",
           },
-          { label: "General Health Check-up", href: "/#appointment" },
+          { label: "Other Check-up?", href: "/#appointment" },
         ],
       },
       {
         heading: "Community Outreach",
         links: [
-          { label: "Free Screening Camps", href: "/#events" },
-          { label: "Awareness Programmes", href: "/#events" },
-          { label: "Rural Cancer Registry", href: "/#research" },
-          { label: "School & College Drives", href: "/#events" },
+          { label: "Community Outreach", href: "/#appointment" },
+          { label: "Awareness Programmes", href: "/#events", },
+          { label: "Rural Cancer screening", href: "/#events", },
+          { label: "School & College camps", href: "/#events", },
         ],
       },
     ],
@@ -140,13 +139,20 @@ const categories: SubNavCategory[] = [
             href: "/departments/radiation-oncology",
           },
           {
-            label: "Paediatric Oncology",
-            href: "/departments/paediatric-oncology",
-          },
-          { label: "Haematology", href: "/departments/haematology" },
-          {
             label: "Gynaecological Oncology",
             href: "/departments/gynaecological-oncology",
+          },
+          {
+            label: "Medical Gastroenterology",
+            href: "",
+          },
+          {
+            label: "Palliative Medicine",
+            href: "",
+          },
+          {
+            label: "Preventive Oncology",
+            href: "",
           },
         ],
       },
@@ -154,31 +160,49 @@ const categories: SubNavCategory[] = [
         heading: "Diagnostic Services",
         links: [
           {
-            label: "Pathology & Lab Medicine",
-            href: "/departments/surgical-oncology",
+            label: "Clinical Biochemistry",
+            href: "",
           },
           {
-            label: "Radiology & Imaging",
-            href: "/departments/surgical-oncology",
+            label: "Microbiology",
+            href: "",
+          },
+          {
+            label: "Cytogenetics",
+            href: "",
+          },
+          {
+            label: "Cancer Biology & Molecular Diagnostics",
+            href: "",
+          },
+          {
+            label: "Molecular Oncology",
+            href: "",
+          },
+          {
+            label: "Onco-Pathology",
+            href: "",
+          },
+          {
+            label: "Radio Diagnosis and Imaging",
+            href: "",
           },
           {
             label: "Nuclear Medicine",
-            href: "/departments/radiation-oncology",
-          },
-          {
-            label: "Molecular Diagnostics",
-            href: "/departments/medical-oncology",
+            href: "",
           },
         ],
       },
       {
         heading: "Support Services",
         links: [
-          { label: "Blood Bank", href: "/blood-bank" },
-          { label: "Pain & Palliative Care", href: "/#education" },
-          { label: "Dietetics & Nutrition", href: "/#education" },
-          { label: "Rehabilitation", href: "/#education" },
+          { label: "Anaesthesia & Pain Management", href: "" },
+          { label: "Blood Centre", href: "/#education" },
+          { label: "Dietetics", href: "/#education" },
+          { label: "Physiotherapy", href: "/#education" },
           { label: "Psycho-Oncology", href: "/#education" },
+          { label: "Bio medical engineering", href: "/#education" },
+          { label: "Pharmacy", href: "/#education" },
         ],
       },
     ],
@@ -188,20 +212,15 @@ const categories: SubNavCategory[] = [
     label: "Research",
     columns: [
       {
-        heading: "Research Areas",
+        heading: "Research",
         links: [
           {
+            label: "Research Overview",
+            href: "https://ci-wia-research-pages.vercel.app/research",
+            external: true,
+          },
+          {
             label: "Clinical Trials",
-            href: "https://ci-wia-research-pages.vercel.app/research",
-            external: true,
-          },
-          {
-            label: "Cancer Epidemiology",
-            href: "https://ci-wia-research-pages.vercel.app/research",
-            external: true,
-          },
-          {
-            label: "Tumour Biology",
             href: "https://ci-wia-research-pages.vercel.app/research",
             external: true,
           },
@@ -213,15 +232,10 @@ const categories: SubNavCategory[] = [
         ],
       },
       {
-        heading: "Education & Training",
+        heading: "ACADEMICS",
         links: [
           {
             label: "Fellowship Programmes",
-            href: "https://ci-wia-research-pages.vercel.app/research",
-            external: true,
-          },
-          {
-            label: "Residency Training",
             href: "https://ci-wia-research-pages.vercel.app/research",
             external: true,
           },
@@ -264,7 +278,7 @@ const categories: SubNavCategory[] = [
     ],
   },
   {
-    label: "Donors & Volunteers",
+    label: "Donation",
     columns: [
       {
         heading: "Ways to Give",
@@ -273,19 +287,29 @@ const categories: SubNavCategory[] = [
           { label: "Sponsor a Patient", href: "/#donate" },
           { label: "Corporate Partnerships", href: "/#donate" },
           { label: "Legacy Giving", href: "/#donate" },
+          { label: "Hospice Bed Sponsorship", href: "/#donate" },
         ],
       },
       {
-        heading: "Get Involved",
+        heading: "Donation Programmes",
         links: [
-          { label: "Volunteer Opportunities", href: "/#donate" },
-          { label: "Blood Donation", href: "/blood-bank" },
+          { label: "Blood Donation", href: "/#donate" },
+          { label: "Bone Marrow Donation (subject to confirmation)", href: "/blood-bank" },
+          { label: "Patient Support Funds", href: "/#events" },
+          { label: "Treatment Sponsorship", href: "/#events" },
+          { label: "Equipment & Infrastructure Support", href: "/#events" },
+        ],
+      },
+      {
+        heading: "Cancer Awareness & Prevention",
+        links: [
+          { label: "Free Screening Camps", href: "/#donate" },
           { label: "Awareness Campaigns", href: "/#events" },
-          { label: "Fundraising Events", href: "/#events" },
+          { label: "Rural Outreach Programmes", href: "/#events" },
+          { label: "School & College Initiatives", href: "/#events" },
         ],
       },
     ],
-    ctas: [{ label: "Donate Now", href: "/#donate" }],
   },
 ];
 

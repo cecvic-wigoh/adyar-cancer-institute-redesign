@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllDepartmentSlugs, getDepartmentBySlug } from '@/data/departments';
-import { getDoctorsByDepartment } from '@/data/doctors';
+import { getDoctorsByDepartment, getDoctorQualifications } from '@/data/doctors';
 import type { Metadata } from 'next';
 import DepartmentFAQ from '@/components/DepartmentFAQ';
 import styles from './department.module.css';
@@ -142,7 +142,7 @@ export default async function DepartmentPage({ params }: { params: Promise<{ slu
                       </div>
                       <div className={styles.doctorName}>{doctor.name}</div>
                       <div className={styles.doctorRole}>{doctor.designation}</div>
-                      <div className={styles.doctorCreds}>{doctor.qualifications.slice(0, 3).join(', ')}</div>
+                      <div className={styles.doctorCreds}>{getDoctorQualifications(doctor).slice(0, 3).join(', ')}</div>
                       <span className={styles.doctorViewProfile}>View Profile →</span>
                     </div>
                   </Link>

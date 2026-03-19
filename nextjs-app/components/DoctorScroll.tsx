@@ -5,14 +5,14 @@ import Link from 'next/link';
 
 // Featured doctors for homepage carousel — one per major department
 const doctors = [
-  { slug: 'dr-venkatraman-radhakrishnan', name: 'Dr. Venkatraman Radhakrishnan', specialty: 'Medical Oncology', designation: 'Professor & Head of Department' },
-  { slug: 'dr-arvind-krishnamurthy', name: 'Dr. Arvind Krishnamurthy', specialty: 'Surgical Oncology', designation: 'Professor & Head of Department' },
-  { slug: 'dr-priya-iyer', name: 'Dr. Priya Iyer', specialty: 'Radiation Oncology', designation: 'Consultant' },
-  { slug: 'dr-maj-jayashree-n', name: 'Dr. (Maj) Jayashree N', specialty: 'Gynaecological Oncology', designation: 'Associate Professor' },
-  { slug: 'dr-aravind-narayanan', name: 'Dr. Aravind Narayanan', specialty: 'Anaesthesiology', designation: 'Associate Professor' },
-  { slug: 'dr-ashok-kumar', name: 'Dr. Ashok Kumar', specialty: 'Nuclear Medicine', designation: 'Consultant' },
-  { slug: 'dr-meenakshi-v-v', name: 'Dr. Meenakshi V V', specialty: 'Palliative Medicine', designation: 'Head of Department' },
-  { slug: 'dr-kunal-nandy', name: 'Dr. Kunal Nandy', specialty: 'GI-HPB Surgical Oncology', designation: 'Consultant' },
+  { slug: 'dr-venkatraman-radhakrishnan', name: 'Dr. Venkatraman Radhakrishnan', specialties: ['Medical Oncology'], designation: 'Professor & Head of Department' },
+  { slug: 'dr-arvind-krishnamurthy', name: 'Dr. Arvind Krishnamurthy', specialties: ['Surgical Oncology'], designation: 'Professor & Head of Department' },
+  { slug: 'dr-priya-iyer', name: 'Dr. Priya Iyer', specialties: ['Radiation Oncology'], designation: 'Consultant' },
+  { slug: 'dr-maj-jayashree-n', name: 'Dr. (Maj) Jayashree N', specialties: ['Gynaecological Oncology'], designation: 'Associate Professor' },
+  { slug: 'dr-aravind-narayanan', name: 'Dr. Aravind Narayanan', specialties: ['Anaesthesiology'], designation: 'Associate Professor' },
+  { slug: 'dr-ashok-kumar', name: 'Dr. Ashok Kumar', specialties: ['Nuclear Medicine'], designation: 'Consultant' },
+  { slug: 'dr-meenakshi-v-v', name: 'Dr. Meenakshi V V', specialties: ['Palliative Medicine'], designation: 'Head of Department' },
+  { slug: 'dr-kunal-nandy', name: 'Dr. Kunal Nandy', specialties: ['GI-HPB Surgical Oncology'], designation: 'Consultant' },
 ];
 
 export default function DoctorScroll() {
@@ -43,7 +43,7 @@ export default function DoctorScroll() {
             <div className="doctor-photo" aria-hidden="true">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#134795" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
             </div>
-            <span className="doctor-specialty">{doc.specialty}</span>
+            <span className="doctor-specialty">{doc.specialties.join(', ')}</span>
             <h4>{doc.name}</h4>
             <p className="doctor-desig">{doc.designation}</p>
             <Link href={`/doctors/${doc.slug}`} className="text-link" style={{ fontSize: '13px', justifyContent: 'center' }}>
