@@ -37,7 +37,7 @@
 }
 
 .heroLabel {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
@@ -47,7 +47,7 @@
 }
 
 .heroTitle {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-heading);
   font-size: 48px;
   font-weight: 700;
   color: white;
@@ -56,7 +56,7 @@
 }
 
 .heroTagline {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 18px;
   color: rgba(255, 255, 255, 0.8);
   max-width: 700px;
@@ -86,7 +86,7 @@
 }
 
 .guideTitle {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-heading);
   font-size: 24px;
   color: #134e3f;
   margin-bottom: 8px;
@@ -96,7 +96,7 @@
 }
 
 .guideSub {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   color: #166534;
   margin-bottom: 24px;
@@ -116,7 +116,7 @@
 }
 
 .guideStep h4 {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 600;
   color: var(--color-text-primary);
@@ -124,7 +124,7 @@
 }
 
 .guideStep p {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 13px;
   color: var(--color-text-secondary);
   line-height: 1.5;
@@ -136,7 +136,7 @@
   border-radius: 50%;
   background: #1a6b5a;
   color: white;
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 700;
   display: flex;
@@ -165,7 +165,7 @@
 }
 
 .servicesCatTitle {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 16px;
   font-weight: 700;
   color: #134e3f;
@@ -185,7 +185,7 @@
 }
 
 .servicesList li {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 14px;
   padding: 8px 0;
   color: var(--color-text-primary);
@@ -220,7 +220,7 @@
 }
 
 .therapyCard h4 {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 600;
   color: #134e3f;
@@ -228,7 +228,7 @@
 }
 
 .therapyCard p {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 13px;
   color: var(--color-text-secondary);
   line-height: 1.5;
@@ -275,7 +275,7 @@
 }
 
 .equipmentBody h4 {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 600;
   color: var(--color-text-primary);
@@ -283,7 +283,7 @@
 }
 
 .equipmentBody p {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 12px;
   color: var(--color-text-secondary);
   line-height: 1.5;
@@ -292,7 +292,7 @@
 .equipmentBadge {
   display: inline-block;
   margin-top: 8px;
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 11px;
   font-weight: 600;
   padding: 3px 10px;
@@ -315,28 +315,28 @@
 }
 
 .referralInner h3 {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-heading);
   font-size: 28px;
   color: #1a6b5a;
   margin-bottom: 12px;
 }
 
 .referralInner p {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   color: var(--color-text-secondary);
   margin-bottom: 8px;
 }
 
 .referralEmail {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 16px;
   font-weight: 600;
   color: #1a6b5a;
 }
 
 .referralNote {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 13px;
   color: var(--color-text-secondary);
   margin-top: 20px;

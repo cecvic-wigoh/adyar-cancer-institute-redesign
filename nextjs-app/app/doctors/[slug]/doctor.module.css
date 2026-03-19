@@ -16,7 +16,7 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 13px;
   color: var(--color-text-secondary);
 }
@@ -55,7 +55,7 @@
 }
 
 .heroDept {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
@@ -65,7 +65,7 @@
 }
 
 .heroName {
-  font-family: var(--font-playfair);
+  font-family: var(--font-heading);
   font-size: clamp(32px, 5vw, 42px);
   font-weight: 700;
   color: var(--color-primary);
@@ -74,14 +74,14 @@
 }
 
 .heroDesignation {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 18px;
   color: var(--color-text-secondary);
   margin-bottom: 20px;
 }
 
 .heroQualifications {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 14px;
   color: var(--color-text-secondary);
   line-height: 1.7;
@@ -106,7 +106,7 @@
 }
 
 .heroLinkedin a {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 14px;
   color: var(--color-primary);
   text-decoration: none;
@@ -152,21 +152,21 @@
 }
 
 .ctaStripTitle {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 20px;
   font-weight: 600;
   color: white;
 }
 
 .ctaStripSub {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
   margin-top: 4px;
 }
 
 .ctaBtn {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 600;
   padding: 12px 32px;
@@ -196,7 +196,7 @@
 }
 
 .sectionLabel {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -206,7 +206,7 @@
 }
 
 .sectionTitle {
-  font-family: var(--font-playfair);
+  font-family: var(--font-heading);
   font-size: 28px;
   font-weight: 600;
   color: var(--color-primary);
@@ -234,7 +234,7 @@
 }
 
 .expertiseList li {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 15px;
   color: var(--color-text-primary);
   padding: 8px 0;
@@ -267,7 +267,7 @@
 }
 
 .eduGroupTitle {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
@@ -284,14 +284,14 @@
 }
 
 .eduDegree {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 16px;
   font-weight: 600;
   color: var(--color-text-primary);
 }
 
 .eduInstitution {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 14px;
   color: var(--color-text-secondary);
   margin-top: 2px;
@@ -304,7 +304,7 @@
 }
 
 .expList li {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 15.5px;
   line-height: 1.65;
   color: var(--color-text-primary);
@@ -333,7 +333,7 @@
 
 .pubMetricValue {
   display: block;
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 28px;
   font-weight: 700;
   color: var(--color-primary);
@@ -341,7 +341,7 @@
 
 .pubMetricLabel {
   display: block;
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 13px;
   color: var(--color-text-secondary);
   margin-top: 4px;
@@ -352,7 +352,7 @@
 }
 
 .pubNote {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 15px;
   color: var(--color-text-secondary);
   line-height: 1.65;
@@ -363,7 +363,7 @@
   align-items: center;
   gap: 8px;
   margin-top: 16px;
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 600;
   color: var(--color-primary);
@@ -393,21 +393,21 @@
 }
 
 .bottomCtaTitle {
-  font-family: var(--font-playfair);
+  font-family: var(--font-heading);
   font-size: 28px;
   color: var(--color-primary);
   margin-bottom: 12px;
 }
 
 .bottomCtaSub {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 15px;
   color: var(--color-text-secondary);
   margin-bottom: 24px;
 }
 
 .bottomCtaBtn {
-  font-family: var(--font-dm);
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 600;
   padding: 12px 32px;

@@ -9,7 +9,7 @@
   background: var(--color-off-white);
   border-bottom: 1px solid var(--color-border, #E5E7EB);
   padding: 12px 0;
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 13px;
   color: var(--color-text-secondary);
 }
@@ -42,7 +42,7 @@
 }
 
 .sectionLabel {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -52,7 +52,7 @@
 }
 
 .sectionTitle {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-heading);
   font-size: 28px;
   font-weight: 600;
   color: var(--color-primary);
@@ -80,7 +80,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-heading);
   font-size: 48px;
   color: var(--color-primary);
   opacity: 0.3;
@@ -94,7 +94,7 @@
 }
 
 .hodLabel {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -104,7 +104,7 @@
 }
 
 .hodName {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-heading);
   font-size: 24px;
   color: var(--color-primary);
   margin-bottom: 4px;
@@ -112,14 +112,14 @@
 }
 
 .hodTitle {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 14px;
   color: var(--color-text-secondary);
   margin-bottom: 20px;
 }
 
 .hodMessage {
-  font-family: "PT Serif", serif;
+  font-family: var(--font-body);
   font-size: 16.5px;
   line-height: 1.75;
   color: var(--color-text-primary);
@@ -128,7 +128,7 @@
 
 .hodQuote {
   font-size: 48px;
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-heading);
   color: var(--color-secondary);
   line-height: 0;
   vertical-align: -16px;
@@ -174,7 +174,7 @@
 }
 
 .tlYear {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 13px;
   font-weight: 700;
   color: var(--color-primary);
@@ -182,7 +182,7 @@
 }
 
 .tlText {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 14px;
   color: var(--color-text-secondary);
   line-height: 1.5;
@@ -196,7 +196,7 @@
 }
 
 .achievementItem {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   padding: 14px 0;
   border-bottom: 1px solid #f0f0f0;
@@ -240,21 +240,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-heading);
   font-size: 32px;
   color: var(--color-primary);
   opacity: 0.3;
 }
 
 .expertName {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 600;
   color: var(--color-text-primary);
 }
 
 .expertDesignation {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 12px;
   color: var(--color-text-secondary);
 }
@@ -274,7 +274,7 @@
 }
 
 .ctaTitle {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 22px;
   font-weight: 600;
   color: white;
@@ -282,14 +282,14 @@
 }
 
 .ctaSubtitle {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
   margin-top: 4px;
 }
 
 .ctaBtn {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 600;
   padding: 12px 32px;
