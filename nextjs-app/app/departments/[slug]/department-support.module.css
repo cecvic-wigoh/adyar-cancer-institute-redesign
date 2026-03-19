@@ -1,0 +1,373 @@
+/* ============================================================
+   department-support.module.css
+   Styles unique to the Support department template.
+   Shared styles live in DepartmentShared.module.css.
+   ============================================================ */
+
+/* ── Page wrapper ── */
+.page {
+  min-height: 100vh;
+}
+
+/* ── Hero ── */
+.hero {
+  background: linear-gradient(135deg, #3d2566 0%, #5b3a8a 60%, #7248a8 100%);
+  padding: 64px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+.heroInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroLabel {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-secondary);
+  margin-bottom: 16px;
+}
+
+.heroTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.heroTagline {
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+/* ── Overview body ── */
+.overviewBody {
+  font-size: 16.5px;
+  line-height: 1.75;
+}
+
+.overviewBody p + p {
+  margin-top: 16px;
+}
+
+/* ── Mission & Philosophy ── */
+.missionSection {
+  background: #f5f0ff;
+  border-top: 3px solid #5b3a8a;
+}
+
+.missionInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 24px;
+}
+
+.missionLabel {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-teal-accessible);
+  margin-bottom: 8px;
+}
+
+.missionTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #5b3a8a;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.missionBody {
+  font-size: 16.5px;
+  line-height: 1.75;
+}
+
+.missionBody p + p {
+  margin-top: 16px;
+}
+
+.missionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.missionCard {
+  background: white;
+  border-radius: 10px;
+  padding: 28px;
+  text-align: center;
+  border: 1px solid #e9e0f5;
+}
+
+.missionIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: #5b3a8a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.missionCardTitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #44296b;
+  margin-bottom: 8px;
+}
+
+.missionCardText {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Quality Dimensions ── */
+.dimensionsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.dimensionCard {
+  padding: 24px;
+  background: var(--color-off-white);
+  border-radius: 10px;
+  text-align: center;
+  border-bottom: 3px solid #5b3a8a;
+}
+
+.dimensionCardName {
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #44296b;
+  margin-bottom: 8px;
+}
+
+.dimensionCardDesc {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Accreditations & Standards ── */
+.accredGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.accredCard {
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.accredCard:hover {
+  border-color: #5b3a8a;
+}
+
+.accredBadge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #f5f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.accredCardName {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #44296b;
+  margin-bottom: 4px;
+}
+
+.accredCardDesc {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.accredYear {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: #f5f0ff;
+  color: #5b3a8a;
+}
+
+/* ── Services & Scope ── */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.serviceItem {
+  padding: 16px;
+  background: var(--color-off-white);
+  border-radius: 8px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.serviceItem::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #5b3a8a;
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+/* ── Facilities & Equipment ── */
+.facilitiesList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.facilityItem {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  padding: 10px 14px;
+  background: var(--color-off-white);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.facilityCheck {
+  color: var(--color-teal-accessible);
+  font-weight: 700;
+}
+
+/* ── Contact Section ── */
+.contactSection {
+  background: var(--color-off-white);
+  padding: 56px 0;
+}
+
+.contactInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.contactTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  color: #5b3a8a;
+  margin-bottom: 12px;
+}
+
+.contactSubtitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.contactEmail {
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #5b3a8a;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.contactSpoc {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 16px;
+  padding: 12px 20px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  display: inline-block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 32px;
+  }
+
+  .missionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dimensionsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .accredGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .facilitiesList {
+    grid-template-columns: 1fr;
+  }
+}
