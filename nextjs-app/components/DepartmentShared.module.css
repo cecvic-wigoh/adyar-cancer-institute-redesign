@@ -1,0 +1,330 @@
+/* ============================================================
+   DepartmentShared.module.css
+   Shared styles for all 3 department templates
+   (clinical / diagnostic / support)
+   ============================================================ */
+
+/* ── Breadcrumb ── */
+.breadcrumb {
+  background: var(--color-off-white);
+  border-bottom: 1px solid var(--color-border, #E5E7EB);
+  padding: 12px 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.breadcrumbInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.breadcrumbLink {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.breadcrumbLink:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbSep {
+  margin: 0 6px;
+}
+
+/* ── Section wrapper ── */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 24px;
+  border-bottom: 1px solid var(--color-border, #E5E7EB);
+}
+
+.sectionLabel {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-teal-accessible);
+  margin-bottom: 8px;
+}
+
+.sectionTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+/* ── HOD Message ── */
+.hod {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 24px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  align-items: start;
+  border-bottom: 1px solid var(--color-border, #E5E7EB);
+}
+
+.hodPhoto {
+  width: 200px;
+  height: 250px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #EBF0FA, #d1d9e8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  color: var(--color-primary);
+  opacity: 0.3;
+  overflow: hidden;
+}
+
+.hodPhotoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hodLabel {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-teal-accessible);
+  margin-bottom: 8px;
+}
+
+.hodName {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.hodTitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-bottom: 20px;
+}
+
+.hodMessage {
+  font-family: "PT Serif", serif;
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: var(--color-text-primary);
+  font-style: italic;
+}
+
+.hodQuote {
+  font-size: 48px;
+  font-family: "Playfair Display", serif;
+  color: var(--color-secondary);
+  line-height: 0;
+  vertical-align: -16px;
+  margin-right: 4px;
+}
+
+/* ── Legacy Timeline ── */
+.legacyTimeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.legacyTimeline::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-secondary);
+}
+
+.tlItem {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.tlItem:last-child {
+  margin-bottom: 0;
+}
+
+.tlItem::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px var(--color-secondary);
+}
+
+.tlYear {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.tlText {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Achievements ── */
+.achievementsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.achievementItem {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.achievementItem:last-child {
+  border-bottom: none;
+}
+
+.achievementEmoji {
+  flex-shrink: 0;
+}
+
+/* ── Experts Grid ── */
+.expertsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.expertCard {
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.expertCard:hover {
+  text-decoration: none;
+}
+
+.expertAvatar {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(135deg, #EBF0FA, #d1d9e8);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  color: var(--color-primary);
+  opacity: 0.3;
+}
+
+.expertName {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.expertDesignation {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+/* ── CTA Strip ── */
+.cta {
+  padding: 48px 0;
+}
+
+.ctaInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ctaTitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  line-height: 1.2;
+}
+
+.ctaSubtitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 4px;
+}
+
+.ctaBtn {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 32px;
+  background: var(--color-secondary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.ctaBtn:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hod {
+    grid-template-columns: 1fr;
+  }
+
+  .hodPhoto {
+    width: 160px;
+    height: 200px;
+  }
+
+  .expertsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ctaInner {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+}
