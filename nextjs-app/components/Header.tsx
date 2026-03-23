@@ -122,6 +122,10 @@ export default function Header() {
                   <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Survivorship Program</Link></li>
                   <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Grief &amp; Bereavement</Link></li>
                   <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Patient Navigation</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Mahaveer Ashray (Hospice)</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Nutritional Counseling</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Psychological Support</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Financial Assistance</Link></li>
                 </ul>
               </li>
               <li><Link href="/coming-soon">VOLUNTEERS</Link></li>

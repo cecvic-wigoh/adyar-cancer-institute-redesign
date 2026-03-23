@@ -80,6 +80,10 @@ export default function MobileNav({ isOpen, onClose, onOpenSearch }: MobileNavPr
                 <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Survivorship Program</Link></li>
                 <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Grief &amp; Bereavement</Link></li>
                 <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Patient Navigation</Link></li>
+                <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Mahaveer Ashray (Hospice)</Link></li>
+                <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Nutritional Counseling</Link></li>
+                <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Psychological Support</Link></li>
+                <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Financial Assistance</Link></li>
               </ul>
             </li>
             <li><Link href="/coming-soon" onClick={onClose}>Careers</Link></li>
