@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinical Department Template — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #134795;
+    --color-secondary: #23CDC0;
+    --color-teal-accessible: #0A8C82;
+    --color-white: #FFFFFF;
+    --color-off-white: #F7F7F9;
+    --color-text-primary: #2D3748;
+    --color-text-secondary: #4B5563;
+    --color-border: #E5E7EB;
+    --accent: #134795;
+    --accent-light: #EBF0FA;
+    --max-width: 1100px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "PT Serif", serif; color: var(--color-text-primary); background: var(--color-white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* BADGE */
+  .template-badge { position: fixed; top: 16px; right: 16px; z-index: 200; background: var(--accent); color: white; font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 700; padding: 8px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* BREADCRUMB */
+  .breadcrumb-bar { background: var(--color-off-white); border-bottom: 1px solid var(--color-border); padding: 12px 0; font-family: "DM Sans", sans-serif; font-size: 13px; color: var(--color-text-secondary); }
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+  .breadcrumb-bar a { color: var(--accent); text-decoration: none; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #0d2d60 0%, #134795 60%, #1a5cc7 100%); padding: 64px 0; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+  .hero-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+  .hero-label { font-family: "DM Sans", sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--color-secondary); margin-bottom: 16px; }
+  .hero-title { font-family: "Playfair Display", serif; font-size: 48px; font-weight: 700; color: white; line-height: 1.1; margin-bottom: 16px; }
+  .hero-tagline { font-family: "DM Sans", sans-serif; font-size: 18px; color: rgba(255,255,255,0.8); max-width: 700px; line-height: 1.6; }
+  .hero-photo { position: absolute; right: 24px; bottom: -20px; width: 360px; height: 240px; border-radius: 12px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-family: "DM Sans", sans-serif; color: rgba(255,255,255,0.3); font-size: 14px; border: 1px solid rgba(255,255,255,0.15); }
+
+  /* STICKY NAV */
+  .sticky-nav { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 1px solid var(--color-border); }
+  .sticky-nav .container { display: flex; overflow-x: auto; scrollbar-width: none; }
+  .sticky-nav .container::-webkit-scrollbar { display: none; }
+  .sticky-nav a { display: block; padding: 14px 16px; font-family: "DM Sans", sans-serif; font-size: 13px; font-weight: 500; color: var(--color-text-secondary); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; }
+  .sticky-nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .sticky-nav a:hover { color: var(--accent); }
+
+  /* HOD MESSAGE */
+  .hod-section { max-width: var(--max-width); margin: 0 auto; padding: 56px 24px; display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; border-bottom: 1px solid var(--color-border); }
+  .hod-photo { width: 200px; height: 250px; border-radius: 8px; background: linear-gradient(135deg, var(--accent-light), #d1d9e8); display: flex; align-items: center; justify-content: center; font-family: "Playfair Display", serif; font-size: 48px; color: var(--accent); opacity: 0.3; }
+  .hod-label { font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--color-teal-accessible); margin-bottom: 8px; }
+  .hod-name { font-family: "Playfair Display", serif; font-size: 24px; color: var(--accent); margin-bottom: 4px; }
+  .hod-title { font-family: "DM Sans", sans-serif; font-size: 14px; color: var(--color-text-secondary); margin-bottom: 20px; }
+  .hod-message { font-size: 16.5px; line-height: 1.75; color: var(--color-text-primary); font-style: italic; }
+  .hod-message::before { content: "\201C"; font-size: 48px; font-family: "Playfair Display", serif; color: var(--color-secondary); line-height: 0; vertical-align: -16px; margin-right: 4px; }
+
+  /* SECTION BASE */
+  .section { max-width: var(--max-width); margin: 0 auto; padding: 56px 24px; border-bottom: 1px solid var(--color-border); }
+  .section:last-of-type { border-bottom: none; }
+  .section-label { font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--color-teal-accessible); margin-bottom: 8px; }
+  .section-title { font-family: "Playfair Display", serif; font-size: 28px; font-weight: 600; color: var(--accent); margin-bottom: 24px; }
+  .section-body { font-size: 16.5px; line-height: 1.75; }
+  .section-body p + p { margin-top: 16px; }
+
+  /* WARNING SIGNS - unique to clinical */
+  .warning-section { background: #FFF7ED; border-left: 4px solid #F97316; }
+  .warning-section .container { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px; }
+  .warning-title { font-family: "Playfair Display", serif; font-size: 24px; color: #9A3412; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+  .warning-title svg { flex-shrink: 0; }
+  .warning-sub { font-family: "DM Sans", sans-serif; font-size: 15px; color: #B45309; margin-bottom: 24px; }
+  .warning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .warning-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; background: white; border-radius: 8px; font-family: "DM Sans", sans-serif; font-size: 14px; color: var(--color-text-primary); border: 1px solid #FED7AA; }
+  .warning-item svg { flex-shrink: 0; margin-top: 2px; }
+
+  /* CONDITIONS GRID */
+  .conditions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .condition-card { padding: 16px; background: var(--color-off-white); border-radius: 8px; font-family: "DM Sans", sans-serif; font-size: 14px; font-weight: 500; color: var(--color-text-primary); border-left: 3px solid var(--color-secondary); }
+
+  /* TREATMENTS */
+  .treatment-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 40px; list-style: none; }
+  .treatment-list li { font-family: "DM Sans", sans-serif; font-size: 15px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: flex-start; gap: 10px; }
+  .treatment-list li::before { content: ""; width: 6px; height: 6px; background: var(--color-secondary); border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+
+  /* PREVENTION */
+  .prevention-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .prevention-card { padding: 20px; background: var(--accent-light); border-radius: 8px; }
+  .prevention-card h4 { font-family: "DM Sans", sans-serif; font-size: 15px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  .prevention-card p { font-family: "DM Sans", sans-serif; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
+
+  /* DOCTORS GRID */
+  .doctors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .doctor-card { text-align: center; text-decoration: none; color: inherit; }
+  .doctor-avatar { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, var(--accent-light), #d1d9e8); border-radius: 8px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; font-family: "Playfair Display", serif; font-size: 32px; color: var(--accent); opacity: 0.3; }
+  .doctor-card h4 { font-family: "DM Sans", sans-serif; font-size: 14px; font-weight: 600; color: var(--color-text-primary); }
+  .doctor-card p { font-family: "DM Sans", sans-serif; font-size: 12px; color: var(--color-text-secondary); }
+
+  /* FACILITIES */
+  .facilities-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; list-style: none; }
+  .facilities-list li { font-family: "DM Sans", sans-serif; font-size: 14px; padding: 10px 14px; background: var(--color-off-white); border-radius: 6px; display: flex; align-items: center; gap: 8px; }
+  .facilities-list li::before { content: "✓"; color: var(--color-teal-accessible); font-weight: 700; }
+
+  /* LEGACY */
+  .legacy-timeline { position: relative; padding-left: 32px; }
+  .legacy-timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--color-secondary); }
+  .tl-item { position: relative; margin-bottom: 24px; }
+  .tl-item::before { content: ""; position: absolute; left: -28px; top: 6px; width: 12px; height: 12px; background: var(--color-secondary); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px var(--color-secondary); }
+  .tl-year { font-family: "DM Sans", sans-serif; font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .tl-text { font-family: "DM Sans", sans-serif; font-size: 14px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  /* ACHIEVEMENTS */
+  .achievements-list { list-style: none; }
+  .achievements-list li { font-family: "DM Sans", sans-serif; font-size: 15px; padding: 14px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: flex-start; gap: 12px; }
+  .achievements-list li::before { content: "🏆"; flex-shrink: 0; }
+
+  /* CTA */
+  .cta-section { background: var(--accent); padding: 48px 0; }
+  .cta-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+  .cta-inner h3 { font-family: "DM Sans", sans-serif; font-size: 22px; font-weight: 600; color: white; }
+  .cta-inner p { font-family: "DM Sans", sans-serif; font-size: 14px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+  .cta-btn { font-family: "DM Sans", sans-serif; font-size: 15px; font-weight: 600; padding: 12px 32px; background: var(--color-secondary); color: white; border: none; border-radius: 6px; text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-title { font-size: 32px; }
+    .hero-photo { display: none; }
+    .hod-section { grid-template-columns: 1fr; }
+    .warning-grid { grid-template-columns: 1fr; }
+    .conditions-grid { grid-template-columns: 1fr 1fr; }
+    .treatment-list { grid-template-columns: 1fr; }
+    .prevention-cards { grid-template-columns: 1fr; }
+    .doctors-grid { grid-template-columns: repeat(2, 1fr); }
+    .facilities-list { grid-template-columns: 1fr; }
+    .cta-inner { flex-direction: column; text-align: center; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="template-badge">Clinical Template</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <div class="container">
+    <a href="#">Home</a> &rsaquo; <a href="#">Departments</a> &rsaquo; Medical Oncology & Pediatric Oncology
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <div class="container">
+    <a href="#" class="active">Overview</a>
+    <a href="#">When to Visit</a>
+    <a href="#">Conditions</a>
+    <a href="#">Treatments</a>
+    <a href="#">Prevention</a>
+    <a href="#">Our Experts</a>
+    <a href="#">Facilities</a>
+    <a href="#">Legacy</a>
+    <a href="#">Achievements</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Department</div>
+    <h1 class="hero-title">Medical Oncology &<br>Pediatric Oncology</h1>
+    <p class="hero-tagline">Treating cancer using chemotherapy, immunotherapy, targeted therapies, hematopoietic stem cell transplant, and cellular therapy — across all ages from children to adults.</p>
+  </div>
+  <div class="hero-photo">Department Photo</div>
+</section>
+
+<!-- HOD MESSAGE -->
+<div class="hod-section">
+  <div class="hod-photo">VR</div>
+  <div>
+    <div class="hod-label">Message from the Head of Department</div>
+    <h3 class="hod-name">Dr. Venkatraman Radhakrishnan</h3>
+    <div class="hod-title">MD, DM, MSc &bull; Professor & Head</div>
+    <div class="hod-message">Our vision is to provide compassionate, high-quality, and equitable cancer care for every patient, guided by science, empathy, and integrity. We are committed to delivering evidence-based treatments tailored to each individual, while recognizing the physical, emotional, and social challenges that cancer brings.</div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="section">
+  <div class="section-label">About the Department</div>
+  <h2 class="section-title">Department Overview</h2>
+  <div class="section-body">
+    <p>The Department of Medical and Pediatric Oncology is dedicated to the comprehensive care of patients with cancer across the age spectrum, from children and adolescents to adults. Medical oncology focuses on the systemic treatment of cancer using chemotherapy, targeted therapy, immunotherapy, hormonal therapy, and other pharmacological approaches.</p>
+    <p>Pediatric oncology is devoted to the diagnosis and treatment of cancers in children and adolescents, addressing the unique biological, developmental, and psychosocial aspects of cancer care in younger patients.</p>
+  </div>
+</div>
+
+<!-- WARNING SIGNS -->
+<div class="warning-section">
+  <div class="container">
+    <h2 class="warning-title">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      When Should You Visit This Department?
+    </h2>
+    <p class="warning-sub">If you or a loved one experiences any of these symptoms, consult our specialists:</p>
+    <div class="warning-grid">
+      <div class="warning-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Unexplained weight loss or loss of appetite
+      </div>
+      <div class="warning-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Persistent fever without an obvious cause
+      </div>
+      <div class="warning-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        New or persistent lump or swelling
+      </div>
+      <div class="warning-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Unusual or abnormal bleeding or bruising
+      </div>
+      <div class="warning-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Persistent pain that does not improve
+      </div>
+      <div class="warning-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Chronic fatigue or weakness
+      </div>
+      <div class="warning-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Changes in bowel or bladder habits
+      </div>
+      <div class="warning-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Non-healing ulcers or sores
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONDITIONS -->
+<div class="section">
+  <div class="section-label">What We Treat</div>
+  <h2 class="section-title">Conditions Treated</h2>
+  <div class="conditions-grid">
+    <div class="condition-card">Breast Cancer</div>
+    <div class="condition-card">Lung Cancer</div>
+    <div class="condition-card">Colorectal Cancer</div>
+    <div class="condition-card">Head & Neck Cancers</div>
+    <div class="condition-card">Gynecological Cancers</div>
+    <div class="condition-card">Acute Leukemias (AML/ALL)</div>
+    <div class="condition-card">Hodgkin Lymphoma</div>
+    <div class="condition-card">Non-Hodgkin Lymphoma</div>
+    <div class="condition-card">Multiple Myeloma</div>
+    <div class="condition-card">Sarcomas</div>
+    <div class="condition-card">CNS Tumors</div>
+    <div class="condition-card">Neuroendocrine Tumors</div>
+  </div>
+</div>
+
+<!-- TREATMENTS -->
+<div class="section">
+  <div class="section-label">How We Treat</div>
+  <h2 class="section-title">Treatment Options</h2>
+  <ul class="treatment-list">
+    <li>Chemotherapy</li>
+    <li>Targeted Therapy</li>
+    <li>Immunotherapy</li>
+    <li>Hormonal Therapy</li>
+    <li>Hematopoietic Stem Cell Transplant</li>
+    <li>CAR-T Cell Therapy</li>
+    <li>Precision Medicine</li>
+    <li>Palliative & Supportive Care</li>
+  </ul>
+</div>
+
+<!-- PREVENTION -->
+<div class="section">
+  <div class="section-label">Stay Ahead</div>
+  <h2 class="section-title">Prevention & Screening</h2>
+  <div class="prevention-cards">
+    <div class="prevention-card">
+      <h4>Healthy Lifestyle</h4>
+      <p>Balanced diet, regular physical activity, adequate sleep, and avoidance of tobacco and excessive alcohol can help reduce cancer risk.</p>
+    </div>
+    <div class="prevention-card">
+      <h4>Cancer Screening Programs</h4>
+      <p>Participate in recommended screening programs for breast, cervical, colorectal, and oral cancer to detect cancer at an early stage.</p>
+    </div>
+    <div class="prevention-card">
+      <h4>Seek Early Attention</h4>
+      <p>Promptly seek medical attention for persistent or unusual symptoms that do not resolve within a few weeks.</p>
+    </div>
+    <div class="prevention-card">
+      <h4>Vaccination</h4>
+      <p>HPV vaccination and Hepatitis B vaccination can help prevent cervical cancer and liver cancer respectively.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <div>
+      <h3>Request an Appointment</h3>
+      <p>Schedule a consultation with our oncology specialists</p>
+    </div>
+    <a href="#" class="cta-btn">Book Appointment</a>
+  </div>
+</div>
+
+<!-- OUR EXPERTS -->
+<div class="section">
+  <div class="section-label">Meet the Team</div>
+  <h2 class="section-title">Our Experts</h2>
+  <div class="doctors-grid">
+    <a href="#" class="doctor-card">
+      <div class="doctor-avatar">VR</div>
+      <h4>Dr. Venkatraman R.</h4>
+      <p>Professor & Head</p>
+    </a>
+    <a href="#" class="doctor-card">
+      <div class="doctor-avatar">KR</div>
+      <h4>Dr. Karthik Rengaraj</h4>
+      <p>Assistant Professor</p>
+    </a>
+    <a href="#" class="doctor-card">
+      <div class="doctor-avatar">PK</div>
+      <h4>Dr. Parathan K.</h4>
+      <p>Consultant</p>
+    </a>
+    <a href="#" class="doctor-card">
+      <div class="doctor-avatar">GD</div>
+      <h4>Dr. Gargi Das</h4>
+      <p>Assistant Professor</p>
+    </a>
+  </div>
+</div>
+
+<!-- FACILITIES -->
+<div class="section">
+  <div class="section-label">Infrastructure</div>
+  <h2 class="section-title">Facilities & Equipment</h2>
+  <ul class="facilities-list">
+    <li>Dedicated chemotherapy day care unit</li>
+    <li>Pediatric oncology inpatient facility</li>
+    <li>Stem cell transplant unit (HEPA filtration)</li>
+    <li>CAR-T cell therapy support</li>
+    <li>Advanced infusion facilities</li>
+    <li>Procedure room for oncology procedures</li>
+    <li>High-dependency unit (HDU)</li>
+    <li>Intensive care unit</li>
+  </ul>
+</div>
+
+<!-- LEGACY -->
+<div class="section">
+  <div class="section-label">Our Heritage</div>
+  <h2 class="section-title">Legacy & History</h2>
+  <div class="legacy-timeline">
+    <div class="tl-item">
+      <div class="tl-year">1954</div>
+      <div class="tl-text">Cancer Institute (WIA) founded — one of India's first comprehensive cancer centers</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1960</div>
+      <div class="tl-text">First dedicated pediatric oncology unit in India established</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1970s</div>
+      <div class="tl-text">First DM Medical Oncology program in India launched — trained generations of oncologists</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2024</div>
+      <div class="tl-text">University Gold Medal in DM Medical Oncology, ISMPO Gold Medal awards</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2025</div>
+      <div class="tl-text">Best Postgraduate Institute Award — ICON, Chennai Population-Based Cancer Registry established</div>
+    </div>
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="section">
+  <div class="section-label">Milestones</div>
+  <h2 class="section-title">Key Achievements</h2>
+  <ul class="achievements-list">
+    <li>University Gold Medal in DM Medical Oncology Examination — 2024</li>
+    <li>ISMPO Gold Medal — 2024 & 2025</li>
+    <li>Best Postgraduate Institute Award — ICON 2025</li>
+    <li>Chennai Population-Based Cancer Registry established</li>
+    <li>Lead investigator for ICMR-sponsored ISCALL study</li>
+  </ul>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <div>
+      <h3>Contact the Department</h3>
+      <p>r.venkatraman@cancerinstitutewia.org</p>
+    </div>
+    <a href="#" class="cta-btn">Book Appointment</a>
+  </div>
+</div>
+
+</body>
+</html>

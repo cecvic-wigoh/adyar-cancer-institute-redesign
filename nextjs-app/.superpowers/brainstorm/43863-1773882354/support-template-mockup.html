@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support Department Template — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #134795;
+    --color-secondary: #23CDC0;
+    --color-teal-accessible: #0A8C82;
+    --color-white: #FFFFFF;
+    --color-off-white: #F7F7F9;
+    --color-text-primary: #2D3748;
+    --color-text-secondary: #4B5563;
+    --color-border: #E5E7EB;
+    --accent: #5b3a8a;
+    --accent-light: #f5f0ff;
+    --accent-dark: #44296b;
+    --max-width: 1100px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "PT Serif", serif; color: var(--color-text-primary); background: var(--color-white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  .template-badge { position: fixed; top: 16px; right: 16px; z-index: 200; background: var(--accent); color: white; font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 700; padding: 8px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; }
+
+  .breadcrumb-bar { background: var(--color-off-white); border-bottom: 1px solid var(--color-border); padding: 12px 0; font-family: "DM Sans", sans-serif; font-size: 13px; color: var(--color-text-secondary); }
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+  .breadcrumb-bar a { color: var(--accent); text-decoration: none; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #3d2566 0%, #5b3a8a 60%, #7248a8 100%); padding: 64px 0; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+  .hero-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+  .hero-label { font-family: "DM Sans", sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--color-secondary); margin-bottom: 16px; }
+  .hero-title { font-family: "Playfair Display", serif; font-size: 48px; font-weight: 700; color: white; line-height: 1.1; margin-bottom: 16px; }
+  .hero-tagline { font-family: "DM Sans", sans-serif; font-size: 18px; color: rgba(255,255,255,0.8); max-width: 700px; line-height: 1.6; }
+
+  /* STICKY NAV */
+  .sticky-nav { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 1px solid var(--color-border); }
+  .sticky-nav .container { display: flex; overflow-x: auto; scrollbar-width: none; }
+  .sticky-nav .container::-webkit-scrollbar { display: none; }
+  .sticky-nav a { display: block; padding: 14px 16px; font-family: "DM Sans", sans-serif; font-size: 13px; font-weight: 500; color: var(--color-text-secondary); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; }
+  .sticky-nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .sticky-nav a:hover { color: var(--accent); }
+
+  /* HOD */
+  .hod-section { max-width: var(--max-width); margin: 0 auto; padding: 56px 24px; display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; border-bottom: 1px solid var(--color-border); }
+  .hod-photo { width: 200px; height: 250px; border-radius: 8px; background: linear-gradient(135deg, var(--accent-light), #e0d4f0); display: flex; align-items: center; justify-content: center; font-family: "Playfair Display", serif; font-size: 48px; color: var(--accent); opacity: 0.3; }
+  .hod-label { font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--color-teal-accessible); margin-bottom: 8px; }
+  .hod-name { font-family: "Playfair Display", serif; font-size: 24px; color: var(--accent); margin-bottom: 4px; }
+  .hod-title { font-family: "DM Sans", sans-serif; font-size: 14px; color: var(--color-text-secondary); margin-bottom: 20px; }
+  .hod-message { font-size: 16.5px; line-height: 1.75; font-style: italic; }
+  .hod-message::before { content: "\201C"; font-size: 48px; font-family: "Playfair Display", serif; color: var(--color-secondary); line-height: 0; vertical-align: -16px; margin-right: 4px; }
+
+  /* SECTION */
+  .section { max-width: var(--max-width); margin: 0 auto; padding: 56px 24px; border-bottom: 1px solid var(--color-border); }
+  .section:last-of-type { border-bottom: none; }
+  .section-label { font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--color-teal-accessible); margin-bottom: 8px; }
+  .section-title { font-family: "Playfair Display", serif; font-size: 28px; font-weight: 600; color: var(--accent); margin-bottom: 24px; }
+  .section-body { font-size: 16.5px; line-height: 1.75; }
+  .section-body p + p { margin-top: 16px; }
+
+  /* MISSION & PHILOSOPHY — unique to support */
+  .mission-section { background: var(--accent-light); border-top: 3px solid var(--accent); }
+  .mission-inner { max-width: var(--max-width); margin: 0 auto; padding: 56px 24px; }
+  .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+  .mission-card { background: white; border-radius: 10px; padding: 28px; text-align: center; border: 1px solid #e9e0f5; }
+  .mission-icon { width: 56px; height: 56px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+  .mission-card h4 { font-family: "DM Sans", sans-serif; font-size: 16px; font-weight: 600; color: var(--accent-dark); margin-bottom: 8px; }
+  .mission-card p { font-family: "DM Sans", sans-serif; font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+
+  /* ACCREDITATIONS — unique to support */
+  .accred-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .accred-card { border: 2px solid var(--color-border); border-radius: 10px; padding: 24px; text-align: center; transition: border-color 0.2s; }
+  .accred-card:hover { border-color: var(--accent); }
+  .accred-badge { width: 64px; height: 64px; border-radius: 50%; background: var(--accent-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+  .accred-badge svg { color: var(--accent); }
+  .accred-card h4 { font-family: "DM Sans", sans-serif; font-size: 16px; font-weight: 700; color: var(--accent-dark); margin-bottom: 4px; }
+  .accred-card p { font-family: "DM Sans", sans-serif; font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+  .accred-year { display: inline-block; margin-top: 8px; font-family: "DM Sans", sans-serif; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: var(--accent-light); color: var(--accent); }
+
+  /* SERVICES — modular, shows for Anaesthesia */
+  .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .service-item { padding: 16px; background: var(--color-off-white); border-radius: 8px; font-family: "DM Sans", sans-serif; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; }
+  .service-item::before { content: ""; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+
+  /* QUALITY DIMENSIONS — unique to QC */
+  .dimensions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .dimension-card { padding: 24px; background: var(--color-off-white); border-radius: 10px; text-align: center; border-bottom: 3px solid var(--accent); }
+  .dimension-card h4 { font-family: "DM Sans", sans-serif; font-size: 18px; font-weight: 700; color: var(--accent-dark); margin-bottom: 8px; }
+  .dimension-card p { font-family: "DM Sans", sans-serif; font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  /* LEGACY */
+  .legacy-timeline { position: relative; padding-left: 32px; }
+  .legacy-timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--accent); opacity: 0.3; }
+  .tl-item { position: relative; margin-bottom: 24px; }
+  .tl-item::before { content: ""; position: absolute; left: -28px; top: 6px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px var(--accent); }
+  .tl-year { font-family: "DM Sans", sans-serif; font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .tl-text { font-family: "DM Sans", sans-serif; font-size: 14px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  /* ACHIEVEMENTS */
+  .achievements-list { list-style: none; }
+  .achievements-list li { font-family: "DM Sans", sans-serif; font-size: 15px; padding: 14px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: flex-start; gap: 12px; }
+  .achievements-list li::before { content: "🏆"; flex-shrink: 0; }
+
+  /* CONTACT — no appointment CTA */
+  .contact-section { background: var(--color-off-white); padding: 56px 0; }
+  .contact-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; text-align: center; }
+  .contact-inner h3 { font-family: "Playfair Display", serif; font-size: 28px; color: var(--accent); margin-bottom: 12px; }
+  .contact-inner p { font-family: "DM Sans", sans-serif; font-size: 15px; color: var(--color-text-secondary); margin-bottom: 4px; }
+  .contact-email { font-family: "DM Sans", sans-serif; font-size: 18px; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; }
+  .contact-spoc { font-family: "DM Sans", sans-serif; font-size: 14px; color: var(--color-text-secondary); margin-top: 16px; padding: 12px 20px; background: white; border-radius: 8px; border: 1px solid var(--color-border); display: inline-block; }
+
+  /* DIVIDER — shows which sections are modular */
+  .modular-note { max-width: var(--max-width); margin: 0 auto; padding: 16px 24px; font-family: "DM Sans", sans-serif; font-size: 12px; color: #9333ea; background: #faf5ff; border-left: 3px solid #9333ea; border-radius: 0 4px 4px 0; }
+
+  @media (max-width: 768px) {
+    .hero-title { font-size: 32px; }
+    .hod-section { grid-template-columns: 1fr; }
+    .mission-grid { grid-template-columns: 1fr; }
+    .accred-grid { grid-template-columns: 1fr; }
+    .dimensions-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="template-badge">Support Template</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <div class="container">
+    <a href="#">Home</a> &rsaquo; <a href="#">Departments</a> &rsaquo; Quality Control
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <div class="container">
+    <a href="#" class="active">Overview</a>
+    <a href="#">Mission</a>
+    <a href="#">Quality Dimensions</a>
+    <a href="#">Accreditations</a>
+    <a href="#">Legacy</a>
+    <a href="#">Achievements</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Department</div>
+    <h1 class="hero-title">Department of<br>Quality Control</h1>
+    <p class="hero-tagline">Compliance, continuous improvement leading to excellence & safeguarding quality across every level of patient care.</p>
+  </div>
+</section>
+
+<!-- HOD MESSAGE -->
+<div class="hod-section">
+  <div class="hod-photo">VV</div>
+  <div>
+    <div class="hod-label">Message from the Head of Department</div>
+    <h3 class="hod-name">Mrs. V. Varalakshmi</h3>
+    <div class="hod-title">Head of Department, Quality Control</div>
+    <div class="hod-message">At the Cancer Institute (WIA), we understand that every patient who walks through our doors brings not just a medical need, but hope, courage, and trust. Quality, for us, means honouring that trust through safe, compassionate, and respectful care at every step of the patient journey.</div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="section">
+  <div class="section-label">About the Department</div>
+  <h2 class="section-title">Department Overview</h2>
+  <div class="section-body">
+    <p>Cancer Institute (WIA) believes that Clinical Excellence and Delivery of High Quality of Care are fundamental criteria of a successful destination of choice for Cancer treatment in the country.</p>
+    <p>Implementation of clinical practice guidelines based on the best available scientific evidence, together with measuring quality monitors and acting on the data, is crucial for continuous quality improvement and patient safety.</p>
+  </div>
+</div>
+
+<!-- MISSION & PHILOSOPHY — unique to support -->
+<div class="mission-section">
+  <div class="mission-inner">
+    <div class="section-label">Our Purpose</div>
+    <h2 class="section-title">Mission & Philosophy</h2>
+    <div class="section-body">
+      <p>For us, quality is both a responsibility we lead and a promise we make to every patient and family who entrust us with their care. We strive to embed a culture of quality and safety that touches every corner of the institution.</p>
+    </div>
+    <div class="mission-grid">
+      <div class="mission-card">
+        <div class="mission-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4>Patient Safety</h4>
+        <p>Ensuring the highest standards of safety through systematic monitoring, risk assessment, and prevention protocols.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h4>Continuous Improvement</h4>
+        <p>Measuring quality monitors and acting on data to drive evidence-based improvements across all departments.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h4>Patient-Centered Care</h4>
+        <p>Putting patients and families at the centre of every quality initiative and care pathway design.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUALITY DIMENSIONS — specific to QC -->
+<div class="section">
+  <div class="section-label">Our Framework</div>
+  <h2 class="section-title">Six Dimensions of Quality Healthcare</h2>
+  <div class="dimensions-grid">
+    <div class="dimension-card">
+      <h4>Safe</h4>
+      <p>Avoiding harm to patients from the care intended to help them</p>
+    </div>
+    <div class="dimension-card">
+      <h4>Effective</h4>
+      <p>Providing services based on scientific knowledge and best practices</p>
+    </div>
+    <div class="dimension-card">
+      <h4>Efficient</h4>
+      <p>Avoiding waste of resources including equipment, supplies, and time</p>
+    </div>
+    <div class="dimension-card">
+      <h4>Equitable</h4>
+      <p>Providing care that does not vary in quality because of personal characteristics</p>
+    </div>
+    <div class="dimension-card">
+      <h4>Timely</h4>
+      <p>Reducing waits and harmful delays for both patients and caregivers</p>
+    </div>
+    <div class="dimension-card">
+      <h4>Patient-Centered</h4>
+      <p>Providing care that is respectful of individual patient preferences and values</p>
+    </div>
+  </div>
+</div>
+
+<!-- ACCREDITATIONS — unique to support -->
+<div class="section">
+  <div class="section-label">Certifications</div>
+  <h2 class="section-title">Accreditations & Standards</h2>
+  <div class="accred-grid">
+    <div class="accred-card">
+      <div class="accred-badge">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5b3a8a" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+      </div>
+      <h4>NABH</h4>
+      <p>National Accreditation Board for Hospitals & Healthcare Providers</p>
+      <span class="accred-year">Accredited</span>
+    </div>
+    <div class="accred-card">
+      <div class="accred-badge">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5b3a8a" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h4>NABL</h4>
+      <p>National Accreditation Board for Testing & Calibration Laboratories</p>
+      <span class="accred-year">Accredited</span>
+    </div>
+    <div class="accred-card">
+      <div class="accred-badge">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5b3a8a" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h4>639 Objectives</h4>
+      <p>Comprehensive quality framework covering all aspects of hospital operations</p>
+      <span class="accred-year">Implemented</span>
+    </div>
+  </div>
+</div>
+
+<!-- MODULAR NOTE -->
+<div class="modular-note">
+  <strong>Modular sections below:</strong> The following sections appear conditionally. For Anaesthesia & Pain Management, "Services & Scope" and "Facilities & Equipment" would appear here with their clinical-adjacent data. For Quality Control, they are hidden since those fields are "Not Applicable."
+</div>
+
+<!-- LEGACY -->
+<div class="section">
+  <div class="section-label">Our Heritage</div>
+  <h2 class="section-title">Legacy & History</h2>
+  <div class="legacy-timeline">
+    <div class="tl-item">
+      <div class="tl-year">2015</div>
+      <div class="tl-text">Formal quality journey started — approached NABH for independent external peer assessment on quality and patient safety</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2018</div>
+      <div class="tl-text">Implementation of 639 quality objectives across all departments with total commitment to excellence</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2020</div>
+      <div class="tl-text">NABH Accreditation achieved — recognized for meeting national standards in quality and patient safety</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2024</div>
+      <div class="tl-text">Continued focus on safe, effective, efficient, equitable, timely, and patient-centered care</div>
+    </div>
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="section">
+  <div class="section-label">Milestones</div>
+  <h2 class="section-title">Key Achievements</h2>
+  <ul class="achievements-list">
+    <li>NABH Accreditation — Independent external peer assessment on quality and patient safety</li>
+    <li>Implementation of 639 quality objectives across all departments</li>
+    <li>Development of quality culture for patient and employee safety</li>
+    <li>Comprehensive patient safety initiatives and quality monitoring programs</li>
+  </ul>
+</div>
+
+<!-- CONTACT — no appointment CTA -->
+<div class="contact-section">
+  <div class="contact-inner">
+    <h3>Contact the Department</h3>
+    <p>For inquiries about quality standards and patient safety</p>
+    <div class="contact-email">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      nabhoffice@cancerinstitutewia.org
+    </div>
+    <div class="contact-spoc">
+      <strong>Department SPOC:</strong> Jayapradha T
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnostic Department Template — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #134795;
+    --color-secondary: #23CDC0;
+    --color-teal-accessible: #0A8C82;
+    --color-white: #FFFFFF;
+    --color-off-white: #F7F7F9;
+    --color-text-primary: #2D3748;
+    --color-text-secondary: #4B5563;
+    --color-border: #E5E7EB;
+    --accent: #1a6b5a;
+    --accent-light: #ecfdf5;
+    --accent-dark: #134e3f;
+    --max-width: 1100px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "PT Serif", serif; color: var(--color-text-primary); background: var(--color-white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  .template-badge { position: fixed; top: 16px; right: 16px; z-index: 200; background: var(--accent); color: white; font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 700; padding: 8px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; }
+
+  .breadcrumb-bar { background: var(--color-off-white); border-bottom: 1px solid var(--color-border); padding: 12px 0; font-family: "DM Sans", sans-serif; font-size: 13px; color: var(--color-text-secondary); }
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+  .breadcrumb-bar a { color: var(--accent); text-decoration: none; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #0f4a3a 0%, #1a6b5a 60%, #22876f 100%); padding: 64px 0; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+  .hero-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+  .hero-label { font-family: "DM Sans", sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--color-secondary); margin-bottom: 16px; }
+  .hero-title { font-family: "Playfair Display", serif; font-size: 48px; font-weight: 700; color: white; line-height: 1.1; margin-bottom: 16px; }
+  .hero-tagline { font-family: "DM Sans", sans-serif; font-size: 18px; color: rgba(255,255,255,0.8); max-width: 700px; line-height: 1.6; }
+
+  /* STICKY NAV */
+  .sticky-nav { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 1px solid var(--color-border); }
+  .sticky-nav .container { display: flex; overflow-x: auto; scrollbar-width: none; }
+  .sticky-nav .container::-webkit-scrollbar { display: none; }
+  .sticky-nav a { display: block; padding: 14px 16px; font-family: "DM Sans", sans-serif; font-size: 13px; font-weight: 500; color: var(--color-text-secondary); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; }
+  .sticky-nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .sticky-nav a:hover { color: var(--accent); }
+
+  /* HOD */
+  .hod-section { max-width: var(--max-width); margin: 0 auto; padding: 56px 24px; display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; border-bottom: 1px solid var(--color-border); }
+  .hod-photo { width: 200px; height: 250px; border-radius: 8px; background: linear-gradient(135deg, var(--accent-light), #d1e8e0); display: flex; align-items: center; justify-content: center; font-family: "Playfair Display", serif; font-size: 48px; color: var(--accent); opacity: 0.3; }
+  .hod-label { font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--color-teal-accessible); margin-bottom: 8px; }
+  .hod-name { font-family: "Playfair Display", serif; font-size: 24px; color: var(--accent); margin-bottom: 4px; }
+  .hod-title { font-family: "DM Sans", sans-serif; font-size: 14px; color: var(--color-text-secondary); margin-bottom: 20px; }
+  .hod-message { font-size: 16.5px; line-height: 1.75; font-style: italic; }
+  .hod-message::before { content: "\201C"; font-size: 48px; font-family: "Playfair Display", serif; color: var(--color-secondary); line-height: 0; vertical-align: -16px; margin-right: 4px; }
+
+  /* SECTION */
+  .section { max-width: var(--max-width); margin: 0 auto; padding: 56px 24px; border-bottom: 1px solid var(--color-border); }
+  .section:last-of-type { border-bottom: none; }
+  .section-label { font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--color-teal-accessible); margin-bottom: 8px; }
+  .section-title { font-family: "Playfair Display", serif; font-size: 28px; font-weight: 600; color: var(--accent); margin-bottom: 24px; }
+  .section-body { font-size: 16.5px; line-height: 1.75; }
+  .section-body p + p { margin-top: 16px; }
+
+  /* PATIENT GUIDE — unique to diagnostic */
+  .guide-section { background: #f0fdf4; border-top: 3px solid var(--accent); }
+  .guide-inner { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px; }
+  .guide-title { font-family: "Playfair Display", serif; font-size: 24px; color: var(--accent-dark); margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+  .guide-sub { font-family: "DM Sans", sans-serif; font-size: 15px; color: #166534; margin-bottom: 24px; }
+  .guide-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .guide-step { background: white; border-radius: 10px; padding: 24px; border: 1px solid #bbf7d0; }
+  .guide-step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: white; font-family: "DM Sans", sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+  .guide-step h4 { font-family: "DM Sans", sans-serif; font-size: 15px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 8px; }
+  .guide-step p { font-family: "DM Sans", sans-serif; font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  /* SERVICES TABLE — for clinicians */
+  .services-section { background: var(--color-off-white); }
+  .services-inner { max-width: var(--max-width); margin: 0 auto; padding: 56px 24px; }
+  .services-category { margin-bottom: 32px; }
+  .services-category:last-child { margin-bottom: 0; }
+  .services-cat-title { font-family: "DM Sans", sans-serif; font-size: 16px; font-weight: 700; color: var(--accent-dark); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--color-secondary); display: inline-block; }
+  .services-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 32px; }
+  .services-list li { font-family: "DM Sans", sans-serif; font-size: 14px; padding: 8px 0; color: var(--color-text-primary); display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid #e8e8e8; }
+  .services-list li::before { content: ""; width: 5px; height: 5px; background: var(--color-secondary); border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+
+  /* THERAPEUTIC SERVICES */
+  .therapy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .therapy-card { padding: 20px; background: var(--accent-light); border-radius: 8px; border-left: 3px solid var(--accent); }
+  .therapy-card h4 { font-family: "DM Sans", sans-serif; font-size: 15px; font-weight: 600; color: var(--accent-dark); margin-bottom: 6px; }
+  .therapy-card p { font-family: "DM Sans", sans-serif; font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  /* EQUIPMENT SHOWCASE — unique to diagnostic */
+  .equipment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .equipment-card { border: 1px solid var(--color-border); border-radius: 10px; overflow: hidden; transition: box-shadow 0.2s; }
+  .equipment-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .equipment-img { height: 140px; background: linear-gradient(135deg, var(--accent-light), #d1e8e0); display: flex; align-items: center; justify-content: center; }
+  .equipment-icon { width: 48px; height: 48px; background: var(--accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .equipment-icon svg { color: white; }
+  .equipment-body { padding: 16px; }
+  .equipment-body h4 { font-family: "DM Sans", sans-serif; font-size: 15px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 4px; }
+  .equipment-body p { font-family: "DM Sans", sans-serif; font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+  .equipment-badge { display: inline-block; margin-top: 8px; font-family: "DM Sans", sans-serif; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: var(--accent-light); color: var(--accent); }
+
+  /* DOCTORS GRID */
+  .doctors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .doctor-card { text-align: center; text-decoration: none; color: inherit; }
+  .doctor-avatar { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, var(--accent-light), #d1e8e0); border-radius: 8px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; font-family: "Playfair Display", serif; font-size: 32px; color: var(--accent); opacity: 0.3; }
+  .doctor-card h4 { font-family: "DM Sans", sans-serif; font-size: 14px; font-weight: 600; }
+  .doctor-card p { font-family: "DM Sans", sans-serif; font-size: 12px; color: var(--color-text-secondary); }
+
+  /* LEGACY */
+  .legacy-timeline { position: relative; padding-left: 32px; }
+  .legacy-timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--color-secondary); }
+  .tl-item { position: relative; margin-bottom: 24px; }
+  .tl-item::before { content: ""; position: absolute; left: -28px; top: 6px; width: 12px; height: 12px; background: var(--color-secondary); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px var(--color-secondary); }
+  .tl-year { font-family: "DM Sans", sans-serif; font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .tl-text { font-family: "DM Sans", sans-serif; font-size: 14px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  /* ACHIEVEMENTS */
+  .achievements-list { list-style: none; }
+  .achievements-list li { font-family: "DM Sans", sans-serif; font-size: 15px; padding: 14px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: flex-start; gap: 12px; }
+  .achievements-list li::before { content: "🏆"; flex-shrink: 0; }
+
+  /* CTA */
+  .cta-section { background: var(--accent); padding: 48px 0; }
+  .cta-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+  .cta-inner h3 { font-family: "DM Sans", sans-serif; font-size: 22px; font-weight: 600; color: white; }
+  .cta-inner p { font-family: "DM Sans", sans-serif; font-size: 14px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+  .cta-btn { font-family: "DM Sans", sans-serif; font-size: 15px; font-weight: 600; padding: 12px 32px; background: var(--color-secondary); color: white; border: none; border-radius: 6px; text-decoration: none; }
+
+  /* REFERRAL CTA — unique to diagnostic */
+  .referral-section { background: var(--color-off-white); padding: 48px 0; }
+  .referral-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; text-align: center; }
+  .referral-inner h3 { font-family: "Playfair Display", serif; font-size: 28px; color: var(--accent); margin-bottom: 12px; }
+  .referral-inner p { font-family: "DM Sans", sans-serif; font-size: 15px; color: var(--color-text-secondary); margin-bottom: 8px; }
+  .referral-inner .email { font-family: "DM Sans", sans-serif; font-size: 16px; font-weight: 600; color: var(--accent); }
+  .referral-note { font-family: "DM Sans", sans-serif; font-size: 13px; color: var(--color-text-secondary); margin-top: 20px; padding: 16px; background: white; border-radius: 8px; border: 1px solid var(--color-border); display: inline-block; }
+
+  @media (max-width: 768px) {
+    .hero-title { font-size: 32px; }
+    .hod-section { grid-template-columns: 1fr; }
+    .guide-steps { grid-template-columns: 1fr; }
+    .services-list { grid-template-columns: 1fr; }
+    .therapy-grid { grid-template-columns: 1fr; }
+    .equipment-grid { grid-template-columns: 1fr 1fr; }
+    .doctors-grid { grid-template-columns: repeat(2, 1fr); }
+    .cta-inner { flex-direction: column; text-align: center; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="template-badge">Diagnostic Template</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <div class="container">
+    <a href="#">Home</a> &rsaquo; <a href="#">Departments</a> &rsaquo; Radiology
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <div class="container">
+    <a href="#" class="active">Overview</a>
+    <a href="#">Patient Guide</a>
+    <a href="#">Services</a>
+    <a href="#">Therapies</a>
+    <a href="#">Equipment</a>
+    <a href="#">Our Experts</a>
+    <a href="#">Legacy</a>
+    <a href="#">Achievements</a>
+    <a href="#">Referral</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Department</div>
+    <h1 class="hero-title">Department of Radiology</h1>
+    <p class="hero-tagline">Advanced imaging and image-guided diagnostic and therapeutic procedures for accurate cancer diagnosis, staging, and treatment planning.</p>
+  </div>
+</section>
+
+<!-- HOD MESSAGE -->
+<div class="hod-section">
+  <div class="hod-photo">MK</div>
+  <div>
+    <div class="hod-label">Message from the Head of Department</div>
+    <h3 class="hod-name">Dr. M. Karthigaiselvi</h3>
+    <div class="hod-title">MBBS, DMRD, DNB, FRCR(UK) &bull; Senior Consultant & Head</div>
+    <div class="hod-message">The Department of Radiology is committed to delivering accurate, timely, and safe imaging services that form the foundation of effective cancer care. Working in close collaboration with oncology teams, the department plays a vital role in diagnosis, staging, treatment planning, and follow-up.</div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="section">
+  <div class="section-label">About the Department</div>
+  <h2 class="section-title">Department Overview</h2>
+  <div class="section-body">
+    <p>The Department of Radiology specializes in medical imaging that helps detect, diagnose, and monitor cancer. Using technologies such as X-rays, mammography, ultrasound, CT and MRI, we provide detailed images and expert reports that guide doctors in making accurate treatment decisions.</p>
+    <p>Radiology plays a crucial role in every stage of cancer care — from early detection and diagnosis to treatment planning, monitoring treatment response, and long-term follow-up.</p>
+  </div>
+</div>
+
+<!-- PATIENT GUIDE — unique to diagnostic -->
+<div class="guide-section">
+  <div class="guide-inner">
+    <h2 class="guide-title">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a6b5a" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      What to Expect During Your Visit
+    </h2>
+    <p class="guide-sub">Understanding your imaging procedure — a simple guide for patients and families</p>
+    <div class="guide-steps">
+      <div class="guide-step">
+        <div class="guide-step-num">1</div>
+        <h4>Before Your Scan</h4>
+        <p>Your referring doctor will explain which imaging test is needed. Some scans require fasting or specific preparation — our team will provide clear instructions when you schedule.</p>
+      </div>
+      <div class="guide-step">
+        <div class="guide-step-num">2</div>
+        <h4>During the Procedure</h4>
+        <p>Most imaging tests are painless and non-invasive. You may need to lie still for a few minutes while the scanner captures images. Our technologists ensure your comfort throughout.</p>
+      </div>
+      <div class="guide-step">
+        <div class="guide-step-num">3</div>
+        <h4>After Your Scan</h4>
+        <p>Our radiologists analyze your images and prepare a detailed report for your treating doctor. Results are typically available within 24-48 hours.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIAGNOSTIC SERVICES — for clinicians -->
+<div class="services-section">
+  <div class="services-inner">
+    <div class="section-label">For Clinicians</div>
+    <h2 class="section-title">Diagnostic Services & Techniques</h2>
+
+    <div class="services-category">
+      <div class="services-cat-title">Cross-Sectional Imaging</div>
+      <ul class="services-list">
+        <li>MRI — Brain, spine, breast, abdomen, pelvis, extremities</li>
+        <li>CT Scan — Contrast & non-contrast, CT angiography</li>
+        <li>CT-guided biopsy & drainage procedures</li>
+        <li>CT pulmonary angiography</li>
+      </ul>
+    </div>
+
+    <div class="services-category">
+      <div class="services-cat-title">Conventional & Screening</div>
+      <ul class="services-list">
+        <li>Digital Mammography & Tomosynthesis</li>
+        <li>Digital X-ray systems</li>
+        <li>Ultrasound — 2D and 3D with Doppler</li>
+        <li>Contrast-enhanced Ultrasound (CEUS)</li>
+      </ul>
+    </div>
+
+    <div class="services-category">
+      <div class="services-cat-title">Interventional Procedures</div>
+      <ul class="services-list">
+        <li>Image-guided biopsies (USG, CT, stereotactic)</li>
+        <li>Tumor embolization</li>
+        <li>Microwave ablation</li>
+        <li>Drainage procedures & stent placements</li>
+        <li>Fiducial marker placement</li>
+        <li>Vascular access procedures (PICC, ports)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- THERAPEUTIC SERVICES -->
+<div class="section">
+  <div class="section-label">Treatment Capabilities</div>
+  <h2 class="section-title">Therapeutic Services</h2>
+  <div class="therapy-grid">
+    <div class="therapy-card">
+      <h4>Image-Guided Biopsies</h4>
+      <p>Precise tissue sampling using ultrasound, CT, or stereotactic guidance for accurate cancer diagnosis.</p>
+    </div>
+    <div class="therapy-card">
+      <h4>Tumor Embolization</h4>
+      <p>Cutting off blood supply to tumors to shrink them before surgery or as a standalone treatment.</p>
+    </div>
+    <div class="therapy-card">
+      <h4>Microwave Ablation</h4>
+      <p>Minimally invasive tumor destruction using heat, guided by real-time imaging.</p>
+    </div>
+    <div class="therapy-card">
+      <h4>Vascular Access</h4>
+      <p>PICC lines, port placements, and other vascular access procedures for chemotherapy delivery.</p>
+    </div>
+  </div>
+</div>
+
+<!-- EQUIPMENT SHOWCASE — unique to diagnostic -->
+<div class="section">
+  <div class="section-label">Our Technology</div>
+  <h2 class="section-title">Equipment & Technology</h2>
+  <div class="equipment-grid">
+    <div class="equipment-card">
+      <div class="equipment-img">
+        <div class="equipment-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+      </div>
+      <div class="equipment-body">
+        <h4>MRI Scanner</h4>
+        <p>1.5 Tesla Siemens Sempra — high-resolution imaging for brain, breast, abdomen, and musculoskeletal studies</p>
+        <span class="equipment-badge">Siemens</span>
+      </div>
+    </div>
+    <div class="equipment-card">
+      <div class="equipment-img">
+        <div class="equipment-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+      </div>
+      <div class="equipment-body">
+        <h4>128-Slice CT Scanner</h4>
+        <p>Two GE Revolution multi-detector CT scanners for advanced cross-sectional imaging and CT angiography</p>
+        <span class="equipment-badge">GE Healthcare</span>
+      </div>
+    </div>
+    <div class="equipment-card">
+      <div class="equipment-img">
+        <div class="equipment-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+      </div>
+      <div class="equipment-body">
+        <h4>Digital Mammography</h4>
+        <p>Hologic 3D tomosynthesis system with contrast-enhanced spectral mammography (CESM)</p>
+        <span class="equipment-badge">Hologic</span>
+      </div>
+    </div>
+    <div class="equipment-card">
+      <div class="equipment-img">
+        <div class="equipment-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+      </div>
+      <div class="equipment-body">
+        <h4>Ultrasound Suite</h4>
+        <p>Six state-of-the-art 2D and 3D ultrasound systems with Doppler and elastography</p>
+        <span class="equipment-badge">6 Units</span>
+      </div>
+    </div>
+    <div class="equipment-card">
+      <div class="equipment-img">
+        <div class="equipment-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+      </div>
+      <div class="equipment-body">
+        <h4>Fluoroscopy</h4>
+        <p>Real-time imaging for guided procedures including barium studies and contrast examinations</p>
+        <span class="equipment-badge">Real-time</span>
+      </div>
+    </div>
+    <div class="equipment-card">
+      <div class="equipment-img">
+        <div class="equipment-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+      </div>
+      <div class="equipment-body">
+        <h4>Digital X-Ray</h4>
+        <p>Rapid digital imaging for chest, bone, and soft tissue evaluation with minimal radiation</p>
+        <span class="equipment-badge">Low Dose</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OUR EXPERTS -->
+<div class="section">
+  <div class="section-label">Meet the Team</div>
+  <h2 class="section-title">Our Experts</h2>
+  <div class="doctors-grid">
+    <a href="#" class="doctor-card">
+      <div class="doctor-avatar">MK</div>
+      <h4>Dr. M. Karthigaiselvi</h4>
+      <p>Senior Consultant & HOD</p>
+    </a>
+    <a href="#" class="doctor-card">
+      <div class="doctor-avatar">RT</div>
+      <h4>Dr. R. Thanraj</h4>
+      <p>Consultant Radiologist</p>
+    </a>
+    <a href="#" class="doctor-card">
+      <div class="doctor-avatar">PS</div>
+      <h4>Dr. Pushparajan S.</h4>
+      <p>Interventional Radiologist</p>
+    </a>
+    <a href="#" class="doctor-card">
+      <div class="doctor-avatar">AN</div>
+      <h4>Dr. Anusuya</h4>
+      <p>Consultant Radiologist</p>
+    </a>
+  </div>
+</div>
+
+<!-- LEGACY -->
+<div class="section">
+  <div class="section-label">Our Heritage</div>
+  <h2 class="section-title">Legacy & History</h2>
+  <div class="legacy-timeline">
+    <div class="tl-item">
+      <div class="tl-year">1950s</div>
+      <div class="tl-text">Department established with conventional X-ray services as part of India's pioneering cancer center</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1980s</div>
+      <div class="tl-text">Expansion to include ultrasound and early CT scanning capabilities</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2000s</div>
+      <div class="tl-text">Introduction of digital mammography and multi-detector CT technology</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2024</div>
+      <div class="tl-text">ICRI Fellowships in Onco-Imaging and Breast Imaging initiated, NATBOARD recognition for DNB Radiology</div>
+    </div>
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="section">
+  <div class="section-label">Milestones</div>
+  <h2 class="section-title">Key Achievements</h2>
+  <ul class="achievements-list">
+    <li>NATBOARD Recognition for DNB Radiology Training Programme</li>
+    <li>ICRI Fellowship in Onco-Imaging — Initiated 2024</li>
+    <li>ICRI Fellowship in Breast Imaging — Initiated 2024</li>
+    <li>1st Prize — Oral Paper Presentation at IRIA State Conference 2025</li>
+  </ul>
+</div>
+
+<!-- REFERRAL CTA — unique to diagnostic -->
+<div class="referral-section">
+  <div class="referral-inner">
+    <h3>Refer a Patient</h3>
+    <p>Our imaging services are available upon referral from treating physicians</p>
+    <p class="email">radiology@cancerinstitutewia.org</p>
+    <div class="referral-note">
+      <strong>For referring physicians:</strong> When ordering imaging, please include clinical history, suspected diagnosis, and specific imaging requirements to help our radiologists provide the most accurate interpretation.
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

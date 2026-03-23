@@ -1,0 +1,87 @@
+<h2>Doctor Profile Layout Approaches</h2>
+<p class="subtitle">Three ways to adapt the MSK-inspired template to your data. Click to select your preferred approach.</p>
+
+<div class="options">
+
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Faithful MSK Adaptation</h3>
+      <p>Closely mirrors the MSK reference — full-width sections stacked vertically, each with generous whitespace. Hero has doctor name/title on the left, large rectangular photo on the right. Clean horizontal rules between sections. Minimal sticky nav at top. Inline "Request Appointment" CTA placed after the hero and again after Experience.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>Proven layout from a world-class hospital</li>
+            <li>Maximum readability — one column, clear hierarchy</li>
+            <li>Gracefully handles missing data (sections simply don't render)</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Page can feel long with lots of scrolling</li>
+            <li>Less visual variety — very text-heavy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>MSK Structure + Card-Based Sections</h3>
+      <p>Same MSK-inspired ordering and full-width layout, but each section lives inside a subtle card with soft shadows and rounded corners. Education uses a visual timeline. Expertise uses styled chips/pills. Experience entries are distinct cards with role/institution. Adds visual rhythm and breaks up the text-heavy feel while keeping the premium MSK structure.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>More visually engaging than pure text</li>
+            <li>Cards create natural visual grouping</li>
+            <li>Timeline for education adds polish</li>
+            <li>Matches your existing design system (you already use cards and chips)</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Slightly more complex to implement</li>
+            <li>Cards can feel busy if too many sections</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>MSK Structure + Alternating Backgrounds</h3>
+      <p>Full-width MSK layout, but sections alternate between white and your off-white/pale teal backgrounds. Creates visual rhythm without cards. Hero section gets a bold brand-blue background with white text. Education and expertise get the tinted backgrounds. Key stats (department, qualifications count) shown as a highlight strip below the hero — similar to your current design.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>Strong visual rhythm without card overhead</li>
+            <li>Bold hero makes a strong first impression</li>
+            <li>Leverages your brand colors effectively</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Alternating backgrounds can feel formulaic</li>
+            <li>Bold hero may not suit all doctors equally</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" style="margin-top: 2rem; padding: 1.5rem; background: #f0f4ff; border-radius: 12px;">
+  <h3 style="margin-top:0;">My Recommendation: Option B</h3>
+  <p style="margin:0;">It strikes the best balance — you get the clean, authoritative MSK structure but with visual richness that matches your existing design system (cards, chips, timelines). It handles inconsistent data well since empty cards simply don't render, and it feels premium without being sterile.</p>
+</div>

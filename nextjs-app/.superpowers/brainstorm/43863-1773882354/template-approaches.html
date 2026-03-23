@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Department Template Approaches</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #134795;
+    --teal: #0A8C82;
+    --secondary: #23CDC0;
+    --text: #2D3748;
+    --text-sec: #4B5563;
+    --off-white: #F7F7F9;
+    --border: #E5E7EB;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "DM Sans", sans-serif; color: var(--text); background: #fff; }
+
+  .page-title { text-align: center; padding: 40px 24px 12px; font-family: "Playfair Display", serif; font-size: 28px; color: var(--primary); }
+  .page-sub { text-align: center; padding: 0 24px 40px; font-size: 15px; color: var(--text-sec); max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+  .templates { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; max-width: 1200px; margin: 0 auto; padding: 0 24px 60px; }
+
+  .template-col { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .template-header { padding: 20px; text-align: center; color: white; }
+  .template-header.clinical { background: var(--primary); }
+  .template-header.diagnostic { background: #1a6b5a; }
+  .template-header.support { background: #5b3a8a; }
+  .template-header h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .template-header p { font-size: 12px; opacity: 0.8; }
+
+  .section-list { padding: 16px; }
+  .sec-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: 8px; margin-bottom: 6px; background: var(--off-white); }
+  .sec-num { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; flex-shrink: 0; margin-top: 1px; }
+  .clinical .sec-num { background: var(--primary); }
+  .diagnostic .sec-num { background: #1a6b5a; }
+  .support .sec-num { background: #5b3a8a; }
+  .sec-info h4 { font-size: 13px; font-weight: 600; color: var(--text); }
+  .sec-info p { font-size: 11px; color: var(--text-sec); line-height: 1.4; margin-top: 2px; }
+
+  .tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 4px; }
+  .tag-patient { background: #dbeafe; color: #1e40af; }
+  .tag-clinical { background: #dcfce7; color: #166534; }
+  .tag-both { background: #fef3c7; color: #92400e; }
+  .tag-unique { background: #fce7f3; color: #9d174d; }
+
+  .approach-label { text-align: center; padding: 24px; font-size: 13px; color: var(--text-sec); font-weight: 500; border-top: 1px solid var(--border); }
+
+  .legend { max-width: 1200px; margin: 0 auto 40px; padding: 0 24px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-sec); }
+
+  @media (max-width: 900px) {
+    .templates { grid-template-columns: 1fr; max-width: 500px; }
+  }
+</style>
+</head>
+<body>
+
+<h2 class="page-title">Three Department Template Structures</h2>
+<p class="page-sub">Each template is optimized for its department category. Sections are ordered by importance to the audience. Tags indicate the primary audience for each section.</p>
+
+<div class="legend">
+  <div class="legend-item"><span class="tag tag-patient">Patient-facing</span></div>
+  <div class="legend-item"><span class="tag tag-clinical">For clinicians</span></div>
+  <div class="legend-item"><span class="tag tag-both">Both audiences</span></div>
+  <div class="legend-item"><span class="tag tag-unique">Unique to this template</span></div>
+</div>
+
+<div class="templates">
+
+  <!-- CLINICAL -->
+  <div class="template-col clinical">
+    <div class="template-header clinical">
+      <h3>Clinical Template</h3>
+      <p>Medical Oncology, Surgical Oncology, Gynae Oncology, Palliative Medicine</p>
+    </div>
+    <div class="section-list">
+      <div class="sec-item">
+        <div class="sec-num">1</div>
+        <div class="sec-info">
+          <h4>Hero + Tagline</h4>
+          <p>Department name, tagline, department photo, accent color</p>
+          <span class="tag tag-patient">Patient-facing</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">2</div>
+        <div class="sec-info">
+          <h4>HOD Message</h4>
+          <p>Photo of HOD, personal message, credentials</p>
+          <span class="tag tag-patient">Patient-facing</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">3</div>
+        <div class="sec-info">
+          <h4>Department Overview</h4>
+          <p>What the department does, scope of care</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">4</div>
+        <div class="sec-info">
+          <h4>Warning Signs &mdash; When to Visit</h4>
+          <p>Prominent symptom callout cards with icons. "Visit this department if you experience..."</p>
+          <span class="tag tag-unique">Unique to clinical</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">5</div>
+        <div class="sec-info">
+          <h4>Conditions Treated</h4>
+          <p>Grid of cancer types / conditions the department manages</p>
+          <span class="tag tag-patient">Patient-facing</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">6</div>
+        <div class="sec-info">
+          <h4>Treatment Options</h4>
+          <p>Therapies offered: surgery, chemo, immunotherapy, etc.</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">7</div>
+        <div class="sec-info">
+          <h4>Prevention &amp; Screening</h4>
+          <p>Preventive measures, screening recommendations</p>
+          <span class="tag tag-unique">Unique to clinical</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">8</div>
+        <div class="sec-info">
+          <h4>Our Experts</h4>
+          <p>Doctor cards linking to profile pages</p>
+          <span class="tag tag-patient">Patient-facing</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">9</div>
+        <div class="sec-info">
+          <h4>Facilities &amp; Equipment</h4>
+          <p>Key equipment and infrastructure</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">10</div>
+        <div class="sec-info">
+          <h4>Legacy &amp; Heritage</h4>
+          <p>Timeline/narrative of department history since founding</p>
+          <span class="tag tag-patient">Patient-facing</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">11</div>
+        <div class="sec-info">
+          <h4>Key Achievements</h4>
+          <p>Awards, milestones, firsts</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">12</div>
+        <div class="sec-info">
+          <h4>Contact &amp; Appointment CTA</h4>
+          <p>Email, phone, book appointment</p>
+          <span class="tag tag-patient">Patient-facing</span>
+        </div>
+      </div>
+    </div>
+    <div class="approach-label">12 sections &bull; Patient journey focus</div>
+  </div>
+
+  <!-- DIAGNOSTIC -->
+  <div class="template-col diagnostic">
+    <div class="template-header diagnostic">
+      <h3>Diagnostic Template</h3>
+      <p>Radiology, Nuclear Medicine, Microbiology</p>
+    </div>
+    <div class="section-list">
+      <div class="sec-item">
+        <div class="sec-num">1</div>
+        <div class="sec-info">
+          <h4>Hero + Tagline</h4>
+          <p>Department name, tagline, department photo</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">2</div>
+        <div class="sec-info">
+          <h4>HOD Message</h4>
+          <p>Photo of HOD, personal message, credentials</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">3</div>
+        <div class="sec-info">
+          <h4>Department Overview</h4>
+          <p>What the department does, accreditations (e.g., NABL)</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">4</div>
+        <div class="sec-info">
+          <h4>What to Expect &mdash; Patient Guide</h4>
+          <p>Accessible explanation: what happens during a scan/test, how to prepare, what results mean</p>
+          <span class="tag tag-unique">Unique to diagnostic</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">5</div>
+        <div class="sec-info">
+          <h4>Diagnostic Services &amp; Techniques</h4>
+          <p>Comprehensive list of all tests/procedures, organized by category (imaging, lab, molecular)</p>
+          <span class="tag tag-clinical">For clinicians</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">6</div>
+        <div class="sec-info">
+          <h4>Therapeutic Services</h4>
+          <p>Treatment capabilities (e.g., radioiodine therapy, PRRT for Nuclear Medicine)</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">7</div>
+        <div class="sec-info">
+          <h4>Technology &amp; Equipment Showcase</h4>
+          <p>Featured equipment with specs: PET-CT, MALDI-TOF, MRI, etc. Visual cards.</p>
+          <span class="tag tag-unique">Unique to diagnostic</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">8</div>
+        <div class="sec-info">
+          <h4>Our Experts</h4>
+          <p>Doctor cards linking to profile pages</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">9</div>
+        <div class="sec-info">
+          <h4>Legacy &amp; Heritage</h4>
+          <p>Department history (Nuclear Medicine est. 1957, etc.)</p>
+          <span class="tag tag-patient">Patient-facing</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">10</div>
+        <div class="sec-info">
+          <h4>Key Achievements</h4>
+          <p>Awards, accreditations, milestones</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">11</div>
+        <div class="sec-info">
+          <h4>Referral &amp; Contact</h4>
+          <p>How to refer, email, when to visit (referral-based CTA)</p>
+          <span class="tag tag-clinical">For clinicians</span>
+        </div>
+      </div>
+    </div>
+    <div class="approach-label">11 sections &bull; Dual audience: patient + clinician</div>
+  </div>
+
+  <!-- SUPPORT -->
+  <div class="template-col support">
+    <div class="template-header support">
+      <h3>Support Template</h3>
+      <p>Anaesthesia &amp; Pain Mgmt, Quality Control</p>
+    </div>
+    <div class="section-list">
+      <div class="sec-item">
+        <div class="sec-num">1</div>
+        <div class="sec-info">
+          <h4>Hero + Tagline</h4>
+          <p>Department name, tagline, department photo</p>
+          <span class="tag tag-patient">Patient-facing</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">2</div>
+        <div class="sec-info">
+          <h4>HOD Message</h4>
+          <p>Photo of HOD, personal message, credentials</p>
+          <span class="tag tag-patient">Patient-facing</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">3</div>
+        <div class="sec-info">
+          <h4>Mission &amp; Philosophy</h4>
+          <p>Department vision, values, and approach to care. Replaces "overview" with a purpose-driven narrative.</p>
+          <span class="tag tag-unique">Unique to support</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">4</div>
+        <div class="sec-info">
+          <h4>Services &amp; Scope</h4>
+          <p>What the department provides (modular — perioperative care for Anaesthesia, quality frameworks for QC)</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">5</div>
+        <div class="sec-info">
+          <h4>Accreditations &amp; Standards</h4>
+          <p>NABH, NABL, quality certifications, compliance frameworks</p>
+          <span class="tag tag-unique">Unique to support</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">6</div>
+        <div class="sec-info">
+          <h4>Facilities &amp; Equipment</h4>
+          <p>Optional — shows for Anaesthesia (ventilators, workstations), hidden for Quality Control</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">7</div>
+        <div class="sec-info">
+          <h4>Our Team</h4>
+          <p>Team members — doctor cards for Anaesthesia, staff listing for QC</p>
+          <span class="tag tag-patient">Patient-facing</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">8</div>
+        <div class="sec-info">
+          <h4>Legacy &amp; Heritage</h4>
+          <p>Department history and evolution</p>
+          <span class="tag tag-patient">Patient-facing</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">9</div>
+        <div class="sec-info">
+          <h4>Key Achievements</h4>
+          <p>Awards, conferences organized, quality milestones</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+      <div class="sec-item">
+        <div class="sec-num">10</div>
+        <div class="sec-info">
+          <h4>Contact</h4>
+          <p>Department email, SPOC — no appointment CTA (support depts aren't patient-booked)</p>
+          <span class="tag tag-both">Both audiences</span>
+        </div>
+      </div>
+    </div>
+    <div class="approach-label">10 sections &bull; Modular — sections show/hide per dept</div>
+  </div>
+
+</div>
+
+</body>
+</html>

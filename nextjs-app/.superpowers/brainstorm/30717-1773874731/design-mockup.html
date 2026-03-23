@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor Profile Template — Design Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #134795;
+    --color-secondary: #23CDC0;
+    --color-tertiary: #EBF9F9;
+    --color-white: #FFFFFF;
+    --color-off-white: #F7F7F9;
+    --color-text-primary: #2D3748;
+    --color-text-secondary: #4B5563;
+    --color-teal-accessible: #0A8C82;
+    --color-dark-bg: #0d2d60;
+    --color-border: #E5E7EB;
+    --font-heading: "DM Sans", sans-serif;
+    --font-body: "PT Serif", serif;
+    --font-dm: "DM Sans", sans-serif;
+    --font-playfair: "Playfair Display", serif;
+    --max-width: 1100px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text-primary);
+    background: var(--color-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ BREADCRUMB ============ */
+  .breadcrumb-bar {
+    background: var(--color-off-white);
+    border-bottom: 1px solid var(--color-border);
+    padding: 12px 0;
+    font-family: var(--font-dm);
+    font-size: 13px;
+    color: var(--color-text-secondary);
+  }
+  .breadcrumb-bar .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+  .breadcrumb-bar a { color: var(--color-primary); text-decoration: none; }
+  .breadcrumb-bar a:hover { text-decoration: underline; }
+  .breadcrumb-bar span { margin: 0 6px; color: #9CA3AF; }
+
+  /* ============ STICKY NAV ============ */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-dm);
+    transition: box-shadow 0.2s ease;
+  }
+  .sticky-nav.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .sticky-nav .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sticky-nav .container::-webkit-scrollbar { display: none; }
+  .sticky-nav a {
+    display: block;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+  .sticky-nav a:hover { color: var(--color-primary); }
+  .sticky-nav a.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 48px 24px 40px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+    align-items: start;
+  }
+  .hero-info { padding-top: 8px; }
+  .hero-dept {
+    font-family: var(--font-dm);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-teal-accessible);
+    margin-bottom: 12px;
+  }
+  .hero-name {
+    font-family: var(--font-playfair);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .hero-title {
+    font-family: var(--font-dm);
+    font-size: 18px;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+  }
+  .hero-qualifications {
+    font-family: var(--font-dm);
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+  .hero-qualifications strong {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+    margin-top: 16px;
+  }
+  .hero-qualifications strong:first-child { margin-top: 0; }
+  .hero-photo {
+    width: 320px;
+    height: 400px;
+    background: linear-gradient(135deg, #e8edf5 0%, #d1d9e8 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero-photo .initials {
+    font-family: var(--font-playfair);
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--color-primary);
+    opacity: 0.3;
+  }
+  .hero-linkedin {
+    margin-top: 20px;
+  }
+  .hero-linkedin a {
+    font-family: var(--font-dm);
+    font-size: 14px;
+    color: var(--color-primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-linkedin a:hover { text-decoration: underline; }
+
+  /* ============ CTA STRIP ============ */
+  .cta-strip {
+    background: var(--color-primary);
+    padding: 28px 0;
+  }
+  .cta-strip .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cta-strip h3 {
+    font-family: var(--font-dm);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-white);
+  }
+  .cta-strip p {
+    font-family: var(--font-dm);
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 4px;
+  }
+  .cta-btn {
+    font-family: var(--font-dm);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 32px;
+    background: var(--color-secondary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: #1db8ac; }
+
+  /* ============ CONTENT SECTIONS ============ */
+  .section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 48px 24px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .section:last-of-type { border-bottom: none; }
+  .section-label {
+    font-family: var(--font-dm);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-teal-accessible);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: var(--font-playfair);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+  }
+  .section-body {
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: var(--color-text-primary);
+  }
+  .section-body p + p { margin-top: 16px; }
+
+  /* ============ EXPERTISE LIST ============ */
+  .expertise-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 40px;
+  }
+  .expertise-list li {
+    font-family: var(--font-dm);
+    font-size: 15px;
+    color: var(--color-text-primary);
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .expertise-list li::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  /* ============ EDUCATION ============ */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .edu-group h4 {
+    font-family: var(--font-dm);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--color-secondary);
+    display: inline-block;
+  }
+  .edu-item {
+    margin-bottom: 16px;
+  }
+  .edu-item .degree {
+    font-family: var(--font-dm);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+  .edu-item .institution {
+    font-family: var(--font-dm);
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-top: 2px;
+  }
+
+  /* ============ EXPERIENCE ============ */
+  .exp-list {
+    list-style: none;
+  }
+  .exp-list li {
+    font-family: var(--font-dm);
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--color-text-primary);
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .exp-list li:last-child { border-bottom: none; }
+
+  /* ============ PUBLICATIONS ============ */
+  .pub-note {
+    font-family: var(--font-dm);
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+  .pub-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-family: var(--font-dm);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid var(--color-primary);
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .pub-link:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  /* ============ BOTTOM CTA ============ */
+  .bottom-cta {
+    background: var(--color-off-white);
+    padding: 56px 0;
+    text-align: center;
+  }
+  .bottom-cta .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .bottom-cta h3 {
+    font-family: var(--font-playfair);
+    font-size: 28px;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+  .bottom-cta p {
+    font-family: var(--font-dm);
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    margin-bottom: 24px;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 32px 20px;
+    }
+    .hero-photo {
+      width: 100%;
+      height: 300px;
+      order: -1;
+    }
+    .hero-name { font-size: 32px; }
+    .expertise-list { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .cta-strip .container {
+      flex-direction: column;
+      text-align: center;
+      gap: 16px;
+    }
+    .sticky-nav a { padding: 12px 12px; font-size: 12.5px; }
+  }
+
+  /* ============ ANNOTATION ============ */
+  .annotation {
+    position: relative;
+    margin-left: -40px;
+    padding-left: 36px;
+  }
+  .annotation::before {
+    content: attr(data-note);
+    position: absolute;
+    left: -200px;
+    top: 0;
+    width: 180px;
+    font-family: var(--font-dm);
+    font-size: 11px;
+    color: #e74c3c;
+    font-weight: 600;
+    text-align: right;
+    line-height: 1.3;
+    padding: 4px 8px;
+    background: #fff5f5;
+    border-radius: 4px;
+    border: 1px solid #fecaca;
+  }
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <div class="container">
+    <a href="#">Home</a>
+    <span>›</span>
+    <a href="#">Doctors</a>
+    <span>›</span>
+    <a href="#">Medical Oncology</a>
+    <span>›</span>
+    Dr. Venkatraman Radhakrishnan
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <div class="container">
+    <a href="#about" class="active">About</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#education">Education & Training</a>
+    <a href="#experience">Experience</a>
+    <a href="#publications">Publications</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="about">
+  <div class="hero-info">
+    <div class="hero-dept">Medical & Pediatric Oncology</div>
+    <h1 class="hero-name">Dr. Venkatraman Radhakrishnan</h1>
+    <div class="hero-title">Professor & Head, Department of Medical Oncology</div>
+
+    <div class="hero-qualifications">
+      <strong>Qualifications</strong>
+      MBBS &bull; MD (Pediatrics) &bull; DM (Medical Oncology) &bull; MSc Global Child Health
+
+      <strong>Specialties</strong>
+      Medical Oncology &bull; Pediatric Oncology
+    </div>
+
+    <div class="hero-linkedin">
+      <a href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+        View LinkedIn Profile
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-photo">
+    <span class="initials">VR</span>
+  </div>
+</div>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="container">
+    <div>
+      <h3>Request an Appointment</h3>
+      <p>Call us or book online to schedule your consultation</p>
+    </div>
+    <a href="#" class="cta-btn">Book Appointment</a>
+  </div>
+</div>
+
+<!-- ABOUT / BIOGRAPHY -->
+<div class="section" id="about-section">
+  <div class="section-label">Get to Know</div>
+  <h2 class="section-title">About Dr. Radhakrishnan</h2>
+  <div class="section-body">
+    <p>Dr. Venkatraman Radhakrishnan is a Professor and Head of the Department of Medical and Pediatric Oncology at the Cancer Institute (W.I.A), located in Adyar, Chennai. He completed his pediatric training at the Postgraduate Institute of Medical Research (PGIMER), Chandigarh, India, and the National Health Academy in New Delhi.</p>
+    <p>He has extensive experience in managing adult and pediatric cancers, with a particular focus on leukemias, lymphomas, and solid tumors. His research interests include improving treatment outcomes in resource-limited settings and developing supportive care protocols for pediatric oncology patients.</p>
+  </div>
+</div>
+
+<!-- AREAS OF EXPERTISE -->
+<div class="section" id="expertise">
+  <div class="section-label">Clinical Focus</div>
+  <h2 class="section-title">Areas of Expertise</h2>
+  <ul class="expertise-list">
+    <li>Medical Oncology</li>
+    <li>Pediatric Oncology</li>
+    <li>Acute Leukemias (AML/ALL)</li>
+    <li>Lymphomas</li>
+    <li>Pediatric Solid Tumors</li>
+    <li>Bone Marrow Transplant</li>
+    <li>Supportive Care Protocols</li>
+    <li>Clinical Trials</li>
+  </ul>
+</div>
+
+<!-- EDUCATION & TRAINING -->
+<div class="section" id="education">
+  <div class="section-label">Credentials</div>
+  <h2 class="section-title">Education & Training</h2>
+  <div class="edu-grid">
+    <div class="edu-group">
+      <h4>Degrees</h4>
+      <div class="edu-item">
+        <div class="degree">MBBS</div>
+        <div class="institution">MGR Medical University, 1998</div>
+      </div>
+      <div class="edu-item">
+        <div class="degree">MD (Pediatrics)</div>
+        <div class="institution">PGIMER, Chandigarh, 2003</div>
+      </div>
+      <div class="edu-item">
+        <div class="degree">DM (Medical Oncology)</div>
+        <div class="institution">AIIMS, New Delhi, 2011</div>
+      </div>
+    </div>
+    <div class="edu-group">
+      <h4>Fellowships</h4>
+      <div class="edu-item">
+        <div class="degree">MSc Global Child Health</div>
+        <div class="institution">St. Jude Children's Research Hospital, Memphis, USA</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section" id="experience">
+  <div class="section-label">Career</div>
+  <h2 class="section-title">Experience</h2>
+  <ul class="exp-list">
+    <li>Professor & Head, Department of Medical Oncology — Cancer Institute (WIA), Chennai</li>
+  </ul>
+</div>
+
+<!-- CTA STRIP (repeated) -->
+<div class="cta-strip">
+  <div class="container">
+    <div>
+      <h3>Need a Consultation?</h3>
+      <p>Our team is here to help you schedule an appointment</p>
+    </div>
+    <a href="#" class="cta-btn">Book Appointment</a>
+  </div>
+</div>
+
+<!-- PUBLICATIONS -->
+<div class="section" id="publications">
+  <div class="section-label">Research</div>
+  <h2 class="section-title">Publications</h2>
+  <p class="pub-note">
+    Dr. Radhakrishnan has contributed to numerous peer-reviewed publications in the fields of medical and pediatric oncology. View the complete list of research publications and citations below.
+  </p>
+  <a href="#" class="pub-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    View All Publications
+  </a>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <div class="container">
+    <h3>Ready to Schedule Your Visit?</h3>
+    <p>Contact the Cancer Institute (WIA) to book an appointment with Dr. Radhakrishnan</p>
+    <a href="#" class="cta-btn" style="background: var(--color-primary);">Request Appointment</a>
+  </div>
+</div>
+
+</body>
+</html>
