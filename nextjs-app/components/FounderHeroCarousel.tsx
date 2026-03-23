@@ -41,7 +41,7 @@ const slides = [
   {
     bg: '/images/departments/facility-3.jpg',
     heading: 'The Visionaries\nBehind CI(WIA)',
-    lead: 'Founded on the pillars of humanity and wisdom, our institute continues to be guided by the selfless ideals of our pioneering founders.',
+    lead: 'Guided by the selfless ideals of our pioneering founders since 1954.',
     cta: { label: 'Read Our Legacy', href: '/founders' },
     showFounderGrid: true,
   },
