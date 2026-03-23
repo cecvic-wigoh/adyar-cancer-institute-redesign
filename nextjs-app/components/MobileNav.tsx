@@ -6,9 +6,10 @@ import Link from 'next/link';
 interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenSearch: () => void;
 }
 
-export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
+export default function MobileNav({ isOpen, onClose, onOpenSearch }: MobileNavProps) {
   const drawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,7 +34,17 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
     <div className="mobile-nav" style={{ display: 'block' }} role="dialog" aria-modal="true" aria-label="Navigation menu">
       <div className="mobile-nav-overlay" onClick={onClose}></div>
       <div className="mobile-nav-drawer" ref={drawerRef}>
-        <button className="mobile-nav-close" aria-label="Close navigation menu" onClick={onClose}>&times;</button>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
+          <button 
+            className="mobile-search-trigger" 
+            onClick={onOpenSearch}
+            style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'var(--color-tertiary)', border: 'none', padding: '8px 16px', borderRadius: '100px', color: 'var(--color-primary)', fontWeight: 700, fontSize: '14px', cursor: 'pointer' }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
+            Search
+          </button>
+          <button className="mobile-nav-close" aria-label="Close navigation menu" onClick={onClose} style={{ fontSize: '28px', border: 'none', background: 'none', cursor: 'pointer', padding: '0 8px' }}>&times;</button>
+        </div>
         <nav>
           <ul>
             <li>

@@ -298,27 +298,6 @@ const categories: SubNavCategory[] = [
     ],
   },
   {
-    label: "Resources",
-    columns: [
-      {
-        heading: "Patient Resources",
-        links: [
-          { label: "Free Services", href: "/coming-soon" },
-          { label: "Schemes", href: "/coming-soon" },
-          { label: "Accommodation", href: "/coming-soon" },
-          { label: "Forms", href: "/coming-soon" },
-        ],
-      },
-      {
-        heading: "Supportive Care",
-        links: [
-          { label: "Rehabilitation", href: "/coming-soon" },
-          { label: "Hospice", href: "/coming-soon" },
-        ],
-      },
-    ],
-  },
-  {
     label: "Donation",
     columns: [
       {
