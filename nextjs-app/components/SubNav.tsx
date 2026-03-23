@@ -206,6 +206,10 @@ const categories: SubNavCategory[] = [
             label: "Radio Diagnosis and Imaging",
             href: "/departments/radiology",
           },
+          {
+            label: "Nuclear Medicine and Molecular Diagnostics",
+            href: "/coming-soon",
+          },
         ],
       },
       {

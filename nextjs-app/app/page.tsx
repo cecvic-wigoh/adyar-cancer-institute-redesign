@@ -25,7 +25,7 @@ const ArrowIcon = ({ size = 18 }: { size?: number }) => (
 
 export const cancerCards = [
   { slug: "breast-cancer", title: "Breast Cancer", desc: "Screening-led care with surgery, reconstruction, and targeted treatment" },
-  { slug: "childhood-cancer", title: "Childhood Cancers", desc: "Specialized pediatric oncology care for solid tumors and lymphomas" },
+  { slug: "children-cancer", title: "Children's Cancers", desc: "Specialized pediatric oncology care for solid tumors and lymphomas" },
   { slug: "blood-cancer", title: "Blood Cancer", desc: "Leukaemia, lymphoma, and myeloma care with transplant support" },
   { slug: "brain-tumour", title: "Brain Tumour", desc: "Neuro-oncology pathways for tumours affecting the brain and CNS" },
   { slug: "colorectal-cancer", title: "Colorectal Cancer", desc: "Minimally invasive surgery with bowel-preservation strategies" },

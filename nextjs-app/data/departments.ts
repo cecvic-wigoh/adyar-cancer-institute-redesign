@@ -453,7 +453,7 @@ export const departments: Department[] = [
         designation: "Part-Time Consultant Radiologist",
       },
       {
-        name: "Dr. Jagadesh",
+        name: "Dr. Jagadesh K",
         credentials: "MBBS, MD",
         designation: "Senior Resident",
       },
