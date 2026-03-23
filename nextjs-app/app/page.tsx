@@ -214,8 +214,10 @@ export default function Home() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  <line x1="12" y1="1" x2="12" y2="23" />
-                  <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                  <path d="M6 4h12" />
+                  <path d="M6 9h12" />
+                  <path d="M16 4c0 4.5-4 5-8 5" />
+                  <path d="M13.5 20L6 12" />
                 </svg>
               </div>
               <h3>Affordable &amp; Accessible</h3>

@@ -170,14 +170,14 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
 }
 .top-bar-left { display: flex; align-items: center; gap: var(--space-5); }
 .top-bar a {
-  font-family: var(--font-heading); font-size: 13px; font-weight: 700;
+  font-family: var(--font-heading); font-size: 15px; font-weight: 700;
   color: var(--color-teal-accessible);
   display: inline-flex; align-items: center; gap: 5px;
 }
 .top-bar a:hover { text-decoration: underline; }
 .top-bar-right { display: flex; align-items: center; gap: var(--space-3); }
 .lang-btn {
-  font-family: var(--font-heading); font-size: 13px; font-weight: 700;
+  font-family: var(--font-heading); font-size: 15px; font-weight: 700;
   color: var(--color-teal-accessible);
   background: white; border: 1.5px solid var(--color-secondary);
   border-radius: 100px; padding: 4px 14px; cursor: pointer;

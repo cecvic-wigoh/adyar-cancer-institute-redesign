@@ -84,6 +84,7 @@ export function DeptHodMessage({ hod }: DeptHodMessageProps) {
         <div className={styles.hodMessage}>
           <span className={styles.hodQuote}>{'\u201C'}</span>
           {hod.message}
+          <span className={styles.hodQuoteClose}>{'\u201D'}</span>
         </div>
       </div>
     </div>
