@@ -45,11 +45,11 @@ export default function TestimonialWidget() {
               style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}
             >
               <div className="testimonial-portrait-container">
-                <div className="testimonial-quote-circle">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V12M10 21L10 18C10 16.8954 9.10457 16 8 16H5C4.44772 16 4 15.5523 4 15V9C4 8.44772 4.44772 8 5 8H9C9.55228 8 10 8.44772 10 9V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                  </svg>
-                </div>
+                <img
+                  className="testimonial-widget-avatar"
+                  src={t.image}
+                  alt={t.author}
+                />
               </div>
               <p className="testimonial-widget-text">&ldquo;{t.quote}&rdquo;</p>
               <div className="testimonial-widget-author">

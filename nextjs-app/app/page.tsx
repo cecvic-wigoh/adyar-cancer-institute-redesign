@@ -292,7 +292,7 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <span className="section-label">+ Patient Stories</span>
-            <h2 id="testimonials-heading">Stories of Hope</h2>
+            <h2 id="testimonials-heading">Patient Testimonials</h2>
             <p>
               Real words from patients whose lives we&apos;ve had the privilege
               of touching.
@@ -389,19 +389,19 @@ export default function Home() {
           <div className="education-grid">
             {[
               {
-                emoji: "📋",
+                image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop",
                 tag: "Awareness",
                 title: "Understanding Cancer Staging: A Patient's Guide",
                 desc: 'What does "Stage 1" or "Stage 3" mean? Our oncologists explain cancer staging in plain, simple language to help you understand your diagnosis.',
               },
               {
-                emoji: "💊",
+                image: "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=600&h=400&fit=crop",
                 tag: "Treatment",
                 title: "What to Expect During Chemotherapy",
                 desc: "From your first session to managing side effects at home — a practical, compassionate overview of the chemotherapy experience at CI(WIA).",
               },
               {
-                emoji: "🥦",
+                image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=400&fit=crop",
                 tag: "Nutrition",
                 title: "Eating Well During Cancer Treatment",
                 desc: "Our registered dieticians share practical guidance on what to eat — and avoid — during chemotherapy and radiation to maintain strength and wellbeing.",
@@ -409,7 +409,7 @@ export default function Home() {
             ].map((edu, i) => (
               <article className="edu-card" key={i}>
                 <div className="edu-thumb" aria-hidden="true">
-                  {edu.emoji}
+                  <img src={edu.image} alt={edu.title} />
                 </div>
                 <div className="edu-content">
                   <span className="edu-tag">{edu.tag}</span>

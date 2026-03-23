@@ -1170,23 +1170,14 @@ p {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Testimonial Quote Circle */
-.testimonial-quote-circle {
-  width: 70px;
-  height: 70px;
+/* Testimonial Widget Avatar */
+.testimonial-widget-avatar {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  background: rgba(79, 195, 247, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #4FC3F7;
+  object-fit: cover;
   border: 3px solid rgba(79, 195, 247, 0.4);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.testimonial-quote-circle svg {
-  width: 24px;
-  height: 24px;
 }
 
 .testimonial-widget {
@@ -1785,6 +1776,7 @@ p {
   box-shadow: var(--shadow-sm);
 }
 
+
 .quote-icon {
   color: var(--color-secondary);
   margin-bottom: var(--space-4);
@@ -1944,13 +1936,19 @@ p {
 }
 
 .edu-thumb {
-  height: 160px;
-  background: linear-gradient(135deg, #EBF9F9, #c8e6e4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 52px;
-  color: var(--color-primary);
+  height: 200px;
+  overflow: hidden;
+}
+
+.edu-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+.edu-card:hover .edu-thumb img {
+  transform: scale(1.05);
 }
 
 .edu-content {
