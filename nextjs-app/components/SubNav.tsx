@@ -14,6 +14,7 @@ interface SubNavCta {
   href: string;
   desc?: string;
   external?: boolean;
+  blinking?: boolean;
 }
 
 interface SubNavCategory {
@@ -23,57 +24,6 @@ interface SubNavCategory {
 }
 
 const categories: SubNavCategory[] = [
-  {
-    label: "Patients & Families",
-    columns: [
-      {
-        heading: "When you first visit",
-        links: [
-          { label: "Why Cancer Institute (WIA)", href: "/#about" },
-          { label: "Planning Your Visit", href: "/#appointment" },
-          { label: "New Patient Services", href: "/coming-soon" },
-          { label: "Follow-up Patient Care", href: "/coming-soon" },
-          { label: "Insurance & Billing", href: "/coming-soon" },
-          { label: "International Patients", href: "/coming-soon" },
-          { label: "Second Opinion", href: "/#appointment" },
-        ],
-      },
-      {
-        heading: "Diagnosis & Treatment",
-        links: [
-          { label: "Cancer Types", href: "/#cancer-types" },
-          { label: "A New Diagnosis", href: "/coming-soon" },
-          { label: "Patient Support", href: "/departments/surgical-oncology", },
-        ],
-      },
-      {
-        heading: "Family & Caregiver Support",
-        links: [
-          { label: "Caregiver Resources", href: "/coming-soon" },
-          { label: "Children & Teens", href: "/coming-soon" },
-          { label: "Taking Care of Yourself", href: "/coming-soon" },
-          { label: "Palliative Care", href: "/coming-soon" },
-          { label: "Patient Support", href: "/coming-soon" },
-        ],
-      },
-      {
-        heading: "Life After Cancer",
-        links: [
-          { label: "Follow-up Care", href: "/coming-soon" },
-          { label: "Managing Long-Term Effects", href: "/coming-soon" },
-          { label: "Survivorship Programme", href: "/coming-soon" },
-        ],
-      },
-    ],
-    ctas: [
-      { label: "Request an Appointment", href: "/#appointment" },
-      {
-        label: "Current Patients",
-        href: "/coming-soon",
-        desc: "Information and resources for current and returning patients.",
-      },
-    ],
-  },
   {
     label: "Prevention & Outreach",
     columns: [
@@ -124,7 +74,58 @@ const categories: SubNavCategory[] = [
     ],
   },
   {
-    label: "Departments & Services",
+    label: "Patients & Families",
+    columns: [
+      {
+        heading: "When you first visit",
+        links: [
+          { label: "Why Cancer Institute (WIA)", href: "/#about" },
+          { label: "Planning Your Visit", href: "/#appointment" },
+          { label: "New Patient Services", href: "/coming-soon" },
+          { label: "Follow-up Patient Care", href: "/coming-soon" },
+          { label: "Insurance & Billing", href: "/coming-soon" },
+          { label: "International Patients", href: "/coming-soon" },
+          { label: "Second Opinion", href: "/second-opinion" },
+        ],
+      },
+      {
+        heading: "Diagnosis & Treatment",
+        links: [
+          { label: "Cancer Types", href: "/#cancer-types" },
+          { label: "A New Diagnosis", href: "/coming-soon" },
+          { label: "Patient Support", href: "/departments/surgical-oncology", },
+        ],
+      },
+      {
+        heading: "Family & Caregiver Support",
+        links: [
+          { label: "Caregiver Resources", href: "/coming-soon" },
+          { label: "Children & Teens", href: "/coming-soon" },
+          { label: "Taking Care of Yourself", href: "/coming-soon" },
+          { label: "Palliative Care", href: "/coming-soon" },
+          { label: "Patient Support", href: "/coming-soon" },
+        ],
+      },
+      {
+        heading: "Life After Cancer",
+        links: [
+          { label: "Follow-up Care", href: "/coming-soon" },
+          { label: "Managing Long-Term Effects", href: "/coming-soon" },
+          { label: "Survivorship Programme", href: "/coming-soon" },
+        ],
+      },
+    ],
+    ctas: [
+      { label: "Request an Appointment", href: "/#appointment" },
+      {
+        label: "Current Patients",
+        href: "/coming-soon",
+        desc: "Information and resources for current and returning patients.",
+      },
+    ],
+  },
+  {
+    label: "Departments",
     columns: [
       {
         heading: "Clinical Departments",
@@ -154,11 +155,33 @@ const categories: SubNavCategory[] = [
             label: "Preventive Oncology",
             href: "/coming-soon",
           },
+          {
+            label: "Patient Support Services",
+            href: "/coming-soon",
+          },
+          { label: "Physiotherapy", href: "/coming-soon" },
+          { label: "Pain and Palliative Medicine", href: "/coming-soon" },
+          {
+            label: "Nuclear Medicine and Theranostics",
+            href: "/departments/nuclear-medicine-and-theranostics",
+          },
         ],
       },
       {
         heading: "Diagnostic Services",
         links: [
+          {
+            label: "Diagnostics Hub",
+            href: "/diagnostics",
+          },
+          {
+            label: "Directory of Services (DOS)",
+            href: "/directory-of-services",
+          },
+          {
+            label: "Blood Centre",
+            href: "/blood-bank",
+          },
           {
             label: "Clinical Biochemistry",
             href: "/coming-soon",
@@ -166,10 +189,6 @@ const categories: SubNavCategory[] = [
           {
             label: "Microbiology",
             href: "/departments/microbiology",
-          },
-          {
-            label: "Cytogenetics",
-            href: "/coming-soon",
           },
           {
             label: "Cancer Biology & Molecular Diagnostics",
@@ -180,16 +199,12 @@ const categories: SubNavCategory[] = [
             href: "/coming-soon",
           },
           {
-            label: "Onco-Pathology",
-            href: "/coming-soon",
+            label: "Oncopathology",
+            href: "/departments/oncopathology",
           },
           {
             label: "Radio Diagnosis and Imaging",
             href: "/departments/radiology",
-          },
-          {
-            label: "Nuclear Medicine",
-            href: "/departments/nuclear-medicine",
           },
         ],
       },
@@ -198,10 +213,8 @@ const categories: SubNavCategory[] = [
         links: [
           { label: "Anaesthesia & Pain Management", href: "/departments/anaesthesia-pain" },
           { label: "Quality Control", href: "/departments/quality-control" },
-          { label: "Blood Centre", href: "/coming-soon" },
           { label: "Dietetics", href: "/coming-soon" },
           { label: "Physiotherapy", href: "/coming-soon" },
-          { label: "Psycho-Oncology", href: "/coming-soon" },
           { label: "Bio medical engineering", href: "/coming-soon" },
           { label: "Pharmacy", href: "/coming-soon" },
         ],
@@ -230,17 +243,6 @@ const categories: SubNavCategory[] = [
             href: "https://ci-wia-research-pages.vercel.app/research",
             external: true,
           },
-        ],
-      },
-      {
-        heading: "ACADEMICS",
-        links: [
-          {
-            label: "Fellowship Programmes",
-            href: "https://ci-wia-research-pages.vercel.app/research",
-            external: true,
-          },
-          { label: "Conferences & CME", href: "/coming-soon" },
           {
             label: "Publications",
             href: "https://ci-wia-research-pages.vercel.app/research",
@@ -276,6 +278,29 @@ const categories: SubNavCategory[] = [
         external: true,
         desc: "Explore our publications, trials, and ongoing studies.",
       },
+    ],
+  },
+  {
+    label: "Academics",
+    columns: [
+      {
+        heading: "Academic Programmes",
+        links: [
+          { label: "UG/PG", href: "/coming-soon" },
+          { label: "Fellowships", href: "https://ci-wia-research-pages.vercel.app/research", external: true },
+          { label: "Internships", href: "/coming-soon" },
+        ],
+      },
+      {
+        heading: "Continuing Education",
+        links: [
+          { label: "Workshops", href: "/coming-soon" },
+          { label: "CME", href: "/coming-soon" },
+        ],
+      },
+    ],
+    ctas: [
+      { label: "Admissions", href: "/coming-soon", blinking: true },
     ],
   },
   {
@@ -440,7 +465,7 @@ export default function SubNav() {
                     ) : (
                       <Link
                         href={cta.href}
-                        className={styles.megaCtaLink}
+                        className={`${styles.megaCtaLink}${cta.blinking ? ` ${styles.blinker}` : ""}`}
                         onClick={() => setActiveIndex(null)}
                       >
                         {cta.label}

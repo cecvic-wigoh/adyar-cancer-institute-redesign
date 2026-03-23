@@ -16,7 +16,7 @@ const quickLinks = [
     icon: <DoctorIcon />,
   },
   {
-    label: 'Blood Bank',
+    label: 'Blood Centre',
     href: '/blood-bank',
     icon: <BloodDropIcon />,
   },

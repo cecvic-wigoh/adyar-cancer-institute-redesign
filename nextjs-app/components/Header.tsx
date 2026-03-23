@@ -10,6 +10,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -20,11 +21,24 @@ export default function Header() {
   useEffect(() => {
     if (navOpen) {
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
     }
     return () => { document.body.style.overflow = ''; };
   }, [navOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (activeDropdown && !(event.target as Element).closest('.has-dropdown')) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [activeDropdown]);
+
+  const toggleDropdown = (name: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    setActiveDropdown(activeDropdown === name ? null : name);
+  };
 
   return (
     <>
@@ -36,13 +50,86 @@ export default function Header() {
 
           <nav className="primary-nav" aria-label="Primary navigation">
             <ul>
-              <li><Link href="/coming-soon">About</Link></li>
-              <li><Link href="/blood-bank">Blood Center</Link></li>
+              <li className={`has-dropdown${activeDropdown === 'about' ? ' is-open' : ''}`}>
+                <button 
+                  className="nav-toggle"
+                  onClick={(e) => toggleDropdown('about', e)}
+                  aria-expanded={activeDropdown === 'about'}
+                >
+                  ABOUT
+                  <svg className="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+                </button>
+                <ul className="dropdown-menu">
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Vision &amp; Mission</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Legacy (reverse chronology)</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Future Vision (Laya)</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Leadership</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Achievements</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Annual Reports</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Collaborations</Link></li>
+                </ul>
+              </li>
               <li><Link href="/coming-soon">DIRECTORY OF SERVICES</Link></li>
-              <li><Link href="/coming-soon">News &amp; Updates</Link></li>
-              <li><Link href="/coming-soon">Careers</Link></li>
+              <li className={`has-dropdown${activeDropdown === 'news' ? ' is-open' : ''}`}>
+                <button 
+                  className="nav-toggle"
+                  onClick={(e) => toggleDropdown('news', e)}
+                  aria-expanded={activeDropdown === 'news'}
+                >
+                  NEWS &amp; EVENTS
+                  <svg className="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+                </button>
+                <ul className="dropdown-menu">
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Upcoming Events</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Conferences</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Awareness Campaigns</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Institutional News</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Gallery</Link></li>
+                </ul>
+              </li>
+              <li><Link href="/coming-soon">CAREERS</Link></li>
+              <li className={`has-dropdown${activeDropdown === 'resources' ? ' is-open' : ''}`}>
+                <button 
+                  className="nav-toggle"
+                  onClick={(e) => toggleDropdown('resources', e)}
+                  aria-expanded={activeDropdown === 'resources'}
+                >
+                  RESOURCES
+                  <svg className="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+                </button>
+                <ul className="dropdown-menu">
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Ways to Give</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Schemes</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Accommodation</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Forms</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Rehabilitation</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Hospice</Link></li>
+                </ul>
+              </li>
+              <li className={`has-dropdown${activeDropdown === 'support' ? ' is-open' : ''}`}>
+                <button 
+                  className="nav-toggle"
+                  onClick={(e) => toggleDropdown('support', e)}
+                  aria-expanded={activeDropdown === 'support'}
+                >
+                  SUPPORT GROUPS
+                  <svg className="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+                </button>
+                <ul className="dropdown-menu">
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Breast Cancer Support</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Pediatric Oncology Support</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Caregiver Support</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Survivorship Program</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Grief &amp; Bereavement</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Patient Navigation</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Mahaveer Ashray (Hospice)</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Nutritional Counseling</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Psychological Support</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Financial Assistance</Link></li>
+                </ul>
+              </li>
               <li><Link href="/coming-soon">VOLUNTEERS</Link></li>
-              <li><Link href="/coming-soon">Contact</Link></li>
+              <li><Link href="/coming-soon">CONTACT</Link></li>
             </ul>
           </nav>
 
@@ -67,7 +154,11 @@ export default function Header() {
         </div>
       </header>
 
-      <MobileNav isOpen={navOpen} onClose={() => setNavOpen(false)} />
+      <MobileNav 
+        isOpen={navOpen} 
+        onClose={() => setNavOpen(false)} 
+        onOpenSearch={() => { setNavOpen(false); setSearchOpen(true); }} 
+      />
       <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );

@@ -37,6 +37,9 @@ export interface Department {
   qualityDimensions?: QualityDimension[];
   services?: string[];
   facilities?: string[];
+  patientFaqs?: { question: string; answer: string }[];
+  mahaveerAshray?: string[];
+  supportGroups?: string[];
 }
 
 export interface DepartmentExpert {
@@ -100,8 +103,8 @@ export const departments: Department[] = [
         "The Surgical Oncology Department at the Cancer Institute (WIA), Adyar, Chennai, is guided by a clear and compassionate vision: to deliver world-class, ethical surgical care that gives every patient the best possible chance at cure, control of their disease, and a life of quality and dignity—regardless of background or resources. Building on our institute's legacy since 1954 as pioneers in comprehensive cancer care, we envision a future where advanced precision surgery, including minimally invasive and robotic techniques, combined with organ preservation and reconstructive approaches, helps eliminate unnecessary suffering from cancer. Our goal is to ensure that no one endures avoidable hardship from treatable or manageable disease, aligning with the institute's overarching vision that every individual deserves freedom from cancer's burden through prevention, early intervention, or effective treatment.\nOur unwavering commitment to patient care means putting you—the patient—at the heart of everything we do. We provide personalized, multidisciplinary treatment plans ensuring surgery is timed and tailored to your unique needs for the best outcomes. With a team of highly experienced, fellowship-trained surgeons, high-volume expertise in complex procedures, and a focus on compassionate, accessible services, we strive to minimize complications, preserve form and function, support faster recovery, and offer hope through every stage of your journey. Whether through curative resection, staging, or palliative relief, we are dedicated to treating you with respect, empathy, and excellence—because at the Cancer Institute (WIA), every life matters, and every battle against cancer is fought with unwavering dedication.",
     },
     contactEmail: "sog@cancerinstitutewia.org",
+    heroImage: "/department/surgical-oncology.jpg",
     spoc: "Arvind Krishnamurthy",
-    heroImage: "/images/departments/facility-1.jpg",
     experts: [
       {
         name: "Arvind Krishnamurthy",
@@ -177,8 +180,8 @@ export const departments: Department[] = [
       "Head and neck cancers",
       "Gynecological oncology",
       "Urological oncology",
-      "Musculo-skeletal cancers",
-      "Neuro-oncology",
+      "Bone and Tissue Cancers",
+      // "Neuro-oncology", // Pending HOD confirmation
     ],
     treatmentOptions: [
       "Advanced precision surgery incorporating robotic and minimally invasive techniques",
@@ -244,7 +247,7 @@ export const departments: Department[] = [
         "Our vision is to provide compassionate, high-quality, and equitable cancer care for every patient, guided by science, empathy, and integrity. We are committed to delivering evidence-based treatments tailored to each individual, while recognizing the physical, emotional, and social challenges that cancer brings to patients and their families. Patient safety, dignity, and quality of life remain at the heart of everything we do.\n\nWe believe that excellent cancer care goes beyond treatment alone. Our team works collaboratively to ensure timely diagnosis, comprehensive therapy, strong supportive care, and careful follow-up, from the time of diagnosis through survivorship or end-of-life care when needed. We are equally committed to advancing care through research, innovation, and continuous learning, so that our patients benefit from the latest proven approaches.\n\nAbove all, we strive to walk alongside our patients and families at every step of their journey—listening, supporting, and partnering with them in decision-making. Our department remains dedicated to building trust, improving outcomes, and offering hope through compassionate and responsible cancer care.",
     },
     contactEmail: "r.venkatraman@cancerinstitutewia.org",
-    heroImage: "/images/departments/facility-3.jpg",
+    heroImage: "/department/medical-oncology.webp",
     experts: [
       {
         name: "Dr. Venkatraman Radhakrishnan",
@@ -305,6 +308,7 @@ export const departments: Department[] = [
       "Breast cancer",
       "Lung cancer",
       "Colorectal cancer",
+      "Hereditary Cancers",
       "Gastrointestinal cancers",
       "Head and neck cancers",
       "Gynecological cancers",
@@ -339,9 +343,6 @@ export const departments: Department[] = [
       "Hematopoietic stem cell transplantation",
       "Cellular therapies including CAR-T cell therapy",
       "Precision medicine–based treatment",
-      "Supportive and symptom-directed care",
-      "Palliative care",
-      "Survivorship care and long-term follow-up",
     ],
     preventiveMeasures: [
       "Maintaining a healthy lifestyle with a balanced diet, regular physical activity, adequate sleep, and avoidance of tobacco and excessive alcohol can help reduce the risk of several cancers.",
@@ -452,7 +453,7 @@ export const departments: Department[] = [
         designation: "Part-Time Consultant Radiologist",
       },
       {
-        name: "Dr. Jegadeesh K.",
+        name: "Dr. Jagadesh",
         credentials: "MBBS, MD",
         designation: "Senior Resident",
       },
@@ -587,6 +588,11 @@ export const departments: Department[] = [
       "Evolved into a comprehensive imaging and interventional specialty, incorporating ultrasound, CT, MRI, advanced mammography techniques, and image-guided diagnostic and therapeutic procedures.",
       "Supported academic training and multidisciplinary tumor board discussions, reinforcing commitment to precision diagnosis, patient safety, and collaborative cancer care.",
     ],
+    patientFaqs: [
+      { question: "What should I expect during an MRI?", answer: "An MRI uses strong magnets to create detailed images. You will lie on a sliding table that goes into a tube-like scanner. It can be noisy, so we provide ear protection. You must stay very still, and the procedure takes 30-60 minutes." },
+      { question: "What should I expect during a CT Scan?", answer: "A CT scan uses X-rays to get cross-sectional images. It is very fast and painless. You may need to drink a contrast dye or receive it IV to highlight certain areas." },
+      { question: "What should I expect during a PET Scan?", answer: "A PET scan involves a small injection of radioactive tracer. You will rest for about an hour for the tracer to absorb, then lie on a scanner for 30-45 minutes." }
+    ]
   },
 
   // ── 4. Gynaecological Oncology ────────────────────────────────────────
@@ -611,8 +617,8 @@ export const departments: Department[] = [
         "Our department is committed to providing compassionate, ethical, and evidence-based care to women with gynaecological cancers. Through teamwork, research, and patient-centred care, we strive to achieve the best possible outcomes for our patients.",
     },
     contactEmail: "ujwala@cancerinstitutewia.org",
+    heroImage: "/department/gynacological.png",
     spoc: "Dr (Maj) Jayashree Natarajan",
-    heroImage: "/images/departments/facility-4.jpg",
     experts: [
       {
         name: "Dr. Ujwala Prakash Wakpaijan",
@@ -1241,6 +1247,14 @@ export const departments: Department[] = [
       "Today the palliative care team has grown to nearly 20 members — physicians, nurses, psychiatrists, psychologists, medical social workers, volunteers, and a data management team.",
       "Outpatient palliative care services are subsidized and free for general ward patients; home-based care and hospice services are provided entirely free of cost.",
     ],
+    mahaveerAshray: [
+      "Mahaveer Ashray is our dedicated hospice facility located at Sriperumbudur, providing compassionate inpatient care for patients nearing the end of life.",
+      "The facility offers a peaceful environment, specialized nursing, and holistic symptom management entirely free of cost, ensuring patients pass with dignity and comfort."
+    ],
+    supportGroups: [
+      "Our palliative care team actively facilitates support groups for patients and caregivers.",
+      "These groups provide a safe space to share experiences, receive emotional counseling, and build a supportive community during difficult times."
+    ]
   },
 
   // ── 9. Microbiology ───────────────────────────────────────────────────
@@ -1321,7 +1335,7 @@ export const departments: Department[] = [
         services: [
           "Operation theatre, ICU, BMT, isolation rooms and wards surveillance at both campus",
           "Postnasal cultures of OT staff, hand cultures of all nursing staff",
-          "Sterility check of blood bank",
+          "Sterility check of Blood Centre",
           "Sterility check of Autoclaves from other laboratories",
           "CSSD sterility check of autoclave and ETO",
           "Water analysis",
@@ -1368,6 +1382,122 @@ export const departments: Department[] = [
     legacy: [
       "The Department shares the legacy of sampling around 90,000 clinical samples of cancer patients and 20,000 surveillance samples per year.",
     ],
+  },
+
+  // ── 10. Nuclear Medicine and Theranostics ──────────────────────────────
+  {
+    slug: "nuclear-medicine-and-theranostics",
+    category: "clinical",
+    title: "Nuclear Medicine and Theranostics",
+    metaDescription: "Nuclear Medicine and Theranostics at Cancer Institute WIA, Chennai — expert image-guided diagnostics and targeted radionuclide therapy.",
+    tagline: "Precision diagnostics and targeted molecular therapies for tailored cancer treatment.",
+    overview: [
+      "The Department of Nuclear Medicine and Theranostics offers advanced molecular imaging and targeted radionuclide therapy.",
+      "Theranostics is a highly personalized approach that combines a diagnostic test that identifies a specific molecular target on cancer cells with a matched therapeutic agent that delivers localized radiation directly to those cells."
+    ],
+    hod: {
+      name: "Placeholder HOD",
+      credentials: "MD",
+      designation: "Head of Department",
+      message: "Our vision is to deliver targeted, precision oncological care through the latest developments in nuclear medicine."
+    },
+    contactEmail: "info@cancerinstitutewia.org",
+    experts: [],
+    achievements: [],
+    legacy: [],
+    conditionsTreated: ["Thyroid Cancer", "Neuroendocrine Tumors", "Prostate Cancer", "Bone Metastases"],
+    treatmentOptions: ["Radioiodine Therapy", "PRRT (Peptide Receptor Radionuclide Therapy)", "Lutetium-177 PSMA Therapy", "Bone Pain Palliation"],
+    preventiveMeasures: [],
+    whenToVisit: ["Referred by an oncologist for functional imaging", "Referred for targeted radionuclide therapy"],
+  },
+
+  // ── 11. Oncopathology ──────────────────────────────
+  {
+    slug: "oncopathology",
+    category: "diagnostic",
+    title: "Oncopathology",
+    metaDescription: "Oncopathology at Cancer Institute WIA, Chennai — expert tissue diagnostics, molecular pathology, and cytogenetics.",
+    tagline: "Precision diagnostics at the cellular and molecular level to guide personalized cancer treatment.",
+    overview: [
+      "The Department of Oncopathology provides accurate and timely diagnostic reports by examining tissue biopsies, surgical resections, and cytology samples.",
+      "Our dedicated team of pathologists collaborate closely with clinical teams to ensure definitive cancer diagnoses and tumor staging."
+    ],
+    hod: {
+      name: "Placeholder HOD",
+      credentials: "MD",
+      designation: "Head of Department",
+      message: "Our vision is to deliver targeted, precision oncological care through the latest diagnostic developments."
+    },
+    contactEmail: "info@cancerinstitutewia.org",
+    experts: [],
+    achievements: [],
+    legacy: [],
+    diagnosticServices: [
+      {
+        category: "Cytogenetics",
+        services: ["Karyotyping", "FISH (Fluorescence In Situ Hybridization)", "Chromosomal microarray analysis"]
+      },
+      {
+        category: "Histopathology",
+        services: ["Surgical pathology", "Immunohistochemistry (IHC)", "Frozen section analysis"]
+      }
+    ],
+  },
+
+  // ── 12. Radiation Oncology ──────────────────────────────────────────
+  {
+    slug: "radiation-oncology",
+    category: "clinical",
+    title: "Radiation Oncology",
+    metaDescription: "Expert radiation therapy at Cancer Institute WIA, Chennai — advanced linear accelerators, brachytherapy, and precise tumor targeting.",
+    tagline: "Precision radiation therapy using state-of-the-art technology to target tumours while preserving healthy tissue.",
+    heroImage: "/department/radiation-oncology.webp",
+    overview: [
+      "The Department of Radiation Oncology provides advanced radiotherapy services using cutting-edge technology.",
+      "Our team of radiation oncologists, medical physicists, and radiotherapy technologists work together to deliver precise and effective treatments tailored to each patient's needs."
+    ],
+    hod: {
+      name: "Placeholder HOD",
+      credentials: "MD",
+      designation: "Head of Department",
+      message: "We are committed to delivering the highest standards of radiation therapy with compassion and precision."
+    },
+    contactEmail: "radiation.oncology@cancerinstitutewia.org",
+    experts: [],
+    achievements: [],
+    legacy: [],
+    conditionsTreated: ["Head and Neck Cancers", "Breast Cancer", "Cervical Cancer", "Prostate Cancer", "Brain Tumours"],
+    treatmentOptions: ["IMRT (Intensity Modulated Radiation Therapy)", "IGRT (Image Guided Radiation Therapy)", "Brachytherapy", "SBRT (Stereotactic Body Radiation Therapy)"],
+    preventiveMeasures: [],
+    whenToVisit: ["Referred by a surgical or medical oncologist for radiation evaluation"],
+  },
+
+  // ── 13. Medical Gastroenterology ────────────────────────────────────
+  {
+    slug: "medical-gastroenterology",
+    category: "clinical",
+    title: "Medical Gastroenterology",
+    metaDescription: "Expert medical gastroenterology and hepatology at Cancer Institute WIA, Chennai — screening, diagnosis, and management of GI cancers.",
+    tagline: "Comprehensive care for digestive health and gastrointestinal malignancies.",
+    heroImage: "/department/gasoenterologist.jpg",
+    overview: [
+      "The Department of Medical Gastroenterology focuses on the prevention, diagnosis, and medical management of diseases affecting the digestive tract and liver.",
+      "Our specialists provide expert care for gastrointestinal cancers, focusing on early detection and integrated treatment planning."
+    ],
+    hod: {
+      name: "Placeholder HOD",
+      credentials: "MD, DM",
+      designation: "Head of Department",
+      message: "Our goal is to provide excellence in digestive health through advanced diagnostics and compassionate medical care."
+    },
+    contactEmail: "gastro@cancerinstitutewia.org",
+    experts: [],
+    achievements: [],
+    legacy: [],
+    conditionsTreated: ["Stomach Cancer", "Colorectal Cancer", "Liver Cancer", "Pancreatic Cancer", "Oesophageal Cancer"],
+    treatmentOptions: ["Endoscopic Screening", "Medical management of GI malignancies", "Nutritional support", "Diagnostic Endoscopy and Colonoscopy"],
+    preventiveMeasures: [],
+    whenToVisit: ["Persistent digestive symptoms", "Screening for GI cancers", "Referred for jaundice or liver-related concerns"],
   },
 ];
 

@@ -5,6 +5,7 @@
  * equipment showcase, and referral CTA.
  */
 
+import Link from 'next/link';
 import Image from 'next/image';
 import type { Department } from '@/data/departments';
 import StickyDoctorBar from '@/components/StickyDoctorBar';
@@ -55,6 +56,7 @@ export default function DepartmentDiagnostic({ department }: DepartmentDiagnosti
     sectionItems.push({ id: 'achievements', label: 'Achievements' });
   }
 
+  sectionItems.push({ id: 'support-groups', label: 'Support Groups' });
   sectionItems.push({ id: 'referral', label: 'Referral' });
 
   return (
@@ -67,10 +69,43 @@ export default function DepartmentDiagnostic({ department }: DepartmentDiagnosti
 
       {/* 3. Hero */}
       <section className={styles.hero}>
+        {dept.heroImage && (
+          <div className={styles.heroBg}>
+            <Image
+              src={dept.heroImage}
+              alt=""
+              fill
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              priority
+              sizes="100vw"
+            />
+            <div className={styles.heroOverlay} aria-hidden="true" />
+          </div>
+        )}
         <div className={styles.heroInner}>
           <div className={styles.heroLabel}>Department</div>
           <h1 className={styles.heroTitle}>{dept.title}</h1>
           <p className={styles.heroTagline}>{dept.tagline}</p>
+          <div className={styles.heroCtas}>
+            <Link href="/appointments" className="btn btn-white">
+              Book Appointment
+            </Link>
+            <Link href="tel:+914424910754" className={styles.heroPhone}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              044-2491 0754
+            </Link>
+          </div>
+        </div>
+
+        {/* Hero Bottom Strip */}
+        <div className={styles.heroStrip}>
+          <div className={styles.heroStripInner}>
+            <p>
+              <strong>Advanced Precision Diagnostics.</strong> Utilizing state-of-the-art technology since 1954.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -129,6 +164,17 @@ export default function DepartmentDiagnostic({ department }: DepartmentDiagnosti
                 </p>
               </div>
             </div>
+            {dept.patientFaqs && dept.patientFaqs.length > 0 && (
+              <div className={styles.faqList} style={{ marginTop: '2rem' }}>
+                <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#1a6b5a' }}>Frequently Asked Questions</h3>
+                {dept.patientFaqs.map((faq, i) => (
+                  <div key={i} style={{ marginBottom: '1.2rem', padding: '1rem', background: '#f8fafc', borderRadius: '8px' }}>
+                    <h4 style={{ fontWeight: 600, marginBottom: '0.4rem', color: '#334155' }}>Q: {faq.question}</h4>
+                    <p style={{ margin: 0, color: '#475569', fontSize: '0.95rem' }}>A: {faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -235,6 +281,21 @@ export default function DepartmentDiagnostic({ department }: DepartmentDiagnosti
           <DeptAchievements achievements={dept.achievements} />
         </DeptSection>
       )}
+
+      {/* 12b. Support Groups */}
+      <DeptSection label="Community" title="Support Groups" id="support-groups">
+        {dept.supportGroups && dept.supportGroups.length > 0 ? (
+          <div className={styles.overviewBody}>
+            {dept.supportGroups.map((group, i) => (
+              <p key={i}>{group}</p>
+            ))}
+          </div>
+        ) : (
+          <p style={{ color: '#4c5d74', fontStyle: 'italic', textAlign: 'center', padding: '24px', background: '#f8fafc', borderRadius: '8px' }}>
+            Content is yet to be provided
+          </p>
+        )}
+      </DeptSection>
 
       {/* 13. Referral & Contact */}
       <div className={styles.referralSection} id="referral">

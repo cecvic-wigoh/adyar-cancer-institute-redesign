@@ -21,7 +21,7 @@ export default async function CancerPage({ params }: { params: Promise<{ slug: s
 
   return (
     <main id="main">
-      <section className="inner-hero">
+      <div className="breadcrumb-wrapper">
         <div className="container">
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Home</Link>
@@ -30,6 +30,10 @@ export default async function CancerPage({ params }: { params: Promise<{ slug: s
             <span className="separator">&rsaquo;</span>
             <span>{cancer.title}</span>
           </nav>
+        </div>
+      </div>
+      <section className="inner-hero" style={{ paddingTop: '16px' }}>
+        <div className="container">
           <span className="section-label">+ {cancer.title}</span>
           <h1>{cancer.title}</h1>
           <p>{cancer.heroDesc}</p>

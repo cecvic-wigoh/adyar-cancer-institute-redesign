@@ -12,6 +12,7 @@
   font-size: 2.6rem;
   font-weight: 700;
   margin-bottom: 12px;
+  color: white;
 }
 
 .heroSub {
@@ -20,6 +21,84 @@
   max-width: 560px;
   margin: 0 auto;
   line-height: 1.6;
+}
+
+/* ── Alphabet Filter ── */
+.alphabetFilter {
+  background: var(--color-primary);
+  padding: 32px 24px;
+  border-radius: 0 0 24px 24px;
+  margin-bottom: 40px;
+  color: white;
+  text-align: center;
+}
+
+.alphabetLabel {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+.alphabetGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.letterCircle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.letterCircle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.letterCircleActive {
+  background: white !important;
+  color: var(--color-primary) !important;
+  border-color: white !important;
+}
+
+.allBtn {
+  padding: 0 16px;
+  height: 38px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.allBtnActive {
+  background: white;
+  color: var(--color-primary);
+  border-color: white;
 }
 
 /* ── Filter Bar ── */

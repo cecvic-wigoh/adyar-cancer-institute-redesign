@@ -424,7 +424,7 @@ export const doctors: Doctor[] = [
       'Assistant Professor, Blood Centre, Cancer Institute(W.I.A), Chennai from 10.02.2021 till date.',
       'Medical Officer, Blood Centre, Cancer Institute(W.I.A), Chennai from 01.09.2015 to 09.02.2021.',
       'Assistant Professor in the Department of Transfusion Medicine, The Tamil Nadu Dr.M.G.R Medical University, Chennai from 24.04.2013 to 08.05.2015 .',
-      'Tutor and Blood Bank Medical Officer in Department of Transfusion Medicine, The Tamil Nadu Dr.M.G.R Medical University,Chennai from 13.07.2006 to 09.05.2010 .',
+      'Tutor and Blood Centre Medical Officer in Department of Transfusion Medicine, The Tamil Nadu Dr.M.G.R Medical University,Chennai from 13.07.2006 to 09.05.2010 .',
       'Medical Officer, Dr. Kamachi Memorial Hospital, Chennai from 01.07.2005 to 12.07.2006.',
     ],
     linkedin: '',

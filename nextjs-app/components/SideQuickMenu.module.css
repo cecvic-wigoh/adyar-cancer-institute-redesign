@@ -60,6 +60,7 @@
     0 3px 12px rgba(52, 152, 219, 0.25),
     0 0 0 2.5px rgba(52, 152, 219, 0.15);
 }
+
 .itemBlue .iconCircle:hover {
   box-shadow:
     0 4px 20px rgba(52, 152, 219, 0.35),
@@ -72,6 +73,7 @@
     0 3px 12px rgba(10, 140, 130, 0.25),
     0 0 0 2.5px rgba(10, 140, 130, 0.15);
 }
+
 .itemTeal .iconCircle:hover {
   box-shadow:
     0 4px 20px rgba(10, 140, 130, 0.35),
@@ -84,6 +86,7 @@
     0 3px 12px rgba(46, 125, 50, 0.25),
     0 0 0 2.5px rgba(46, 125, 50, 0.15);
 }
+
 .itemGreen .iconCircle:hover {
   box-shadow:
     0 4px 20px rgba(46, 125, 50, 0.35),
@@ -96,23 +99,56 @@
     0 3px 12px rgba(142, 68, 173, 0.25),
     0 0 0 2.5px rgba(142, 68, 173, 0.15);
 }
+
 .itemPurple .iconCircle:hover {
   box-shadow:
     0 4px 20px rgba(142, 68, 173, 0.35),
     0 0 0 3px rgba(142, 68, 173, 0.25);
 }
 
-/* ── Red variant (Blood Bank) ── */
+/* ── Red variant (Blood Centre) ── */
 .itemRed .iconCircle {
   background: linear-gradient(135deg, #FDEDEE, #FADBD8);
   box-shadow:
     0 3px 12px rgba(231, 76, 60, 0.25),
     0 0 0 2.5px rgba(231, 76, 60, 0.15);
 }
+
 .itemRed .iconCircle:hover {
   box-shadow:
     0 4px 20px rgba(231, 76, 60, 0.35),
     0 0 0 3px rgba(231, 76, 60, 0.25);
+}
+
+/* ── Emergency variant ── */
+.itemEmergency .iconCircle {
+  background: linear-gradient(135deg, #FFEBEB, #FFC5C5);
+  box-shadow:
+    0 3px 12px rgba(220, 38, 38, 0.4),
+    0 0 0 2.5px rgba(220, 38, 38, 0.2);
+  animation: emergencyBlink 1.5s infinite;
+}
+
+.itemEmergency .iconCircle:hover {
+  animation: none;
+  background: linear-gradient(135deg, #FFD0D0, #FFADAD);
+  box-shadow:
+    0 4px 20px rgba(220, 38, 38, 0.5),
+    0 0 0 3px rgba(220, 38, 38, 0.3);
+}
+
+@keyframes emergencyBlink {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(220, 38, 38, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
 }
 
 /* ── Orange variant (Search) ── */
@@ -122,6 +158,7 @@
     0 3px 12px rgba(245, 130, 32, 0.35),
     0 0 0 2.5px rgba(245, 130, 32, 0.2);
 }
+
 .itemOrange .iconCircle:hover {
   box-shadow:
     0 4px 20px rgba(245, 130, 32, 0.45),
@@ -214,8 +251,13 @@ button.pillArrow {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .searchModal {
@@ -229,8 +271,15 @@ button.pillArrow {
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .searchHeader {
@@ -342,6 +391,106 @@ button.pillArrow {
   font-size: 0.75rem;
 }
 
+/* ── Emergency Popup UI ── */
+.emergencyBody {
+  padding: 32px;
+  background: #f8fafc;
+}
+
+.emergencyGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.emergencyHeaderTitle {
+  flex: 1;
+  font-family: var(--font-heading, "PT Sans Narrow", sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.emergencyCard {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+  gap: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.emergencyCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.emergencyCardIcon {
+  font-size: 2rem;
+  background: #FEF2F2;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.emergencyCardContent {
+  flex: 1;
+}
+
+.emergencyCardContent h3 {
+  margin: 0 0 4px 0;
+  font-family: var(--font-dm-sans, Arial, sans-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.emergencyPhone {
+  margin: 0;
+  font-family: var(--font-dm-sans, Arial, sans-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ef4444;
+  letter-spacing: 0.5px;
+}
+
+.emergencySubtext {
+  font-family: var(--font-dm-sans, Arial, sans-serif);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #64748b;
+  display: block;
+  margin-top: 4px;
+}
+
+.callBtn {
+  background: #ef4444;
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-dm-sans, Arial, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.callBtn:hover {
+  background: #dc2626;
+  color: white;
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .menu {
@@ -353,9 +502,11 @@ button.pillArrow {
   .expandedPill {
     transition: none;
   }
+
   .iconCircle {
     transition: none;
   }
+
   .pillArrow {
     transition: none;
   }

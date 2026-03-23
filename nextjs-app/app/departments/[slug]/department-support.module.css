@@ -11,9 +11,14 @@
 
 /* ── Hero ── */
 .hero {
-  background: #3d2566; /* fallback */
-  padding: 80px 0;
   position: relative;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #3d2566;
+  /* Fallback purple */
+  color: white;
   overflow: hidden;
   min-height: 320px;
   display: flex;
@@ -26,56 +31,112 @@
   z-index: 0;
 }
 
-.heroImage {
-  object-fit: cover;
-  object-position: center;
-}
-
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(61, 37, 102, 0.95) 0%,
-    rgba(91, 58, 138, 0.85) 50%,
-    rgba(114, 72, 168, 0.4) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(13, 20, 42, 0.95) 0%,
+      rgba(13, 20, 42, 0.75) 40%,
+      rgba(13, 20, 42, 0.3) 100%),
+    linear-gradient(180deg, rgba(13, 20, 42, 0.1) 0%, rgba(13, 20, 42, 0.4) 100%);
   z-index: 1;
 }
 
 .heroInner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 80px 24px 100px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  width: 100%;
 }
 
 .heroLabel {
   font-family: var(--font-heading);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.15em;
   color: var(--color-secondary);
   margin-bottom: 16px;
+  display: block;
 }
 
 .heroTitle {
   font-family: var(--font-heading);
-  font-size: 48px;
+  font-size: clamp(32px, 5vw, 56px);
   font-weight: 700;
   color: white;
   line-height: 1.1;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  max-width: 800px;
 }
 
 .heroTagline {
-  font-family: var(--font-heading);
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 700px;
+  font-family: var(--font-body);
+  font-size: clamp(16px, 2vw, 20px);
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 640px;
   line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.heroCtas {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.heroPhone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.heroPhone:hover {
+  opacity: 0.8;
+  transform: translateX(4px);
+  text-decoration: none;
+  color: white;
+}
+
+.heroStrip {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.heroStripInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+}
+
+.heroStripInner p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.heroStripInner strong {
+  color: var(--color-secondary);
+  font-weight: 700;
+  margin-right: 4px;
 }
 
 /* ── Overview body ── */
@@ -84,7 +145,7 @@
   line-height: 1.75;
 }
 
-.overviewBody p + p {
+.overviewBody p+p {
   margin-top: 16px;
 }
 
@@ -124,7 +185,7 @@
   line-height: 1.75;
 }
 
-.missionBody p + p {
+.missionBody p+p {
   margin-top: 16px;
 }
 

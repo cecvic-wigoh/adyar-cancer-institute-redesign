@@ -6,6 +6,7 @@
  * Most modular template: many sections show/hide based on data availability.
  */
 
+import Link from 'next/link';
 import Image from 'next/image';
 import type { Department } from '@/data/departments';
 import {
@@ -180,6 +181,10 @@ function buildSectionItems(department: Department) {
   if (department.services && department.services.length > 0) {
     items.push({ id: 'services', label: 'Services' });
   }
+  if (department.mahaveerAshray && department.mahaveerAshray.length > 0) {
+    items.push({ id: 'mahaveer-ashray', label: 'Mahaveer Ashray' });
+  }
+  items.push({ id: 'support-groups', label: 'Support Groups' });
   if (department.facilities && department.facilities.length > 0) {
     items.push({ id: 'facilities', label: 'Facilities' });
   }
@@ -223,16 +228,37 @@ export default function DepartmentSupport({
               src={department.heroImage}
               alt=""
               fill
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
               priority
-              className={styles.heroImage}
+              sizes="100vw"
             />
-            <div className={styles.heroOverlay} />
+            <div className={styles.heroOverlay} aria-hidden="true" />
           </div>
         )}
         <div className={styles.heroInner}>
           <div className={styles.heroLabel}>Department</div>
           <h1 className={styles.heroTitle}>{department.title}</h1>
           <p className={styles.heroTagline}>{department.tagline}</p>
+          <div className={styles.heroCtas}>
+            <Link href="/appointments" className="btn btn-white">
+              Book Appointment
+            </Link>
+            <Link href="tel:+914424910754" className={styles.heroPhone}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              044-2491 0754
+            </Link>
+          </div>
+        </div>
+
+        {/* Hero Bottom Strip */}
+        <div className={styles.heroStrip}>
+          <div className={styles.heroStripInner}>
+            <p>
+              <strong>Exceptional Support Services.</strong> Dedicated to clinical excellence since 1954.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -354,6 +380,32 @@ export default function DepartmentSupport({
           </div>
         </DeptSection>
       )}
+
+      {/* 9b. Mahaveer Ashray */}
+      {department.mahaveerAshray && department.mahaveerAshray.length > 0 && (
+        <DeptSection label="Hospice Care" title="Mahaveer Ashray — End of Life Care" id="mahaveer-ashray">
+          <div className={styles.overviewBody}>
+            {department.mahaveerAshray.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        </DeptSection>
+      )}
+
+      {/* 9c. Support Groups */}
+      <DeptSection label="Community Support" title="Support Groups" id="support-groups">
+        {department.supportGroups && department.supportGroups.length > 0 ? (
+          <div className={styles.overviewBody}>
+            {department.supportGroups.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        ) : (
+          <p style={{ color: '#4c5d74', fontStyle: 'italic', textAlign: 'center', padding: '24px', background: '#f8fafc', borderRadius: '8px' }}>
+            Content is yet to be provided
+          </p>
+        )}
+      </DeptSection>
 
       {/* 10. Facilities & Equipment */}
       {department.facilities && department.facilities.length > 0 && (

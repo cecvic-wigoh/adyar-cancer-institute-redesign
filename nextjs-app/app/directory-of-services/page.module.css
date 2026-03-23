@@ -1,0 +1,185 @@
+.page {
+  padding: 40px 0 80px;
+  background-color: #f7f9fc;
+  min-height: 80vh;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.breadcrumbs a {
+  color: #1a56db;
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbSep {
+  color: #cbd5e1;
+}
+
+.breadcrumbCur {
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: #1e293b;
+  margin: 0 0 12px 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: #475569;
+  max-width: 600px;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.searchWrap {
+  position: relative;
+  max-width: 600px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 16px 20px 16px 48px;
+  font-size: 1.1rem;
+  font-family: var(--font-heading);
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: white;
+  transition: all 0.2s ease;
+  color: #0f172a;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.searchInput::placeholder {
+  color: #94a3b8;
+}
+
+.tableWrap {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  overflow-x: auto;
+}
+
+.dosTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.dosTable th, .dosTable td {
+  padding: 20px 24px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dosTable th {
+  background-color: #f8fafc;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.dosTable tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.testName {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.testId {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-family: monospace;
+}
+
+.badge {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background-color: #eff6ff;
+  color: #1e40af;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.requirements {
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.5;
+  max-width: 300px;
+}
+
+.methodology {
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.tat {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.accreditation {
+  font-size: 0.85rem;
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 60px 20px !important;
+  color: #64748b;
+  font-size: 1.1rem;
+}
