@@ -68,14 +68,6 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
           <h1 className={styles.heroName}>{doctor.name}</h1>
           <p className={styles.heroDesignation}>{doctor.designation}</p>
 
-          <div className={styles.heroQualifications}>
-            <strong>Qualifications</strong>
-            <span>{qualifications.join(' \u2022 ')}</span>
-
-            <strong>Specialties</strong>
-            <span>{doctor.specialties.join(' \u2022 ')}</span>
-          </div>
-
           {doctor.linkedin && (
             <div className={styles.heroLinkedin}>
               <a href={doctor.linkedin} target="_blank" rel="noopener noreferrer">
