@@ -53,49 +53,9 @@ export default function Home() {
         role: f.role,
         portrait: f.portrait,
         heroQuote: f.heroQuote,
+        heroSnippet: f.heroSnippet,
       }))} />
 
-      {/* OUR FOUNDERS SECTION — Centered Layout */}
-      <section className="founders-section" aria-labelledby="founders-heading">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-label">+ Our Legacy</span>
-            <h2 id="founders-heading">The Visionaries BehindCI(WIA)</h2>
-            <p>
-              Founded on the pillars of humanity and wisdom, our institute continues to be 
-              guided by the selfless ideals of our pioneering founders.
-            </p>
-          </div>
-          
-          <div className="founders-grid">
-            {founders.map((founder) => (
-              <Link
-                key={founder.slug}
-                href={`/founders/${founder.slug}`}
-                className="founder-card"
-              >
-                <div className="founder-portrait">
-                  <Image
-                    src={founder.portrait}
-                    alt={founder.name}
-                    width={220}
-                    height={220}
-                    className="founder-image"
-                  />
-                  <div className="founder-overlay">
-                    <span className="btn-text">Read Legacy <ArrowIcon size={14} /></span>
-                  </div>
-                </div>
-                <div className="founder-details">
-                  <span className="founder-years">{founder.years}</span>
-                  <h3>{founder.name}</h3>
-                  <p className="founder-role">{founder.role}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CANCER TYPES */}
       <section

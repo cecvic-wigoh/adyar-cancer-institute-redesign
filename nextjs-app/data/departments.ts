@@ -21,6 +21,7 @@ export interface Department {
   contactEmail: string;
   spoc?: string;
   departmentPhoto?: string;
+  heroImage?: string;
   experts: DepartmentExpert[];
   achievements: string[];
   legacy: string[];
@@ -100,6 +101,7 @@ export const departments: Department[] = [
     },
     contactEmail: "sog@cancerinstitutewia.org",
     spoc: "Arvind Krishnamurthy",
+    heroImage: "/images/departments/facility-1.jpg",
     experts: [
       {
         name: "Arvind Krishnamurthy",
@@ -242,6 +244,7 @@ export const departments: Department[] = [
         "Our vision is to provide compassionate, high-quality, and equitable cancer care for every patient, guided by science, empathy, and integrity. We are committed to delivering evidence-based treatments tailored to each individual, while recognizing the physical, emotional, and social challenges that cancer brings to patients and their families. Patient safety, dignity, and quality of life remain at the heart of everything we do.\n\nWe believe that excellent cancer care goes beyond treatment alone. Our team works collaboratively to ensure timely diagnosis, comprehensive therapy, strong supportive care, and careful follow-up, from the time of diagnosis through survivorship or end-of-life care when needed. We are equally committed to advancing care through research, innovation, and continuous learning, so that our patients benefit from the latest proven approaches.\n\nAbove all, we strive to walk alongside our patients and families at every step of their journey—listening, supporting, and partnering with them in decision-making. Our department remains dedicated to building trust, improving outcomes, and offering hope through compassionate and responsible cancer care.",
     },
     contactEmail: "r.venkatraman@cancerinstitutewia.org",
+    heroImage: "/images/departments/facility-3.jpg",
     experts: [
       {
         name: "Dr. Venkatraman Radhakrishnan",
@@ -410,6 +413,7 @@ export const departments: Department[] = [
     },
     contactEmail: "radiology@cancerinstitutewia.org",
     spoc: "Mr. Vikram Babu N.C",
+    heroImage: "/images/departments/hero-bg.jpg",
     experts: [
       {
         name: "Dr. M. Karthigaiselvi",
@@ -608,6 +612,7 @@ export const departments: Department[] = [
     },
     contactEmail: "ujwala@cancerinstitutewia.org",
     spoc: "Dr (Maj) Jayashree Natarajan",
+    heroImage: "/images/departments/facility-4.jpg",
     experts: [
       {
         name: "Dr. Ujwala Prakash Wakpaijan",
@@ -720,6 +725,7 @@ export const departments: Department[] = [
     },
     contactEmail: "anesthesia@cancerinstitutewia.org",
     spoc: "Dr Aravind Narayanan",
+    heroImage: "/images/departments/facility-2.jpg",
     experts: [
       {
         name: "Dr Punitha C",

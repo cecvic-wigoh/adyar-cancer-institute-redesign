@@ -5,6 +5,7 @@
  * equipment showcase, and referral CTA.
  */
 
+import Image from 'next/image';
 import type { Department } from '@/data/departments';
 import StickyDoctorBar from '@/components/StickyDoctorBar';
 import {

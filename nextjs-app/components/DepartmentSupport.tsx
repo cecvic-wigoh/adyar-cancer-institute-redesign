@@ -6,6 +6,7 @@
  * Most modular template: many sections show/hide based on data availability.
  */
 
+import Image from 'next/image';
 import type { Department } from '@/data/departments';
 import {
   DeptBreadcrumb,
@@ -216,6 +217,18 @@ export default function DepartmentSupport({
 
       {/* 3. Hero */}
       <section className={styles.hero}>
+        {department.heroImage && (
+          <div className={styles.heroBg}>
+            <Image
+              src={department.heroImage}
+              alt=""
+              fill
+              priority
+              className={styles.heroImage}
+            />
+            <div className={styles.heroOverlay} />
+          </div>
+        )}
         <div className={styles.heroInner}>
           <div className={styles.heroLabel}>Department</div>
           <h1 className={styles.heroTitle}>{department.title}</h1>
