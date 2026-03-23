@@ -66,6 +66,24 @@ const newsItems = [
   },
 ];
 
+const donorStories = [
+  {
+    name: 'Rahul M.',
+    type: 'Voluntary Platelet Donor',
+    quote: '"Seeing how platelets directly help leukemia patients recover from chemotherapy is why I donate every month. It takes so little time but saves a life."',
+  },
+  {
+    name: 'Priya K.',
+    type: 'Granulocyte Donor',
+    quote: '"When I learned that granulocytes are critical for patients with severe infections who have zero immunity, I immediately stepped up. The Blood Centre team made the apheresis process so easy and comfortable."',
+  },
+  {
+    name: 'Suresh V.',
+    type: 'Regular Blood & Platelet Donor',
+    quote: '"I have been donating at the Adyar Cancer Institute for over 10 years. The staff is incredibly supportive, and knowing my donation goes to someone in active cancer treatment is deeply fulfilling."',
+  }
+];
+
 const linkColumns = [
   {
     title: 'Quick Links',
@@ -225,6 +243,24 @@ export default function BloodBankPage() {
                   <span>{item.detail}</span>
                 </span>
               </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.storiesSection} aria-labelledby="stories-heading">
+          <div className={styles.sectionHeadingWrap}>
+            <h2 id="stories-heading">Voices of Life-Savers</h2>
+            <p style={{ textAlign: 'center', color: '#4c5d74', marginBottom: '32px' }}>Read stories from our dedicated voluntary platelet and granulocyte donors.</p>
+          </div>
+          <div className={styles.storiesGrid}>
+            {donorStories.map((story) => (
+              <div key={story.name} className={styles.storyCard}>
+                <div className={styles.storyQuote}>{story.quote}</div>
+                <div className={styles.storyAuthor}>
+                  <strong>{story.name}</strong>
+                  <span>{story.type}</span>
+                </div>
+              </div>
             ))}
           </div>
         </section>

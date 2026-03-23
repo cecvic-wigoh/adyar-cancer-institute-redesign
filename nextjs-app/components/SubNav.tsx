@@ -85,7 +85,7 @@ const categories: SubNavCategory[] = [
           { label: "Follow-up Patient Care", href: "/coming-soon" },
           { label: "Insurance & Billing", href: "/coming-soon" },
           { label: "International Patients", href: "/coming-soon" },
-          { label: "Second Opinion", href: "/#appointment" },
+          { label: "Second Opinion", href: "/second-opinion" },
         ],
       },
       {
