@@ -14,6 +14,7 @@ interface SubNavCta {
   href: string;
   desc?: string;
   external?: boolean;
+  blinking?: boolean;
 }
 
 interface SubNavCategory {
@@ -23,6 +24,55 @@ interface SubNavCategory {
 }
 
 const categories: SubNavCategory[] = [
+  {
+    label: "Prevention & Outreach",
+    columns: [
+      {
+        heading: "Cancer Prevention",
+        links: [
+          { label: "Cancer Risk Factors", href: "/coming-soon" },
+          { label: "Healthy Lifestyle Choices", href: "/coming-soon" },
+          { label: "HPV & Hepatitis B Vaccines", href: "/coming-soon" },
+          { label: "Tobacco Cessation Clinic", href: "/coming-soon" },
+          { label: "Nutrition & Cancer", href: "/coming-soon" },
+          { label: "Community Out reach programme", href: "/coming-soon" },
+        ],
+      },
+      {
+        heading: "Screening Programmes",
+        links: [
+          { label: "Breast Cancer Screening", href: "/cancer/breast-cancer" },
+          {
+            label: "Cervical Cancer Screening",
+            href: "/cancer/cervical-cancer",
+          },
+          { label: "Oral Cancer Screening", href: "/cancer/head-neck-cancer" },
+          {
+            label: "Colorectal Cancer Screening",
+            href: "/cancer/colorectal-cancer",
+          },
+          { label: "Other Check-up?", href: "/#appointment" },
+        ],
+      },
+      {
+        heading: "Community Outreach",
+        links: [
+          { label: "Community Outreach", href: "/#appointment" },
+          { label: "Awareness Programmes", href: "/coming-soon", },
+          { label: "Rural Cancer screening", href: "/coming-soon", },
+          { label: "School & College camps", href: "/coming-soon", },
+        ],
+      },
+    ],
+    ctas: [
+      { label: "Book a Screening", href: "/#appointment" },
+      {
+        label: "Upcoming Camps",
+        href: "/coming-soon",
+        desc: "Free screening and awareness events in your community.",
+      },
+    ],
+  },
   {
     label: "Patients & Families",
     columns: [
@@ -75,56 +125,7 @@ const categories: SubNavCategory[] = [
     ],
   },
   {
-    label: "Prevention & Outreach",
-    columns: [
-      {
-        heading: "Cancer Prevention",
-        links: [
-          { label: "Cancer Risk Factors", href: "/coming-soon" },
-          { label: "Healthy Lifestyle Choices", href: "/coming-soon" },
-          { label: "HPV & Hepatitis B Vaccines", href: "/coming-soon" },
-          { label: "Tobacco Cessation Clinic", href: "/coming-soon" },
-          { label: "Nutrition & Cancer", href: "/coming-soon" },
-          { label: "Community Out reach programme", href: "/coming-soon" },
-        ],
-      },
-      {
-        heading: "Screening Programmes",
-        links: [
-          { label: "Breast Cancer Screening", href: "/cancer/breast-cancer" },
-          {
-            label: "Cervical Cancer Screening",
-            href: "/cancer/cervical-cancer",
-          },
-          { label: "Oral Cancer Screening", href: "/cancer/head-neck-cancer" },
-          {
-            label: "Colorectal Cancer Screening",
-            href: "/cancer/colorectal-cancer",
-          },
-          { label: "Other Check-up?", href: "/#appointment" },
-        ],
-      },
-      {
-        heading: "Community Outreach",
-        links: [
-          { label: "Community Outreach", href: "/#appointment" },
-          { label: "Awareness Programmes", href: "/coming-soon", },
-          { label: "Rural Cancer screening", href: "/coming-soon", },
-          { label: "School & College camps", href: "/coming-soon", },
-        ],
-      },
-    ],
-    ctas: [
-      { label: "Book a Screening", href: "/#appointment" },
-      {
-        label: "Upcoming Camps",
-        href: "/coming-soon",
-        desc: "Free screening and awareness events in your community.",
-      },
-    ],
-  },
-  {
-    label: "Departments & Services",
+    label: "Departments",
     columns: [
       {
         heading: "Clinical Departments",
@@ -154,6 +155,13 @@ const categories: SubNavCategory[] = [
             label: "Preventive Oncology",
             href: "/coming-soon",
           },
+          {
+            label: "Patient Support Services",
+            href: "/coming-soon",
+          },
+          { label: "Physiotherapy", href: "/coming-soon" },
+          { label: "Psycho-Oncology", href: "/coming-soon" },
+          { label: "Pain and Palliative Medicine", href: "/coming-soon" },
         ],
       },
       {
@@ -201,7 +209,6 @@ const categories: SubNavCategory[] = [
           { label: "Blood Centre", href: "/coming-soon" },
           { label: "Dietetics", href: "/coming-soon" },
           { label: "Physiotherapy", href: "/coming-soon" },
-          { label: "Psycho-Oncology", href: "/coming-soon" },
           { label: "Bio medical engineering", href: "/coming-soon" },
           { label: "Pharmacy", href: "/coming-soon" },
         ],
@@ -230,17 +237,6 @@ const categories: SubNavCategory[] = [
             href: "https://ci-wia-research-pages.vercel.app/research",
             external: true,
           },
-        ],
-      },
-      {
-        heading: "ACADEMICS",
-        links: [
-          {
-            label: "Fellowship Programmes",
-            href: "https://ci-wia-research-pages.vercel.app/research",
-            external: true,
-          },
-          { label: "Conferences & CME", href: "/coming-soon" },
           {
             label: "Publications",
             href: "https://ci-wia-research-pages.vercel.app/research",
@@ -275,6 +271,50 @@ const categories: SubNavCategory[] = [
         href: "https://ci-wia-research-pages.vercel.app/research",
         external: true,
         desc: "Explore our publications, trials, and ongoing studies.",
+      },
+    ],
+  },
+  {
+    label: "Academics",
+    columns: [
+      {
+        heading: "Academic Programmes",
+        links: [
+          { label: "UG/PG", href: "/coming-soon" },
+          { label: "Fellowships", href: "https://ci-wia-research-pages.vercel.app/research", external: true },
+          { label: "Internships", href: "/coming-soon" },
+        ],
+      },
+      {
+        heading: "Continuing Education",
+        links: [
+          { label: "Workshops", href: "/coming-soon" },
+          { label: "CME", href: "/coming-soon" },
+        ],
+      },
+    ],
+    ctas: [
+      { label: "Admissions", href: "/coming-soon", blinking: true },
+    ],
+  },
+  {
+    label: "Resources",
+    columns: [
+      {
+        heading: "Patient Resources",
+        links: [
+          { label: "Free Services", href: "/coming-soon" },
+          { label: "Schemes", href: "/coming-soon" },
+          { label: "Accommodation", href: "/coming-soon" },
+          { label: "Forms", href: "/coming-soon" },
+        ],
+      },
+      {
+        heading: "Supportive Care",
+        links: [
+          { label: "Rehabilitation", href: "/coming-soon" },
+          { label: "Hospice", href: "/coming-soon" },
+        ],
       },
     ],
   },
@@ -440,7 +480,7 @@ export default function SubNav() {
                     ) : (
                       <Link
                         href={cta.href}
-                        className={styles.megaCtaLink}
+                        className={`${styles.megaCtaLink}${cta.blinking ? ` ${styles.blinker}` : ""}`}
                         onClick={() => setActiveIndex(null)}
                       >
                         {cta.label}

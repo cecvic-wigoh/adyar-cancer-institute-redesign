@@ -36,10 +36,35 @@ export default function Header() {
 
           <nav className="primary-nav" aria-label="Primary navigation">
             <ul>
-              <li><Link href="/coming-soon">About</Link></li>
+              <li className="has-dropdown">
+                <Link href="/coming-soon">
+                  About
+                  <svg className="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+                </Link>
+                <ul className="dropdown-menu">
+                  <li><Link href="/coming-soon">Vision &amp; Mission</Link></li>
+                  <li><Link href="/coming-soon">Legacy (reverse chronology)</Link></li>
+                  <li><Link href="/coming-soon">Future Vision (Laya)</Link></li>
+                  <li><Link href="/coming-soon">Leadership</Link></li>
+                  <li><Link href="/coming-soon">Achievements</Link></li>
+                  <li><Link href="/coming-soon">Annual Reports</Link></li>
+                  <li><Link href="/coming-soon">Collaborations</Link></li>
+                </ul>
+              </li>
               <li><Link href="/blood-bank">Blood Center</Link></li>
               <li><Link href="/coming-soon">DIRECTORY OF SERVICES</Link></li>
-              <li><Link href="/coming-soon">News &amp; Updates</Link></li>
+              <li className="has-dropdown">
+                <Link href="/coming-soon">
+                  News &amp; Events
+                  <svg className="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+                </Link>
+                <ul className="dropdown-menu">
+                  <li><Link href="/coming-soon">Upcoming Events</Link></li>
+                  <li><Link href="/coming-soon">Conferences</Link></li>
+                  <li><Link href="/coming-soon">Awareness Campaigns</Link></li>
+                  <li><Link href="/coming-soon">Institutional News</Link></li>
+                </ul>
+              </li>
               <li><Link href="/coming-soon">Careers</Link></li>
               <li><Link href="/coming-soon">VOLUNTEERS</Link></li>
               <li><Link href="/coming-soon">Contact</Link></li>

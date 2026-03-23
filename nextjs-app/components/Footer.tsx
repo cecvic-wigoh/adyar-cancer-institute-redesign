@@ -72,9 +72,9 @@ export default function Footer() {
         <div className="footer-bottom-inner">
           <p className="footer-copyright">&copy; 2025 Cancer Institute (WIA). All Rights Reserved.</p>
           <nav className="footer-legal" aria-label="Legal links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Disclaimer</a>
-            <a href="#">Terms of Use</a>
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/disclaimer">Disclaimer</Link>
+            <Link href="/coming-soon">Terms of Use</Link>
             <a href="#">Sitemap</a>
           </nav>
         </div>

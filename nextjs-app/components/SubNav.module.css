@@ -181,6 +181,29 @@
   margin-top: 6px;
   max-width: none;
 }
+ 
+ .blinker {
+   animation: blink-pulse 2s infinite ease-in-out;
+   color: #23CDC0 !important; /* accentuate with secondary color */
+   position: relative;
+ }
+ 
+ .blinker::after {
+   content: "";
+   display: inline-block;
+   width: 8px;
+   height: 8px;
+   background-color: #23CDC0;
+   border-radius: 50%;
+   margin-left: 8px;
+   box-shadow: 0 0 8px rgba(35, 205, 192, 0.6);
+ }
+ 
+ @keyframes blink-pulse {
+   0% { opacity: 1; transform: scale(1); }
+   50% { opacity: 0.7; transform: scale(0.98); }
+   100% { opacity: 1; transform: scale(1); }
+ }
 
 /* ── BACKDROP ── */
 .backdrop {
