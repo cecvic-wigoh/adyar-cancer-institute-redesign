@@ -241,7 +241,7 @@ export default function SideQuickMenu() {
                 <line x1="12" y1="8" x2="12" y2="12" />
                 <line x1="12" y1="16" x2="12.01" y2="16" />
               </svg>
-              <h2 className={styles.emergencyHeaderTitle}>Emergency Contacts</h2>
+              <h2 className={styles.emergencyHeaderTitle}>Oncology Emergencies</h2>
               <button className={styles.searchClose} onClick={() => setEmergencyOpen(false)} type="button" aria-label="Close emergency modal">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                   <line x1="18" y1="6" x2="6" y2="18" />
@@ -254,18 +254,18 @@ export default function SideQuickMenu() {
                 <div className={styles.emergencyCard}>
                   <div className={styles.emergencyCardIcon}>👶</div>
                   <div className={styles.emergencyCardContent}>
-                    <h3>Pediatric Emergency</h3>
+                    <h3>Pediatric Oncology</h3>
                     <p className={styles.emergencyPhone}>98765 43210</p>
-                    <span className={styles.emergencySubtext}>24/7 Dedicated Care</span>
+                    <span className={styles.emergencySubtext}>24/7 Specialized Care</span>
                   </div>
                   <a href="tel:9876543210" className={styles.callBtn}>Call Now</a>
                 </div>
                 <div className={styles.emergencyCard}>
                   <div className={styles.emergencyCardIcon}>🧑</div>
                   <div className={styles.emergencyCardContent}>
-                    <h3>Adult Emergency</h3>
+                    <h3>Adult Oncology</h3>
                     <p className={styles.emergencyPhone}>12345 67890</p>
-                    <span className={styles.emergencySubtext}>24/7 Emergency Care</span>
+                    <span className={styles.emergencySubtext}>24/7 Cancer Emergency Care</span>
                   </div>
                   <a href="tel:1234567890" className={styles.callBtn}>Call Now</a>
                 </div>
