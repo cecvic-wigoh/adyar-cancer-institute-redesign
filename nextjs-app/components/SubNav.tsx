@@ -160,8 +160,11 @@ const categories: SubNavCategory[] = [
             href: "/coming-soon",
           },
           { label: "Physiotherapy", href: "/coming-soon" },
-          { label: "Psycho-Oncology", href: "/coming-soon" },
           { label: "Pain and Palliative Medicine", href: "/coming-soon" },
+          {
+            label: "Nuclear Medicine and Theranostics",
+            href: "/departments/nuclear-medicine-and-theranostics",
+          },
         ],
       },
       {
@@ -194,10 +197,6 @@ const categories: SubNavCategory[] = [
           {
             label: "Radio Diagnosis and Imaging",
             href: "/departments/radiology",
-          },
-          {
-            label: "Nuclear Medicine",
-            href: "/departments/nuclear-medicine",
           },
         ],
       },

@@ -1363,6 +1363,33 @@ export const departments: Department[] = [
       "The Department shares the legacy of sampling around 90,000 clinical samples of cancer patients and 20,000 surveillance samples per year.",
     ],
   },
+
+  // ── 10. Nuclear Medicine and Theranostics ──────────────────────────────
+  {
+    slug: "nuclear-medicine-and-theranostics",
+    category: "clinical",
+    title: "Nuclear Medicine and Theranostics",
+    metaDescription: "Nuclear Medicine and Theranostics at Cancer Institute WIA, Chennai — expert image-guided diagnostics and targeted radionuclide therapy.",
+    tagline: "Precision diagnostics and targeted molecular therapies for tailored cancer treatment.",
+    overview: [
+      "The Department of Nuclear Medicine and Theranostics offers advanced molecular imaging and targeted radionuclide therapy.",
+      "Theranostics is a highly personalized approach that combines a diagnostic test that identifies a specific molecular target on cancer cells with a matched therapeutic agent that delivers localized radiation directly to those cells."
+    ],
+    hod: {
+      name: "Placeholder HOD",
+      credentials: "MD",
+      designation: "Head of Department",
+      message: "Our vision is to deliver targeted, precision oncological care through the latest developments in nuclear medicine."
+    },
+    contactEmail: "info@cancerinstitutewia.org",
+    experts: [],
+    achievements: [],
+    legacy: [],
+    conditionsTreated: ["Thyroid Cancer", "Neuroendocrine Tumors", "Prostate Cancer", "Bone Metastases"],
+    treatmentOptions: ["Radioiodine Therapy", "PRRT (Peptide Receptor Radionuclide Therapy)", "Lutetium-177 PSMA Therapy", "Bone Pain Palliation"],
+    preventiveMeasures: [],
+    whenToVisit: ["Referred by an oncologist for functional imaging", "Referred for targeted radionuclide therapy"],
+  },
 ];
 
 // ────────────────────────────────────────────────────────────────────────────

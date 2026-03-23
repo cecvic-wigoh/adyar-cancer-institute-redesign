@@ -23,6 +23,7 @@ const sitePages = [
   { title: 'Paediatric Oncology', url: '/departments/paediatric-oncology', category: 'Departments' },
   { title: 'Haematology', url: '/departments/haematology', category: 'Departments' },
   { title: 'Gynaecological Oncology', url: '/departments/gynaecological-oncology', category: 'Departments' },
+  { title: 'Nuclear Medicine and Theranostics', url: '/departments/nuclear-medicine-and-theranostics', category: 'Departments' },
   { title: 'Blood Bank & Transfusion Medicine', url: '/blood-bank', category: 'Departments' },
   { title: 'Dr. S. Krishnamurthy', url: '/doctors/dr-krishnamurthy', category: 'Our Doctors' },
   { title: 'Dr. R. Swaminathan', url: '/doctors/dr-swaminathan', category: 'Our Doctors' },
