@@ -9,10 +9,21 @@ interface QuickMenuItem {
   href: string;
   icon: React.ReactNode;
   variant: string;
-  action?: 'search';
+  action?: 'search' | 'emergency';
 }
 
 const menuItems: QuickMenuItem[] = [
+  {
+    label: 'Emergency',
+    href: '#',
+    variant: 'itemEmergency',
+    action: 'emergency',
+    icon: (
+      <svg viewBox="0 0 64 64" className={styles.iconSvg}>
+        <path d="M32 12 L32 52 M12 32 L52 32" stroke="#E74C3C" strokeWidth="10" strokeLinecap="round" />
+      </svg>
+    ),
+  },
   {
     label: 'Book Appointment',
     href: '/appointment',
@@ -97,6 +108,7 @@ const menuItems: QuickMenuItem[] = [
 ];
 
 const variantMap: Record<string, string> = {
+  itemEmergency: styles.itemEmergency,
   itemBlue: styles.itemBlue,
   itemRed: styles.itemRed,
   itemTeal: styles.itemTeal,
@@ -107,6 +119,7 @@ const variantMap: Record<string, string> = {
 
 export default function SideQuickMenu() {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [emergencyOpen, setEmergencyOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
@@ -114,11 +127,14 @@ export default function SideQuickMenu() {
       <nav className={styles.menu} aria-label="Quick actions">
         {menuItems.map((item) => (
           <div key={item.label} className={`${styles.item} ${variantMap[item.variant] || ''}`}>
-            {item.action === 'search' ? (
+            {item.action ? (
               <button
                 className={styles.iconCircle}
-                onClick={() => setSearchOpen(true)}
-                aria-label="Open search"
+                onClick={() => {
+                  if (item.action === 'search') setSearchOpen(true);
+                  if (item.action === 'emergency') setEmergencyOpen(true);
+                }}
+                aria-label={`Open ${item.label}`}
                 type="button"
               >
                 {item.icon}
@@ -130,10 +146,13 @@ export default function SideQuickMenu() {
             )}
             <div className={styles.expandedPill}>
               <span className={styles.pillLabel}>{item.label}</span>
-              {item.action === 'search' ? (
+              {item.action ? (
                 <button
                   className={styles.pillArrow}
-                  onClick={() => setSearchOpen(true)}
+                  onClick={() => {
+                    if (item.action === 'search') setSearchOpen(true);
+                    if (item.action === 'emergency') setEmergencyOpen(true);
+                  }}
                   aria-label={item.label}
                   type="button"
                 >
@@ -207,6 +226,50 @@ export default function SideQuickMenu() {
             </div>
             <div className={styles.searchFooter}>
               Press <kbd className={styles.kbd}>Esc</kbd> to close
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Emergency Contact Overlay */}
+      {emergencyOpen && (
+        <div className={styles.searchOverlay} onClick={() => setEmergencyOpen(false)}>
+          <div className={styles.searchModal} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.searchHeader}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" strokeWidth="2.5" strokeLinecap="round" className={styles.searchIcon}>
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+              <h2 className={styles.emergencyHeaderTitle}>Emergency Contacts</h2>
+              <button className={styles.searchClose} onClick={() => setEmergencyOpen(false)} type="button" aria-label="Close emergency modal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+            <div className={styles.emergencyBody}>
+              <div className={styles.emergencyGrid}>
+                <div className={styles.emergencyCard}>
+                  <div className={styles.emergencyCardIcon}>👶</div>
+                  <div className={styles.emergencyCardContent}>
+                    <h3>Pediatric Emergency</h3>
+                    <p className={styles.emergencyPhone}>98765 43210</p>
+                    <span className={styles.emergencySubtext}>24/7 Dedicated Care</span>
+                  </div>
+                  <a href="tel:9876543210" className={styles.callBtn}>Call Now</a>
+                </div>
+                <div className={styles.emergencyCard}>
+                  <div className={styles.emergencyCardIcon}>🧑</div>
+                  <div className={styles.emergencyCardContent}>
+                    <h3>Adult Emergency</h3>
+                    <p className={styles.emergencyPhone}>12345 67890</p>
+                    <span className={styles.emergencySubtext}>24/7 Emergency Care</span>
+                  </div>
+                  <a href="tel:1234567890" className={styles.callBtn}>Call Now</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
