@@ -70,6 +70,17 @@ export default function MobileNav({ isOpen, onClose, onOpenSearch }: MobileNavPr
                 <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Institutional News</Link></li>
               </ul>
             </li>
+            <li>
+              <Link href="/coming-soon" onClick={onClose}>Support Groups</Link>
+              <ul style={{ paddingLeft: '20px', marginTop: '4px', borderLeft: '2px solid var(--color-tertiary)' }}>
+                <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Breast Cancer Support</Link></li>
+                <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Pediatric Oncology Support</Link></li>
+                <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Caregiver Support</Link></li>
+                <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Survivorship Program</Link></li>
+                <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Grief &amp; Bereavement</Link></li>
+                <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Patient Navigation</Link></li>
+              </ul>
+            </li>
             <li><Link href="/coming-soon" onClick={onClose}>Careers</Link></li>
             <li><Link href="/#contact" onClick={onClose}>Contact</Link></li>
           </ul>

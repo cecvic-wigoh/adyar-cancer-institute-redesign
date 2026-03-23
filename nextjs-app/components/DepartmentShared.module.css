@@ -12,6 +12,9 @@
   font-family: var(--font-heading);
   font-size: 13px;
   color: var(--color-text-secondary);
+  position: sticky;
+  top: 124px; 
+  z-index: 990;
 }
 
 .breadcrumbInner {

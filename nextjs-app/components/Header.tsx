@@ -105,6 +105,24 @@ export default function Header() {
                   <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Hospice</Link></li>
                 </ul>
               </li>
+              <li className={`has-dropdown${activeDropdown === 'support' ? ' is-open' : ''}`}>
+                <button 
+                  className="nav-toggle"
+                  onClick={(e) => toggleDropdown('support', e)}
+                  aria-expanded={activeDropdown === 'support'}
+                >
+                  SUPPORT GROUPS
+                  <svg className="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+                </button>
+                <ul className="dropdown-menu">
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Breast Cancer Support</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Pediatric Oncology Support</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Caregiver Support</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Survivorship Program</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Grief &amp; Bereavement</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Patient Navigation</Link></li>
+                </ul>
+              </li>
               <li><Link href="/coming-soon">VOLUNTEERS</Link></li>
               <li><Link href="/coming-soon">CONTACT</Link></li>
             </ul>
