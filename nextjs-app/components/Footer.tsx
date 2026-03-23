@@ -7,7 +7,9 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Image src="/logo/White-Horizontal Logo-004.png" alt="Cancer Institute (WIA)™" className="footer-logo" width={240} height={39} />
+            <Link href="/" aria-label="Home">
+              <Image src="/logo/White-Horizontal Logo-004.png" alt="Cancer Institute (WIA)™" className="footer-logo" width={240} height={39} />
+            </Link>
             <p>With Humanity and In Wisdom — pioneering comprehensive cancer care in India since 1954.</p>
             <div className="footer-social" aria-label="Social media links">
               <a href="#" className="social-link" aria-label="Follow us on Facebook">

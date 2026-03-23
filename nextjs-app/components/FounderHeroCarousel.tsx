@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import TestimonialWidget from './TestimonialWidget';
+import FounderLegacyWidget from './FounderLegacyWidget';
 
 interface CarouselFounder {
   slug: string;
@@ -11,6 +13,7 @@ interface CarouselFounder {
   role: string;
   portrait: string;
   heroQuote: string;
+  heroSnippet: string;
 }
 
 const slides = [
@@ -19,20 +22,31 @@ const slides = [
     heading: 'Because early\ncancer is curable',
     lead: 'Prevention saves lives. From free screening camps to advanced diagnostics, we are committed to detecting cancer early — when treatment is most effective.',
     cta: { label: 'Book a Screening', href: '#appointment' },
+    showDualWidgets: false,
   },
   {
     bg: '/images/departments/facility-1.jpg',
     heading: 'Seven decades of\ncancer care excellence',
     lead: 'Since 1954, Cancer Institute (WIA) has grown from 12 beds in a small hut to one of India\'s largest and most respected oncology centres — treating over 100,000 patients every year.',
     cta: { label: 'Why Choose Us', href: '#about' },
+    showDualWidgets: false,
   },
   {
     bg: '/images/departments/hero-bg.jpg',
     heading: 'World-class treatment,\naccessible to all',
     lead: 'Over 60% of our patients receive free or subsidised treatment. We accept government insurance schemes and ensure no patient is denied care due to cost.',
     cta: { label: 'Find a Specialist', href: '#doctors' },
+    showDualWidgets: false,
+  },
+  {
+    bg: '/images/departments/facility-3.jpg',
+    heading: 'The Visionaries\nBehind CI(WIA)',
+    lead: 'Guided by the selfless ideals of our pioneering founders since 1954.',
+    cta: { label: 'Read Our Legacy', href: '/founders' },
+    showFounderGrid: true,
   },
 ];
+
 
 export default function FounderHeroCarousel({ founders }: { founders: CarouselFounder[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -52,11 +66,11 @@ export default function FounderHeroCarousel({ founders }: { founders: CarouselFo
     }
     intervalRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % slides.length);
-    }, 7000);
+    }, 8000);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isPaused, reducedMotion, activeIndex]);
+  }, [isPaused, reducedMotion, activeIndex, slides.length]);
 
   useEffect(() => {
     if (progressRef.current) {
@@ -103,6 +117,23 @@ export default function FounderHeroCarousel({ founders }: { founders: CarouselFo
               </h2>
               <div className="hero-carousel-divider" aria-hidden="true" />
               <p className="hero-carousel-lead">{slide.lead}</p>
+
+              {slide.showFounderGrid && (
+                <div className="hero-founders-inline-grid">
+                  {founders.map((f) => (
+                    <Link key={f.slug} href={`/founders/${f.slug}`} className="hero-founder-inline-item">
+                      <div className="hero-founder-inline-img-wrapper">
+                        <Image src={f.portrait} alt={f.name} width={100} height={100} className="hero-founder-inline-img" />
+                      </div>
+                      <div className="hero-founder-inline-info">
+                        <strong>{f.name}</strong>
+                        <span>{f.role}</span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+
               <div className="hero-carousel-ctas">
                 <Link href={slide.cta.href} className="btn btn-white">
                   {slide.cta.label}
@@ -119,62 +150,34 @@ export default function FounderHeroCarousel({ founders }: { founders: CarouselFo
         </div>
       ))}
 
-      {/* Founder panel — right side, absolutely positioned within hero */}
-      <div className="hero-founder-panel">
-        <div className="hero-founder-panel-label">
-          <span className="hero-founder-panel-line" />
-          Our Founders
-        </div>
-        <p className="hero-founder-panel-sub">
-          The visionaries who built India&apos;s first cancer centre from a 12-bed hut into a world-class institution.
-        </p>
-        <div className="hero-founder-cards">
-          {founders.map((founder) => (
-            <Link
-              key={founder.slug}
-              href={`/founders/${founder.slug}`}
-              className="hero-founder-card"
+      {/* Hero Widgets */}
+      <div className="hero-side-widgets">
+        {!slides[activeIndex].showFounderGrid && slides[activeIndex].showDualWidgets && (
+          <FounderLegacyWidget founders={founders} />
+        )}
+        <TestimonialWidget />
+      </div>
+
+      {/* Pagination Container */}
+      <div className="hero-carousel-pagination">
+        <div className="hero-carousel-dots">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              className={`hero-carousel-dot${i === activeIndex ? ' active' : ''}`}
+              onClick={() => setActiveIndex(i)}
+              aria-label={`Go to slide ${i + 1}`}
             >
-              <div className="hero-founder-avatar">
-                <Image
-                  src={founder.portrait}
-                  alt={founder.name}
-                  fill
-                  sizes="72px"
-                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
+              {i === activeIndex && !isPaused && !reducedMotion && (
+                <div
+                  ref={progressRef}
+                  className="hero-carousel-dot-progress"
                 />
-              </div>
-              <div className="hero-founder-info">
-                <span className="hero-founder-name">{founder.name}</span>
-                <span className="hero-founder-role">{founder.role}</span>
-                <span className="hero-founder-years">{founder.years}</span>
-              </div>
-              <svg className="hero-founder-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </Link>
+              )}
+            </button>
           ))}
         </div>
       </div>
-
-      {/* Dots */}
-      <div className="hero-carousel-dots">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            className={`hero-carousel-dot${i === activeIndex ? ' active' : ''}`}
-            onClick={() => setActiveIndex(i)}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
-      </div>
-
-      {/* Progress bar */}
-      {!isPaused && !reducedMotion && (
-        <div className="hero-carousel-progress">
-          <div className="hero-carousel-progress-bar" ref={progressRef} />
-        </div>
-      )}
 
       {/* Contact strip — pinned to bottom of hero */}
       <div className="hero-v2-strip">
