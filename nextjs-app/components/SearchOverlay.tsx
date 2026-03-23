@@ -24,7 +24,7 @@ const sitePages = [
   { title: 'Haematology', url: '/departments/haematology', category: 'Departments' },
   { title: 'Gynaecological Oncology', url: '/departments/gynaecological-oncology', category: 'Departments' },
   { title: 'Nuclear Medicine and Theranostics', url: '/departments/nuclear-medicine-and-theranostics', category: 'Departments' },
-  { title: 'Blood Bank & Transfusion Medicine', url: '/blood-bank', category: 'Departments' },
+  { title: 'Blood Centre & Transfusion Medicine', url: '/blood-bank', category: 'Departments' },
   { title: 'Dr. S. Krishnamurthy', url: '/doctors/dr-krishnamurthy', category: 'Our Doctors' },
   { title: 'Dr. R. Swaminathan', url: '/doctors/dr-swaminathan', category: 'Our Doctors' },
   { title: 'Dr. P. Anbalagan', url: '/doctors/dr-anbalagan', category: 'Our Doctors' },
@@ -37,7 +37,7 @@ const sitePages = [
   { title: 'FAQs', url: '/#faq', category: 'Quick Links' },
   { title: 'Contact Us', url: '/#contact', category: 'Quick Links' },
   { title: 'Donate', url: '/#donate', category: 'Quick Links' },
-  { title: 'Blood Bank', url: '/blood-bank', category: 'Quick Links' },
+  { title: 'Blood Centre', url: '/blood-bank', category: 'Quick Links' },
 ];
 
 const categoryOrder = ['Cancer Types', 'Departments', 'Our Doctors', 'Quick Links'];
@@ -88,7 +88,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
       <div className="search-sitemap-wrap">
         <div className="search-box">
           <div className="search-input-wrap">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4B5563" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4B5563" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
             <input
               ref={inputRef}
               className="search-input"

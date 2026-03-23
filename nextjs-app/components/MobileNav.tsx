@@ -35,8 +35,8 @@ export default function MobileNav({ isOpen, onClose, onOpenSearch }: MobileNavPr
       <div className="mobile-nav-overlay" onClick={onClose}></div>
       <div className="mobile-nav-drawer" ref={drawerRef}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
-          <button 
-            className="mobile-search-trigger" 
+          <button
+            className="mobile-search-trigger"
             onClick={onOpenSearch}
             style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'var(--color-tertiary)', border: 'none', padding: '8px 16px', borderRadius: '100px', color: 'var(--color-primary)', fontWeight: 700, fontSize: '14px', cursor: 'pointer' }}
           >
@@ -60,7 +60,7 @@ export default function MobileNav({ isOpen, onClose, onOpenSearch }: MobileNavPr
               </ul>
             </li>
             <li><Link href="/coming-soon" onClick={onClose}>Resources</Link></li>
-            <li><Link href="/blood-bank" onClick={onClose}>Blood Bank</Link></li>
+            <li><Link href="/blood-bank" onClick={onClose}>Blood Centre</Link></li>
             <li>
               <Link href="/coming-soon" onClick={onClose}>News &amp; Events</Link>
               <ul style={{ paddingLeft: '20px', marginTop: '4px', borderLeft: '2px solid var(--color-tertiary)' }}>

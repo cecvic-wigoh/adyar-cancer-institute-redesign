@@ -1315,7 +1315,7 @@ export const departments: Department[] = [
         services: [
           "Operation theatre, ICU, BMT, isolation rooms and wards surveillance at both campus",
           "Postnasal cultures of OT staff, hand cultures of all nursing staff",
-          "Sterility check of blood bank",
+          "Sterility check of Blood Centre",
           "Sterility check of Autoclaves from other laboratories",
           "CSSD sterility check of autoclave and ETO",
           "Water analysis",

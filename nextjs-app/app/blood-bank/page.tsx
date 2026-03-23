@@ -23,7 +23,7 @@ const quickAccessCards = [
     icon: <DiagnosticsIcon />,
   },
   {
-    title: 'Blood Bank & Services',
+    title: 'Blood Centre & Services',
     subtitle: '24 / 7 transfusion medicine support',
     href: '/blood-bank',
     icon: <BloodBankIcon />,
@@ -72,7 +72,7 @@ const linkColumns = [
     links: [
       { label: 'Departments', href: '/#cancer-types' },
       { label: 'Doctors', href: '/#doctors' },
-      { label: 'Blood Bank', href: '/blood-bank' },
+      { label: 'Blood Centre', href: '/blood-bank' },
     ],
   },
   {
@@ -86,9 +86,9 @@ const linkColumns = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Blood Bank & Transfusion Medicine | Cancer Institute (WIA)',
+  title: 'Blood Centre & Transfusion Medicine | Cancer Institute (WIA)',
   description:
-    '24 / 7 blood bank and transfusion medicine support for oncology, surgery, chemotherapy, and emergency care at Cancer Institute (WIA).',
+    '24 / 7 Blood Centre and transfusion medicine support for oncology, surgery, chemotherapy, and emergency care at Cancer Institute (WIA).',
 };
 
 export default function BloodBankPage() {
@@ -101,7 +101,7 @@ export default function BloodBankPage() {
               <p className={styles.eyebrow}>Cancer Institute (WIA)</p>
               <h1 id="blood-bank-heading">
                 Advanced Cancer Care
-                <span>with 24/7 Blood Bank Support</span>
+                <span>with 24/7 Blood Centre Support</span>
               </h1>
               <p className={styles.heroLead}>
                 Supporting surgery, chemotherapy, bone marrow transplant, and emergency
@@ -116,7 +116,7 @@ export default function BloodBankPage() {
                   Donate Blood
                 </Link>
                 <Link href="#services" className={`${styles.actionButton} ${styles.secondaryAction}`}>
-                  Blood Bank Services
+                  Blood Centre Services
                 </Link>
               </div>
             </div>
@@ -150,9 +150,9 @@ export default function BloodBankPage() {
         <section className={styles.featureSection} id="services" aria-labelledby="services-heading">
           <div className={styles.featureCard}>
             <div className={styles.featureCopy}>
-              <h2 id="services-heading">Blood Bank &amp; Transfusion Medicine</h2>
+              <h2 id="services-heading">Blood Centre &amp; Transfusion Medicine</h2>
               <p className={styles.featureLead}>
-                Our Blood Bank provides safe, reliable blood and blood component therapy 24
+                Our Blood Centre provides safe, reliable blood and blood component therapy 24
                 hours a day, supporting oncology treatments and emergency care.
               </p>
               <ul className={styles.featureList}>
@@ -183,7 +183,7 @@ export default function BloodBankPage() {
 
         <section className={styles.programSection} aria-labelledby="programs-heading">
           <div className={styles.sectionHeadingWrap}>
-            <h2 id="programs-heading">Blood Bank &amp; Transfusion Medicine</h2>
+            <h2 id="programs-heading">Blood Centre &amp; Transfusion Medicine</h2>
           </div>
           <div className={styles.programTabs}>
             {oncologyPrograms.map((program) => (
@@ -229,7 +229,7 @@ export default function BloodBankPage() {
           </div>
         </section>
 
-        <section className={styles.infoSection} aria-label="Blood bank contact and quick links">
+        <section className={styles.infoSection} aria-label="Blood Centre contact and quick links">
           <div className={styles.infoGrid}>
             {linkColumns.map((column) => (
               <div key={column.title} className={styles.infoColumn}>

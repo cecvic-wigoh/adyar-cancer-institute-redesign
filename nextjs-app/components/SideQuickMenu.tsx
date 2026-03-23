@@ -48,7 +48,7 @@ const menuItems: QuickMenuItem[] = [
     ),
   },
   {
-    label: 'Blood Bank',
+    label: 'Blood Centre',
     href: '/blood-bank',
     variant: 'itemRed',
     icon: (
@@ -202,7 +202,7 @@ export default function SideQuickMenu() {
                 <span className={styles.suggestIcon}>👨‍⚕️</span> Find a Doctor
               </a>
               <a href="/blood-bank" className={styles.searchSuggestion} onClick={() => setSearchOpen(false)}>
-                <span className={styles.suggestIcon}>🩸</span> Blood Bank
+                <span className={styles.suggestIcon}>🩸</span> Blood Centre
               </a>
               <a href="/departments/surgical-oncology" className={styles.searchSuggestion} onClick={() => setSearchOpen(false)}>
                 <span className={styles.suggestIcon}>🏥</span> Surgical Oncology
