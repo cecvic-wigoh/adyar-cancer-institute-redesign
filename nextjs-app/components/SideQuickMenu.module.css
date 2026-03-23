@@ -4,12 +4,12 @@
 .menu {
   position: fixed;
   left: 0;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
   z-index: 900;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   padding: 16px 0;
 }
 
@@ -17,13 +17,13 @@
   display: flex;
   align-items: center;
   position: relative;
-  height: 56px;
+  height: 46px;
 }
 
 /* ── Icon circle ── */
 .iconCircle {
-  width: 56px;
-  height: 56px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: #ffffff;
   display: flex;
@@ -49,8 +49,8 @@
 }
 
 .iconSvg {
-  width: 34px;
-  height: 34px;
+  width: 26px;
+  height: 26px;
 }
 
 /* ── Color variants for each item ── */
@@ -173,7 +173,7 @@
   background: #FFF8E7;
   border-radius: 0 30px 30px 0;
   padding: 0 8px 0 16px;
-  height: 50px;
+  height: 42px;
   margin-left: -10px;
   max-width: 0;
   overflow: hidden;

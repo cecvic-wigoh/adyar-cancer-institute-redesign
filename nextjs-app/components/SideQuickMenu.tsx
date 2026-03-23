@@ -64,8 +64,8 @@ const menuItems: QuickMenuItem[] = [
     ),
   },
   {
-    label: 'Health Services',
-    href: '/departments/medical-oncology',
+    label: 'Directory of Services',
+    href: '/directory-of-services',
     variant: 'itemGreen',
     icon: (
       <svg viewBox="0 0 64 64" className={styles.iconSvg}>

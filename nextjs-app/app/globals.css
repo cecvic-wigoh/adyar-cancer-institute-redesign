@@ -818,8 +818,8 @@ p {
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  padding-top: clamp(48px, 8vw, 96px);
-  padding-bottom: clamp(48px, 6vw, 72px);
+  padding-top: clamp(32px, 5vw, 80px);
+  padding-bottom: clamp(32px, 4vw, 60px);
   max-width: var(--max-width);
   padding-left: clamp(16px, 4vw, 80px);
   padding-right: clamp(16px, 4vw, 80px);
@@ -836,27 +836,27 @@ p {
 .hero-carousel-text h2 {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: clamp(36px, 6vw, 72px);
+  font-size: clamp(32px, 5vw, 64px);
   color: var(--color-white);
   line-height: 1.1;
   letter-spacing: -0.02em;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
 }
 
 .hero-carousel-divider {
   width: 48px;
   height: 3px;
   background: var(--color-secondary);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
 }
 
 .hero-carousel-lead {
   font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
   max-width: 540px;
-  margin-bottom: var(--space-7);
+  margin-bottom: var(--space-5);
 }
 
 .hero-carousel-ctas {
@@ -1030,7 +1030,7 @@ p {
 }
 
 .founder-legacy-widget {
-  width: 420px;
+  width: clamp(340px, 22vw, 420px);
   min-height: 540px;
   padding: 40px 32px 32px;
   background: rgba(13, 20, 42, 0.9);
@@ -1038,9 +1038,10 @@ p {
 }
 
 .testimonial-widget {
-  width: 320px;
-  min-height: 400px;
-  padding: 24px 20px 20px;
+  width: clamp(280px, 18vw, 360px);
+  min-height: 0;
+  max-height: calc(100vh - 300px);
+  padding: 20px 18px 16px;
   border-color: rgba(79, 195, 247, 0.2);
 }
 
@@ -1061,7 +1062,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .testimonial-widget-label {
@@ -1140,7 +1141,7 @@ p {
 /* Portrait & Placeholder & Quote */
 .founder-legacy-portrait-container,
 .testimonial-portrait-container {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   display: flex;
   justify-content: center;
 }
@@ -1172,12 +1173,12 @@ p {
 
 /* Testimonial Widget Avatar */
 .testimonial-widget-avatar {
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid rgba(79, 195, 247, 0.4);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(79, 195, 247, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 .testimonial-widget {
@@ -1204,10 +1205,10 @@ p {
 }
 
 .testimonial-widget-text {
-  font-size: 14px;
+  font-size: 13px;
   font-style: italic;
-  line-height: 1.6;
-  margin-bottom: 20px;
+  line-height: 1.55;
+  margin-bottom: 14px;
   color: rgba(255, 255, 255, 0.95);
   font-weight: 450;
   max-width: 95%;
@@ -1221,8 +1222,8 @@ p {
 .testimonial-widget-author {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-bottom: 20px;
+  gap: 2px;
+  margin-bottom: 14px;
 }
 
 .author-name {
@@ -1317,6 +1318,12 @@ p {
 
   .testimonial-widget-text {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .hero-side-widgets {
+    display: none;
   }
 }
 
@@ -2938,12 +2945,12 @@ p {
   border-radius: 3px;
 }
 
-/* Hero Founders Inline Grid (Slide 4) */
+/* Hero Founders Inline Grid */
 .hero-founders-inline-grid {
   display: flex;
   gap: 24px;
-  margin-top: 32px;
-  margin-bottom: 32px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .hero-founder-inline-item {
@@ -2963,13 +2970,13 @@ p {
 }
 
 .hero-founder-inline-img-wrapper {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   position: relative;
 }
 
 .hero-founder-inline-img {
-  width: 100px !important;
-  height: 100px !important;
+  width: 88px !important;
+  height: 88px !important;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--color-secondary);
@@ -2992,13 +2999,13 @@ p {
 
 .hero-founder-inline-info strong {
   font-family: var(--font-heading);
-  font-size: 15px;
+  font-size: 14px;
   color: white;
   letter-spacing: -0.01em;
 }
 
 .hero-founder-inline-info span {
-  font-size: 11px;
+  font-size: 10px;
   color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
   line-height: 1.4;
@@ -3076,7 +3083,63 @@ p {
   }
 }
 
-/* ── 27. REDUCED MOTION ── */
+/* ── 27. LARGE DESKTOPS 1440px+ ── */
+@media (min-width: 1440px) {
+  .hero-carousel-text {
+    max-width: 920px;
+  }
+
+  .cancer-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+  }
+
+  .education-grid {
+    gap: var(--space-6);
+  }
+
+  .feature-cards-grid {
+    gap: var(--space-6);
+  }
+}
+
+/* ── 28. ULTRA-WIDE 1920px+ ── */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1600px;
+  }
+
+  .hero-carousel-text {
+    max-width: 1000px;
+  }
+
+  .hero-carousel-text h2 {
+    font-size: 76px;
+  }
+
+  .hero-carousel-lead {
+    font-size: 20px;
+  }
+
+  .hero-side-widgets {
+    right: clamp(48px, 4vw, 96px);
+  }
+
+  .founder-legacy-widget {
+    width: 440px;
+  }
+
+  .testimonial-widget {
+    width: 360px;
+  }
+}
+
+/* ── 29. REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
 
   *,
