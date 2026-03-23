@@ -824,7 +824,7 @@ p {
 }
 
 .hero-carousel-text {
-  max-width: 580px;
+  max-width: 850px;
   margin-right: auto;
 }
 
@@ -966,9 +966,11 @@ p {
   .hero-carousel-founders-slide {
     max-width: 100%;
   }
+
   .hero-founders-mini-grid {
     gap: 16px;
   }
+
   .hero-founder-mini-img {
     width: 100px !important;
     height: 100px !important;
@@ -997,7 +999,7 @@ p {
   pointer-events: none;
 }
 
-.hero-side-widgets > * {
+.hero-side-widgets>* {
   pointer-events: auto;
 }
 
@@ -1038,8 +1040,15 @@ p {
 }
 
 @keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .testimonial-widget-header {
@@ -1181,7 +1190,8 @@ p {
 }
 
 .testimonial-widget .testimonial-widget-label {
-  color: #4FC3F7; /* Hope Blue */
+  color: #4FC3F7;
+  /* Hope Blue */
 }
 
 .testimonial-widget .founder-legacy-link {
@@ -1193,7 +1203,8 @@ p {
 }
 
 .founder-legacy-widget .testimonial-widget-label {
-  color: var(--color-secondary); /* Foundation Teal */
+  color: var(--color-secondary);
+  /* Foundation Teal */
 }
 
 .testimonial-widget-text {
@@ -2927,9 +2938,9 @@ p {
 /* Hero Founders Inline Grid (Slide 4) */
 .hero-founders-inline-grid {
   display: flex;
-  gap: 32px;
-  margin-top: 48px;
-  margin-bottom: 48px;
+  gap: 24px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
 .hero-founder-inline-item {
@@ -2938,6 +2949,14 @@ p {
   align-items: center;
   text-align: center;
   width: 160px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-base);
+}
+
+.hero-founder-inline-item:hover {
+  transform: translateY(-4px);
+  text-decoration: none;
 }
 
 .hero-founder-inline-img-wrapper {
@@ -2953,6 +2972,13 @@ p {
   border: 3px solid var(--color-secondary);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   background: rgba(255, 255, 255, 0.05);
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hero-founder-inline-item:hover .hero-founder-inline-img {
+  transform: scale(1.08);
+  border-color: var(--color-white);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
 }
 
 .hero-founder-inline-info {
@@ -2970,8 +2996,7 @@ p {
 
 .hero-founder-inline-info span {
   font-size: 11px;
-  color: var(--color-tea-green);
-  opacity: 0.85;
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
   line-height: 1.4;
   text-transform: uppercase;
@@ -2982,6 +3007,7 @@ p {
   .hero-founders-inline-grid {
     gap: 20px;
   }
+
   .hero-founder-inline-item {
     width: 140px;
   }

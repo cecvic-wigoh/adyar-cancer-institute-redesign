@@ -121,7 +121,7 @@ export default function FounderHeroCarousel({ founders }: { founders: CarouselFo
               {slide.showFounderGrid && (
                 <div className="hero-founders-inline-grid">
                   {founders.map((f) => (
-                    <div key={f.slug} className="hero-founder-inline-item">
+                    <Link key={f.slug} href={`/founders/${f.slug}`} className="hero-founder-inline-item">
                       <div className="hero-founder-inline-img-wrapper">
                         <Image src={f.portrait} alt={f.name} width={100} height={100} className="hero-founder-inline-img" />
                       </div>
@@ -129,11 +129,11 @@ export default function FounderHeroCarousel({ founders }: { founders: CarouselFo
                         <strong>{f.name}</strong>
                         <span>{f.role}</span>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               )}
-              
+
               <div className="hero-carousel-ctas">
                 <Link href={slide.cta.href} className="btn btn-white">
                   {slide.cta.label}
@@ -169,9 +169,9 @@ export default function FounderHeroCarousel({ founders }: { founders: CarouselFo
               aria-label={`Go to slide ${i + 1}`}
             >
               {i === activeIndex && !isPaused && !reducedMotion && (
-                <div 
+                <div
                   ref={progressRef}
-                  className="hero-carousel-dot-progress" 
+                  className="hero-carousel-dot-progress"
                 />
               )}
             </button>
