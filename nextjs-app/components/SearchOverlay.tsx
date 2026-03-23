@@ -24,6 +24,8 @@ const sitePages = [
   { title: 'Haematology', url: '/departments/haematology', category: 'Departments' },
   { title: 'Gynaecological Oncology', url: '/departments/gynaecological-oncology', category: 'Departments' },
   { title: 'Nuclear Medicine and Theranostics', url: '/departments/nuclear-medicine-and-theranostics', category: 'Departments' },
+  { title: 'Diagnostics Hub', url: '/diagnostics', category: 'Departments' },
+  { title: 'Directory of Services (DOS)', url: '/directory-of-services', category: 'Departments' },
   { title: 'Blood Centre & Transfusion Medicine', url: '/blood-bank', category: 'Departments' },
   { title: 'Dr. S. Krishnamurthy', url: '/doctors/dr-krishnamurthy', category: 'Our Doctors' },
   { title: 'Dr. R. Swaminathan', url: '/doctors/dr-swaminathan', category: 'Our Doctors' },

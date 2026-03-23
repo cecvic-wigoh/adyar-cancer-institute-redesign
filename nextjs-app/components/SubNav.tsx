@@ -171,6 +171,14 @@ const categories: SubNavCategory[] = [
         heading: "Diagnostic Services",
         links: [
           {
+            label: "Diagnostics Hub",
+            href: "/diagnostics",
+          },
+          {
+            label: "Directory of Services (DOS)",
+            href: "/directory-of-services",
+          },
+          {
             label: "Clinical Biochemistry",
             href: "/coming-soon",
           },
