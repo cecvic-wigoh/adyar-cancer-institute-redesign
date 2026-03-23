@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import TestimonialWidget from './TestimonialWidget';
 
 interface CarouselFounder {
   slug: string;
@@ -119,43 +120,10 @@ export default function FounderHeroCarousel({ founders }: { founders: CarouselFo
         </div>
       ))}
 
-      {/* Founder panel — right side, absolutely positioned within hero */}
-      <div className="hero-founder-panel">
-        <div className="hero-founder-panel-label">
-          <span className="hero-founder-panel-line" />
-          Our Founders
-        </div>
-        <p className="hero-founder-panel-sub">
-          The visionaries who built India&apos;s first cancer centre from a 12-bed hut into a world-class institution.
-        </p>
-        <div className="hero-founder-cards">
-          {founders.map((founder) => (
-            <Link
-              key={founder.slug}
-              href={`/founders/${founder.slug}`}
-              className="hero-founder-card"
-            >
-              <div className="hero-founder-avatar">
-                <Image
-                  src={founder.portrait}
-                  alt={founder.name}
-                  fill
-                  sizes="72px"
-                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                />
-              </div>
-              <div className="hero-founder-info">
-                <span className="hero-founder-name">{founder.name}</span>
-                <span className="hero-founder-role">{founder.role}</span>
-                <span className="hero-founder-years">{founder.years}</span>
-              </div>
-              <svg className="hero-founder-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </Link>
-          ))}
-        </div>
-      </div>
+      {/* Testimonial Widget — Philadelphia Carousel style on the right side */}
+      <TestimonialWidget />
+
+      {/* Navigation dots and progress bar remain unchanged */}
 
       {/* Dots */}
       <div className="hero-carousel-dots">
