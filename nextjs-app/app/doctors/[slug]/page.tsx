@@ -99,16 +99,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      {/* ── CTA STRIP ── */}
-      <div className={styles.ctaStrip}>
-        <div className={styles.ctaStripInner}>
-          <div>
-            <h3 className={styles.ctaStripTitle}>Request an Appointment</h3>
-            <p className={styles.ctaStripSub}>Call us or book online to schedule your consultation</p>
-          </div>
-          <a href="/#appointment" className={styles.ctaBtn}>Book Appointment</a>
-        </div>
-      </div>
+
 
       {/* ── ABOUT ── */}
       {doctor.about.length > 0 && (
@@ -192,16 +183,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
         </section>
       )}
 
-      {/* ── CTA STRIP (second) ── */}
-      <div className={styles.ctaStrip}>
-        <div className={styles.ctaStripInner}>
-          <div>
-            <h3 className={styles.ctaStripTitle}>Need a Consultation?</h3>
-            <p className={styles.ctaStripSub}>Our team is here to help you schedule an appointment</p>
-          </div>
-          <a href="/#appointment" className={styles.ctaBtn}>Book Appointment</a>
-        </div>
-      </div>
+
 
       {/* ── PUBLICATIONS ── */}
       {hasPublications && (
@@ -251,14 +233,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
         </section>
       )}
 
-      {/* ── BOTTOM CTA ── */}
-      <div className={styles.bottomCta}>
-        <div className={styles.bottomCtaInner}>
-          <h3 className={styles.bottomCtaTitle}>Ready to Schedule Your Visit?</h3>
-          <p className={styles.bottomCtaSub}>Contact the Cancer Institute (WIA) to book an appointment with {doctor.name}</p>
-          <a href="/#appointment" className={styles.bottomCtaBtn}>Request Appointment</a>
-        </div>
-      </div>
+
 
     </main>
   );
