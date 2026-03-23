@@ -18,6 +18,13 @@ interface CarouselFounder {
 
 const slides = [
   {
+    bg: '/images/departments/facility-3.jpg',
+    heading: 'Born from compassion,\nbuilt to heal',
+    lead: 'Founded in 1954 by Dr. Muthulakshmi Reddy with a vision that no one should suffer cancer without care — regardless of their means. Three extraordinary leaders turned that promise into one of India\'s foremost cancer centres.',
+    cta: { label: 'Read Our Legacy', href: '/founders' },
+    showFounderGrid: true,
+  },
+  {
     bg: '/home-page-hero.png',
     heading: 'Because early\ncancer is curable',
     lead: 'Prevention saves lives. From free screening camps to advanced diagnostics, we are committed to detecting cancer early — when treatment is most effective.',
@@ -37,13 +44,6 @@ const slides = [
     lead: 'Over 60% of our patients receive free or subsidised treatment. We accept government insurance schemes and ensure no patient is denied care due to cost.',
     cta: { label: 'Find a Specialist', href: '#doctors' },
     showDualWidgets: false,
-  },
-  {
-    bg: '/images/departments/facility-3.jpg',
-    heading: 'The Visionaries\nBehind CI(WIA)',
-    lead: 'Guided by the selfless ideals of our pioneering founders since 1954.',
-    cta: { label: 'Read Our Legacy', href: '/founders' },
-    showFounderGrid: true,
   },
 ];
 
