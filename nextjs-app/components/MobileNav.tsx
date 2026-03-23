@@ -68,6 +68,7 @@ export default function MobileNav({ isOpen, onClose, onOpenSearch }: MobileNavPr
                 <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Conferences</Link></li>
                 <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Awareness Campaigns</Link></li>
                 <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Institutional News</Link></li>
+                <li><Link href="/coming-soon" style={{ fontSize: '15px', padding: '10px 0' }} onClick={onClose}>Gallery</Link></li>
               </ul>
             </li>
             <li>

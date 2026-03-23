@@ -84,6 +84,7 @@ export default function Header() {
                   <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Conferences</Link></li>
                   <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Awareness Campaigns</Link></li>
                   <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Institutional News</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Gallery</Link></li>
                 </ul>
               </li>
               <li><Link href="/coming-soon">CAREERS</Link></li>
