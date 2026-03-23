@@ -17,10 +17,17 @@ interface Props {
 export default function DoctorsDirectory({ doctors, departments }: Props) {
   const [search, setSearch] = useState('');
   const [deptFilter, setDeptFilter] = useState('all');
+  const [letterFilter, setLetterFilter] = useState('all');
+
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   const filtered = useMemo(() => {
     return doctors.filter(doc => {
       const matchesDept = deptFilter === 'all' || doc.department.slug === deptFilter;
+      const nameWithoutTitle = doc.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '');
+      const matchesLetter = letterFilter === 'all' 
+        || (letterFilter === '#' && !/^[A-Z]/i.test(nameWithoutTitle))
+        || nameWithoutTitle.toUpperCase().startsWith(letterFilter.toUpperCase());
       const q = search.toLowerCase();
       const matchesSearch = !q
         || doc.name.toLowerCase().includes(q)
@@ -28,9 +35,9 @@ export default function DoctorsDirectory({ doctors, departments }: Props) {
         || doc.designation.toLowerCase().includes(q)
         || doc.department.title.toLowerCase().includes(q)
         || doc.areasOfExpertise.some(e => e.toLowerCase().includes(q));
-      return matchesDept && matchesSearch;
+      return matchesDept && matchesLetter && matchesSearch;
     });
-  }, [doctors, search, deptFilter]);
+  }, [doctors, search, deptFilter, letterFilter]);
 
   return (
     <>
@@ -41,6 +48,36 @@ export default function DoctorsDirectory({ doctors, departments }: Props) {
           Browse our team of {doctors.length} specialist oncologists, surgeons, and healthcare professionals.
         </p>
       </section>
+ 
+       {/* Alphabetical Filter */}
+       <div className="container">
+         <div className={styles.alphabetFilter}>
+           <span className={styles.alphabetLabel}>Find doctors by first letter</span>
+           <div className={styles.alphabetGrid}>
+             <button
+               className={`${styles.allBtn} ${letterFilter === 'all' ? styles.allBtnActive : ''}`}
+               onClick={() => setLetterFilter('all')}
+             >
+               ALL
+             </button>
+             {alphabet.map(letter => (
+               <button
+                 key={letter}
+                 className={`${styles.letterCircle} ${letterFilter === letter ? styles.letterCircleActive : ''}`}
+                 onClick={() => setLetterFilter(letter)}
+               >
+                 {letter}
+               </button>
+             ))}
+             <button
+               className={`${styles.letterCircle} ${letterFilter === '#' ? styles.letterCircleActive : ''}`}
+               onClick={() => setLetterFilter('#')}
+             >
+               #
+             </button>
+           </div>
+         </div>
+       </div>
 
       {/* Filters */}
       <div className={styles.filterBar}>
