@@ -236,13 +236,6 @@ export default function DepartmentClinical({
           </DeptSection>
         )}
 
-      {/* 10. CTA — Request an Appointment */}
-      <DeptCtaStrip
-        title="Request an Appointment"
-        subtitle="Schedule a consultation with our specialists"
-        buttonText="Book Appointment"
-        buttonHref="/appointments"
-      />
 
       {/* 11. Our Experts */}
       {department.experts.length > 0 && (
@@ -289,13 +282,6 @@ export default function DepartmentClinical({
         </DeptSection>
       )}
 
-      {/* 15. Bottom CTA — Contact */}
-      <DeptCtaStrip
-        title="Contact the Department"
-        subtitle={department.contactEmail}
-        buttonText="Book Appointment"
-        buttonHref="/appointments"
-      />
     </div>
   );
 }

@@ -2115,3 +2115,77 @@ p  { font-family: var(--font-body); font-size: 17px; line-height: 1.65; color: v
     transform: none;
   }
 }
+/* Emergency & Locations Section */
+.emergency-locations { background: var(--color-white); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+.contact-card {
+  padding: var(--space-7);
+  background: var(--color-off-white);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1.5px solid rgba(0,0,0,0.03);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+.contact-card.emergency {
+  border-color: rgba(197, 48, 48, 0.1);
+}
+.contact-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--color-tertiary);
+  color: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-5);
+}
+.contact-card h3 { margin-bottom: var(--space-3); }
+.contact-card p { font-size: 15px; color: var(--color-text-secondary); margin-bottom: var(--space-5); }
+.emergency-number {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: #C53030;
+  text-decoration: none;
+  margin-bottom: var(--space-2);
+}
+.emergency-number:hover { text-decoration: underline; }
+.availability {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #C53030;
+  opacity: 0.8;
+}
+
+.emergency-link {
+  color: #C53030 !important;
+  background: #FFF5F5;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.emergency-link:hover { background: #FED7D7; }
+
+.footer-map-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-secondary) !important;
+  text-decoration: none;
+  margin-top: 4px;
+  display: inline-block;
+}
+.footer-map-link:hover { text-decoration: underline; }
