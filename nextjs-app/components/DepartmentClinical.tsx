@@ -90,6 +90,7 @@ function buildSectionItems(department: Department) {
   if (department.achievements.length > 0) {
     items.push({ id: 'achievements', label: 'Achievements' });
   }
+  items.push({ id: 'support-groups', label: 'Support Groups' });
 
   return items;
 }
@@ -288,6 +289,23 @@ export default function DepartmentClinical({
           <DeptAchievements achievements={department.achievements} />
         </DeptSection>
       )}
+
+      {/* 14b. Support Groups */}
+      <DeptSection label="Community" title="Support Groups" id="support-groups">
+        {department.supportGroups && department.supportGroups.length > 0 ? (
+          <div className={styles.conditionsGrid}>
+            {department.supportGroups.map((group, i) => (
+              <div key={i} className={styles.conditionCard}>
+                {group}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p style={{ color: '#4c5d74', fontStyle: 'italic', textAlign: 'center', padding: '24px', background: '#f8fafc', borderRadius: '8px' }}>
+            Content is yet to be provided
+          </p>
+        )}
+      </DeptSection>
 
       {/* 15. Bottom CTA — Contact */}
       <DeptCtaStrip

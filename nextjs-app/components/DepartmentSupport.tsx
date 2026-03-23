@@ -182,9 +182,7 @@ function buildSectionItems(department: Department) {
   if (department.mahaveerAshray && department.mahaveerAshray.length > 0) {
     items.push({ id: 'mahaveer-ashray', label: 'Mahaveer Ashray' });
   }
-  if (department.supportGroups && department.supportGroups.length > 0) {
-    items.push({ id: 'support-groups', label: 'Support Groups' });
-  }
+  items.push({ id: 'support-groups', label: 'Support Groups' });
   if (department.facilities && department.facilities.length > 0) {
     items.push({ id: 'facilities', label: 'Facilities' });
   }
@@ -360,15 +358,19 @@ export default function DepartmentSupport({
       )}
 
       {/* 9c. Support Groups */}
-      {department.supportGroups && department.supportGroups.length > 0 && (
-        <DeptSection label="Community Support" title="Support Groups" id="support-groups">
+      <DeptSection label="Community Support" title="Support Groups" id="support-groups">
+        {department.supportGroups && department.supportGroups.length > 0 ? (
           <div className={styles.overviewBody}>
             {department.supportGroups.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
             ))}
           </div>
-        </DeptSection>
-      )}
+        ) : (
+          <p style={{ color: '#4c5d74', fontStyle: 'italic', textAlign: 'center', padding: '24px', background: '#f8fafc', borderRadius: '8px' }}>
+            Content is yet to be provided
+          </p>
+        )}
+      </DeptSection>
 
       {/* 10. Facilities & Equipment */}
       {department.facilities && department.facilities.length > 0 && (

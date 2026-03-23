@@ -179,7 +179,7 @@ export const departments: Department[] = [
       "Gynecological oncology",
       "Urological oncology",
       "Bone and Tissue Cancers",
-      "Neuro-oncology",
+      // "Neuro-oncology", // Pending HOD confirmation
     ],
     treatmentOptions: [
       "Advanced precision surgery incorporating robotic and minimally invasive techniques",

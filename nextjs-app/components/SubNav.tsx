@@ -179,6 +179,10 @@ const categories: SubNavCategory[] = [
             href: "/directory-of-services",
           },
           {
+            label: "Blood Centre",
+            href: "/blood-bank",
+          },
+          {
             label: "Clinical Biochemistry",
             href: "/coming-soon",
           },
@@ -209,7 +213,6 @@ const categories: SubNavCategory[] = [
         links: [
           { label: "Anaesthesia & Pain Management", href: "/departments/anaesthesia-pain" },
           { label: "Quality Control", href: "/departments/quality-control" },
-          { label: "Blood Centre", href: "/coming-soon" },
           { label: "Dietetics", href: "/coming-soon" },
           { label: "Physiotherapy", href: "/coming-soon" },
           { label: "Bio medical engineering", href: "/coming-soon" },

@@ -54,6 +54,7 @@ export default function DepartmentDiagnostic({ department }: DepartmentDiagnosti
     sectionItems.push({ id: 'achievements', label: 'Achievements' });
   }
 
+  sectionItems.push({ id: 'support-groups', label: 'Support Groups' });
   sectionItems.push({ id: 'referral', label: 'Referral' });
 
   return (
@@ -245,6 +246,21 @@ export default function DepartmentDiagnostic({ department }: DepartmentDiagnosti
           <DeptAchievements achievements={dept.achievements} />
         </DeptSection>
       )}
+
+      {/* 12b. Support Groups */}
+      <DeptSection label="Community" title="Support Groups" id="support-groups">
+        {dept.supportGroups && dept.supportGroups.length > 0 ? (
+          <div className={styles.overviewBody}>
+            {dept.supportGroups.map((group, i) => (
+              <p key={i}>{group}</p>
+            ))}
+          </div>
+        ) : (
+          <p style={{ color: '#4c5d74', fontStyle: 'italic', textAlign: 'center', padding: '24px', background: '#f8fafc', borderRadius: '8px' }}>
+            Content is yet to be provided
+          </p>
+        )}
+      </DeptSection>
 
       {/* 13. Referral & Contact */}
       <div className={styles.referralSection} id="referral">
