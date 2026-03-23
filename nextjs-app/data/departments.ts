@@ -36,6 +36,9 @@ export interface Department {
   qualityDimensions?: QualityDimension[];
   services?: string[];
   facilities?: string[];
+  patientFaqs?: { question: string; answer: string }[];
+  mahaveerAshray?: string[];
+  supportGroups?: string[];
 }
 
 export interface DepartmentExpert {
@@ -175,7 +178,7 @@ export const departments: Department[] = [
       "Head and neck cancers",
       "Gynecological oncology",
       "Urological oncology",
-      "Musculo-skeletal cancers",
+      "Bone and Tissue Cancers",
       "Neuro-oncology",
     ],
     treatmentOptions: [
@@ -302,6 +305,7 @@ export const departments: Department[] = [
       "Breast cancer",
       "Lung cancer",
       "Colorectal cancer",
+      "Hereditary Cancers",
       "Gastrointestinal cancers",
       "Head and neck cancers",
       "Gynecological cancers",
@@ -336,9 +340,6 @@ export const departments: Department[] = [
       "Hematopoietic stem cell transplantation",
       "Cellular therapies including CAR-T cell therapy",
       "Precision medicine–based treatment",
-      "Supportive and symptom-directed care",
-      "Palliative care",
-      "Survivorship care and long-term follow-up",
     ],
     preventiveMeasures: [
       "Maintaining a healthy lifestyle with a balanced diet, regular physical activity, adequate sleep, and avoidance of tobacco and excessive alcohol can help reduce the risk of several cancers.",
@@ -583,6 +584,11 @@ export const departments: Department[] = [
       "Evolved into a comprehensive imaging and interventional specialty, incorporating ultrasound, CT, MRI, advanced mammography techniques, and image-guided diagnostic and therapeutic procedures.",
       "Supported academic training and multidisciplinary tumor board discussions, reinforcing commitment to precision diagnosis, patient safety, and collaborative cancer care.",
     ],
+    patientFaqs: [
+      { question: "What should I expect during an MRI?", answer: "An MRI uses strong magnets to create detailed images. You will lie on a sliding table that goes into a tube-like scanner. It can be noisy, so we provide ear protection. You must stay very still, and the procedure takes 30-60 minutes." },
+      { question: "What should I expect during a CT Scan?", answer: "A CT scan uses X-rays to get cross-sectional images. It is very fast and painless. You may need to drink a contrast dye or receive it IV to highlight certain areas." },
+      { question: "What should I expect during a PET Scan?", answer: "A PET scan involves a small injection of radioactive tracer. You will rest for about an hour for the tracer to absorb, then lie on a scanner for 30-45 minutes." }
+    ]
   },
 
   // ── 4. Gynaecological Oncology ────────────────────────────────────────
@@ -1235,6 +1241,14 @@ export const departments: Department[] = [
       "Today the palliative care team has grown to nearly 20 members — physicians, nurses, psychiatrists, psychologists, medical social workers, volunteers, and a data management team.",
       "Outpatient palliative care services are subsidized and free for general ward patients; home-based care and hospice services are provided entirely free of cost.",
     ],
+    mahaveerAshray: [
+      "Mahaveer Ashray is our dedicated hospice facility located at Sriperumbudur, providing compassionate inpatient care for patients nearing the end of life.",
+      "The facility offers a peaceful environment, specialized nursing, and holistic symptom management entirely free of cost, ensuring patients pass with dignity and comfort."
+    ],
+    supportGroups: [
+      "Our palliative care team actively facilitates support groups for patients and caregivers.",
+      "These groups provide a safe space to share experiences, receive emotional counseling, and build a supportive community during difficult times."
+    ]
   },
 
   // ── 9. Microbiology ───────────────────────────────────────────────────
@@ -1389,6 +1403,39 @@ export const departments: Department[] = [
     treatmentOptions: ["Radioiodine Therapy", "PRRT (Peptide Receptor Radionuclide Therapy)", "Lutetium-177 PSMA Therapy", "Bone Pain Palliation"],
     preventiveMeasures: [],
     whenToVisit: ["Referred by an oncologist for functional imaging", "Referred for targeted radionuclide therapy"],
+  },
+
+  // ── 11. Oncopathology ──────────────────────────────
+  {
+    slug: "oncopathology",
+    category: "diagnostic",
+    title: "Oncopathology",
+    metaDescription: "Oncopathology at Cancer Institute WIA, Chennai — expert tissue diagnostics, molecular pathology, and cytogenetics.",
+    tagline: "Precision diagnostics at the cellular and molecular level to guide personalized cancer treatment.",
+    overview: [
+      "The Department of Oncopathology provides accurate and timely diagnostic reports by examining tissue biopsies, surgical resections, and cytology samples.",
+      "Our dedicated team of pathologists collaborate closely with clinical teams to ensure definitive cancer diagnoses and tumor staging."
+    ],
+    hod: {
+      name: "Placeholder HOD",
+      credentials: "MD",
+      designation: "Head of Department",
+      message: "Our vision is to deliver targeted, precision oncological care through the latest diagnostic developments."
+    },
+    contactEmail: "info@cancerinstitutewia.org",
+    experts: [],
+    achievements: [],
+    legacy: [],
+    diagnosticServices: [
+      {
+        category: "Cytogenetics",
+        services: ["Karyotyping", "FISH (Fluorescence In Situ Hybridization)", "Chromosomal microarray analysis"]
+      },
+      {
+        category: "Histopathology",
+        services: ["Surgical pathology", "Immunohistochemistry (IHC)", "Frozen section analysis"]
+      }
+    ],
   },
 ];
 

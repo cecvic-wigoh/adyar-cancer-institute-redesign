@@ -128,6 +128,17 @@ export default function DepartmentDiagnostic({ department }: DepartmentDiagnosti
                 </p>
               </div>
             </div>
+            {dept.patientFaqs && dept.patientFaqs.length > 0 && (
+              <div className={styles.faqList} style={{ marginTop: '2rem' }}>
+                <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#1a6b5a' }}>Frequently Asked Questions</h3>
+                {dept.patientFaqs.map((faq, i) => (
+                  <div key={i} style={{ marginBottom: '1.2rem', padding: '1rem', background: '#f8fafc', borderRadius: '8px' }}>
+                    <h4 style={{ fontWeight: 600, marginBottom: '0.4rem', color: '#334155' }}>Q: {faq.question}</h4>
+                    <p style={{ margin: 0, color: '#475569', fontSize: '0.95rem' }}>A: {faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       )}

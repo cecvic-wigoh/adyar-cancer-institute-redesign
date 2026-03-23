@@ -179,6 +179,12 @@ function buildSectionItems(department: Department) {
   if (department.services && department.services.length > 0) {
     items.push({ id: 'services', label: 'Services' });
   }
+  if (department.mahaveerAshray && department.mahaveerAshray.length > 0) {
+    items.push({ id: 'mahaveer-ashray', label: 'Mahaveer Ashray' });
+  }
+  if (department.supportGroups && department.supportGroups.length > 0) {
+    items.push({ id: 'support-groups', label: 'Support Groups' });
+  }
   if (department.facilities && department.facilities.length > 0) {
     items.push({ id: 'facilities', label: 'Facilities' });
   }
@@ -337,6 +343,28 @@ export default function DepartmentSupport({
               <div key={i} className={styles.serviceItem}>
                 {service}
               </div>
+            ))}
+          </div>
+        </DeptSection>
+      )}
+
+      {/* 9b. Mahaveer Ashray */}
+      {department.mahaveerAshray && department.mahaveerAshray.length > 0 && (
+        <DeptSection label="Hospice Care" title="Mahaveer Ashray — End of Life Care" id="mahaveer-ashray">
+          <div className={styles.overviewBody}>
+            {department.mahaveerAshray.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        </DeptSection>
+      )}
+
+      {/* 9c. Support Groups */}
+      {department.supportGroups && department.supportGroups.length > 0 && (
+        <DeptSection label="Community Support" title="Support Groups" id="support-groups">
+          <div className={styles.overviewBody}>
+            {department.supportGroups.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
             ))}
           </div>
         </DeptSection>

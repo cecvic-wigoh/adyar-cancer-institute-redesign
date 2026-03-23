@@ -179,10 +179,6 @@ const categories: SubNavCategory[] = [
             href: "/departments/microbiology",
           },
           {
-            label: "Cytogenetics",
-            href: "/coming-soon",
-          },
-          {
             label: "Cancer Biology & Molecular Diagnostics",
             href: "/coming-soon",
           },
@@ -192,7 +188,7 @@ const categories: SubNavCategory[] = [
           },
           {
             label: "Oncopathology",
-            href: "/coming-soon",
+            href: "/departments/oncopathology",
           },
           {
             label: "Radio Diagnosis and Imaging",
