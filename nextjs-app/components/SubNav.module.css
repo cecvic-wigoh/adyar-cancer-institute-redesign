@@ -8,8 +8,9 @@
 
 .bar {
   display: none;
-  max-width: var(--max-width);
+  max-width: var(--nav-max-width);
   margin: 0 auto;
+  padding: 0 var(--nav-padding);
 }
 
 .item {
