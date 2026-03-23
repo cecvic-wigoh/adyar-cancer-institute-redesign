@@ -191,7 +191,7 @@ const categories: SubNavCategory[] = [
             href: "/coming-soon",
           },
           {
-            label: "Onco-Pathology",
+            label: "Oncopathology",
             href: "/coming-soon",
           },
           {
