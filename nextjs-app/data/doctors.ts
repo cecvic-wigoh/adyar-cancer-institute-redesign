@@ -61,7 +61,7 @@ export const doctors: Doctor[] = [
     primaryDegree: { degree: 'MBBS', institution: 'MGR Medical University', year: '1998' },
     postgraduateQualification: { degree: 'MD Pediatrics', institution: 'PGIMER Chandigarh', year: '2003' },
     superSpeciality: { degree: 'DM Medical Oncology', institution: 'AIIMS New Delhi', year: '2011' },
-    fellowships: ['MSc Global Child Health, St Judes Childrens Research Hospital, Mmephis, USA'],
+    fellowships: ['MSc Global Child Health, St Judes Childrens Research Hospital, Memphis, USA'],
     areasOfExpertise: [
       'Medical and Pediatric Oncology',
     ],
