@@ -392,6 +392,36 @@ button.pillArrow {
 }
 
 /* ── Emergency Popup UI ── */
+/* ── Emergency Header ── */
+.emergencyHeader {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  gap: 12px;
+  background: linear-gradient(135deg, #134795 0%, #0d2d60 100%);
+}
+
+.emergencyHeaderIcon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.emergencyHeader .emergencyHeaderTitle {
+  color: #fff;
+}
+
+.emergencyHeader .searchClose {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.emergencyHeader .searchClose:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
 .emergencyBody {
   padding: 32px;
   background: #f8fafc;
@@ -432,8 +462,7 @@ button.pillArrow {
 }
 
 .emergencyCardIcon {
-  font-size: 2rem;
-  background: #FEF2F2;
+  background: #EBF9F9;
   width: 56px;
   height: 56px;
   display: flex;
@@ -460,7 +489,7 @@ button.pillArrow {
   font-family: var(--font-dm-sans, Arial, sans-serif);
   font-size: 1.4rem;
   font-weight: 700;
-  color: #ef4444;
+  color: #134795;
   letter-spacing: 0.5px;
 }
 
@@ -474,7 +503,7 @@ button.pillArrow {
 }
 
 .callBtn {
-  background: #ef4444;
+  background: #23CDC0;
   color: white;
   text-decoration: none;
   font-family: var(--font-dm-sans, Arial, sans-serif);
@@ -487,7 +516,7 @@ button.pillArrow {
 }
 
 .callBtn:hover {
-  background: #dc2626;
+  background: #0A8C82;
   color: white;
 }
 
