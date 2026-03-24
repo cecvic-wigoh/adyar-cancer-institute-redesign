@@ -76,6 +76,14 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
               </a>
             </div>
           )}
+
+          <div className={styles.heroQualifications}>
+            <strong>Qualifications</strong>
+            <span>{qualifications.join(' \u2022 ')}</span>
+
+            <strong>Specialties</strong>
+            <span>{doctor.specialties.join(' \u2022 ')}</span>
+          </div>
         </div>
 
         <div className={styles.heroPhoto}>
