@@ -141,7 +141,7 @@
 
 /* ── Overview body ── */
 .overviewBody {
-  font-size: 16.5px;
+  font-size: 18px;
   line-height: 1.75;
 }
 
@@ -163,7 +163,7 @@
 
 .warningTitle {
   font-family: var(--font-heading);
-  font-size: 24px;
+  font-size: 28px;
   color: #9A3412;
   margin-bottom: 8px;
   display: flex;
@@ -173,7 +173,7 @@
 
 .warningSub {
   font-family: var(--font-heading);
-  font-size: 15px;
+  font-size: 18px;
   color: #B45309;
   margin-bottom: 24px;
 }
@@ -192,7 +192,7 @@
   background: white;
   border-radius: 8px;
   font-family: var(--font-heading);
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-text-primary);
   border: 1px solid #FED7AA;
 }
@@ -214,7 +214,7 @@
   background: var(--color-off-white);
   border-radius: 8px;
   font-family: var(--font-heading);
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
   color: var(--color-text-primary);
   border-left: 3px solid var(--color-secondary);
@@ -232,7 +232,7 @@
 
 .treatmentItem {
   font-family: var(--font-heading);
-  font-size: 15px;
+  font-size: 18px;
   padding: 10px 0;
   border-bottom: 1px solid #f0f0f0;
   display: flex;
@@ -264,7 +264,7 @@
 
 .preventionCardTitle {
   font-family: var(--font-heading);
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--color-primary);
   margin-bottom: 8px;
@@ -272,7 +272,7 @@
 
 .preventionCardText {
   font-family: var(--font-heading);
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-text-secondary);
   line-height: 1.6;
 }
