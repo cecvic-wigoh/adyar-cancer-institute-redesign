@@ -9,21 +9,10 @@ interface QuickMenuItem {
   href: string;
   icon: React.ReactNode;
   variant: string;
-  action?: 'search' | 'emergency';
+  action?: 'search';
 }
 
 const menuItems: QuickMenuItem[] = [
-  {
-    label: 'Emergency',
-    href: '#',
-    variant: 'itemEmergency',
-    action: 'emergency',
-    icon: (
-      <svg viewBox="0 0 64 64" className={styles.iconSvg}>
-        <path d="M32 12 L32 52 M12 32 L52 32" stroke="#E74C3C" strokeWidth="10" strokeLinecap="round" />
-      </svg>
-    ),
-  },
   {
     label: 'Book Appointment',
     href: '/appointment',
@@ -108,7 +97,6 @@ const menuItems: QuickMenuItem[] = [
 ];
 
 const variantMap: Record<string, string> = {
-  itemEmergency: styles.itemEmergency,
   itemBlue: styles.itemBlue,
   itemRed: styles.itemRed,
   itemTeal: styles.itemTeal,
@@ -119,7 +107,6 @@ const variantMap: Record<string, string> = {
 
 export default function SideQuickMenu() {
   const [searchOpen, setSearchOpen] = useState(false);
-  const [emergencyOpen, setEmergencyOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
@@ -132,7 +119,6 @@ export default function SideQuickMenu() {
                 className={styles.iconCircle}
                 onClick={() => {
                   if (item.action === 'search') setSearchOpen(true);
-                  if (item.action === 'emergency') setEmergencyOpen(true);
                 }}
                 aria-label={`Open ${item.label}`}
                 type="button"
@@ -151,7 +137,6 @@ export default function SideQuickMenu() {
                   className={styles.pillArrow}
                   onClick={() => {
                     if (item.action === 'search') setSearchOpen(true);
-                    if (item.action === 'emergency') setEmergencyOpen(true);
                   }}
                   aria-label={item.label}
                   type="button"
@@ -226,65 +211,6 @@ export default function SideQuickMenu() {
             </div>
             <div className={styles.searchFooter}>
               Press <kbd className={styles.kbd}>Esc</kbd> to close
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Emergency Contact Overlay */}
-      {emergencyOpen && (
-        <div className={styles.searchOverlay} onClick={() => setEmergencyOpen(false)}>
-          <div className={styles.searchModal} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.emergencyHeader}>
-              <svg viewBox="0 0 24 24" fill="none" className={styles.emergencyHeaderIcon}>
-                <rect x="3" y="3" width="18" height="18" rx="4" fill="#134795" />
-                <path d="M12 7v10M7 12h10" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" />
-              </svg>
-              <h2 className={styles.emergencyHeaderTitle}>Emergency Helpline</h2>
-              <button className={styles.searchClose} onClick={() => setEmergencyOpen(false)} type="button" aria-label="Close emergency modal">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
-            </div>
-            <div className={styles.emergencyBody}>
-              <div className={styles.emergencyGrid}>
-                <div className={styles.emergencyCard}>
-                  <div className={styles.emergencyCardIcon}>
-                    <svg viewBox="0 0 40 40" fill="none" width="32" height="32">
-                      <circle cx="20" cy="12" r="6" fill="#23CDC0" />
-                      <circle cx="13" cy="10" r="3.5" fill="#23CDC0" opacity="0.6" />
-                      <circle cx="27" cy="10" r="3.5" fill="#23CDC0" opacity="0.6" />
-                      <path d="M10 30c0-5.5 4.5-10 10-10s10 4.5 10 10" fill="#134795" />
-                      <path d="M6 32c0-3.9 3.1-7 7-7" stroke="#134795" strokeWidth="2" strokeLinecap="round" fill="none" />
-                      <path d="M34 32c0-3.9-3.1-7-7-7" stroke="#134795" strokeWidth="2" strokeLinecap="round" fill="none" />
-                    </svg>
-                  </div>
-                  <div className={styles.emergencyCardContent}>
-                    <h3>Pediatric Emergency</h3>
-                    <p className={styles.emergencyPhone}>98765 43210</p>
-                    <span className={styles.emergencySubtext}>24/7 Children&apos;s Cancer Care</span>
-                  </div>
-                  <a href="tel:9876543210" className={styles.callBtn}>Call Now</a>
-                </div>
-                <div className={styles.emergencyCard}>
-                  <div className={styles.emergencyCardIcon}>
-                    <svg viewBox="0 0 40 40" fill="none" width="32" height="32">
-                      <circle cx="20" cy="13" r="7" fill="#23CDC0" />
-                      <path d="M10 34c0-5.5 4.5-10 10-10s10 4.5 10 10" fill="#134795" />
-                      <rect x="16" y="20" width="8" height="3" rx="1.5" fill="#fff" />
-                      <rect x="18.5" y="18" width="3" height="8" rx="1.5" fill="#fff" />
-                    </svg>
-                  </div>
-                  <div className={styles.emergencyCardContent}>
-                    <h3>Adult Emergency</h3>
-                    <p className={styles.emergencyPhone}>12345 67890</p>
-                    <span className={styles.emergencySubtext}>24/7 Cancer Emergency Care</span>
-                  </div>
-                  <a href="tel:1234567890" className={styles.callBtn}>Call Now</a>
-                </div>
-              </div>
             </div>
           </div>
         </div>
