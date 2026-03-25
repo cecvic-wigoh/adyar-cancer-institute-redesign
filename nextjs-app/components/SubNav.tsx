@@ -155,10 +155,6 @@ const categories: SubNavCategory[] = [
             label: "Preventive Oncology",
             href: "/coming-soon",
           },
-          {
-            label: "Patient Support Services",
-            href: "/coming-soon",
-          },
           { label: "Physiotherapy", href: "/coming-soon" },
           { label: "Pain and Palliative Medicine", href: "/coming-soon" },
           {
@@ -213,7 +209,7 @@ const categories: SubNavCategory[] = [
         ],
       },
       {
-        heading: "Support Services",
+        heading: "Patient Support Services",
         links: [
           { label: "Anaesthesia & Pain Management", href: "/departments/anaesthesia-pain" },
           { label: "Quality Control", href: "/departments/quality-control" },
@@ -224,7 +220,7 @@ const categories: SubNavCategory[] = [
         ],
       },
     ],
-    ctas: [{ label: "Find a Doctor", href: "/#doctors" }],
+    ctas: [],
   },
   {
     label: "Research",

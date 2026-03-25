@@ -12,6 +12,20 @@ export default function TopBar() {
             info@cancerinstitutewia.org
           </a>
         </div>
+        
+        <div className="top-bar-emergency" aria-label="Emergency Helplines">
+          <span className="emergency-label">24/7 EMERGENCY:</span>
+          <div className="emergency-links">
+            <a href="tel:1234567890" className="emergency-link adult">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+              ADULT: 12345 67890
+            </a>
+            <a href="tel:9876543210" className="emergency-link pediatric">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 8v8M8 12h8" /></svg>
+              PEDIATRIC: 98765 43210
+            </a>
+          </div>
+        </div>
         <div className="top-bar-right">
           <div className="top-bar-social" aria-label="Social media links">
             <a href="#" className="social-icon" aria-label="Follow us on Facebook">
