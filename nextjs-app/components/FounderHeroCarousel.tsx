@@ -18,7 +18,7 @@ interface CarouselFounder {
 
 const slides = [
   {
-    bg: '/images/departments/facility-3.jpg',
+    bg: '/hero-banner/13th Cancer Institute.jpeg',
     heading: 'Born from compassion,\nbuilt to heal',
     lead: 'Founded in 1954 by Dr. Muthulakshmi Reddy with a vision that no one should suffer cancer without care — regardless of their means. Three extraordinary leaders turned that promise into one of India\'s foremost cancer centres.',
     cta: { label: 'Read Our Legacy', href: '/founders' },
@@ -32,7 +32,7 @@ const slides = [
     showDualWidgets: false,
   },
   {
-    bg: '/images/departments/facility-1.jpg',
+    bg: '/hero-banner/Facebook Image.png',
     heading: 'Seven decades of\ncancer care excellence',
     lead: 'Since 1954, Cancer Institute (WIA) has grown from 12 beds in a small hut to one of India\'s largest and most respected oncology centres — treating over 100,000 patients every year.',
     cta: { label: 'Why Choose Us', href: '#about' },

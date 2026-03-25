@@ -139,8 +139,8 @@ export default function Header() {
             </button>
             <Link href="/#appointment" className="btn btn-primary" style={{ whiteSpace: 'nowrap' }}>Book Appointment</Link>
             <div className="header-accreditations">
-              <Image src="/logo/nabh-seeklogo.png" alt="NABH Accredited" width={48} height={48} />
-              <Image src="/logo/NABL_Official_LOGO_Registered.png" alt="NABL Accredited" width={48} height={48} />
+              <Image src="/logo/nabh-seeklogo.png" alt="NABH Accredited" width={40} height={40} />
+              <Image src="/logo/NABL_Official_LOGO_Registered.png" alt="NABL Accredited" width={40} height={40} />
             </div>
             <button
               className="hamburger"

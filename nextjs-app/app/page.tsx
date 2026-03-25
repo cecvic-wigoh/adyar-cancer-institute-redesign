@@ -158,18 +158,9 @@ export default function Home() {
             </p>
           </div>
           <div className="why-grid">
-            <div className="why-card">
+            <Link href="/founders/dr-muthulakshmi-reddy" className="why-card why-card-link">
               <div className="why-icon" aria-hidden="true">
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                   <polyline points="9 22 9 12 15 12 15 22" />
                 </svg>
@@ -180,19 +171,11 @@ export default function Home() {
                 most respected cancer treatment and research centres. Our
                 heritage speaks for itself.
               </p>
-            </div>
-            <div className="why-card">
+              <span className="why-card-action">Read Our Legacy <ArrowIcon size={14} /></span>
+            </Link>
+            <Link href="/doctors" className="why-card why-card-link">
               <div className="why-icon" aria-hidden="true">
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
                   <circle cx="9" cy="7" r="4" />
                   <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
@@ -204,19 +187,11 @@ export default function Home() {
                 pathologists, and support staff collaborate for every patient —
                 your best outcome is our shared goal.
               </p>
-            </div>
-            <div className="why-card">
+              <span className="why-card-action">Meet Our Specialists <ArrowIcon size={14} /></span>
+            </Link>
+            <Link href="/coming-soon" className="why-card why-card-link">
               <div className="why-icon" aria-hidden="true">
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M6 4h12" />
                   <path d="M6 9h12" />
                   <path d="M16 4c0 4.5-4 5-8 5" />
@@ -229,19 +204,11 @@ export default function Home() {
                 and offer financial support to ensure no patient is denied care
                 due to cost.
               </p>
-            </div>
-            <div className="why-card">
+              <span className="why-card-action">Insurance &amp; Support <ArrowIcon size={14} /></span>
+            </Link>
+            <Link href="/coming-soon" className="why-card why-card-link">
               <div className="why-icon" aria-hidden="true">
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
                 </svg>
               </div>
@@ -251,7 +218,8 @@ export default function Home() {
                 peer-reviewed research ensure our patients benefit from the very
                 latest advances in oncology.
               </p>
-            </div>
+              <span className="why-card-action">Our Research <ArrowIcon size={14} /></span>
+            </Link>
           </div>
         </div>
       </section>
