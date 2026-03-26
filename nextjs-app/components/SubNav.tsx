@@ -2,11 +2,19 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { departments } from "@/data/departments";
 import styles from "./SubNav.module.css";
+
+interface SubNavLink {
+  label: string;
+  href: string;
+  external?: boolean;
+  subLinks?: SubNavLink[];
+}
 
 interface SubNavColumn {
   heading: string;
-  links: { label: string; href: string; external?: boolean }[];
+  links: SubNavLink[];
 }
 
 interface SubNavCta {
@@ -130,98 +138,78 @@ const categories: SubNavCategory[] = [
       {
         heading: "Clinical Departments",
         links: [
-          {
-            label: "Surgical Oncology",
-            href: "/departments/surgical-oncology",
-          },
-          { label: "Medical Oncology", href: "/departments/medical-oncology" },
-          {
-            label: "Radiation Oncology",
-            href: "/departments/radiation-oncology",
-          },
-          {
-            label: "Gynaecological Oncology",
-            href: "/departments/gynaecological-oncology",
-          },
-          {
-            label: "Medical Gastroenterology",
-            href: "/coming-soon",
-          },
-          {
-            label: "Palliative Medicine",
-            href: "/departments/palliative-medicine",
-          },
-          {
-            label: "Preventive Oncology",
-            href: "/coming-soon",
-          },
-          {
-            label: "Patient Support Services",
-            href: "/coming-soon",
-          },
-          { label: "Physiotherapy", href: "/coming-soon" },
-          { label: "Pain and Palliative Medicine", href: "/coming-soon" },
-          {
-            label: "Nuclear Medicine and Theranostics",
-            href: "/departments/nuclear-medicine-and-theranostics",
-          },
-        ],
+          "surgical-oncology",
+          "medical-oncology",
+          "radiation-oncology",
+          "gynaecological-oncology",
+          "medical-gastroenterology",
+          "palliative-medicine",
+          "preventive-oncology",
+          "patient-support",
+          "physiotherapy",
+          "pain-palliative",
+          "nuclear-medicine-and-theranostics",
+        ]
+          .map((slug): SubNavLink | null => {
+            const dept = departments.find((d) => d.slug === slug);
+            if (!dept) return null;
+            return {
+              label: dept.navLabel || dept.title,
+              href: dept.isComingSoon
+                ? "/coming-soon"
+                : dept.externalHref || `/departments/${dept.slug}`,
+            };
+          })
+          .filter((link): link is SubNavLink => link !== null),
       },
       {
         heading: "Diagnostic Services",
         links: [
-          {
-            label: "Diagnostics Hub",
-            href: "/diagnostics",
-          },
-          {
-            label: "Directory of Services (DOS)",
-            href: "/directory-of-services",
-          },
-          {
-            label: "Blood Centre",
-            href: "/blood-bank",
-          },
-          {
-            label: "Clinical Biochemistry",
-            href: "/coming-soon",
-          },
-          {
-            label: "Microbiology",
-            href: "/departments/microbiology",
-          },
-          {
-            label: "Cancer Biology & Molecular Diagnostics",
-            href: "/coming-soon",
-          },
-          {
-            label: "Molecular Oncology",
-            href: "/coming-soon",
-          },
-          {
-            label: "Oncopathology",
-            href: "/departments/oncopathology",
-          },
-          {
-            label: "Radio Diagnosis and Imaging",
-            href: "/departments/radiology",
-          },
-          {
-            label: "Nuclear Medicine and Molecular Diagnostics",
-            href: "/coming-soon",
-          },
-        ],
+          "diagnostics-hub",
+          "directory-of-services",
+          "blood-centre",
+          "clinical-biochemistry",
+          "microbiology",
+          "cancer-biology",
+          "molecular-oncology",
+          "oncopathology",
+          "radiology",
+          "nuclear-medicine-molecular-diag",
+        ]
+          .map((slug): SubNavLink | null => {
+            const dept = departments.find((d) => d.slug === slug);
+            if (!dept) return null;
+            return {
+              label: dept.navLabel || dept.title,
+              href: dept.isComingSoon
+                ? "/coming-soon"
+                : dept.externalHref || `/departments/${dept.slug}`,
+              ...(dept.subLinks && { subLinks: dept.subLinks }),
+            };
+          })
+          .filter((link): link is SubNavLink => link !== null),
       },
       {
         heading: "Support Services",
         links: [
-          { label: "Anaesthesia & Pain Management", href: "/departments/anaesthesia-pain" },
-          { label: "Quality Control", href: "/departments/quality-control" },
-          { label: "Dietetics", href: "/coming-soon" },
-          { label: "Physiotherapy", href: "/coming-soon" },
-          { label: "Bio medical engineering", href: "/coming-soon" },
-          { label: "Pharmacy", href: "/coming-soon" },
-        ],
+          "anaesthesia-pain",
+          "quality-control",
+          "dietetics",
+          "physiotherapy",
+          "biomedical-engineering",
+          "pharmacy",
+        ]
+          .map((slug): SubNavLink | null => {
+            const dept = departments.find((d) => d.slug === slug);
+            if (!dept) return null;
+            return {
+              label: dept.navLabel || dept.title,
+              href: dept.isComingSoon
+                ? "/coming-soon"
+                : dept.externalHref || `/departments/${dept.slug}`,
+            };
+          })
+          .filter((link): link is SubNavLink => link !== null),
       },
     ],
     ctas: [{ label: "Find a Doctor", href: "/#doctors" }],
@@ -426,18 +414,41 @@ export default function SubNav() {
                   <ul>
                     {col.links.map((link) => (
                       <li key={link.label}>
-                        {link.external ? (
-                          <a href={link.href} className={styles.megaLink}>
-                            {link.label}
-                          </a>
-                        ) : (
-                          <Link
-                            href={link.href}
-                            className={styles.megaLink}
-                            onClick={() => setActiveIndex(null)}
-                          >
-                            {link.label}
-                          </Link>
+                        <div className={styles.megaLinkWrapper}>
+                          {link.external ? (
+                            <a href={link.href} className={styles.megaLink}>
+                              {link.label}
+                            </a>
+                          ) : (
+                            <Link
+                              href={link.href}
+                              className={styles.megaLink}
+                              onClick={() => setActiveIndex(null)}
+                            >
+                              {link.label}
+                            </Link>
+                          )}
+                        </div>
+                        {link.subLinks && link.subLinks.length > 0 && (
+                          <ul className={styles.megaSubLinks}>
+                            {link.subLinks.map((sub) => (
+                              <li key={sub.label}>
+                                {sub.external ? (
+                                  <a href={sub.href} className={styles.megaSubLink}>
+                                    {sub.label}
+                                  </a>
+                                ) : (
+                                  <Link
+                                    href={sub.href}
+                                    className={styles.megaSubLink}
+                                    onClick={() => setActiveIndex(null)}
+                                  >
+                                    {sub.label}
+                                  </Link>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
                         )}
                       </li>
                     ))}

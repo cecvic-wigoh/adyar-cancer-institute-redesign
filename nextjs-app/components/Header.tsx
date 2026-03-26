@@ -60,11 +60,10 @@ export default function Header() {
                   <svg className="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
                 </button>
                 <ul className="dropdown-menu">
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Legacy</Link></li>
                   <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Vision &amp; Mission</Link></li>
-                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Legacy (reverse chronology)</Link></li>
-                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Future Vision (Laya)</Link></li>
-                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Leadership</Link></li>
-                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Achievements</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Leadership Team</Link></li>
+                  <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Milestones</Link></li>
                   <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Annual Reports</Link></li>
                   <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Collaborations</Link></li>
                 </ul>
