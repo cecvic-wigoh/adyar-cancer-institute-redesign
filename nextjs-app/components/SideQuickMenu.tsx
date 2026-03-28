@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import Image from 'next/image';
 import styles from './SideQuickMenu.module.css';
 
 interface QuickMenuItem {
@@ -19,9 +20,13 @@ const menuItems: QuickMenuItem[] = [
     variant: 'itemEmergency',
     action: 'emergency',
     icon: (
-      <svg viewBox="0 0 64 64" className={styles.iconSvg}>
-        <path d="M32 12 L32 52 M12 32 L52 32" stroke="#E74C3C" strokeWidth="10" strokeLinecap="round" />
-      </svg>
+      <Image 
+        src="/sidebar-icons/siren.png" 
+        alt="" 
+        width={32} 
+        height={32} 
+        className={styles.sidebarIconImg}
+      />
     ),
   },
   {
@@ -29,22 +34,13 @@ const menuItems: QuickMenuItem[] = [
     href: '/appointment',
     variant: 'itemBlue',
     icon: (
-      <svg viewBox="0 0 64 64" className={styles.iconSvg}>
-        <circle cx="32" cy="16" r="11" fill="#2980B9" />
-        <circle cx="32" cy="15" r="8" fill="#FFDBB4" />
-        <rect x="26" y="7" width="12" height="5" rx="2" fill="#fff" />
-        <circle cx="32" cy="7" r="3.5" fill="#E74C3C" />
-        <ellipse cx="29" cy="16" rx="1.5" ry="1.2" fill="#2C3E50" />
-        <ellipse cx="35" cy="16" rx="1.5" ry="1.2" fill="#2C3E50" />
-        <path d="M30 20 Q32 22.5 34 20" stroke="#C0392B" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-        <rect x="22" y="26" width="20" height="22" rx="5" fill="#3498DB" />
-        <rect x="29" y="28" width="6" height="6" rx="1.5" fill="#fff" />
-        <circle cx="49" cy="18" r="5" fill="#FFDBB4" />
-        <rect x="43" y="24" width="5" height="10" rx="2.5" fill="#FFDBB4" transform="rotate(-20 45 28)" />
-        <rect x="46" y="12" width="2.5" height="6" rx="1.2" fill="#FFDBB4" transform="rotate(-5 47 15)" />
-        <rect x="49" y="12" width="2.5" height="7" rx="1.2" fill="#FFDBB4" transform="rotate(5 50 15)" />
-        <rect x="52" y="13" width="2.5" height="5.5" rx="1.2" fill="#FFDBB4" transform="rotate(10 53 16)" />
-      </svg>
+      <Image 
+        src="/sidebar-icons/agenda.png" 
+        alt="" 
+        width={32} 
+        height={32} 
+        className={styles.sidebarIconImg}
+      />
     ),
   },
   {
@@ -68,12 +64,13 @@ const menuItems: QuickMenuItem[] = [
     href: '/directory-of-services',
     variant: 'itemGreen',
     icon: (
-      <svg viewBox="0 0 64 64" className={styles.iconSvg}>
-        <path d="M32 4 L54 14 V32 C54 46 32 60 32 60 C32 60 10 46 10 32 V14 Z" fill="#C8E6C9" stroke="#2E7D32" strokeWidth="2" />
-        <path d="M32 10 L50 18 V31 C50 43 32 55 32 55 C32 55 14 43 14 31 V18 Z" fill="#fff" />
-        <rect x="28" y="20" width="8" height="22" rx="3" fill="#2E7D32" />
-        <rect x="21" y="27" width="22" height="8" rx="3" fill="#2E7D32" />
-      </svg>
+      <Image 
+        src="/sidebar-icons/directoty-pf-services.png" 
+        alt="" 
+        width={32} 
+        height={32} 
+        className={styles.sidebarIconImg}
+      />
     ),
   },
   {
@@ -81,16 +78,13 @@ const menuItems: QuickMenuItem[] = [
     href: '/doctors',
     variant: 'itemPurple',
     icon: (
-      <svg viewBox="0 0 64 64" className={styles.iconSvg}>
-        <path d="M18 14 C18 14 14 30 14 38 C14 46 20 50 28 50" stroke="#6C3483" strokeWidth="4" fill="none" strokeLinecap="round" />
-        <path d="M38 14 C38 14 42 30 42 38 C42 46 36 50 28 50" stroke="#6C3483" strokeWidth="4" fill="none" strokeLinecap="round" />
-        <circle cx="18" cy="12" r="4" fill="#8E44AD" />
-        <circle cx="18" cy="12" r="2" fill="#D2B4DE" />
-        <circle cx="38" cy="12" r="4" fill="#8E44AD" />
-        <circle cx="38" cy="12" r="2" fill="#D2B4DE" />
-        <circle cx="28" cy="54" r="6" fill="#8E44AD" stroke="#6C3483" strokeWidth="2" />
-        <circle cx="28" cy="54" r="2.5" fill="#F3E5F5" />
-      </svg>
+      <Image 
+        src="/sidebar-icons/medical-team.png" 
+        alt="" 
+        width={32} 
+        height={32} 
+        className={styles.sidebarIconImg}
+      />
     ),
   },
   {
@@ -99,10 +93,13 @@ const menuItems: QuickMenuItem[] = [
     variant: 'itemOrange',
     action: 'search',
     icon: (
-      <svg viewBox="0 0 64 64" className={styles.iconSvg}>
-        <circle cx="27" cy="27" r="15" fill="none" stroke="#fff" strokeWidth="5" />
-        <line x1="38" y1="38" x2="52" y2="52" stroke="#fff" strokeWidth="6" strokeLinecap="round" />
-      </svg>
+      <Image 
+        src="/sidebar-icons/magnifying-glass.png" 
+        alt="" 
+        width={32} 
+        height={32} 
+        className={styles.sidebarIconImg}
+      />
     ),
   },
 ];

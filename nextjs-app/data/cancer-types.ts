@@ -418,6 +418,35 @@ export const cancerTypes: CancerType[] = [
     ],
     ctaTitle: 'Get Expert Oesophageal Cancer Care',
   },
+  {
+    slug: 'heredity', title: 'Hereditary Cancer', shortDesc: 'Genetic counselling, risk assessment & family screening protocols',
+    metaDescription: 'Hereditary cancer genetic counselling and risk assessment at Cancer Institute (WIA), Chennai.',
+    heroDesc: 'Understanding your genetic risk is the first step in proactive cancer prevention for you and your family.',
+    understanding: [
+      'Hereditary cancers are caused by inherited genetic mutations passed from parents to children.',
+      'At CI(WIA), our clinical genetics team provides comprehensive risk assessment for families with a strong history of cancer.',
+      'Identifying a genetic predisposition allows for tailored screening, early detection, and preventive strategies that can save lives.'
+    ],
+    symptoms: ['Multiple family members with the same type of cancer', 'Cancer occurring at an unusually young age (under 50)', 'More than one type of cancer in the same person', 'Cancers in both of a pair of organs (e.g., both breasts or kidneys)', 'Family members with rare cancers'],
+    riskFactors: ['Family history of breast, ovarian, or colorectal cancer', 'Known BRCA1/BRCA2 mutations in the family', 'Lynch syndrome or other inherited cancer syndromes', 'Multiple generations affected by cancer', 'Ashkenazi Jewish ancestry (higher risk for some mutations)'],
+    treatments: [
+      { title: 'Genetic Counselling', description: 'Expert guidance to understand family risk and the implications of genetic testing.' },
+      { title: 'Genetic Testing', description: 'Advanced molecular analysis for inherited mutations using blood or saliva samples.' },
+      { title: 'Risk-Reduced Screening', description: 'Customised, high-frequency surveillance plans based on your genetic profile.' },
+      { title: 'Preventive Interventions', description: 'Medical or surgical options to reduce risk in high-predisposition individuals.' },
+      { title: 'Family Tree Analysis', description: 'Detailed pedigree mapping to identify inheritance patterns across generations.' },
+    ],
+    relatedDepartments: [
+      { slug: 'preventive-oncology', title: 'Preventive Oncology', description: 'Risk assessment and screening programmes.' },
+      { slug: 'molecular-oncology', title: 'Molecular Oncology', description: 'Advanced genetic and genomic testing.' },
+      { slug: 'surgical-oncology', title: 'Surgical Oncology', description: 'Risk-reducing surgical options.' },
+    ],
+    specialists: [
+      { slug: 'dr-anbalagan', name: 'Dr. P. Anbalagan', specialties: ['Preventive Oncology'], designation: 'Head, Preventive Oncology' },
+      { slug: 'dr-swaminathan', name: 'Dr. R. Swaminathan', specialties: ['Molecular Oncology'], designation: 'Medical Oncologist' },
+    ],
+    ctaTitle: 'Assess Your Genetic Risk',
+  },
 ];
 
 export function getCancerBySlug(slug: string): CancerType | undefined {
