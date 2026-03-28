@@ -41,6 +41,7 @@ export const cancerCards = [
   { slug: "gallbladder-cancer", title: "Gallbladder Cancer", desc: "Early workup and hepatobiliary oncology care for biliary cancers" },
   { slug: "oesophageal-cancer", title: "Oesophageal Cancer", desc: "Swallowing-focused cancer care with surgery and chemoradiation" },
   { slug: "cervical-cancer", title: "Cervical Cancer", desc: "HPV screening, colposcopy, surgery, and radiation therapy" },
+  { slug: "heredity", title: "Hereditary Cancer", desc: "Genetic counselling and risk assessment for families with cancer history" },
 ];
 
 export default function Home() {
