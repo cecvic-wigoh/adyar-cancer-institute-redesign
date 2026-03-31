@@ -555,11 +555,46 @@
   color: white;
 }
 
-/* ════════════ LEGACY (unused but kept for compat) ════════════ */
-.breadcrumbBar { display: none; }
-.breadcrumb { display: none; }
-.breadcrumbSep { display: none; }
-.breadcrumbCur { display: none; }
+/* ════════════ STICKY BREADCRUMB BAR ════════════ */
+.breadcrumbBar {
+  position: sticky;
+  top: 124px;
+  z-index: 990;
+  background: var(--color-off-white, #f8f9fa);
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px 0;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  color: var(--color-text-secondary, #64748b);
+}
+
+.breadcrumb a {
+  color: var(--color-primary, #1a56db);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbSep {
+  margin: 0 4px;
+  color: #cbd5e1;
+}
+
+.breadcrumbCur {
+  color: #0f172a;
+  font-weight: 500;
+}
 
 /* ════════════ RESPONSIVE ════════════ */
 @media (max-width: 1100px) {

@@ -141,7 +141,7 @@
 
 /* ── Overview body ── */
 .overviewBody {
-  font-size: 16.5px;
+  font-size: 18px;
   line-height: 1.75;
 }
 
@@ -173,7 +173,7 @@
 
 .missionTitle {
   font-family: var(--font-heading);
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 600;
   color: #5b3a8a;
   margin-bottom: 24px;
@@ -181,7 +181,7 @@
 }
 
 .missionBody {
-  font-size: 16.5px;
+  font-size: 18px;
   line-height: 1.75;
 }
 
@@ -217,7 +217,7 @@
 
 .missionCardTitle {
   font-family: var(--font-heading);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: #44296b;
   margin-bottom: 8px;
@@ -225,7 +225,7 @@
 
 .missionCardText {
   font-family: var(--font-heading);
-  font-size: 13px;
+  font-size: 16px;
   color: var(--color-text-secondary);
   line-height: 1.6;
 }
@@ -247,7 +247,7 @@
 
 .dimensionCardName {
   font-family: var(--font-heading);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: #44296b;
   margin-bottom: 8px;
@@ -255,7 +255,7 @@
 
 .dimensionCardDesc {
   font-family: var(--font-heading);
-  font-size: 13px;
+  font-size: 16px;
   color: var(--color-text-secondary);
   line-height: 1.5;
 }
@@ -329,7 +329,7 @@
   background: var(--color-off-white);
   border-radius: 8px;
   font-family: var(--font-heading);
-  font-size: 14px;
+  font-size: 16px;
   display: flex;
   align-items: flex-start;
   gap: 10px;

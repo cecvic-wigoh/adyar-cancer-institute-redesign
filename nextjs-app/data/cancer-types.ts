@@ -32,7 +32,7 @@ export const cancerTypes: CancerType[] = [
       { title: 'Chemotherapy', description: 'Neoadjuvant or adjuvant chemotherapy using evidence-based regimens.' },
       { title: 'Radiation Therapy', description: 'External beam radiation or brachytherapy after surgery.' },
       { title: 'Hormonal & Targeted Therapy', description: 'Anti-oestrogen agents and HER2-targeted drugs like trastuzumab.' },
-      { title: 'Supportive & Palliative Care', description: 'Nutrition counselling, psycho-oncology, physiotherapy, and pain management.' },
+      { title: 'Supportive & Palliative Care', description: 'Nutrition counselling, Psycho-Oncology & Resource Center for Tobacco Control (RCTC), physiotherapy, and pain management.' },
     ],
     relatedDepartments: [
       { slug: 'surgical-oncology', title: 'Surgical Oncology', description: 'Breast-conserving and reconstructive surgeries.' },
@@ -58,7 +58,7 @@ export const cancerTypes: CancerType[] = [
       { title: 'Radiation Therapy', description: 'External beam radiation combined with brachytherapy.' },
       { title: 'Chemotherapy', description: 'Concurrent chemoradiation using cisplatin-based regimens.' },
       { title: 'Immunotherapy', description: 'Immune checkpoint inhibitors for recurrent disease.' },
-      { title: 'Supportive Care', description: 'Rehabilitation, psycho-oncology, and follow-up care.' },
+      { title: 'Supportive Care', description: 'Rehabilitation, Psycho-Oncology & Resource Center for Tobacco Control (RCTC), and follow-up care.' },
     ],
     relatedDepartments: [
       { slug: 'gynaecological-oncology', title: 'Gynaecological Oncology', description: 'Specialised care for cervical cancers.' },

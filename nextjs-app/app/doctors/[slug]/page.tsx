@@ -44,6 +44,19 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
   return (
     <main id="main" className={styles.page}>
 
+      {/* ── STICKY BREADCRUMB ── */}
+      <div className={styles.breadcrumbBar}>
+        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+          <Link href="/">Home</Link>
+          <span className={styles.breadcrumbSep}>/</span>
+          <Link href="/doctors">Doctors</Link>
+          <span className={styles.breadcrumbSep}>/</span>
+          <Link href={`/departments/${doctor.department.slug}`}>{doctor.department.title}</Link>
+          <span className={styles.breadcrumbSep}>/</span>
+          <span className={styles.breadcrumbCur}>{doctor.name}</span>
+        </nav>
+      </div>
+
       {/* ── HERO ── */}
       <section className={styles.hero} id="doctor-hero">
         <div className={styles.heroGrain} aria-hidden="true" />
