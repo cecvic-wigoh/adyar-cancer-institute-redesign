@@ -674,7 +674,7 @@ export const departments: Department[] = [
       "Radiation therapy (in coordination with Radiation Oncology)",
       "Combined modality treatment (chemoradiation)",
       "Palliative and supportive care",
-      "Psycho-oncology services",
+      "Psycho-Oncology & Resource Center for Tobacco Control (RCTC) services",
       "Hereditary Cancer Clinic and familial cancer counselling",
     ],
     preventiveMeasures: [
@@ -1685,7 +1685,7 @@ export const departments: Department[] = [
   {
     slug: "biomedical-engineering",
     category: "support",
-    title: "Bio medical engineering",
+    title: "Bio Medical Engineering",
     isComingSoon: true,
     metaDescription: "Ensuring excellence in medical equipment standards.",
     tagline: "Technological precision for patient safety.",

@@ -141,7 +141,7 @@
 
 /* ── Overview body ── */
 .overviewBody {
-  font-size: 16.5px;
+  font-size: 18px;
   line-height: 1.75;
 }
 
@@ -262,7 +262,7 @@
 
 .servicesList li {
   font-family: var(--font-heading);
-  font-size: 14px;
+  font-size: 16px;
   padding: 8px 0;
   color: var(--color-text-primary);
   display: flex;
@@ -297,7 +297,7 @@
 
 .therapyCard h4 {
   font-family: var(--font-heading);
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   color: #134e3f;
   margin-bottom: 6px;

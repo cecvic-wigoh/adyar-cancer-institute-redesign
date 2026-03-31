@@ -68,7 +68,20 @@ export default function Header() {
                   <li><Link href="/coming-soon" onClick={() => setActiveDropdown(null)}>Collaborations</Link></li>
                 </ul>
               </li>
-              <li><Link href="/coming-soon">DIRECTORY OF SERVICES</Link></li>
+              <li className={`has-dropdown${activeDropdown === 'dos' ? ' is-open' : ''}`}>
+                <button
+                  className="nav-toggle"
+                  onClick={(e) => toggleDropdown('dos', e)}
+                  aria-expanded={activeDropdown === 'dos'}
+                >
+                  DIRECTORY OF SERVICES
+                  <svg className="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+                </button>
+                <ul className="dropdown-menu">
+                  <li><Link href="/directory-of-services" onClick={() => setActiveDropdown(null)}>Test Catalog</Link></li>
+                  <li><Link href="/directory-of-services-v2" onClick={() => setActiveDropdown(null)}>DOS Table View</Link></li>
+                </ul>
+              </li>
               <li className={`has-dropdown${activeDropdown === 'news' ? ' is-open' : ''}`}>
                 <button 
                   className="nav-toggle"

@@ -79,6 +79,9 @@
   padding: 16px 0;
   background: var(--color-off-white);
   border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 124px;
+  z-index: 990;
 }
 .breadcrumbInner {
   max-width: 1280px;

@@ -66,9 +66,9 @@ const categories: SubNavCategory[] = [
         heading: "Community Outreach",
         links: [
           { label: "Community Outreach", href: "/#appointment" },
-          { label: "Awareness Programmes", href: "/coming-soon", },
-          { label: "Rural Cancer screening", href: "/coming-soon", },
-          { label: "School & College camps", href: "/coming-soon", },
+          { label: "Awareness Programmes", href: "/coming-soon" },
+          { label: "Rural Cancer screening", href: "/coming-soon" },
+          { label: "School & College camps", href: "/coming-soon" },
         ],
       },
     ],
@@ -101,7 +101,8 @@ const categories: SubNavCategory[] = [
         links: [
           { label: "Cancer Types", href: "/#cancer-types" },
           { label: "A New Diagnosis", href: "/coming-soon" },
-          { label: "Patient Support", href: "/departments/surgical-oncology", },
+          { label: "Patient Support", href: "/departments/surgical-oncology" },
+          { label: "Hereditary Care Clinic", href: "/coming-soon" },
         ],
       },
       {
@@ -138,16 +139,16 @@ const categories: SubNavCategory[] = [
       {
         heading: "Clinical Departments",
         links: [
-          { label: "Surgical Oncology", slug: "surgical-oncology" },
-          { label: "Medical Oncology", slug: "medical-oncology" },
-          { label: "Radiation Oncology", slug: "radiation-oncology" },
+          { label: "Anaesthesia & Pain Management", slug: "anaesthesia-pain" },
           { label: "Gynaecological Oncology", slug: "gynaecological-oncology" },
           { label: "Medical Gastroenterology", slug: "medical-gastroenterology" },
+          { label: "Medical Oncology", slug: "medical-oncology" },
+          { label: "Nuclear Medicine and Theranostics", slug: "nuclear-medicine-and-theranostics" },
+          { label: "Pain and Palliative Medicine", slug: "pain-palliative" },
           { label: "Palliative Medicine", slug: "palliative-medicine" },
           { label: "Preventive Oncology", slug: "preventive-oncology" },
-          { label: "Pain and Palliative Medicine", slug: "pain-palliative" },
-          { label: "Nuclear Medicine and Theranostics", slug: "nuclear-medicine-and-theranostics" },
-          { label: "Anaesthesia & Pain Management", slug: "anaesthesia-pain" },
+          { label: "Radiation Oncology", slug: "radiation-oncology" },
+          { label: "Surgical Oncology", slug: "surgical-oncology" },
         ].map((item: { label: string; slug: string }): SubNavLink => {
           const dept = departments.find((d) => d.slug === item.slug);
           return {
@@ -159,53 +160,71 @@ const categories: SubNavCategory[] = [
       {
         heading: "Diagnostic Departments",
         links: [
-          { label: "Directory of Services (DOS)", slug: "directory-of-services" },
           { label: "Blood Centre", slug: "blood-centre" },
-          { label: "Clinical Biochemistry", slug: "clinical-biochemistry" },
-          { label: "Microbiology", slug: "microbiology" },
           { label: "Cancer Biology & Molecular Diagnostics", slug: "cancer-biology" },
+          { label: "Clinical Biochemistry", slug: "clinical-biochemistry" },
+          { label: "Directory of Services (DOS)", slug: "directory-of-services" },
+          { label: "Microbiology", slug: "microbiology" },
           { label: "Molecular Oncology", slug: "molecular-oncology" },
-          { label: "Oncopathology", slug: "oncopathology" },
-          { label: "Radio Diagnosis and Imaging", slug: "radiology" },
           { label: "Nuclear Medicine and Molecular Imaging", slug: "nuclear-medicine-molecular-diag" },
-        ].map((item: { label: string; slug: string }): SubNavLink => {
+          {
+            label: "Oncopathology",
+            slug: "oncopathology",
+            subLinks: [
+              { label: "Histopathology", href: "/coming-soon" },
+            ],
+          },
+          { label: "Radio Diagnosis and Imaging", slug: "radiology" },
+        ].map((item: { label: string; slug: string; subLinks?: SubNavLink[] }): SubNavLink => {
           const dept = departments.find((d) => d.slug === item.slug);
           return {
             label: item.label,
             href: dept ? (dept.isComingSoon ? "/coming-soon" : `/departments/${dept.slug}`) : "/coming-soon",
+            ...(item.subLinks ? { subLinks: item.subLinks } : {}),
           };
         }),
       },
       {
         heading: "Allied Departments",
         links: [
-          { label: "Intervention Radiology", slug: "interventional-radiology" },
+          { label: "Bio Medical Engineering", slug: "biomedical-engineering" },
+          {
+            label: "Cancer Registry & Epidemiology",
+            slug: "cancer-registry-epidemiology",
+            subLinks: [
+              { label: "Hospital Based Cancer Registry (HBCR)", href: "/coming-soon" },
+              { label: "Pediatric Registry", href: "/coming-soon" },
+              { label: "Population Based Cancer Registry (PBCR)", href: "/coming-soon" },
+            ],
+          },
           { label: "Dietetics", slug: "dietetics" },
+          { label: "Intervention Radiology", slug: "interventional-radiology" },
           { label: "Physiotherapy", slug: "physiotherapy" },
-          { label: "Bio medical engineering", slug: "biomedical-engineering" },
-          { label: "Psycho-Oncology", slug: "psycho-oncology" },
-        ].map((item: { label: string; slug: string }): SubNavLink => {
+          { label: "Psycho-Oncology & Resource Center for Tobacco Control (RCTC)", slug: "Psycho-Oncology & Resource Center for Tobacco Control (RCTC)" },
+        ].map((item: { label: string; slug: string; subLinks?: SubNavLink[] }): SubNavLink => {
           const dept = departments.find((d) => d.slug === item.slug);
           return {
             label: item.label,
             href: dept ? (dept.isComingSoon ? "/coming-soon" : `/departments/${dept.slug}`) : "/coming-soon",
+            ...(item.subLinks ? { subLinks: item.subLinks } : {}),
           };
         }),
       },
       {
         heading: "Administrative Departments",
         links: [
+          { label: "Accounts", href: "/coming-soon" },
+          { label: "Facilities", href: "/coming-soon" },
           { label: "Finance", href: "/coming-soon" },
-          { label: "IT", href: "/coming-soon" },
-          { label: "HR", href: "/coming-soon" },
-          { label: "Purchase", href: "/coming-soon" },
-          { label: "Facilities (Electrical, civil, fire and safety)", href: "/coming-soon" },
-          { label: "Stores", href: "/coming-soon" },
           { label: "Housekeeping", href: "/coming-soon" },
-          { label: "Security", href: "/coming-soon" },
+          { label: "HR", href: "/coming-soon" },
+          { label: "IT", href: "/coming-soon" },
+          { label: "Purchase", href: "/coming-soon" },
           { label: "Quality Control", slug: "quality-control" },
-        ].map((item: { label: string; slug?: string; href?: string }): SubNavLink => {
-          if (item.href) return { label: item.label, href: item.href };
+          { label: "Security", href: "/coming-soon" },
+          { label: "Stores", href: "/coming-soon" },
+        ].map((item: { label: string; slug?: string; href?: string; subLinks?: SubNavLink[] }): SubNavLink => {
+          if (item.href) return { label: item.label, href: item.href, ...(item.subLinks ? { subLinks: item.subLinks } : {}) };
           const dept = departments.find((d) => d.slug === item.slug);
           return {
             label: item.label,
